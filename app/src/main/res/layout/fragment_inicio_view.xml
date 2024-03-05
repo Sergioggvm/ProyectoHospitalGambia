@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaInicio.inicioView">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="366dp"
+            android:layout_height="310dp"
+            android:layout_marginBottom="423dp"
+            android:src="@drawable/imagen_inicio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_nombreUsuario"
+            android:layout_width="236dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/txt_Usuario"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_logo"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edt_contraseniaUsuario"
+            android:layout_width="236dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="60dp"
+            android:ems="10"
+            android:hint="@string/txt_Contrasenia"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuario" />
+
+        <Button
+            android:id="@+id/btn_iniciarSesion"
+            android:background="@drawable/boton_negro_rectangular"
+            android:layout_width="229dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="58dp"
+            android:text="@string/btn_IniciarSesion"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_contraseniaUsuario"/>
+
+
+        <Button
+            android:id="@+id/btn_registrar"
+            android:background="@drawable/boton_negro_rectangular"
+            android:layout_width="229dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/btn_Registar"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_iniciarSesion" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
