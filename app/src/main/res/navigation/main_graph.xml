@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/inicioView">
+    app:startDestination="@id/menuOpcionesMedicasView">
     <fragment
         android:id="@+id/inicioView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaInicio.inicioView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaInicio.InicioView"
         android:label="fragment_inicio_view"
         tools:layout="@layout/fragment_inicio_view" >
         <action
@@ -15,7 +15,17 @@
     </fragment>
     <fragment
         android:id="@+id/registroView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaRegistro.registroView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaRegistro.RegistroView"
         android:label="fragment_registro_view"
         tools:layout="@layout/fragment_registro_view" />
+    <fragment
+        android:id="@+id/menuPrincipalView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuPrincipal.MenuPrincipalView"
+        android:label="fragment_menu_principal_view"
+        tools:layout="@layout/fragment_menu_principal_view" />
+    <fragment
+        android:id="@+id/menuOpcionesMedicasView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas.MenuOpcionesMedicasView"
+        android:label="fragment_menu_opciones_medicas_view"
+        tools:layout="@layout/fragment_menu_opciones_medicas_view" />
 </navigation>

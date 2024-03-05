@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".feature.vistaRegistro.registroView">
+    tools:context=".feature.vistaRegistro.RegistroView">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,13 +12,13 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/edt_nombreUsuario"
+            android:id="@+id/edt_nombreUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
             android:ems="10"
             android:hint="@string/txt_Usuario"
             android:inputType="text"
-            app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaUsuario"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaUsuarioRegistrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,32 +26,32 @@
             app:layout_constraintVertical_bias="0.968" />
 
         <EditText
-            android:id="@+id/edt_contraseniaUsuario"
+            android:id="@+id/edt_contraseniaUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
             android:layout_marginBottom="28dp"
             android:ems="10"
             android:hint="@string/txt_Contrasenia"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/btn_iniciarSesion"
+            app:layout_constraintBottom_toTopOf="@+id/btn_registrarUsuario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btn_iniciarSesion"
+            android:id="@+id/btn_registrarUsuario"
             android:layout_width="229dp"
             android:layout_height="52dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Registar"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintBottom_toTopOf="@+id/img_logoFraseRegistrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_LogoRegistrar"
             android:layout_width="411dp"
             android:layout_height="322dp"
             android:src="@drawable/imagen_registro"
@@ -60,7 +60,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_logoFraseRegistrar"
             android:layout_width="344dp"
             android:layout_height="98dp"
             android:layout_marginBottom="16dp"

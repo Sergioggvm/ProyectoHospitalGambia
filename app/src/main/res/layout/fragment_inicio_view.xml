@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.vistaInicio.inicioView">
+    tools:context=".feature.vistaInicio.InicioView">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edt_nombreUsuario"
+            android:id="@+id/edt_nombreUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
             android:layout_marginTop="27dp"
@@ -38,7 +38,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/edt_contraseniaUsuario"
+            android:id="@+id/edt_contraseniaUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
             android:layout_marginTop="60dp"
@@ -48,10 +48,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuarioRegistrar" />
 
         <Button
-            android:id="@+id/btn_iniciarSesion"
+            android:id="@+id/btn_registrarUsuario"
             android:background="@drawable/boton_negro_rectangular"
             android:layout_width="229dp"
             android:layout_height="52dp"
@@ -60,20 +60,20 @@
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_contraseniaUsuario"/>
+            app:layout_constraintTop_toBottomOf="@+id/edt_contraseniaUsuarioRegistrar"/>
 
 
         <Button
             android:id="@+id/btn_registrar"
-            android:background="@drawable/boton_negro_rectangular"
             android:layout_width="229dp"
             android:layout_height="52dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Registar"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_iniciarSesion" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_registrarUsuario" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
