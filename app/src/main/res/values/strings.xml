@@ -8,4 +8,15 @@
 
     <string name="txt_Usuario">Nombre de Usuario</string>
     <string name="txt_Contrasenia">Contraseña</string>
+
+    <string name="txt_Contrasenia_Federacion">Contraseña Federación</string>
+
+    <string name="txt_Fecha">Fecha</string>
+    <string name="txt_Hora">Hora</string>
+    <string name="txt_Resumen">Resumen</string>
+    <string name="txt_DominioYContexto">Dominio y contexto</string>
+    <string name="txt_Detalles">Detalles</string>
+    <string name="txt_Relevancia">Relevancia</string>
+    <string name="txt_PaginaPrivada">Pagina privada</string>
+    <string name="txt_Guardar">Guardar</string>
 </resources>

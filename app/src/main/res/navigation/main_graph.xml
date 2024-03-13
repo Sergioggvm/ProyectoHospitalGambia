@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/inicioView">
+    app:startDestination="@id/nuevoRegistroServidorView">
     <fragment
         android:id="@+id/inicioView"
         android:name="com.example.proyectohospitalgambia.feature.vistaInicio.InicioView"
@@ -28,4 +28,14 @@
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas.MenuOpcionesMedicasView"
         android:label="fragment_menu_opciones_medicas_view"
         tools:layout="@layout/fragment_menu_opciones_medicas_view" />
+    <fragment
+        android:id="@+id/federacionServidoresView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaFederacionServidor.FederacionServidoresView"
+        android:label="fragment_federacion_servidores_view"
+        tools:layout="@layout/fragment_federacion_servidores_view" />
+    <fragment
+        android:id="@+id/nuevoRegistroServidorView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorView"
+        android:label="fragment_nuevo_registro_servidor_view"
+        tools:layout="@layout/fragment_nuevo_registro_servidor_view" />
 </navigation>
