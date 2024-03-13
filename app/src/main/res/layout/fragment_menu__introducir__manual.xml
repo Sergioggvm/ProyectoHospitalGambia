@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.ModoManual.Menu_Introducir_Manual">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/img_bloodpressure"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_bloodpressure"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewFondoBloodPresure"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_bloodpressure"
+            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+
+        <ImageView
+            android:id="@+id/img_weight"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_weight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+
+        <View
+            android:id="@+id/viewFondoWeight"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_weight"
+            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+
+
+        <ImageView
+            android:id="@+id/img_glycemia"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="208dp"
+            android:src="@drawable/icono_glycemia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+
+
+        <View
+            android:id="@+id/viewFondoGlycemia"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_glycemia"
+            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
+
+        <ImageView
+            android:id="@+id/img_osat"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_osat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_glycemia" />
+
+        <View
+            android:id="@+id/viewFondoOsat"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_osat"
+            app:layout_constraintTop_toTopOf="@+id/img_osat" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
