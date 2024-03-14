@@ -19,4 +19,20 @@
     <string name="txt_Relevancia">Relevancia</string>
     <string name="txt_PaginaPrivada">Pagina privada</string>
     <string name="txt_Guardar">Guardar</string>
+
+    <string name="txt_Altura">Altura:</string>
+    <string name="btn_Actualizar">Actualizar</string>
+    <string name="txt_CuentaFederacion">Cuenta Federacion</string>
+    <string name="txt_CuentaFederacionId">Cuenta Federacion ID</string>
+    <string name="txt_ContraseniaActual">Contraseña Personal Actual</string>
+    <string name="txt_ContraseniaNueva">Contraseña Personal \n Nueva</string>
+    <string name="txt_ContraseniaNuevaRepetir">Repetir Contraseña \n Personal Nueva</string>
+
+    <string name="txt_Protocolo">Protocolo</string>
+    <string name="txt_Host">Thalamus Host</string>
+    <string name="txt_PuertoServidor">Thalamus Puerto\n Servidor</string>
+    <string name="txt_FederacionId">Federacion ID</string>
+    <string name="txt_ContraseniaFederacion">Contraseña\n Federacion</string>
+    <string name="btn_PruebaConexion">Prueba Conexion</string>
+    <string name="txt_SincronizacionFederacion">Sincronización con federacion</string>
 </resources>
