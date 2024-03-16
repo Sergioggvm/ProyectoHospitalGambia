@@ -9,17 +9,17 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/edt_nombreUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/txt_Usuario"
             android:inputType="text"
-            android:background="@color/gris_texto"
             app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaUsuarioRegistrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.52"
@@ -32,10 +32,11 @@
             android:layout_width="236dp"
             android:layout_height="57dp"
             android:layout_marginBottom="28dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/txt_Contrasenia"
             android:inputType="textPassword"
-            android:background="@color/gris_texto"
             app:layout_constraintBottom_toTopOf="@+id/btn_registrarUsuario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.52"

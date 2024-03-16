@@ -9,8 +9,7 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img_logo"
@@ -20,33 +19,37 @@
             android:src="@drawable/imagen_inicio"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/edt_nombreUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
             android:layout_marginTop="27dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/txt_Usuario"
             android:inputType="text"
-            android:background="@color/gris_texto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_logo"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.002" />
 
         <EditText
             android:id="@+id/edt_contraseniaUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/txt_Contrasenia"
-            android:background="@color/gris_texto"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"

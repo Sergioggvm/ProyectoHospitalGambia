@@ -8,14 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_width="303dp"
+            android:layout_height="107dp"
+            android:layout_marginTop="24dp"
             android:src="@drawable/imagen_ajustes_conexion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +24,7 @@
             android:id="@+id/edt_protocolo"
             android:layout_width="174dp"
             android:layout_height="55dp"
-            android:background="@color/gris_texto"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/txt_Protocolo"
@@ -41,7 +40,7 @@
             android:id="@+id/edt_host"
             android:layout_width="174dp"
             android:layout_height="55dp"
-            android:background="@color/gris_texto"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/txt_Host"
@@ -57,7 +56,7 @@
             android:id="@+id/edt_puertoServidor"
             android:layout_width="174dp"
             android:layout_height="55dp"
-            android:background="@color/gris_texto"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/txt_PuertoServidor"
@@ -73,7 +72,7 @@
             android:id="@+id/edt_federacionId"
             android:layout_width="174dp"
             android:layout_height="55dp"
-            android:background="@color/gris_texto"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/txt_FederacionId"
@@ -89,7 +88,7 @@
             android:id="@+id/edt_contraseniaFederacion"
             android:layout_width="174dp"
             android:layout_height="55dp"
-            android:background="@color/gris_texto"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/txt_ContraseniaFederacion"

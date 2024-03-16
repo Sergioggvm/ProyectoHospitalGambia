@@ -9,12 +9,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:fadingEdge="none">
 
         <ImageView
             android:id="@+id/img_servidorFederacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="226dp"
+            android:layout_height="82dp"
             android:layout_marginTop="44dp"
             android:src="@drawable/imagen_federacion_servidores"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,40 +23,45 @@
 
         <ImageButton
             android:id="@+id/btn_nuevoRegistro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="192dp"
-            android:src="@drawable/boton_nuevo_resgistro"
+            android:layout_width="100dp"
+            android:layout_height="99dp"
+            android:layout_marginTop="148dp"
             android:background="@color/white"
+            android:contentDescription="0"
+            android:scaleType="fitXY"
+            android:src="@drawable/boton_nuevo_resgistro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="0"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_recargaServidor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="192dp"
-            android:src="@drawable/boton_recarga"
+            android:layout_width="100dp"
+            android:layout_height="99dp"
+            android:layout_marginTop="148dp"
             android:background="@color/white"
+            android:contentDescription="0"
+            android:scaleType="fitXY"
+            android:src="@drawable/boton_recarga"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.946"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="0"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/edt_contraseñaServidor"
             android:layout_width="255dp"
             android:layout_height="63dp"
             android:layout_marginTop="148dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
-            android:inputType="text"
+            android:fadingEdge="horizontal"
+            android:gravity="center"
             android:hint="@string/txt_Contrasenia_Federacion"
-            android:background="@color/gris_texto"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.596"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
 

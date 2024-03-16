@@ -35,4 +35,60 @@
     <string name="txt_ContraseniaFederacion">Contraseña\n Federacion</string>
     <string name="btn_PruebaConexion">Prueba Conexion</string>
     <string name="txt_SincronizacionFederacion">Sincronización con federacion</string>
+
+    <string name="txt_Descripcion">The GNU Health Personal Health Record</string>
+    <string name="txt_PaginaCasa">https://www.gnuhealth.org</string>
+    <string name="txt_Autor">Autor: Luis Falcon</string>
+    <string name="txt_Gracias">Gracias a nuestros contribuyentes</string>
+    <string name="txt_Conclusion">La sección de genética médica utiliza variantes naturales humanas de UniProt.</string>
+    <string name="txt_Licencia">GPL v3+</string>
+    <string name="txt_Copyright">Copyright 2008-2024 GNU Solidario</string>
+    <string name="txt_Thanks">---- Version 2.0 (Kivy) -------\n Axel Braun\n
+        Leonardo D Acchille\n
+        ---- Version 1.0 (PySide) -----\n
+        Axel Braun\n
+        Paul Brown\n
+        Yuri Chornoivan\n
+        Leonardo D Acchille\n
+        Marco Gebhardt\n
+        Riccardo Iaconelli\n
+        Mat Knoll\n
+        Cristian Maureira-Fredes\n
+        Karl Ove Hufthammer\n
+        Aleix Pol\n
+        Carl Schwan\n
+        Pino Toscano\n
+        Niccolò Venerandi
+    </string>
+    <string name="txt_PieFoto">MyGNUHealth is part of the GNU Health Project</string>
+
+    <string-array name="opcion_medicina">
+        <item>Medico</item>
+        <item>Social</item>
+        <item>Biográfico</item>
+        <item>Estilo libre</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="condiciones_salud">
+        <item>Condición de salud</item>
+        <item>Encuentro</item>
+        <item>Procedimiento</item>
+        <item>Auto-monitoreo</item>
+        <item>Inmunización</item>
+        <item>Receta médica</item>
+        <item>Cirugía</item>
+        <item>Hospitalización</item>
+        <item>Examen de laboratorio</item>
+        <item>Diagnóstico por imagen</item>
+        <item>Genético</item>
+        <item>Familiar</item>
+    </string-array>
+
+    <string-array name="tipo_relevancia">
+        <item>Normal</item>
+        <item>Importante</item>
+        <item>Critico</item>
+    </string-array>
+
 </resources>

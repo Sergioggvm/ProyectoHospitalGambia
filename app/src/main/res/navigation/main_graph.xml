@@ -38,4 +38,19 @@
         android:name="com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorView"
         android:label="fragment_nuevo_registro_servidor_view"
         tools:layout="@layout/fragment_nuevo_registro_servidor_view" />
+    <fragment
+        android:id="@+id/aboutView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaAbout.AboutView"
+        android:label="fragment_about_view"
+        tools:layout="@layout/fragment_about_view" />
+    <fragment
+        android:id="@+id/ajustesConexionView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView"
+        android:label="fragment_ajustes_conexion_view"
+        tools:layout="@layout/fragment_ajustes_conexion_view" />
+    <fragment
+        android:id="@+id/profileView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView"
+        android:label="fragment_profile_view"
+        tools:layout="@layout/fragment_profile_view" />
 </navigation>
