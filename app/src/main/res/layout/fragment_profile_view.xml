@@ -15,81 +15,94 @@
             android:layout_width="308dp"
             android:layout_height="121dp"
             android:layout_marginStart="52dp"
-            android:layout_marginTop="60dp"
             android:layout_marginEnd="52dp"
             android:src="@drawable/imagen_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.059" />
 
         <SeekBar
             android:id="@+id/sk_altura"
             android:layout_width="111dp"
             android:layout_height="17dp"
-            android:layout_marginTop="212dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_cuentaFederacion"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.084" />
 
         <TextView
             android:id="@+id/txt_tamanio"
             android:layout_width="48dp"
             android:layout_height="18dp"
-            android:layout_marginTop="212dp"
+            android:layout_marginTop="32dp"
             android:text="@string/txt_Altura"
+            app:layout_constraintBottom_toTopOf="@+id/txt_cuentaFederacion"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.369"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintStart_toEndOf="@+id/sk_altura"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.022" />
 
         <TextView
             android:id="@+id/txt_tamanioNumero"
             android:layout_width="17dp"
             android:layout_height="20dp"
-            android:layout_marginTop="212dp"
+            android:layout_marginTop="31dp"
             android:text="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/txt_cuentaFederacion"
+            app:layout_constraintEnd_toStartOf="@+id/txt_cm"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/sk_altura"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.045" />
 
         <TextView
             android:id="@+id/txt_cm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="212dp"
+            android:layout_marginTop="32dp"
             android:text="cm"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.515"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/edt_cuentaFederacionId"
+            app:layout_constraintEnd_toStartOf="@+id/btn_actualizarAltura"
+            app:layout_constraintHorizontal_bias="0.413"
+            app:layout_constraintStart_toEndOf="@+id/txt_tamanio"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btn_actualizarAltura"
             android:layout_width="157dp"
             android:layout_height="48dp"
-            android:layout_marginTop="196dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Actualizar"
             android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/edt_cuentaFederacionId"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.937"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.016" />
 
         <TextView
             android:id="@+id/txt_cuentaFederacion"
             android:layout_width="125dp"
             android:layout_height="31dp"
-            android:layout_marginTop="316dp"
+            android:layout_marginBottom="48dp"
             android:gravity="center"
             android:text="@string/txt_CuentaFederacion"
+            app:layout_constraintBottom_toTopOf="@+id/btn_actualizarCuentaFederacionId"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.129"
+            app:layout_constraintHorizontal_bias="0.125"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/edt_cuentaFederacionId"
@@ -100,12 +113,12 @@
             android:gravity="center"
             android:hint="@string/txt_CuentaFederacionId"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_actualizarCuentaFederacionId"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.767"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.452" />
+            app:layout_constraintHorizontal_bias="0.344"
+            app:layout_constraintStart_toEndOf="@+id/txt_cuentaFederacion"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.765" />
 
         <Button
             android:id="@+id/btn_actualizarCuentaFederacionId"
@@ -114,11 +127,12 @@
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Actualizar"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaActual"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.55" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.85" />
 
         <EditText
             android:id="@+id/edt_contraseniaActual"
@@ -129,12 +143,12 @@
             android:gravity="center"
             android:hint="@string/txt_ContraseniaActual"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaNueva"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.723" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.937" />
 
         <EditText
             android:id="@+id/edt_contraseniaNueva"
@@ -145,12 +159,12 @@
             android:gravity="center"
             android:hint="@string/txt_ContraseniaNuevaRepetir"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_actualizarContrasenias"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintHorizontal_bias="0.071"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.823" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.935" />
 
         <EditText
             android:id="@+id/edt_contraseniaNuevaRepetir"
@@ -161,12 +175,12 @@
             android:gravity="center"
             android:hint="@string/txt_ContraseniaNueva"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_actualizarContrasenias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.823" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.935" />
 
         <Button
             android:id="@+id/btn_actualizarContrasenias"
@@ -178,8 +192,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.934" />
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            app:layout_constraintVertical_bias="0.932" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

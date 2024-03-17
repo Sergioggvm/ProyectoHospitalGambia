@@ -16,7 +16,9 @@
             android:layout_width="226dp"
             android:layout_height="82dp"
             android:layout_marginTop="44dp"
+            android:layout_marginBottom="22dp"
             android:src="@drawable/imagen_federacion_servidores"
+            app:layout_constraintBottom_toTopOf="@+id/btn_nuevoRegistro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,50 +27,58 @@
             android:id="@+id/btn_nuevoRegistro"
             android:layout_width="100dp"
             android:layout_height="99dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="148dp"
             android:background="@color/white"
             android:contentDescription="0"
             android:scaleType="fitXY"
             android:src="@drawable/boton_nuevo_resgistro"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintBottom_toTopOf="@+id/lst_consexionesServidor"
+            app:layout_constraintEnd_toStartOf="@+id/btn_recargaServidor"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
             android:id="@+id/btn_recargaServidor"
             android:layout_width="100dp"
             android:layout_height="99dp"
-            android:layout_marginTop="148dp"
+            android:layout_marginTop="28dp"
             android:background="@color/white"
             android:contentDescription="0"
             android:scaleType="fitXY"
             android:src="@drawable/boton_recarga"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseñaServidor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.946"
+            app:layout_constraintHorizontal_bias="0.948"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/edt_contraseñaServidor"
             android:layout_width="255dp"
             android:layout_height="63dp"
             android:layout_marginTop="148dp"
+            android:layout_marginBottom="35dp"
             android:background="@drawable/edittext_fondo"
             android:ems="10"
             android:fadingEdge="horizontal"
             android:gravity="center"
             android:hint="@string/txt_Contrasenia_Federacion"
             android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/lst_consexionesServidor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.596"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
+            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ListView
             android:id="@+id/lst_consexionesServidor"
             android:layout_width="409dp"
             android:layout_height="343dp"
+            android:background="@drawable/edittext_fondo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

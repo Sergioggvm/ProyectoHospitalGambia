@@ -15,29 +15,32 @@
             android:id="@+id/btn_opcionMedica"
             android:layout_width="244dp"
             android:layout_height="230dp"
-            android:layout_marginTop="192dp"
             android:background="@color/white"
+            android:contentDescription="0"
             android:src="@drawable/boton_menu_opciones_medicas"
             android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="0"/>
+            app:layout_constraintVertical_bias="0.343" />
 
         <ImageButton
             android:id="@+id/btn_opcionServidor"
             android:layout_width="244dp"
             android:layout_height="230dp"
             android:layout_marginTop="56dp"
-            android:src="@drawable/boton_menu_opciones_servidor"
             android:background="@color/white"
+            android:contentDescription="0"
+            android:src="@drawable/boton_menu_opciones_servidor"
             android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_opcionMedica"
-            android:contentDescription="0"/>
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

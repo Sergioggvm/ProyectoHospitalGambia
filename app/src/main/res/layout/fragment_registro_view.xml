@@ -40,28 +40,35 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_registrarUsuario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.52"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_LogoRegistrar"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btn_registrarUsuario"
             android:layout_width="229dp"
             android:layout_height="52dp"
+            android:layout_marginTop="203dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Registar"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/img_logoFraseRegistrar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_LogoRegistrar" />
 
         <ImageView
             android:id="@+id/img_LogoRegistrar"
             android:layout_width="411dp"
             android:layout_height="322dp"
             android:src="@drawable/imagen_registro"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/img_logoFraseRegistrar"
@@ -72,7 +79,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_LogoRegistrar"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
