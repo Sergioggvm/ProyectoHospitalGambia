@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaMenuPrincipal
+package com.example.proyectohospitalgambia.feature.menus.vistaMenuPrincipal
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

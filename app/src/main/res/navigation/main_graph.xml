@@ -20,12 +20,17 @@
         tools:layout="@layout/fragment_registro_view" />
     <fragment
         android:id="@+id/menuPrincipalView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaMenuPrincipal.MenuPrincipalView"
+        android:name="com.example.proyectohospitalgambia.feature.menus.vistaMenuPrincipal.MenuPrincipalView"
         android:label="fragment_menu_principal_view"
         tools:layout="@layout/fragment_menu_principal_view" />
     <fragment
         android:id="@+id/menuOpcionesMedicasView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas.MenuOpcionesMedicasView"
+        android:name="com.example.proyectohospitalgambia.feature.menus.vistaMenuOpcionesMedicas.MenuOpcionesMedicasView"
         android:label="fragment_menu_opciones_medicas_view"
         tools:layout="@layout/fragment_menu_opciones_medicas_view" />
+    <fragment
+        android:id="@+id/menu_Introducir_Manual"
+        android:name="com.example.proyectohospitalgambia.feature.vistaDatosMedicosManual.Menu_Introducir_Manual"
+        android:label="fragment_menu__introducir__manual"
+        tools:layout="@layout/fragment_menu__introducir__manual" />
 </navigation>

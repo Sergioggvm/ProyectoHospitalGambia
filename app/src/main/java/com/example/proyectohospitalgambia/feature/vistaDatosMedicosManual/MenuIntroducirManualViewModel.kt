@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.ModoManual
+package com.example.proyectohospitalgambia.feature.vistaDatosMedicosManual
 
 import androidx.lifecycle.ViewModel
 

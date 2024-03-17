@@ -4,44 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.vistaDatosMedicosManual.Menu_Introducir_Manual">
+    tools:context=".feature.menus.vistaMenuDeporteSuenno.menu_deporte_suenno">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
-            android:id="@+id/img_bloodpressure"
+            android:id="@+id/img_aerobic"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/icono_bloodpressure"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/viewFondoBloodPressure"
+            android:id="@+id/viewFondoAerobic"
+            app:layout_constraintStart_toEndOf="@+id/img_aerobic"
+            app:layout_constraintTop_toTopOf="@+id/img_aerobic"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/borde_redondeado"
-            app:layout_constraintStart_toEndOf="@+id/img_bloodpressure"
-            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+            android:background="@drawable/borde_redondeado" />
 
 
         <TextView
-            android:id="@+id/tv_bloodPressure"
+            android:id="@+id/tv_aerobic"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoAerobic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Blood Pressure: / mmHg (bpm)"
+            android:text="Aerobic: 0 m // Anaerobic: 0m // Steps: 0"
             android:textColor="@color/azulTexto"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure"
-            app:layout_constraintTop_toTopOf="@+id/viewFondoBloodPressure" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
@@ -53,142 +52,140 @@
             tools:layout_editor_absoluteY="112dp" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosBloodPressure"
+            android:id="@+id/imgbtn_irADatosAerobic"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toTopOf="@+id/img_aerobic"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
-            android:src="@drawable/icono_accederdatos"
-            app:layout_constraintEnd_toEndOf="@+id/viewFondoBloodPressure"
-            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+            android:src="@drawable/icono_accederdatos" />
 
         <ImageView
-            android:id="@+id/img_weight"
+            android:id="@+id/img_nutrition"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/icono_weight"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+            app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
 
         <View
-            android:id="@+id/viewFondoWeight"
+            android:id="@+id/viewFondoNutrition"
+            app:layout_constraintStart_toEndOf="@+id/img_nutrition"
+            app:layout_constraintTop_toTopOf="@+id/img_nutrition"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/borde_redondeado"
-            app:layout_constraintStart_toEndOf="@+id/img_weight"
-            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+            android:background="@drawable/borde_redondeado" />
 
 
         <TextView
-            android:id="@+id/tv_Weight"
+            android:id="@+id/tv_Nutrition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Weight: kg"
+            android:text="Nutrition (Kcal): 0/ 0/ 0/ (12)"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/viewFondoWeight"
-            app:layout_constraintTop_toTopOf="@+id/viewFondoWeight" />
+            app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoNutrition" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosWeight"
+            android:id="@+id/imgbtn_irADatosNutrition"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoNutrition"
+            app:layout_constraintTop_toTopOf="@+id/img_nutrition"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
-            android:src="@drawable/icono_accederdatos"
-            app:layout_constraintEnd_toEndOf="@+id/viewFondoWeight"
-            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+            android:src="@drawable/icono_accederdatos" />
 
         <ImageView
-            android:id="@+id/img_glycemia"
+            android:id="@+id/img_sleep"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="208dp"
-            android:src="@drawable/icono_glycemia"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+            app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
 
 
         <View
-            android:id="@+id/viewFondoGlycemia"
+            android:id="@+id/viewFondoSleep"
+            app:layout_constraintStart_toEndOf="@+id/img_sleep"
+            app:layout_constraintTop_toTopOf="@+id/img_sleep"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/borde_redondeado"
-            app:layout_constraintStart_toEndOf="@+id/img_glycemia"
-            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
+            android:background="@drawable/borde_redondeado" />
 
         <TextView
-            android:id="@+id/tv_Glycemia"
+            android:id="@+id/tv_Sleep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Glycemia: mg/dL"
+            android:text="Sleep: 0 hours / quality:"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/viewFondoGlycemia"
-            app:layout_constraintTop_toTopOf="@+id/viewFondoGlycemia" />
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoSleep" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosGlycemia"
+            android:id="@+id/imgbtn_irADatosSleep"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoSleep"
+            app:layout_constraintTop_toTopOf="@+id/img_sleep"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
-            android:src="@drawable/icono_accederdatos"
-            app:layout_constraintEnd_toEndOf="@+id/viewFondoGlycemia"
-            app:layout_constraintTop_toTopOf="@+id/img_glycemia"  />
+            android:src="@drawable/icono_accederdatos" />
 
         <ImageView
-            android:id="@+id/img_osat"
+            android:id="@+id/img_socialActivities"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/icono_osat"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_glycemia" />
+            app:layout_constraintTop_toBottomOf="@+id/img_sleep" />
 
         <View
-            android:id="@+id/viewFondoOsat"
+            android:id="@+id/viewFondoSocialActivities"
+            app:layout_constraintStart_toEndOf="@+id/img_socialActivities"
+            app:layout_constraintTop_toTopOf="@+id/img_socialActivities"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/borde_redondeado"
-            app:layout_constraintStart_toEndOf="@+id/img_osat"
-            app:layout_constraintTop_toTopOf="@+id/img_osat" />
+            android:background="@drawable/borde_redondeado" />
 
         <TextView
-            android:id="@+id/tv_Osat"
+            android:id="@+id/tv_SocialActivities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="OSAT: %"
+            android:text="Meaningful social activities: m"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/viewFondoOsat"
-            app:layout_constraintTop_toTopOf="@+id/viewFondoOsat" />
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoSocialActivities" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosOsat"
+            android:id="@+id/imgbtn_irADatosSocialActivities"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoSocialActivities"
+            app:layout_constraintTop_toTopOf="@+id/img_socialActivities"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
-            android:src="@drawable/icono_accederdatos"
-            app:layout_constraintEnd_toEndOf="@+id/viewFondoOsat"
-            app:layout_constraintTop_toTopOf="@+id/img_osat"  />
+            android:src="@drawable/icono_accederdatos" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>
