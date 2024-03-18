@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gris_texto">#E0E0E0</color>
     <color name="gris_oscuro_texto">#666666</color>
+    <color name="azul_toolbar">#006666</color>
 </resources>

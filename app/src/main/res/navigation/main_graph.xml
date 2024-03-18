@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/registroView">
+    app:startDestination="@id/menuPrincipalView">
     <fragment
         android:id="@+id/inicioView"
         android:name="com.example.proyectohospitalgambia.feature.vistaInicio.InicioView"
@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_inicioView_to_registroView"
             app:destination="@id/registroView" />
+        <action
+            android:id="@+id/action_inicioView_to_menuPrincipalView"
+            app:destination="@id/menuPrincipalView" />
     </fragment>
     <fragment
         android:id="@+id/registroView"
@@ -22,7 +25,14 @@
         android:id="@+id/menuPrincipalView"
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuPrincipal.MenuPrincipalView"
         android:label="fragment_menu_principal_view"
-        tools:layout="@layout/fragment_menu_principal_view" />
+        tools:layout="@layout/fragment_menu_principal_view" >
+        <action
+            android:id="@+id/action_menuPrincipalView_to_menuOpcionesMedicasView"
+            app:destination="@id/menuOpcionesMedicasView" />
+        <action
+            android:id="@+id/action_menuPrincipalView_to_federacionServidoresView"
+            app:destination="@id/federacionServidoresView" />
+    </fragment>
     <fragment
         android:id="@+id/menuOpcionesMedicasView"
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas.MenuOpcionesMedicasView"
@@ -32,25 +42,14 @@
         android:id="@+id/federacionServidoresView"
         android:name="com.example.proyectohospitalgambia.feature.vistaFederacionServidor.FederacionServidoresView"
         android:label="fragment_federacion_servidores_view"
-        tools:layout="@layout/fragment_federacion_servidores_view" />
+        tools:layout="@layout/fragment_federacion_servidores_view" >
+        <action
+            android:id="@+id/action_federacionServidoresView_to_nuevoRegistroServidorView"
+            app:destination="@id/nuevoRegistroServidorView" />
+    </fragment>
     <fragment
         android:id="@+id/nuevoRegistroServidorView"
         android:name="com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorView"
         android:label="fragment_nuevo_registro_servidor_view"
         tools:layout="@layout/fragment_nuevo_registro_servidor_view" />
-    <fragment
-        android:id="@+id/aboutView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaAbout.AboutView"
-        android:label="fragment_about_view"
-        tools:layout="@layout/fragment_about_view" />
-    <fragment
-        android:id="@+id/ajustesConexionView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView"
-        android:label="fragment_ajustes_conexion_view"
-        tools:layout="@layout/fragment_ajustes_conexion_view" />
-    <fragment
-        android:id="@+id/profileView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView"
-        android:label="fragment_profile_view"
-        tools:layout="@layout/fragment_profile_view" />
 </navigation>

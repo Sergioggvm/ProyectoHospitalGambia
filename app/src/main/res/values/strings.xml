@@ -91,4 +91,10 @@
         <item>Critico</item>
     </string-array>
 
+    <string name="txt_Menu">Menu</string>
+    <string name="txt_Menu_perfil">Perfil</string>
+    <string name="txt_Menu_Conexion">Conexion</string>
+    <string name="txt_Menu_AcercaDe">About</string>
+    <string name="txt_Menu_salir">Salir</string>
+
 </resources>

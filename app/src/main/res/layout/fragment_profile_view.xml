@@ -22,7 +22,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.059" />
+            app:layout_constraintVertical_bias="0.137" />
 
         <SeekBar
             android:id="@+id/sk_altura"
@@ -194,6 +194,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_profile"
             app:layout_constraintVertical_bias="0.932" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_Principal"
+            android:layout_width="414dp"
+            android:layout_height="61dp"
+            android:layout_marginBottom="22dp"
+            android:background="@color/azul_toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toTopOf="@+id/img_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

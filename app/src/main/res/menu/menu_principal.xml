@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mn_menu"
+        android:icon="@drawable/imagen_casa"
+        app:showAsAction="ifRoom"
+        android:title="@string/txt_Menu" />
+    <item android:id="@+id/mn_perfil"
+        android:title="@string/txt_Menu_perfil" />
+    <item android:id="@+id/mn_conexion"
+        android:title="@string/txt_Menu_Conexion" />
+    <item android:id="@+id/mn_acercaDe"
+        android:title="@string/txt_Menu_AcercaDe" />
+    <item android:id="@+id/mn_salir"
+        android:title="@string/txt_Menu_salir" />
+</menu>

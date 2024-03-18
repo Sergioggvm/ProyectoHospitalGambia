@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".feature.vistaAbout.AboutView"></activity>
+        <activity android:name=".feature.vistaAjustesConexion.AjustesConexionView"></activity>
+        <activity android:name=".feature.vistaProfile.ProfileView"></activity>
     </application>
 
 </manifest>

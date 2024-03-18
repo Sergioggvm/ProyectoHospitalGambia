@@ -1,60 +1,83 @@
 package com.example.proyectohospitalgambia.feature.vistaProfile
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
+import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileView.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ProfileView : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+class ProfileView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        setContentView(R.layout.fragment_profile_view)
+
+        // Obtener referencia a la barra de herramientas desde el diseño
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_Principal)
+
+        // Inflar el menú en la barra de herramientas
+        toolbar.inflateMenu(R.menu.menu_principal)
+
+        // Configurar la barra de herramientas como la barra de soporte de la actividad
+        setSupportActionBar(toolbar)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_view, container, false)
+    //Menú de opciones
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_principal, menu)
+        return true
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileView.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileView().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.mn_menu -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, MainActivity::class.java)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
+                true
             }
+            R.id.mn_perfil -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, ProfileView::class.java)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
+                true
+            }
+
+            R.id.mn_conexion -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, AjustesConexionView::class.java)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+                true
+            }
+
+            R.id.mn_acercaDe -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, AboutView::class.java)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+                true
+            }
+
+            R.id.mn_salir -> {
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
