@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaDatosMedicosManual.Menu_Introducir_Manual">
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_bloodpressure"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_bloodpressure"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewFondoBloodPressure"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_bloodpressure"
+            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+
+        <TextView
+            android:id="@+id/tv_bloodPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_PresionSanguinea"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoBloodPressure" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="fecha???"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewFondoBloodPressure"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosBloodPressure"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoBloodPressure"
+            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+
+        <ImageView
+            android:id="@+id/img_weight"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_weight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+
+        <View
+            android:id="@+id/viewFondoWeight"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_weight"
+            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+
+
+        <TextView
+            android:id="@+id/tv_Weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_Peso"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoWeight"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoWeight" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosWeight"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoWeight"
+            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+
+        <ImageView
+            android:id="@+id/img_glycemia"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="208dp"
+            android:src="@drawable/icono_glycemia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+
+
+        <View
+            android:id="@+id/viewFondoGlycemia"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_glycemia"
+            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
+
+        <TextView
+            android:id="@+id/tv_Glycemia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_NivelGlucosa"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoGlycemia"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoGlycemia" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosGlycemia"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoGlycemia"
+            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
+
+        <ImageView
+            android:id="@+id/img_osat"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_osat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_glycemia" />
+
+        <View
+            android:id="@+id/viewFondoOsat"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado"
+            app:layout_constraintStart_toEndOf="@+id/img_osat"
+            app:layout_constraintTop_toTopOf="@+id/img_osat" />
+
+        <TextView
+            android:id="@+id/tv_Osat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_Osat"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoOsat"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoOsat" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosOsat"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoOsat"
+            app:layout_constraintTop_toTopOf="@+id/img_osat"  />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.menus.vistaMenuDeporteSuenno.menu_deporte_suenno">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_aerobic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_aerobic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewFondoAerobic"
+            app:layout_constraintStart_toEndOf="@+id/img_aerobic"
+            app:layout_constraintTop_toTopOf="@+id/img_aerobic"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado" />
+
+
+        <TextView
+            android:id="@+id/tv_aerobic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_Aerobico"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoAerobic" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fecha???"
+            android:textSize="10sp"
+            tools:layout_editor_absoluteX="128dp"
+            tools:layout_editor_absoluteY="112dp" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosAerobic"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toTopOf="@+id/img_aerobic"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/img_nutrition"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_nutrition"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
+
+        <View
+            android:id="@+id/viewFondoNutrition"
+            app:layout_constraintStart_toEndOf="@+id/img_nutrition"
+            app:layout_constraintTop_toTopOf="@+id/img_nutrition"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado" />
+
+
+        <TextView
+            android:id="@+id/tv_Nutrition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_nutricion"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoNutrition" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosNutrition"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoNutrition"
+            app:layout_constraintTop_toTopOf="@+id/img_nutrition"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icono_accederdatos" />
+
+        <ImageView
+            android:id="@+id/img_sleep"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="208dp"
+            android:src="@drawable/icono_sleep"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
+
+
+        <View
+            android:id="@+id/viewFondoSleep"
+            app:layout_constraintStart_toEndOf="@+id/img_sleep"
+            app:layout_constraintTop_toTopOf="@+id/img_sleep"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado" />
+
+        <TextView
+            android:id="@+id/tv_Sleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_Sueno"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoSleep" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosSleep"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoSleep"
+            app:layout_constraintTop_toTopOf="@+id/img_sleep"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icono_accederdatos" />
+
+        <ImageView
+            android:id="@+id/img_socialActivities"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/icono_socialactivity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_sleep" />
+
+        <View
+            android:id="@+id/viewFondoSocialActivities"
+            app:layout_constraintStart_toEndOf="@+id/img_socialActivities"
+            app:layout_constraintTop_toTopOf="@+id/img_socialActivities"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/borde_redondeado" />
+
+        <TextView
+            android:id="@+id/tv_SocialActivities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_ActividadSocial"
+            android:textColor="@color/azul_texto"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoSocialActivities" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosSocialActivities"
+            app:layout_constraintEnd_toEndOf="@+id/viewFondoSocialActivities"
+            app:layout_constraintTop_toTopOf="@+id/img_socialActivities"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icono_accederdatos"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

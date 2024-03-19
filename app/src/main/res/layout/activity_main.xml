@@ -20,4 +20,17 @@
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/main_graph" />
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_Principal"
+        android:layout_width="414dp"
+        android:layout_height="61dp"
+        android:background="@color/azul_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

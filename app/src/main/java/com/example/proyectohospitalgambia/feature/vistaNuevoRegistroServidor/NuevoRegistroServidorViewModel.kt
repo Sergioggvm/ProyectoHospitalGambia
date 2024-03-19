@@ -1,0 +1,4 @@
+package com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor
+
+class NuevoRegistroServidorViewModel {
+}

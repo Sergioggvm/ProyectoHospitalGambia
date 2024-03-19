@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaAjustesConexion.AjustesConexionView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="303dp"
+            android:layout_height="107dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/imagen_ajustes_conexion"
+            app:layout_constraintBottom_toTopOf="@+id/edt_protocolo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.753" />
+
+        <EditText
+            android:id="@+id/edt_protocolo"
+            android:layout_width="174dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edittext_fondo"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/txt_Protocolo"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/edt_host"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.953" />
+
+        <EditText
+            android:id="@+id/edt_host"
+            android:layout_width="174dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edittext_fondo"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/txt_Host"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/edt_federacionId"
+            app:layout_constraintEnd_toStartOf="@+id/edt_puertoServidor"
+            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.941" />
+
+        <EditText
+            android:id="@+id/edt_puertoServidor"
+            android:layout_width="174dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edittext_fondo"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/txt_PuertoServidor"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaFederacion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.932"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_protocolo"
+            app:layout_constraintVertical_bias="0.465" />
+
+        <EditText
+            android:id="@+id/edt_federacionId"
+            android:layout_width="174dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edittext_fondo"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/txt_FederacionId"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/btn_probarConexion"
+            app:layout_constraintEnd_toStartOf="@+id/edt_contraseniaFederacion"
+            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.927" />
+
+        <EditText
+            android:id="@+id/edt_contraseniaFederacion"
+            android:layout_width="174dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edittext_fondo"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/txt_ContraseniaFederacion"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/btn_probarConexion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.932"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_protocolo"
+            app:layout_constraintVertical_bias="0.765" />
+
+        <Button
+            android:id="@+id/btn_probarConexion"
+            android:layout_width="157dp"
+            android:layout_height="48dp"
+            android:background="@drawable/boton_negro_rectangular"
+            android:text="@string/btn_PruebaConexion"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/cb_paginaPrivada"
+            app:layout_constraintEnd_toStartOf="@+id/edt_contraseniaFederacion"
+            app:layout_constraintStart_toEndOf="@+id/edt_federacionId"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.904" />
+
+        <CheckBox
+            android:id="@+id/cb_paginaPrivada"
+            android:layout_width="281dp"
+            android:layout_height="51dp"
+            android:text="@string/txt_SincronizacionFederacion"
+            app:layout_constraintBottom_toTopOf="@+id/btn_actualizarAjustesConexion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.922" />
+
+        <Button
+            android:id="@+id/btn_actualizarAjustesConexion"
+            android:layout_width="157dp"
+            android:layout_height="48dp"
+            android:background="@drawable/boton_negro_rectangular"
+            android:text="@string/btn_Actualizar"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.915" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_Principal"
+            android:layout_width="414dp"
+            android:layout_height="61dp"
+            android:background="@color/azul_toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

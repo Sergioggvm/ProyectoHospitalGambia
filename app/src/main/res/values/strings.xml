@@ -8,4 +8,132 @@
 
     <string name="txt_Usuario">Nombre de Usuario</string>
     <string name="txt_Contrasenia">Contraseña</string>
+
+    <string name="txt_Contrasenia_Federacion">Contraseña Federación</string>
+
+    <string name="txt_Fecha">Fecha</string>
+    <string name="txt_Hora">Hora</string>
+    <string name="txt_Resumen">Resumen</string>
+    <string name="txt_DominioYContexto">Dominio y contexto</string>
+    <string name="txt_Detalles">Detalles</string>
+    <string name="txt_Relevancia">Relevancia</string>
+    <string name="txt_PaginaPrivada">Pagina privada</string>
+    <string name="txt_Guardar">Guardar</string>
+
+    <string name="txt_Altura">Altura:</string>
+    <string name="btn_Actualizar">Actualizar</string>
+    <string name="txt_CuentaFederacion">Cuenta Federacion</string>
+    <string name="txt_CuentaFederacionId">Cuenta Federacion ID</string>
+    <string name="txt_ContraseniaActual">Contraseña Personal Actual</string>
+    <string name="txt_ContraseniaNueva">Contraseña Personal \n Nueva</string>
+    <string name="txt_ContraseniaNuevaRepetir">Repetir Contraseña \n Personal Nueva</string>
+
+    <string name="txt_Protocolo">Protocolo</string>
+    <string name="txt_Host">Thalamus Host</string>
+    <string name="txt_PuertoServidor">Thalamus Puerto\n Servidor</string>
+    <string name="txt_FederacionId">Federacion ID</string>
+    <string name="txt_ContraseniaFederacion">Contraseña\n Federacion</string>
+    <string name="btn_PruebaConexion">Prueba Conexion</string>
+    <string name="txt_SincronizacionFederacion">Sincronización con federacion</string>
+
+    <string name="txt_Descripcion">The GNU Health Personal Health Record</string>
+    <string name="txt_PaginaCasa">https://www.gnuhealth.org</string>
+    <string name="txt_Autor">Autor: Luis Falcon</string>
+    <string name="txt_Gracias">Gracias a nuestros contribuyentes</string>
+    <string name="txt_Conclusion">La sección de genética médica utiliza variantes naturales humanas de UniProt.</string>
+    <string name="txt_Licencia">GPL v3+</string>
+    <string name="txt_Copyright">Copyright 2008-2024 GNU Solidario</string>
+    <string name="txt_Thanks">---- Version 2.0 (Kivy) -------\n Axel Braun\n
+        Leonardo D Acchille\n
+        ---- Version 1.0 (PySide) -----\n
+        Axel Braun\n
+        Paul Brown\n
+        Yuri Chornoivan\n
+        Leonardo D Acchille\n
+        Marco Gebhardt\n
+        Riccardo Iaconelli\n
+        Mat Knoll\n
+        Cristian Maureira-Fredes\n
+        Karl Ove Hufthammer\n
+        Aleix Pol\n
+        Carl Schwan\n
+        Pino Toscano\n
+        Niccolò Venerandi
+    </string>
+    <string name="txt_PieFoto">MyGNUHealth is part of the GNU Health Project</string>
+
+    <string-array name="opcion_medicina">
+        <item>Medico</item>
+        <item>Social</item>
+        <item>Biográfico</item>
+        <item>Estilo libre</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="condiciones_salud">
+        <item>Condición de salud</item>
+        <item>Encuentro</item>
+        <item>Procedimiento</item>
+        <item>Auto-monitoreo</item>
+        <item>Inmunización</item>
+        <item>Receta médica</item>
+        <item>Cirugía</item>
+        <item>Hospitalización</item>
+        <item>Examen de laboratorio</item>
+        <item>Diagnóstico por imagen</item>
+        <item>Genético</item>
+        <item>Familiar</item>
+    </string-array>
+
+    <string-array name="tipo_relevancia">
+        <item>Normal</item>
+        <item>Importante</item>
+        <item>Critico</item>
+    </string-array>
+
+    <string name="txt_Menu">Menu</string>
+    <string name="txt_Menu_perfil">Perfil</string>
+    <string name="txt_Menu_Conexion">Conexion</string>
+    <string name="txt_Menu_AcercaDe">About</string>
+    <string name="txt_Menu_salir">Salir</string>
+
+
+    <string name="txt_PresionSanguinea">Presión Sanguínea</string>
+    <string name="txt_Sistolica">Sistólico</string>
+    <string name="txt_Diastolica">Diastólico</string>
+    <string name="txt_FrecuenciaCardiaca">Frecuencia Cardíaca</string>
+
+    <string name="txt_NivelGlucosa">Nivel de glucosa en sangre</string>
+
+    <string name="txt_MeSiento">Me siento...</string>
+    <string name="txt_Animo">Estado de ánimo</string>
+    <string name="txt_Energia">Energía</string>
+
+    <string name="txt_ValorEnergetico">Valor energético (kcal)</string>
+    <string name="txt_Manana">Mañana</string>
+    <string name="txt_Tarde">Tarde</string>
+    <string name="txt_Noche">Noche</string>
+    <string name="txt_nutricion">Nutrición</string>
+
+    <string name="txt_Hecho">HECHO</string>
+    <string name="txt_Notas">Notas</string>
+    <string name="txt_Total">Total</string>
+
+    <string name="txt_Osat">Osat</string>
+    <string name="txt_ActividadFisica">Actividad física</string>
+    <string name="txt_Aerobico">Aeróbico</string>
+    <string name="txt_Anaerobico">Anaeróbico</string>
+    <string name="txt_Pasos">Pasos</string>
+
+    <string name="txt_Sueno">Sueño</string>
+    <string name="txt_Horas">Horas</string>
+    <string name="txt_Calidad">Calidad</string>
+
+    <string name="txt_ActividadSocial">Actividades Sociales Significativas</string>
+    <string name="txt_Minutos">Minutos</string>
+
+    <string name="txt_Peso">Peso</string>
+    <string name="Kg">KG</string>
+
+    <string name="txt_Glucosa">Glucosa</string>
 </resources>

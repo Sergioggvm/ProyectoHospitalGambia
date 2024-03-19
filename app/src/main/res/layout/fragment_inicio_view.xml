@@ -15,10 +15,10 @@
             android:id="@+id/img_logo"
             android:layout_width="366dp"
             android:layout_height="310dp"
-            android:layout_marginBottom="423dp"
             android:src="@drawable/imagen_inicio"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/edt_nombreUsuarioRegistrar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,42 +26,48 @@
             android:id="@+id/edt_nombreUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
-            android:layout_marginTop="27dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/txt_Usuario"
             android:inputType="text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_logo"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.541" />
+
 
         <EditText
             android:id="@+id/edt_contraseniaUsuarioRegistrar"
             android:layout_width="236dp"
             android:layout_height="57dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginBottom="236dp"
+            android:background="@drawable/edittext_fondo"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/txt_Contrasenia"
             android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuarioRegistrar" />
 
         <Button
             android:id="@+id/btn_registrarUsuario"
-            android:background="@drawable/boton_negro_rectangular"
             android:layout_width="229dp"
             android:layout_height="52dp"
             android:layout_marginTop="58dp"
+            android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_IniciarSesion"
             android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_contraseniaUsuarioRegistrar"/>
-
+            app:layout_constraintTop_toBottomOf="@+id/edt_contraseniaUsuarioRegistrar"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btn_registrar"
@@ -71,9 +77,11 @@
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Registar"
             android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_registrarUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_registrarUsuario"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
