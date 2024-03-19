@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Blood Pressure: / mmHg (bpm)"
+            android:text="@string/txt_PresionSanguinea"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure"
@@ -60,7 +60,6 @@
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoBloodPressure"
             app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
 
@@ -90,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Weight: kg"
+            android:text="@string/txt_Peso"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoWeight"
@@ -104,7 +103,6 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/icono_accederdatos"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoWeight"
             app:layout_constraintTop_toTopOf="@+id/img_weight" />
 
@@ -134,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Glycemia: mg/dL"
+            android:text="@string/txt_NivelGlucosa"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoGlycemia"
@@ -148,7 +146,6 @@
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoGlycemia"
             app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
 
@@ -177,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="OSAT: %"
+            android:text="@string/txt_Osat"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoOsat"
@@ -191,7 +188,6 @@
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoOsat"
             app:layout_constraintTop_toTopOf="@+id/img_osat"  />
 

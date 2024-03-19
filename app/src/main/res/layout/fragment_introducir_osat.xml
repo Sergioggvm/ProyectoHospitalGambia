@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="Osat"
+            android:text="@string/txt_Osat"
             android:textColor="@color/azulTexto"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:backgroundTint="@color/azulTexto"
-            android:text="DONE"
+            android:text="@string/txt_Hecho"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_osat" />

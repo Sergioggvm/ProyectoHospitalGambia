@@ -32,15 +32,15 @@
 
         <TextView
             android:id="@+id/tv_aerobic"
-            app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
-            app:layout_constraintTop_toTopOf="@+id/viewFondoAerobic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Aerobic: 0 m // Anaerobic: 0m // Steps: 0"
+            android:text="@string/txt_Aerobico"
             android:textColor="@color/azulTexto"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toTopOf="@+id/viewFondoAerobic" />
 
         <TextView
             android:id="@+id/textView2"
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Nutrition (Kcal): 0/ 0/ 0/ (12)"
+            android:text="@string/txt_nutricion"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Sleep: 0 hours / quality:"
+            android:text="@string/txt_Sueno"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Meaningful social activities: m"
+            android:text="@string/txt_ActividadSocial"
             android:textColor="@color/azulTexto"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"

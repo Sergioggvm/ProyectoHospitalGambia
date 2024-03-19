@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="Sleep"
+            android:text="@string/txt_Sueno"
             android:textColor="@color/azulTexto"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Hours"
+            android:hint="@string/txt_Horas"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="280dp"
             android:ems="10"
-            android:hint="Notes"
+            android:hint="@string/txt_Notas"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,15 +59,15 @@
 
         <Button
             android:id="@+id/btn_guardarSocialActivities"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_notesSleep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/azulTexto"
-            android:text="DONE" />
+            android:text="@string/txt_Hecho"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_notesSleep" />
 
         <Spinner
             android:id="@+id/spinner_sleepQuality"
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="87dp"
-            android:text="Quality"
+            android:text="@string/txt_Calidad"
             android:textColor="@color/azulTexto"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
