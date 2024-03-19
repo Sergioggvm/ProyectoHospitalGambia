@@ -4,18 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.vistaIntroducirGlycemia.introducirGlycemia">
+    tools:context=".feature.vistaIntroducirSocialActivities.introducir_social_activities">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imgv_glycemia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imgv_socialActivities"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/icono_glycemia"
+            android:src="@drawable/icono_socialactivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,37 +25,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="Blood glucose level"
+            android:text="Meaningul Social Acvities"
             android:textColor="@color/azulTexto"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/et_glycemia"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgv_glycemia" />
+            app:layout_constraintTop_toBottomOf="@+id/imgv_socialActivities" />
 
         <EditText
-            android:id="@+id/et_glycemia"
+            android:id="@+id/et_minutesSocialActivities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="48dp"
             android:ems="10"
+            android:hint="Minutes"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/et_notesSocialActivities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:ems="10"
+            android:hint="Notes"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
-            android:id="@+id/btn_guardarGlycemia"
+            android:id="@+id/btn_guardarSocialActivities"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_notesSocialActivities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/azulTexto"
-            android:text="DONE"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_glycemia" />
+            android:text="DONE" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

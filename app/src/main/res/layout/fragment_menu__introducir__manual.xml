@@ -54,10 +54,11 @@
 
         <ImageButton
             android:id="@+id/imgbtn_irADatosBloodPressure"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="47dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/icono_accederdatos"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoBloodPressure"
             app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
@@ -138,13 +139,13 @@
 
         <ImageButton
             android:id="@+id/imgbtn_irADatosGlycemia"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="37dp"
+            android:layout_height="35dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
             android:src="@drawable/icono_accederdatos"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoGlycemia"
-            app:layout_constraintTop_toTopOf="@+id/img_glycemia"  />
+            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
 
         <ImageView
             android:id="@+id/img_osat"

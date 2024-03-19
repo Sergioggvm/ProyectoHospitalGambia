@@ -16,7 +16,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/icono_aerobic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +67,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/icono_nutrition"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
 
@@ -109,7 +109,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="208dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/icono_sleep"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
 
@@ -151,7 +151,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/icono_socialactivity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_sleep" />
 
