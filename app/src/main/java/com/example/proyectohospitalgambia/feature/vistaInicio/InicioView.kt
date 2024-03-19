@@ -1,45 +1,55 @@
 package com.example.proyectohospitalgambia.feature.vistaInicio
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.feature.vistaRegistro.RegistroView
 
+class InicioView : AppCompatActivity() {
 
-
-class InicioView : Fragment() {
-
-
-    private lateinit var btnInicioSesion: Button
+    // Botones en la vista
+    private lateinit var btnIniciarSesion: Button
+    private lateinit var btnRegistrar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_inicio_view)
 
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Infla el diseño de la vista del menú completo
-        val viewInicioSesion = inflater.inflate(R.layout.fragment_inicio_view, container, false)
-
-        btnInicioSesion = viewInicioSesion.findViewById(R.id.btn_iniciarSesion)
+        btnIniciarSesion = findViewById(R.id.btn_registrarUsuario)
+        btnRegistrar = findViewById(R.id.btn_registrar)
 
         // Agrega OnClickListener al botón btnJugarLocal
-        btnInicioSesion.setOnClickListener {
-            // Navega al fragmento de vistaTableroView cuando se hace clic en el botón
-            val navController = findNavController()
-            navController.navigate(R.id.action_inicioView_to_menuPrincipalView)
+        btnIniciarSesion.setOnClickListener {
+
+            // Creamos un Intent para iniciar VistaSeleccionPartida.
+            val intent = Intent(this, MainActivity::class.java)
+
+            // Iniciamos la actividad sin esperar un resultado.
+            startActivity(intent)
+
         }
 
-        // Inflate the layout for this fragment
-        return viewInicioSesion
+        // Agrega OnClickListener al botón btnJugarLocal
+        btnRegistrar.setOnClickListener {
+
+            // Creamos un Intent para iniciar VistaSeleccionPartida.
+            val intent = Intent(this, RegistroView::class.java)
+
+            // Iniciamos la actividad sin esperar un resultado.
+            startActivity(intent)
+
+        }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // No hagas nada en el botón de retroceso
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
+
     }
-
-
 }

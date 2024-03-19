@@ -55,11 +55,7 @@ class AjustesConexionView : AppCompatActivity() {
             }
 
             R.id.mn_conexion -> {
-                // Creamos un Intent para iniciar VistaSeleccionPartida.
-                val intent = Intent(this, AjustesConexionView::class.java)
 
-                // Iniciamos la actividad sin esperar un resultado.
-                startActivity(intent)
                 true
             }
 

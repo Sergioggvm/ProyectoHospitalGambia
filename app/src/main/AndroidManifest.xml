@@ -13,8 +13,9 @@
         android:theme="@style/Theme.ProyectoHospitalGambia"
         tools:targetApi="31">
         <activity
-            android:name=".app.MainActivity"
-            android:exported="true">
+            android:name=".feature.vistaInicio.InicioView"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +23,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".app.MainActivity"></activity>
         <activity android:name=".feature.vistaAbout.AboutView"></activity>
         <activity android:name=".feature.vistaAjustesConexion.AjustesConexionView"></activity>
         <activity android:name=".feature.vistaProfile.ProfileView"></activity>
+        <activity android:name=".feature.vistaRegistro.RegistroView"></activity>
+
     </application>
 
 </manifest>

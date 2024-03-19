@@ -13,11 +13,10 @@
 
         <ImageButton
             android:id="@+id/btn_opcionMedica"
-            android:layout_width="244dp"
-            android:layout_height="230dp"
-            android:background="@color/white"
+            android:layout_width="205dp"
+            android:layout_height="207dp"
+            android:background="@drawable/boton_menu_opciones_medicas"
             android:contentDescription="0"
-            android:src="@drawable/boton_menu_opciones_medicas"
             android:text="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,12 +27,11 @@
 
         <ImageButton
             android:id="@+id/btn_opcionServidor"
-            android:layout_width="244dp"
-            android:layout_height="230dp"
+            android:layout_width="205dp"
+            android:layout_height="207dp"
             android:layout_marginTop="56dp"
-            android:background="@color/white"
+            android:background="@drawable/boton_menu_opciones_servidor"
             android:contentDescription="0"
-            android:src="@drawable/boton_menu_opciones_servidor"
             android:text="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

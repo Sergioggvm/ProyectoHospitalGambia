@@ -36,11 +36,6 @@ class MainActivity : AppCompatActivity() {
         // Handle item selection
         return when (item.itemId) {
             R.id.mn_menu -> {
-                // Creamos un Intent para iniciar VistaSeleccionPartida.
-                val intent = Intent(this, MainActivity::class.java)
-
-                // Iniciamos la actividad sin esperar un resultado.
-                startActivity(intent)
 
                 true
             }

@@ -65,11 +65,7 @@ class AboutView : AppCompatActivity() {
             }
 
             R.id.mn_acercaDe -> {
-                // Creamos un Intent para iniciar VistaSeleccionPartida.
-                val intent = Intent(this, AboutView::class.java)
-
-                // Iniciamos la actividad sin esperar un resultado.
-                startActivity(intent)
+                
                 true
             }
 

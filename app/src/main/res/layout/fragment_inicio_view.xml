@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuarioRegistrar" />
 
         <Button
-            android:id="@+id/btn_iniciarSesion"
+            android:id="@+id/btn_registrarUsuario"
             android:layout_width="229dp"
             android:layout_height="52dp"
             android:layout_marginTop="58dp"
@@ -80,7 +80,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_iniciarSesion"
+            app:layout_constraintTop_toBottomOf="@+id/btn_registrarUsuario"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

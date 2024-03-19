@@ -5,23 +5,6 @@
     android:id="@+id/main_graph"
     app:startDestination="@id/menuPrincipalView">
     <fragment
-        android:id="@+id/inicioView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaInicio.InicioView"
-        android:label="fragment_inicio_view"
-        tools:layout="@layout/fragment_inicio_view" >
-        <action
-            android:id="@+id/action_inicioView_to_registroView"
-            app:destination="@id/registroView" />
-        <action
-            android:id="@+id/action_inicioView_to_menuPrincipalView"
-            app:destination="@id/menuPrincipalView" />
-    </fragment>
-    <fragment
-        android:id="@+id/registroView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaRegistro.RegistroView"
-        android:label="fragment_registro_view"
-        tools:layout="@layout/fragment_registro_view" />
-    <fragment
         android:id="@+id/menuPrincipalView"
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuPrincipal.MenuPrincipalView"
         android:label="fragment_menu_principal_view"
