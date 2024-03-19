@@ -97,4 +97,43 @@
     <string name="txt_Menu_AcercaDe">About</string>
     <string name="txt_Menu_salir">Salir</string>
 
+
+    <string name="txt_PresionSanguinea">Presión Sanguínea</string>
+    <string name="txt_Sistolica">Sistólico</string>
+    <string name="txt_Diastolica">Diastólico</string>
+    <string name="txt_FrecuenciaCardiaca">Frecuencia Cardíaca</string>
+
+    <string name="txt_NivelGlucosa">Nivel de glucosa en sangre</string>
+
+    <string name="txt_MeSiento">Me siento...</string>
+    <string name="txt_Animo">Estado de ánimo</string>
+    <string name="txt_Energia">Energía</string>
+
+    <string name="txt_ValorEnergetico">Valor energético (kcal)</string>
+    <string name="txt_Manana">Mañana</string>
+    <string name="txt_Tarde">Tarde</string>
+    <string name="txt_Noche">Noche</string>
+    <string name="txt_nutricion">Nutrición</string>
+
+    <string name="txt_Hecho">HECHO</string>
+    <string name="txt_Notas">Notas</string>
+    <string name="txt_Total">Total</string>
+
+    <string name="txt_Osat">Osat</string>
+    <string name="txt_ActividadFisica">Actividad física</string>
+    <string name="txt_Aerobico">Aeróbico</string>
+    <string name="txt_Anaerobico">Anaeróbico</string>
+    <string name="txt_Pasos">Pasos</string>
+
+    <string name="txt_Sueno">Sueño</string>
+    <string name="txt_Horas">Horas</string>
+    <string name="txt_Calidad">Calidad</string>
+
+    <string name="txt_ActividadSocial">Actividades Sociales Significativas</string>
+    <string name="txt_Minutos">Minutos</string>
+
+    <string name="txt_Peso">Peso</string>
+    <string name="Kg">KG</string>
+
+    <string name="txt_Glucosa">Glucosa</string>
 </resources>
