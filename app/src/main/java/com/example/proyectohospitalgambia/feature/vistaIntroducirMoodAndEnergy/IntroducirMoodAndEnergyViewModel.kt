@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia
+package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy
 
 import androidx.lifecycle.ViewModel
 

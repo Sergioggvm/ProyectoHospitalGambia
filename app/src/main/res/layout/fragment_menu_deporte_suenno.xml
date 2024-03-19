@@ -55,11 +55,12 @@
             android:id="@+id/imgbtn_irADatosAerobic"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoAerobic"
             app:layout_constraintTop_toTopOf="@+id/img_aerobic"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
-            android:src="@drawable/icono_accederdatos" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop" />
 
         <ImageView
             android:id="@+id/img_nutrition"
@@ -97,10 +98,12 @@
             android:id="@+id/imgbtn_irADatosNutrition"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoNutrition"
             app:layout_constraintTop_toTopOf="@+id/img_nutrition"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
             android:src="@drawable/icono_accederdatos" />
 
         <ImageView
@@ -139,10 +142,12 @@
             android:id="@+id/imgbtn_irADatosSleep"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoSleep"
             app:layout_constraintTop_toTopOf="@+id/img_sleep"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
             android:src="@drawable/icono_accederdatos" />
 
         <ImageView
@@ -180,11 +185,13 @@
             android:id="@+id/imgbtn_irADatosSocialActivities"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoSocialActivities"
             app:layout_constraintTop_toTopOf="@+id/img_socialActivities"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
-            android:src="@drawable/icono_accederdatos" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/icono_accederdatos"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icono_accederdatos"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
