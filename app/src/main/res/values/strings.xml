@@ -136,4 +136,17 @@
     <string name="Kg">KG</string>
 
     <string name="txt_Glucosa">Glucosa</string>
+
+    <string name="txtbtn_PresionSanguinea">Ir a Presión Sanguínea</string>
+    <string name="txtbtn_Peso">Ir a Peso</string>
+    <string name="txtbtn_Glucosa">Ir a Glucosa</string>
+    <string name="txtbtn_Nutricion">Ir a Nutrición</string>
+    <string name="txtbtn_ActividadFisica">Ir a Actividad Física</string>
+    <string name="txtbtn_Sueno">Ir a Sueño</string>
+    <string name="txtbtn_ActividadSocial">Ir a Actividades Sociales</string>
+    <string name="txtbtn_Osat">Ir a Osat</string>
+
+
+
+
 </resources>

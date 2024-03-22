@@ -35,8 +35,8 @@
 
         <EditText
             android:id="@+id/et_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="@string/Kg"
@@ -48,11 +48,13 @@
 
         <Button
             android:id="@+id/btn_guardarWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

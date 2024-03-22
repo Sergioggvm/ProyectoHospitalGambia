@@ -35,10 +35,11 @@
 
         <EditText
             android:id="@+id/et_osat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
             android:layout_marginTop="48dp"
             android:ems="10"
+            android:hint="@string/txt_PresionSanguinea"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,11 +47,13 @@
 
         <Button
             android:id="@+id/btn_guardarBloodPressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_osat" />
