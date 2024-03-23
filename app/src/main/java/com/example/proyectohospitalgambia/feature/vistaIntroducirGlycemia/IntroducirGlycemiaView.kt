@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivity
+package com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class introducir_physical_activity : Fragment() {
+class IntroducirGlycemiaView : Fragment() {
 
     companion object {
-        fun newInstance() = introducir_physical_activity()
+        fun newInstance() = IntroducirGlycemiaView()
     }
 
-    private val viewModel: IntroducirPhysicalActivityViewModel by viewModels()
+    private val viewModel: IntroducirGlycemiaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class introducir_physical_activity : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_introducir_physical_activity, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_glycemia, container, false)
     }
 }

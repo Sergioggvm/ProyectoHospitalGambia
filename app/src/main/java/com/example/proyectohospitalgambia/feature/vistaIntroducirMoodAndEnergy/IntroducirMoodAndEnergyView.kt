@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.menus.vistaMenuDeporteSuenno
+package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class menu_deporte_suenno : Fragment() {
+class IntroducirMoodAndEnergyView : Fragment() {
 
     companion object {
-        fun newInstance() = menu_deporte_suenno()
+        fun newInstance() = IntroducirMoodAndEnergyView()
     }
 
-    private val viewModel: MenuDeporteSuennoViewModel by viewModels()
+    private val viewModel: IntroducirMoodAndEnergyViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class menu_deporte_suenno : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_menu_deporte_suenno, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_mood_and_energy, container, false)
     }
 }

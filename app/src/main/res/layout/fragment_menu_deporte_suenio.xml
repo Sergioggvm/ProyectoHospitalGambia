@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.menus.vistaMenuDeporteSuenno.menu_deporte_suenno">
+    tools:context=".feature.vistaMenuDeporteSuenio.MenuDeporteSuenioView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

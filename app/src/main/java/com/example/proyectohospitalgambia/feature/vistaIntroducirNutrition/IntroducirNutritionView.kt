@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaDatosMedicosManual
+package com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class Menu_Introducir_Manual : Fragment() {
+class IntroducirNutritionView : Fragment() {
 
     companion object {
-        fun newInstance() = Menu_Introducir_Manual()
+        fun newInstance() = IntroducirNutritionView()
     }
 
-    private val viewModel: MenuIntroducirManualViewModel by viewModels()
+    private val viewModel: IntroducirNutritionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class Menu_Introducir_Manual : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_menu__introducir__manual, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_nutrition, container, false)
     }
 }

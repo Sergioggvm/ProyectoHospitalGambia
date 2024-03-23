@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaIntroducirOsat
+package com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class introducirOsat : Fragment() {
+class IntroducirSocialActivitiesView : Fragment() {
 
     companion object {
-        fun newInstance() = introducirOsat()
+        fun newInstance() = IntroducirSocialActivitiesView()
     }
 
-    private val viewModel: IntroducirOsatViewModel by viewModels()
+    private val viewModel: IntroducirSocialActivitiesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class introducirOsat : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_introducir_osat, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_social_activities, container, false)
     }
 }

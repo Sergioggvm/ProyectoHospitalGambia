@@ -37,11 +37,21 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.mn_menu -> {
 
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, MainActivity::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
                 true
             }
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
@@ -53,6 +63,8 @@ class MainActivity : AppCompatActivity() {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, AjustesConexionView::class.java)
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
                 true
@@ -61,6 +73,8 @@ class MainActivity : AppCompatActivity() {
             R.id.mn_acercaDe -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, AboutView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)

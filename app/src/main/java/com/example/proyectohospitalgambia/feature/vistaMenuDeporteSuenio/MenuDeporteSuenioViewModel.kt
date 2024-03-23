@@ -2,6 +2,6 @@ package com.example.proyectohospitalgambia.feature.menus.vistaMenuDeporteSuenno
 
 import androidx.lifecycle.ViewModel
 
-class MenuDeporteSuennoViewModel : ViewModel() {
+class MenuDeporteSuenioViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

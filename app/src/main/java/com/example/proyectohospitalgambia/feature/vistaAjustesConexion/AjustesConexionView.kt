@@ -39,6 +39,8 @@ class AjustesConexionView : AppCompatActivity() {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, MainActivity::class.java)
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
 
@@ -47,6 +49,8 @@ class AjustesConexionView : AppCompatActivity() {
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
@@ -63,6 +67,8 @@ class AjustesConexionView : AppCompatActivity() {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, AboutView::class.java)
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
                 true

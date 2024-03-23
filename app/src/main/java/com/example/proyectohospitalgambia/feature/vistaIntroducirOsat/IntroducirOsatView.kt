@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaIntroducirWeight
+package com.example.proyectohospitalgambia.feature.vistaIntroducirOsat
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class introducirWeight : Fragment() {
+class IntroducirOsatView : Fragment() {
 
     companion object {
-        fun newInstance() = introducirWeight()
+        fun newInstance() = IntroducirOsatView()
     }
 
-    private val viewModel: IntroducirWeightViewModel by viewModels()
+    private val viewModel: IntroducirOsatViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class introducirWeight : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_introducir_weight, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_osat, container, false)
     }
 }

@@ -60,6 +60,8 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, MainActivity::class.java)
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
 
@@ -75,6 +77,8 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, AjustesConexionView::class.java)
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
                 true
@@ -83,6 +87,8 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             R.id.mn_acercaDe -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, AboutView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
