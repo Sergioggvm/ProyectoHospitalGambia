@@ -146,7 +146,16 @@
     <string name="txtbtn_ActividadSocial">Ir a Actividades Sociales</string>
     <string name="txtbtn_Osat">Ir a Osat</string>
 
+    <string name="txt_lecturaTermometro">Lectura automática del termómetro</string>
+    <string name="txt_Lectura">Lectura</string>
+    <string name="txt_Temperatura">Temperatura</string>
+    <string name="txt_sincronizar">Sincronizar</string>
+    <string name="txt_temperaturaObtenida">Temperatura obtenida</string>
 
+
+
+    <string name="txt_lecturaPulsioximetro">Lectura automática del pulsioxímetro</string>
+    <string name="txt_datosObtenidos">Datos obtenidos</string>
 
 
 </resources>

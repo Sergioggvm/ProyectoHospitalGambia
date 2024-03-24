@@ -26,7 +26,9 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_bloodpressure"
             app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
 
@@ -81,7 +83,9 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_weight"
             app:layout_constraintTop_toTopOf="@+id/img_weight" />
 
@@ -127,7 +131,9 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_glycemia"
             app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
 
@@ -171,7 +177,9 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_osat"
             app:layout_constraintTop_toTopOf="@+id/img_osat" />
 

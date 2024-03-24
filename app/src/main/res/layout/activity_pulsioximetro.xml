@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.ActivityPulsioximetro">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_Principal"
+        android:layout_width="414dp"
+        android:layout_height="61dp"
+        android:background="@color/azul_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_leerDatosPulsioximetro"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/icono_termometro"
+        android:contentDescription="@string/txt_Lectura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Lectura" />
+
+    <TextView
+        android:id="@+id/tv_lecturaPulsioximetro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txt_lecturaPulsioximetro"
+        android:textColor="@color/azul_texto"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_Principal" />
+
+    <TextView
+        android:id="@+id/tv_Lectura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/txt_Lectura"
+        android:textColor="@color/azul_texto"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
+
+    <TextView
+        android:id="@+id/tv_Sincronizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/txt_sincronizar"
+        android:textColor="@color/azul_texto"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
+
+    <Button
+        android:id="@+id/btn_SincronizarDatosTermometro"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/boton_recarga"
+        android:contentDescription="@string/txt_sincronizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Sincronizar" />
+
+    <TextView
+        android:id="@+id/tv_temperaturaObtenida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="@string/txt_datosObtenidos"
+        android:textColor="@color/azul_texto"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_SincronizarDatosTermometro" />
+
+    <TextView
+        android:id="@+id/tv_ResultadoTemperatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Todos los datos o error obtenido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
+
+    <Button
+        android:id="@+id/btn_doneTemperatura"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/boton_done"
+        android:backgroundTint="@color/azul_texto"
+        android:text="@string/txt_Hecho"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoTemperatura" />
+</androidx.constraintlayout.widget.ConstraintLayout>
