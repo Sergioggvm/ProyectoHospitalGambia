@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
 
     <Button
-        android:id="@+id/btn_SincronizarDatosTermometro"
+        android:id="@+id/btn_SincronizarDatosPulsioximetro"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_Sincronizar" />
 
     <TextView
-        android:id="@+id/tv_temperaturaObtenida"
+        android:id="@+id/tv_DatosObtenidosPulsioximetro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
@@ -88,20 +88,20 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_SincronizarDatosTermometro" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_SincronizarDatosPulsioximetro" />
 
     <TextView
-        android:id="@+id/tv_ResultadoTemperatura"
+        android:id="@+id/tv_ResultadoPulsioximetro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Todos los datos o error obtenido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
 
     <Button
-        android:id="@+id/btn_doneTemperatura"
+        android:id="@+id/btn_donePulsioximetro"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="96dp"
@@ -113,5 +113,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoTemperatura" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro" />
 </androidx.constraintlayout.widget.ConstraintLayout>
