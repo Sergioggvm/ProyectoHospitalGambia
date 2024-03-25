@@ -14,10 +14,11 @@
             android:id="@+id/img_bloodpressure"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_PresionSanguinea"
             android:src="@drawable/icono_bloodpressure"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoBloodPressure"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,6 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_bloodpressure"
@@ -44,17 +44,6 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure"
             app:layout_constraintTop_toTopOf="@+id/viewFondoBloodPressure" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="fecha???"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/viewFondoBloodPressure"
-            app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure" />
-
         <ImageButton
             android:id="@+id/imgbtn_irADatosBloodPressure"
             android:layout_width="48dp"
@@ -71,10 +60,11 @@
             android:id="@+id/img_weight"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_Peso"
             android:src="@drawable/icono_weight"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoWeight"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
 
@@ -83,7 +73,6 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_weight"
@@ -119,19 +108,19 @@
             android:id="@+id/img_glycemia"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="208dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_Glucosa"
             android:src="@drawable/icono_glycemia"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoGlycemia"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+            app:layout_constraintTop_toBottomOf="@+id/img_weight" />
 
         <View
             android:id="@+id/viewFondoGlycemia"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_glycemia"
@@ -165,10 +154,11 @@
             android:id="@+id/img_osat"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_Osat"
             android:src="@drawable/icono_osat"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoOsat"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_glycemia" />
 
@@ -177,7 +167,6 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_osat"

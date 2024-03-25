@@ -113,7 +113,7 @@
 
     <string name="txt_NivelGlucosa">Nivel de glucosa en sangre</string>
 
-    <string name="txt_MeSiento">Me siento...</string>
+    <string name="txt_MeSiento">Me siento…</string>
     <string name="txt_Animo">Estado de ánimo</string>
     <string name="txt_Energia">Energía</string>
 
@@ -160,7 +160,7 @@
     <string name="txt_sincronizar">Sincronizar</string>
     <string name="txt_temperaturaObtenida">Temperatura obtenida</string>
 
-    <string name="txt_lecturaPulsioximetro">Lectura automática del pulsioxímetro</string>
+    <string name="txt_lecturaTensiometro">Lectura automática del tensiómetro</string>
     <string name="txt_datosObtenidos">Datos obtenidos</string>
 
     <string name="txt_TensionAlta">Tension Alta</string>

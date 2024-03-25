@@ -15,7 +15,7 @@ import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 class DatosTensiometroView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_datos_tesiometro_view)
+        setContentView(R.layout.fragment_datos_tensiometro_view)
 
         // Obtener referencia a la barra de herramientas desde el diseño
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_Principal)

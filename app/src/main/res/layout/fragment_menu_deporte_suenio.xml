@@ -14,10 +14,11 @@
             android:id="@+id/img_aerobic"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_ActividadFisica"
             android:src="@drawable/icono_aerobic"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoAerobic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,6 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_aerobic"
@@ -62,10 +62,11 @@
             android:id="@+id/img_nutrition"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_nutricion"
             android:src="@drawable/icono_nutrition"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoNutrition"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
 
@@ -74,7 +75,6 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_nutrition"
@@ -111,19 +111,19 @@
             android:id="@+id/img_sleep"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="208dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_Sueno"
             android:src="@drawable/icono_sleep"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoSleep"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_aerobic" />
+            app:layout_constraintTop_toBottomOf="@+id/img_nutrition" />
 
         <View
             android:id="@+id/viewFondoSleep"
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_sleep"
@@ -158,10 +158,11 @@
             android:id="@+id/img_socialActivities"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_ActividadSocial"
             android:src="@drawable/icono_socialactivity"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoSocialActivities"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_sleep" />
 
@@ -170,7 +171,6 @@
             android:layout_width="280dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_socialActivities"
