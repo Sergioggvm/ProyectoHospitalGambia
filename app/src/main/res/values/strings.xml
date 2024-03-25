@@ -91,6 +91,12 @@
         <item>Critico</item>
     </string-array>
 
+        <string-array name="calidad_suenno">
+            <item>Buena</item>
+            <item>Media</item>
+            <item>Mala</item>
+        </string-array>
+
     <string name="txt_Menu">Menu</string>
     <string name="txt_Menu_perfil">Perfil</string>
     <string name="txt_Menu_Conexion">Conexion</string>
