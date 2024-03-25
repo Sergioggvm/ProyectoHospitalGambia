@@ -2,6 +2,6 @@ package com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivi
 
 import androidx.lifecycle.ViewModel
 
-class IntroducirPhysicalActivityViewModel : ViewModel() {
+class IntroducirPhysicalViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

@@ -11,6 +11,10 @@
         android:title="@string/txt_Menu_Conexion" />
     <item android:id="@+id/mn_acercaDe"
         android:title="@string/txt_Menu_AcercaDe" />
+    <item android:id="@+id/mn_datosTensiometro"
+        android:title="@string/txt_Menu_Datos_Tensiometro" />
+    <item android:id="@+id/mn_datosTermometro"
+        android:title="@string/txt_Menu_Datos_Termometro" />
     <item android:id="@+id/mn_salir"
         android:title="@string/txt_Menu_salir" />
 </menu>

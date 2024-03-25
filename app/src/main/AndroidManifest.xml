@@ -23,11 +23,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.MainActivity"></activity>
-        <activity android:name=".feature.vistaAbout.AboutView"></activity>
-        <activity android:name=".feature.vistaAjustesConexion.AjustesConexionView"></activity>
-        <activity android:name=".feature.vistaProfile.ProfileView"></activity>
-        <activity android:name=".feature.vistaRegistro.RegistroView"></activity>
+        <activity android:name=".app.MainActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".feature.vistaAbout.AboutView"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".feature.vistaAjustesConexion.AjustesConexionView"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".feature.vistaProfile.ProfileView"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".feature.vistaRegistro.RegistroView"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".feature.vistaDatosTensiometro.DatosTensiometroView"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".feature.vistaDatosTermometro.DatosTermometroView"
+            android:screenOrientation="portrait"></activity>
 
     </application>
 

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.vistaIntroducirNutrition.introducir_nutrition">
+    tools:context=".feature.vistaIntroducirNutrition.IntroducirNutritionView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
             android:layout_width="181dp"
             android:layout_height="158dp"
             android:layout_marginTop="64dp"
+            android:contentDescription="@string/txt_nutricion"
             android:src="@drawable/icono_nutrition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +36,13 @@
 
         <EditText
             android:id="@+id/et_morningNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="53dp"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="52dp"
             android:ems="10"
+            android:background="@drawable/edittext_fondo"
             android:hint="@string/txt_Manana"
+            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -48,10 +51,12 @@
 
         <EditText
             android:id="@+id/et_afternoonNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
             android:ems="10"
+            android:background="@drawable/edittext_fondo"
             android:hint="@string/txt_Tarde"
+            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -60,10 +65,12 @@
 
         <EditText
             android:id="@+id/et_eveningNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
             android:ems="10"
+            android:background="@drawable/edittext_fondo"
             android:hint="@string/txt_Noche"
+            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -72,11 +79,13 @@
 
         <EditText
             android:id="@+id/et_totalNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
             android:layout_marginTop="224dp"
             android:ems="10"
+            android:background="@drawable/edittext_fondo"
             android:hint="@string/txt_Total"
+            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -85,11 +94,13 @@
 
         <EditText
             android:id="@+id/et_notesNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
             android:layout_marginTop="272dp"
             android:ems="10"
+            android:background="@drawable/edittext_fondo"
             android:hint="@string/txt_Notas"
+            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -98,11 +109,13 @@
 
         <Button
             android:id="@+id/btn_guardarNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

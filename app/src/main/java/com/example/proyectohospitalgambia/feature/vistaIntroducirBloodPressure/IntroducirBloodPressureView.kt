@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition
+package com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class introducir_nutrition : Fragment() {
+class IntroducirBloodPressureView : Fragment() {
 
     companion object {
-        fun newInstance() = introducir_nutrition()
+        fun newInstance() = IntroducirBloodPressureView()
     }
 
-    private val viewModel: IntroducirNutritionViewModel by viewModels()
+    private val viewModel: IntroducirBloodPressureViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class introducir_nutrition : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_introducir_nutrition, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_blood_pressure, container, false)
     }
 }

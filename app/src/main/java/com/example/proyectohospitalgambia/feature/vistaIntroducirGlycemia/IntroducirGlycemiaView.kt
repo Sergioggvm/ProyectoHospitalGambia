@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class introducirGlycemia : Fragment() {
+class IntroducirGlycemiaView : Fragment() {
 
     companion object {
-        fun newInstance() = introducirGlycemia()
+        fun newInstance() = IntroducirGlycemiaView()
     }
 
     private val viewModel: IntroducirGlycemiaViewModel by viewModels()

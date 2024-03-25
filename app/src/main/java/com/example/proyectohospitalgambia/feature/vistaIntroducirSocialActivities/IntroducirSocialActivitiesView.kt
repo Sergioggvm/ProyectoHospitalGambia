@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy
+package com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
 
-class introducirMoodAndEnergy : Fragment() {
+class IntroducirSocialActivitiesView : Fragment() {
 
     companion object {
-        fun newInstance() = introducirMoodAndEnergy()
+        fun newInstance() = IntroducirSocialActivitiesView()
     }
 
-    private val viewModel: IntroducirMoodAndEnergyViewModel by viewModels()
+    private val viewModel: IntroducirSocialActivitiesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class introducirMoodAndEnergy : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_introducir_mood_and_energy, container, false)
+        return inflater.inflate(R.layout.fragment_introducir_social_activities, container, false)
     }
 }
