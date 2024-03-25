@@ -91,10 +91,18 @@
         <item>Critico</item>
     </string-array>
 
+    <string-array name="calidad_suenno">
+        <item>Buena</item>
+        <item>Media</item>
+        <item>Mala</item>
+    </string-array>
+
     <string name="txt_Menu">Menu</string>
     <string name="txt_Menu_perfil">Perfil</string>
     <string name="txt_Menu_Conexion">Conexion</string>
     <string name="txt_Menu_AcercaDe">About</string>
+    <string name="txt_Menu_Datos_Tensiometro">Datos Tensiometro</string>
+    <string name="txt_Menu_Datos_Termometro">Datos Termometro</string>
     <string name="txt_Menu_salir">Salir</string>
 
 
@@ -136,4 +144,28 @@
     <string name="Kg">KG</string>
 
     <string name="txt_Glucosa">Glucosa</string>
+
+    <string name="txtbtn_PresionSanguinea">Ir a Presión Sanguínea</string>
+    <string name="txtbtn_Peso">Ir a Peso</string>
+    <string name="txtbtn_Glucosa">Ir a Glucosa</string>
+    <string name="txtbtn_Nutricion">Ir a Nutrición</string>
+    <string name="txtbtn_ActividadFisica">Ir a Actividad Física</string>
+    <string name="txtbtn_Sueno">Ir a Sueño</string>
+    <string name="txtbtn_ActividadSocial">Ir a Actividades Sociales</string>
+    <string name="txtbtn_Osat">Ir a Osat</string>
+
+    <string name="txt_lecturaTermometro">Lectura automática del termómetro</string>
+    <string name="txt_Lectura">Lectura</string>
+    <string name="txt_Temperatura">Temperatura</string>
+    <string name="txt_sincronizar">Sincronizar</string>
+    <string name="txt_temperaturaObtenida">Temperatura obtenida</string>
+
+    <string name="txt_lecturaPulsioximetro">Lectura automática del pulsioxímetro</string>
+    <string name="txt_datosObtenidos">Datos obtenidos</string>
+
+    <string name="txt_TensionAlta">Tension Alta</string>
+    <string name="txt_TensionBaja">Tension Baja</string>
+    <string name="txt_Pulso">Puslo</string>
+
+    <string name="txt_TemperaturaTomada">Temperatura</string>
 </resources>

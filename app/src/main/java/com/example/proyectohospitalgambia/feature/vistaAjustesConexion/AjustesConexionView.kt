@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
+import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
+import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 
 class AjustesConexionView : AppCompatActivity() {
@@ -71,6 +73,30 @@ class AjustesConexionView : AppCompatActivity() {
                 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
+                true
+            }
+
+            R.id.mn_datosTensiometro -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, DatosTensiometroView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
+                true
+            }
+
+            R.id.mn_datosTermometro -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, DatosTermometroView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
                 true
             }
 

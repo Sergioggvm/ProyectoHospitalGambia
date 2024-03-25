@@ -1,6 +1,7 @@
 package com.example.proyectohospitalgambia.app
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -9,6 +10,8 @@ import android.view.MenuItem
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
+import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
+import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 
 class MainActivity : AppCompatActivity() {
@@ -78,6 +81,30 @@ class MainActivity : AppCompatActivity() {
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
+                true
+            }
+
+            R.id.mn_datosTensiometro -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, DatosTensiometroView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
+                true
+            }
+
+            R.id.mn_datosTermometro -> {
+                // Creamos un Intent para iniciar VistaSeleccionPartida.
+                val intent = Intent(this, DatosTermometroView::class.java)
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+
+                // Iniciamos la actividad sin esperar un resultado.
+                startActivity(intent)
+
                 true
             }
 
