@@ -95,40 +95,20 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_SincronizarDatosTermometro" />
 
         <TextView
-            android:id="@+id/tv_tensionAlta"
+            android:id="@+id/tv_TemperaturaMedida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:text="@string/txt_TensionAlta"
+            android:text="@string/txt_Temperatura"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.433"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
 
-        <TextView
-            android:id="@+id/tv_tensionBaja"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:text="@string/txt_TensionBaja"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
+
 
         <TextView
-            android:id="@+id/tv_pulso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:text="@string/txt_Pulso"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
-
-        <TextView
-            android:id="@+id/tv_tensionAltaResultado"
+            android:id="@+id/tv_TemperaturaResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
             android:layout_marginTop="36dp"
@@ -138,34 +118,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
 
-        <TextView
-            android:id="@+id/tv_tensionBajaResultado"
-            android:layout_width="41dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="76dp"
-            android:text="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
-
-        <TextView
-            android:id="@+id/tv_PulsoResultado"
-            android:layout_width="41dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="120dp"
-            android:text="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
-
         <Button
             android:id="@+id/btn_doneTemperatura"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_marginTop="38dp"
-            android:layout_marginBottom="32dp"
             android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
@@ -173,7 +129,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pulso" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_TemperaturaResultado" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

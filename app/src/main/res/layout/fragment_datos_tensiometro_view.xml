@@ -98,14 +98,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/txt_TemperaturaTomada"
+            android:text="@string/txt_TensionAlta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.425"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
 
         <TextView
-            android:id="@+id/tv_tensionAltaResultado"
+            android:id="@+id/tv_TemperaturaResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
             android:layout_marginTop="32dp"
@@ -114,6 +114,50 @@
             app:layout_constraintHorizontal_bias="0.616"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
+
+        <TextView
+            android:id="@+id/tv_tensionBaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_TensionBaja"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro" />
+
+        <TextView
+            android:id="@+id/tv_pulso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/txt_Pulso"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tensionBaja" />
+
+        <TextView
+            android:id="@+id/tv_tensionBajaResultado"
+            android:layout_width="41dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.616"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_TemperaturaResultado" />
+
+        <TextView
+            android:id="@+id/tv_PulsoResultado"
+            android:layout_width="41dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.616"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tensionBajaResultado" />
 
         <Button
             android:id="@+id/btn_donePulsioximetro"

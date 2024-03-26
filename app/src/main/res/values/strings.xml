@@ -165,7 +165,7 @@
 
     <string name="txt_TensionAlta">Tension Alta</string>
     <string name="txt_TensionBaja">Tension Baja</string>
-    <string name="txt_Pulso">Puslo</string>
+    <string name="txt_Pulso">Pulso</string>
 
     <string name="txt_TemperaturaTomada">Temperatura</string>
 </resources>
