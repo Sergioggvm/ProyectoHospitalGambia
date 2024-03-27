@@ -177,4 +177,24 @@
     <string name="txt_Pulso">Pulso</string>
 
     <string name="txt_TemperaturaTomada">Temperatura</string>
+
+    <string name="txt_Aceptar">Aceptar</string>
+
+    <string name="txt_RegsitrosEncontrados">Registros encontrados</string>
+
+    <string name="txt_RegsitrosNoEncontrados">No se encontraron registros</string>
+
+    <string name="txt_InstruccionesConexionTensiometro">Instrucciones\
+    Para poder transferir los datos, primero debes habilitar el Bluetooth y la ubicación.\n
+    Luego, deberás aceptar los permisos que se solicitarán.\n
+    Por último, enciende el dispositivo médico, realiza la medición y activa el Bluetooth pulsando el botón del medio.</string>
+
+    <string name="txt_DatosEncontrados">Se han encontrado datos, pero podrían no coincidir.\n
+        En ese caso, selecciona el usuario en el tensiómetro, pulsa el botón del medio,\n
+        y luego presiona M1 y M2 para borrar todos los datos.\n
+        También puedes intentar reiniciar la aplicación y el tensiómetro.</string>
+
+    <string name="txt_DatosNoEncontrados">Los datos no han sido encontrados.\n
+        Prueba a realizar la medición nuevamente y sigue las instrucciones.</string>
+
 </resources>
