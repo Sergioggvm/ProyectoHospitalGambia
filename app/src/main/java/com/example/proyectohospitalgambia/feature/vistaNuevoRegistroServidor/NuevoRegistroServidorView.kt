@@ -17,7 +17,7 @@ import com.example.proyectohospitalgambia.R
  */
 class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener {
 
-    lateinit var spinner: Spinner
+    private lateinit var spinner: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

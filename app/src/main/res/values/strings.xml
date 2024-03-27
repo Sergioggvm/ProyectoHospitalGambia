@@ -27,6 +27,9 @@
     <string name="txt_ContraseniaActual">Contraseña Personal Actual</string>
     <string name="txt_ContraseniaNueva">Contraseña Personal \n Nueva</string>
     <string name="txt_ContraseniaNuevaRepetir">Repetir Contraseña \n Personal Nueva</string>
+    <string name="txt_ContraseniaRepetir">Repetir Contraseña</string>
+    <string name="txt_Sexo">Sexo</string>
+    <string name="txt_FechaNacimiento">Fecha Nacimiento</string>
 
     <string name="txt_Protocolo">Protocolo</string>
     <string name="txt_Host">Thalamus Host</string>
@@ -95,6 +98,12 @@
         <item>Buena</item>
         <item>Media</item>
         <item>Mala</item>
+    </string-array>
+
+    <string-array name="opcion_sexo">
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>Otro</item>
     </string-array>
 
     <string name="txt_Menu">Menu</string>
