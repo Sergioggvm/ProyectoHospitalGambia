@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="52dp"
             android:text="@string/txt_Lectura"
             android:textColor="@color/azul_texto"
             android:textSize="22sp"
@@ -62,7 +62,7 @@
             android:id="@+id/tv_Sincronizar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="32dp"
             android:text="@string/txt_sincronizar"
             android:textColor="@color/azul_texto"
@@ -85,7 +85,7 @@
             android:id="@+id/tv_DatosObtenidosPulsioximetro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="204dp"
             android:text="@string/txt_datosObtenidos"
             android:textColor="@color/azul_texto"
             android:textSize="18sp"
@@ -97,7 +97,7 @@
             android:id="@+id/tv_ResultadoPulsioximetro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:text="@string/txt_TensionAlta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.425"
@@ -105,10 +105,10 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
 
         <TextView
-            android:id="@+id/tv_TemperaturaResultado"
+            android:id="@+id/tv_tensionAltaResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:text="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.616"
@@ -146,7 +146,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.616"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_TemperaturaResultado" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_tensionAltaResultado" />
 
         <TextView
             android:id="@+id/tv_PulsoResultado"
@@ -172,7 +172,34 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro"
+            app:layout_constraintVertical_bias="0.652" />
+
+        <ProgressBar
+            android:id="@+id/progressBarCargaDatos"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="162dp"
+            android:layout_height="33dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/tv_DatosObtenidosPulsioximetro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro"
+            app:layout_constraintVertical_bias="0.535" />
+
+        <TextView
+            android:id="@+id/txt_Instrucciones"
+            android:layout_width="318dp"
+            android:layout_height="138dp"
+            android:gravity="center"
+            android:text="@string/txt_InstruccionesConexionTensiometro"
+            app:layout_constraintBottom_toTopOf="@+id/tv_DatosObtenidosPulsioximetro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarCargaDatos"
+            app:layout_constraintVertical_bias="0.205" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
