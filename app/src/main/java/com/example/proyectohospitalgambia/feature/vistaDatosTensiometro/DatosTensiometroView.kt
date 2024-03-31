@@ -187,7 +187,6 @@ class DatosTensiometroView : AppCompatActivity() {
                 cargarRegistros()
             }
 
-            cargarRegistros()
         }
 
 
