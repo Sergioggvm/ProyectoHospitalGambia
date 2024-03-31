@@ -63,8 +63,6 @@ class DatosTensiometroView : AppCompatActivity() {
     private var scanning = false
     private val SCAN_PERIOD: Long = 10000
 
-    private var primeravez = false
-
     // Declarar variables para los TextViews
     private lateinit var textViewTensionAlta: TextView
     private lateinit var textViewTensionBaja: TextView
@@ -220,22 +218,15 @@ class DatosTensiometroView : AppCompatActivity() {
             // Eliminar todos los elementos de la lista
             datosTensiometroList.clear()
 
-            primeravez = false
 
         } else {
             Log.d("Bluetooth2", "No se encontraron registros.")
 
-            if (primeravez) {
                 mostrarDialogoDatosNoEncontrados()
                 textViewTensionAlta.text = "0"
                 textViewTensionBaja.text = "0"
                 textViewPulso.text = "0"
-                primeravez = false
-            } else {
-                primeravez = true
-            }
 
-            Log.d("Bluetooth2", primeravez.toString())
 
         }
     }
