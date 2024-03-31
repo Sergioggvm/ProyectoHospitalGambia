@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
@@ -15,6 +16,9 @@ import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTerm
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var dbHandler: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar la barra de herramientas como la barra de soporte de la actividad
         setSupportActionBar(toolbar)
+
+        // Inicializa el controlador de la base de datos.
+        dbHandler = DatabaseHelper(this)
     }
     //Menú de opciones
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
