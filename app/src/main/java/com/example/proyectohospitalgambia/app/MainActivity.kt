@@ -1,7 +1,9 @@
 package com.example.proyectohospitalgambia.app
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -17,7 +19,10 @@ import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var dbHandler: DatabaseHelper
+    companion object {
+        var databaseHelper = null as DatabaseHelper?
+        var idUsuario = null as String?
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // Inicializa el controlador de la base de datos.
-        dbHandler = DatabaseHelper(this)
+        databaseHelper = DatabaseHelper(this)
     }
     //Menú de opciones
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

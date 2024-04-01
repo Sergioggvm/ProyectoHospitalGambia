@@ -141,13 +141,55 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         )
 
         var usuarioId: String? = null
-        if (cursor.moveToFirst()) {
-            usuarioId = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_PEOPLE_ID))
+        cursor.use { // Utilizamos use para asegurar que el cursor se cierre correctamente al finalizar
+            if (cursor.moveToFirst()) {
+                val columnIndex = cursor.getColumnIndex(DatabaseHelper.KEY_PEOPLE_ID)
+                if (columnIndex != -1) { // Verificamos que el índice de la columna sea válido
+                    usuarioId = cursor.getString(columnIndex)
+                } else {
+                    // La columna KEY_PEOPLE_ID no fue encontrada en el cursor
+                    // Puede ser un error en el nombre de la columna
+                    // o la columna no está presente en la tabla
+                    Log.e("VerificarCredenciales", "La columna KEY_PEOPLE_ID no fue encontrada en el cursor.")
+                }
+            }
         }
-        cursor.close()
+
         db.close()
 
         return usuarioId
+    }
+
+    fun insertFormData(id: String, book: String, data: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(KEY_POLS_ID, id)
+            put(KEY_POLS_BOOK, book)
+            put(KEY_POLS_DATA, data)
+        }
+        val newRowId = db.insert(TABLE_POLS, null, values)
+        db.close()
+        return newRowId != -1L
+    }
+
+    fun listarPols() {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val idIndex = cursor.getColumnIndex(KEY_POLS_ID)
+                val bookIndex = cursor.getColumnIndex(KEY_POLS_BOOK)
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val id = cursor.getString(idIndex)
+                    val book = cursor.getString(bookIndex)
+                    val data = cursor.getString(dataIndex)
+                    Log.d("DatabaseHelper", "ID: $id, Book: $book, Data: $data")
+                } while (cursor.moveToNext())
+            }
+        }
     }
 
 }
