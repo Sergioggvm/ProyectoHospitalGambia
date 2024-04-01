@@ -198,8 +198,8 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_Principal"
-            android:layout_width="414dp"
-            android:layout_height="61dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/azul_toolbar"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
