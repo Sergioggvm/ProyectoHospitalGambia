@@ -10,6 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_Principal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/azul_toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white" />
+
         <TextView
             android:id="@+id/txt_descripcion"
             android:layout_width="wrap_content"
@@ -126,18 +138,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_paginaCasa"
             app:layout_constraintVertical_bias="0.909" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_Principal"
-            android:layout_width="414dp"
-            android:layout_height="61dp"
-            android:background="@color/azul_toolbar"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
