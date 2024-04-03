@@ -10,14 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_bloodpressure"
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosBloodPressure"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_PresionSanguinea"
+            android:backgroundTint="#00FFFFFF"
             android:src="@drawable/icono_bloodpressure"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/viewFondoBloodPressure"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,8 +31,8 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_bloodpressure"
-            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosBloodPressure"
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosBloodPressure" />
 
         <TextView
             android:id="@+id/tv_bloodPressure"
@@ -45,7 +47,7 @@
             app:layout_constraintTop_toTopOf="@+id/viewFondoBloodPressure" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosBloodPressure"
+            android:id="@+id/imgbtn_irAGraficaBloodPressure"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="12dp"
@@ -54,19 +56,21 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/viewFondoBloodPressure"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoBloodPressure"
-            app:layout_constraintTop_toTopOf="@+id/img_bloodpressure" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosBloodPressure" />
 
-        <ImageView
-            android:id="@+id/img_weight"
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosWeight"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_Peso"
+            android:backgroundTint="#00FFFFFF"
             android:src="@drawable/icono_weight"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/viewFondoWeight"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_bloodpressure" />
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_irADatosBloodPressure" />
 
         <View
             android:id="@+id/viewFondoWeight"
@@ -75,8 +79,8 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_weight"
-            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosWeight"
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosWeight" />
 
 
         <TextView
@@ -92,29 +96,31 @@
             app:layout_constraintTop_toTopOf="@+id/viewFondoWeight" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosWeight"
+            android:id="@+id/imgbtn_irAGraficaWeight"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_Peso"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/img_weight"
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtn_irADatosWeight"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoWeight"
-            app:layout_constraintTop_toTopOf="@+id/img_weight" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosWeight" />
 
 
-        <ImageView
-            android:id="@+id/img_glycemia"
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosGlycemia"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/txt_Glucosa"
+            android:backgroundTint="#00FFFFFF"
             android:src="@drawable/icono_glycemia"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/viewFondoGlycemia"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_weight" />
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_irADatosWeight" />
 
         <View
             android:id="@+id/viewFondoGlycemia"
@@ -123,8 +129,8 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_glycemia"
-            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosGlycemia"
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosGlycemia" />
 
         <TextView
             android:id="@+id/tv_Glycemia"
@@ -139,28 +145,30 @@
             app:layout_constraintTop_toTopOf="@+id/viewFondoGlycemia" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosGlycemia"
+            android:id="@+id/imgbtn_irAGraficaGlycemia"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_Glucosa"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/img_glycemia"
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtn_irADatosGlycemia"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoGlycemia"
-            app:layout_constraintTop_toTopOf="@+id/img_glycemia" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosGlycemia" />
 
-        <ImageView
-            android:id="@+id/img_osat"
+        <ImageButton
+            android:id="@+id/imgbtn_irADatosOsat"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
+            android:backgroundTint="#00FFFFFF"
             android:contentDescription="@string/txt_Osat"
+            android:scaleType="centerCrop"
             android:src="@drawable/icono_osat"
             app:layout_constraintEnd_toStartOf="@+id/viewFondoOsat"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_glycemia" />
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_irADatosGlycemia" />
 
         <View
             android:id="@+id/viewFondoOsat"
@@ -169,8 +177,8 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/borde_redondeado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_osat"
-            app:layout_constraintTop_toTopOf="@+id/img_osat" />
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosOsat"
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosOsat" />
 
         <TextView
             android:id="@+id/tv_Osat"
@@ -185,16 +193,16 @@
             app:layout_constraintTop_toTopOf="@+id/viewFondoOsat" />
 
         <ImageButton
-            android:id="@+id/imgbtn_irADatosOsat"
+            android:id="@+id/imgbtn_irAGraficaOsat"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_Osat"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/img_osat"
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtn_irADatosOsat"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoOsat"
-            app:layout_constraintTop_toTopOf="@+id/img_osat" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosOsat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
