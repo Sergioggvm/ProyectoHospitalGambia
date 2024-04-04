@@ -137,6 +137,7 @@
     <string name="txt_Total">Total</string>
 
     <string name="txt_Osat">Osat</string>
+    <string name="txt_SaturacionOxigeno">Saturación de oxígeno</string>
     <string name="txt_ActividadFisica">Actividad física</string>
     <string name="txt_Aerobico">Aeróbico</string>
     <string name="txt_Anaerobico">Anaeróbico</string>
@@ -151,8 +152,10 @@
 
     <string name="txt_Peso">Peso</string>
     <string name="Kg">KG</string>
+    <string name="kcal">Kcal</string>
 
     <string name="txt_Glucosa">Glucosa</string>
+    <string name="txt_NivelGlucosaEnSangre">Nivel de glucosa en sangre</string>
 
     <string name="txtbtn_PresionSanguinea">Ir a Presión Sanguínea</string>
     <string name="txtbtn_Peso">Ir a Peso</string>
@@ -175,6 +178,7 @@
     <string name="txt_TensionAlta">Tension Alta</string>
     <string name="txt_TensionBaja">Tension Baja</string>
     <string name="txt_Pulso">Pulso</string>
+    <string name="txt_ritmoCardiaco">Ritmo Cardiaco</string>
 
     <string name="txt_TemperaturaTomada">Temperatura</string>
 
