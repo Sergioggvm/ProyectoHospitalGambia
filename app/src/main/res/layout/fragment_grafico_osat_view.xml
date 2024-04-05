@@ -12,7 +12,7 @@
 
 
         <com.echo.holographlibrary.LineGraph
-            android:id="@+id/line_graph2"
+            android:id="@+id/graficoLineas_SaturacionOxigeno"
             android:layout_width="0dp"
             android:layout_height="400dp"
             android:layout_weight="1"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="@string/txt_SaturacionOxigeno"
-            app:layout_constraintBottom_toTopOf="@+id/line_graph2"
+            app:layout_constraintBottom_toTopOf="@+id/graficoLineas_SaturacionOxigeno"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

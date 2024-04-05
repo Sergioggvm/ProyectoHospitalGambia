@@ -34,28 +34,43 @@ class MenuDeporteSuenioView : Fragment() {
         btnDatosSuenio = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosSleep)
         btnDatosSocialActivo = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosSocialActivities)
 
-        // Agrega OnClickListener al botón btnJugarLocal
+        val btnGraficaAerobic = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaAerobic)
+        val btnGraficaNutricion = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaNutrition)
+        val btnGraficaSuenio = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaSleep)
+        val btnGraficaSocialActivo = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaSocialActivities)
+
+
         btnDatosAerobic.setOnClickListener {
-            // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_deporte_suenno_to_introducir_physical_activity)
         }
 
-        // Agrega OnClickListener al botón btnJugarLocal
         btnDatosNutricion.setOnClickListener {
-            // Navega al fragmento de vistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_deporte_suenno_to_introducir_nutrition)
         }
 
-        // Agrega OnClickListener al botón btnJugarLocal
         btnDatosSuenio.setOnClickListener {
-            // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_deporte_suenno_to_introducir_sleep)
         }
 
-        // Agrega OnClickListener al botón btnJugarLocal
         btnDatosSocialActivo.setOnClickListener {
-            // Navega al fragmento de vistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_deporte_suenno_to_introducir_social_activities)
+        }
+
+
+        btnGraficaAerobic.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_deporte_suenio_to_graficaPhysicalActivityView)
+        }
+
+        btnGraficaNutricion.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_deporte_suenio_to_graficaNutritionView)
+        }
+
+        btnGraficaSuenio.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_deporte_suenio_to_graficaSleepView)
+        }
+
+        btnGraficaSocialActivo.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_deporte_suenio_to_graficaSocialActivitiesView)
         }
 
         return menuDeporteSuenio

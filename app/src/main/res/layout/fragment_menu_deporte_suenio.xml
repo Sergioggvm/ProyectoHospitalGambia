@@ -211,6 +211,5 @@
             app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosSocialActivities" />
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

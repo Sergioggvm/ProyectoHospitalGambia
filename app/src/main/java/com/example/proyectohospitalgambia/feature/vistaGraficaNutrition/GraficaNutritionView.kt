@@ -1,10 +1,13 @@
 package com.example.proyectohospitalgambia.feature.vistaGraficaNutrition
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.echo.holographlibrary.Bar
+import com.echo.holographlibrary.BarGraph
 import com.example.proyectohospitalgambia.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,6 +40,48 @@ class GraficaNutritionView : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_nutrition_view, container, false)
     }
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val graph = view.findViewById<BarGraph>(R.id.graficoBarras_Nutrition)
+
+        arguments?.let {
+            val morning = it.getInt("morning")
+            val afternoon = it.getInt("afternoon")
+            val evening = it.getInt("evening")
+            val total = it.getInt("total")
+
+            val points = arrayListOf(
+                Bar().apply {
+                    color = Color.RED
+                    name = "Mañana"
+                    value = morning.toFloat()
+                },
+                Bar().apply {
+                    color = Color.MAGENTA
+                    name = "Tarde"
+                    value = afternoon.toFloat()
+                },
+                Bar().apply {
+                    color = Color.CYAN
+                    name = "Noche"
+                    value = evening.toFloat()
+                },
+                Bar().apply {
+                    color = Color.YELLOW
+                    name = "Total"
+                    value = total.toFloat()
+                }
+            )
+            graph.bars = points
+        }
+
+    }
+
+
+
 
     companion object {
         /**

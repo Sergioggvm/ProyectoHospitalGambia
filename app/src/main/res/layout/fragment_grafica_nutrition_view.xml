@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <com.echo.holographlibrary.BarGraph
-            android:id="@+id/bar_graph"
+            android:id="@+id/graficoBarras_Nutrition"
             android:layout_width="0dp"
             android:layout_height="400dp"
             android:padding="16dp"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/kcal"
-            app:layout_constraintBottom_toTopOf="@+id/bar_graph"
+            app:layout_constraintBottom_toTopOf="@+id/graficoBarras_Nutrition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

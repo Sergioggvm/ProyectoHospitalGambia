@@ -107,6 +107,18 @@
         <action
             android:id="@+id/action_menu_Introducir_Manual_to_introducirOsat"
             app:destination="@id/introducirOsat" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoGlycemiaView"
+            app:destination="@id/graficoGlycemiaView" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoBloodPressureView"
+            app:destination="@id/graficoBloodPressureView" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoOsatView"
+            app:destination="@id/graficoOsatView" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoWeightView"
+            app:destination="@id/graficoWeightView" />
     </fragment>
     <fragment
         android:id="@+id/menu_deporte_suenio"
@@ -125,5 +137,62 @@
         <action
             android:id="@+id/action_menu_deporte_suenno_to_introducir_social_activities"
             app:destination="@id/introducir_social_activities" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaSocialActivitiesView"
+            app:destination="@id/graficaSocialActivitiesView" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaSleepView"
+            app:destination="@id/graficaSleepView" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaNutritionView"
+            app:destination="@id/graficaNutritionView" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaPhysicalActivityView"
+            app:destination="@id/graficaPhysicalActivityView" />
     </fragment>
+    <fragment
+        android:id="@+id/graficaNutritionView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaNutrition.GraficaNutritionView"
+        android:label="fragment_grafica_nutrition_view"
+        tools:layout="@layout/fragment_grafica_nutrition_view" />
+    <fragment
+        android:id="@+id/graficaPhysicalActivityView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaPhysicalActivity.GraficaPhysicalActivityView"
+        android:label="fragment_grafica_physical_activity_view"
+        tools:layout="@layout/fragment_grafica_physical_activity_view" />
+    <fragment
+        android:id="@+id/graficaSleepView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaSleep.GraficaSleepView"
+        android:label="fragment_grafica_sleep_view"
+        tools:layout="@layout/fragment_grafica_sleep_view" />
+    <fragment
+        android:id="@+id/graficaSocialActivitiesView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaSocialActivities.GraficaSocialActivitiesView"
+        android:label="fragment_grafica_social_activities_view"
+        tools:layout="@layout/fragment_grafica_social_activities_view" />
+    <fragment
+        android:id="@+id/graficoBloodPressureView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoBloodPressure.GraficoBloodPressureView"
+        android:label="fragment_grafico_blood_pressure_view"
+        tools:layout="@layout/fragment_grafico_blood_pressure_view" />
+    <fragment
+        android:id="@+id/graficoGlycemiaView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoGlycemia.GraficoGlycemiaView"
+        android:label="fragment_grafico_glycemia_view"
+        tools:layout="@layout/fragment_grafico_glycemia_view" />
+    <fragment
+        android:id="@+id/graficoMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoMoodAndEnergy.GraficoMoodAndEnergyView"
+        android:label="fragment_grafico_mood_and_energy_view"
+        tools:layout="@layout/fragment_grafico_mood_and_energy_view" />
+    <fragment
+        android:id="@+id/graficoOsatView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoOsat.GraficoOsatView"
+        android:label="fragment_grafico_osat_view"
+        tools:layout="@layout/fragment_grafico_osat_view" />
+    <fragment
+        android:id="@+id/graficoWeightView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoWeight.GraficoWeightView"
+        android:label="fragment_grafico_weight_view"
+        tools:layout="@layout/fragment_grafico_weight_view" />
 </navigation>
