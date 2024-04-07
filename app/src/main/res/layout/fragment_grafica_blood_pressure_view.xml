@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.vistaGraficoBloodPressure.GraficoBloodPressureView">
+    tools:context=".feature.vistaGraficaBloodPressure.GraficaBloodPressureView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

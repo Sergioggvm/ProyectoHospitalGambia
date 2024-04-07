@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaGraficoOsat
+package com.example.proyectohospitalgambia.feature.vistaGraficaWeight
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,10 +19,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [GraficoOsatView.newInstance] factory method to
+ * Use the [GraficaWeightView.newInstance] factory method to
  * create an instance of this fragment.
  */
-class GraficoOsatView : Fragment() {
+class GraficaWeightView : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -40,32 +40,31 @@ class GraficoOsatView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grafico_osat_view, container, false)
+        return inflater.inflate(R.layout.fragment_grafica_weight_view, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val chartOsat = view.findViewById<LineChart>(R.id.graficoLineas_SaturacionOxigeno)
+        val chartPeso = view.findViewById<LineChart>(R.id.graficoLineas_Peso)
 
-        // Datos de prueba para la saturación de oxígeno
-        val entriesOsat = ArrayList<Entry>()
-        entriesOsat.add(Entry(0f, 98f)) // Día 1
-        entriesOsat.add(Entry(1f, 97f)) // Día 2
-        entriesOsat.add(Entry(2f, 99f)) // Día 3
-        entriesOsat.add(Entry(3f, 98f)) // Día 4
-        entriesOsat.add(Entry(4f, 97f)) // Día 5
+        // Datos de prueba para el peso
+        val entriesPeso = ArrayList<Entry>()
+        entriesPeso.add(Entry(0f, 70f)) // Día 1
+        entriesPeso.add(Entry(1f, 72f)) // Día 2
+        entriesPeso.add(Entry(2f, 69f)) // Día 3
+        entriesPeso.add(Entry(3f, 71f)) // Día 4
+        entriesPeso.add(Entry(4f, 70f)) // Día 5
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetOsat = LineDataSet(entriesOsat, "pct")
-        dataSetOsat.color = Color.RED
+        val dataSetPeso = LineDataSet(entriesPeso, "kg")
+        dataSetPeso.color = Color.RED
 
         // Agregar el conjunto de datos a los datos de la línea
-        val lineDataOsat = LineData(dataSetOsat)
+        val lineDataPeso = LineData(dataSetPeso)
 
         // Aplicar los datos al gráfico y refrescarlo
-        chartOsat.data = lineDataOsat
-        chartOsat.invalidate() // Refresca el gráfico
+        chartPeso.data = lineDataPeso
+        chartPeso.invalidate() // Refresca el gráfico
     }
 
     companion object {
@@ -75,12 +74,12 @@ class GraficoOsatView : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment GraficoOsatView.
+         * @return A new instance of fragment GraficoWeightView.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            GraficoOsatView().apply {
+            GraficaWeightView().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

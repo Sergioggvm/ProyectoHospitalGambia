@@ -172,29 +172,29 @@
         tools:layout="@layout/fragment_grafica_social_activities_view" />
     <fragment
         android:id="@+id/graficoBloodPressureView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoBloodPressure.GraficoBloodPressureView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure.GraficaBloodPressureView"
         android:label="fragment_grafico_blood_pressure_view"
-        tools:layout="@layout/fragment_grafico_blood_pressure_view" />
+        tools:layout="@layout/fragment_grafica_blood_pressure_view" />
     <fragment
         android:id="@+id/graficoGlycemiaView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoGlycemia.GraficoGlycemiaView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia.GraficaGlycemiaView"
         android:label="fragment_grafico_glycemia_view"
-        tools:layout="@layout/fragment_grafico_glycemia_view" />
+        tools:layout="@layout/fragment_grafica_glycemia_view" />
     <fragment
         android:id="@+id/graficoMoodAndEnergyView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoMoodAndEnergy.GraficoMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy.GraficaMoodAndEnergyView"
         android:label="fragment_grafico_mood_and_energy_view"
-        tools:layout="@layout/fragment_grafico_mood_and_energy_view" />
+        tools:layout="@layout/fragment_grafica_mood_and_energy_view" />
     <fragment
         android:id="@+id/graficoOsatView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoOsat.GraficoOsatView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaOsat.GraficaOsatView"
         android:label="fragment_grafico_osat_view"
-        tools:layout="@layout/fragment_grafico_osat_view" />
+        tools:layout="@layout/fragment_grafica_osat_view" />
     <fragment
         android:id="@+id/graficoWeightView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaGraficoWeight.GraficoWeightView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaWeight.GraficaWeightView"
         android:label="fragment_grafico_weight_view"
-        tools:layout="@layout/fragment_grafico_weight_view" />
+        tools:layout="@layout/fragment_grafica_weight_view" />
     <fragment
         android:id="@+id/menuMoodAndEnergyView"
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.menuMoodAndEnergyView"

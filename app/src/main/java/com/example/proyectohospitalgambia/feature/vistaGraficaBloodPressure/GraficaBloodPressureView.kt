@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaGraficoBloodPressure
+package com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,10 +20,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [GraficoBloodPressureView.newInstance] factory method to
+ * Use the [GraficaBloodPressureView.newInstance] factory method to
  * create an instance of this fragment.
  */
-class GraficoBloodPressureView : Fragment() {
+class GraficaBloodPressureView : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,7 +41,7 @@ class GraficoBloodPressureView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grafico_blood_pressure_view, container, false)
+        return inflater.inflate(R.layout.fragment_grafica_blood_pressure_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -115,7 +115,7 @@ class GraficoBloodPressureView : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            GraficoBloodPressureView().apply {
+            GraficaBloodPressureView().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

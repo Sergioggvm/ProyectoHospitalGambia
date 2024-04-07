@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaGraficoGlycemia
+package com.example.proyectohospitalgambia.feature.vistaGraficaOsat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,10 +19,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [GraficoGlycemiaView.newInstance] factory method to
+ * Use the [GraficaOsatView.newInstance] factory method to
  * create an instance of this fragment.
  */
-class GraficoGlycemiaView : Fragment() {
+class GraficaOsatView : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -40,32 +40,32 @@ class GraficoGlycemiaView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grafico_glycemia_view, container, false)
+        return inflater.inflate(R.layout.fragment_grafica_osat_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val chartGlucemia = view.findViewById<LineChart>(R.id.graficoLineas_Glucosa)
+        val chartOsat = view.findViewById<LineChart>(R.id.graficoLineas_SaturacionOxigeno)
 
-        // Datos de prueba para la glucemia
-        val entriesGlucemia = ArrayList<Entry>()
-        entriesGlucemia.add(Entry(0f, 100f)) // Día 1
-        entriesGlucemia.add(Entry(1f, 105f)) // Día 2
-        entriesGlucemia.add(Entry(2f, 95f)) // Día 3
-        entriesGlucemia.add(Entry(3f, 110f)) // Día 4
-        entriesGlucemia.add(Entry(4f, 98f)) // Día 5
+        // Datos de prueba para la saturación de oxígeno
+        val entriesOsat = ArrayList<Entry>()
+        entriesOsat.add(Entry(0f, 98f)) // Día 1
+        entriesOsat.add(Entry(1f, 97f)) // Día 2
+        entriesOsat.add(Entry(2f, 99f)) // Día 3
+        entriesOsat.add(Entry(3f, 98f)) // Día 4
+        entriesOsat.add(Entry(4f, 97f)) // Día 5
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetGlucemia = LineDataSet(entriesGlucemia, "mg/dl")
-        dataSetGlucemia.color = Color.RED
+        val dataSetOsat = LineDataSet(entriesOsat, "pct")
+        dataSetOsat.color = Color.RED
 
         // Agregar el conjunto de datos a los datos de la línea
-        val lineDataGlucemia = LineData(dataSetGlucemia)
+        val lineDataOsat = LineData(dataSetOsat)
 
         // Aplicar los datos al gráfico y refrescarlo
-        chartGlucemia.data = lineDataGlucemia
-        chartGlucemia.invalidate() // Refresca el gráfico
+        chartOsat.data = lineDataOsat
+        chartOsat.invalidate() // Refresca el gráfico
     }
 
     companion object {
@@ -75,12 +75,12 @@ class GraficoGlycemiaView : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment GraficoGlycemiaView.
+         * @return A new instance of fragment GraficoOsatView.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            GraficoGlycemiaView().apply {
+            GraficaOsatView().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
