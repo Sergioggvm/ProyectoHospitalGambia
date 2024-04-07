@@ -50,7 +50,7 @@ class MenuOpcionesMedicasView : Fragment() {
         // Agrega OnClickListener al botón btnJugarLocal
         btnOpcionEnergia.setOnClickListener {
             // Navega al fragmento de vistaTableroView cuando se hace clic en el botón
-            findNavController().navigate(R.id.action_menuOpcionesMedicasView_to_introducirMoodAndEnergy)
+            findNavController().navigate(R.id.action_menuOpcionesMedicasView_to_menuMoodAndEnergyView)
         }
 
         // Inflate the layout for this fragment

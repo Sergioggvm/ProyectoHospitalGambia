@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.vistaDatosMedicosManual
+package com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,47 +16,56 @@ class MenuIntroducirManualView : Fragment() {
     private lateinit var btnDatosGlicemia: ImageButton
     private lateinit var btnDatosAgua: ImageButton
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    // Define los botones de gráficas
+    private lateinit var btnGraficaSangre: ImageButton
+    private lateinit var btnGraficaPeso: ImageButton
+    private lateinit var btnGraficaGlicemia: ImageButton
+    private lateinit var btnGraficaAgua: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        // Inflate the layout for this fragment
+    ): View? {
         val menuIntroducirDatosManual = inflater.inflate(R.layout.fragment_menu_introducir_manual, container, false)
 
+        // Inicializa los botones de datos
         btnDatosSangre = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irADatosBloodPressure)
         btnDatosPeso = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irADatosWeight)
         btnDatosGlicemia = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irADatosGlycemia)
         btnDatosAgua = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irADatosOsat)
 
-        // Agrega OnClickListener al botón btnJugarLocal
+        // Inicializa los botones de gráficas
+        btnGraficaSangre = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaBloodPressure)
+        btnGraficaPeso = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaWeight)
+        btnGraficaGlicemia = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaGlycemia)
+        btnGraficaAgua = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaOsat)
+
+        // Define los OnClickListener para los botones de datos
         btnDatosSangre.setOnClickListener {
-            // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_Introducir_Manual_to_introducirBloodPressure)
         }
-
-        // Agrega OnClickListener al botón btnJugarLocal
         btnDatosPeso.setOnClickListener {
-            // Navega al fragmento de vistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_Introducir_Manual_to_introducirWeight)
         }
-
-        // Agrega OnClickListener al botón btnJugarLocal
         btnDatosGlicemia.setOnClickListener {
-            // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_Introducir_Manual_to_introducirGlycemia)
         }
-
-        // Agrega OnClickListener al botón btnJugarLocal
         btnDatosAgua.setOnClickListener {
-            // Navega al fragmento de vistaTableroView cuando se hace clic en el botón
             findNavController().navigate(R.id.action_menu_Introducir_Manual_to_introducirOsat)
+        }
+
+        // Define los OnClickListener para los botones de gráficas
+        btnGraficaSangre.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_Introducir_Manual_to_graficoBloodPressureView)
+        }
+        btnGraficaPeso.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_Introducir_Manual_to_graficoWeightView)
+        }
+        btnGraficaGlicemia.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_Introducir_Manual_to_graficoGlycemiaView)
+        }
+        btnGraficaAgua.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_Introducir_Manual_to_graficoOsatView)
         }
 
         return menuIntroducirDatosManual

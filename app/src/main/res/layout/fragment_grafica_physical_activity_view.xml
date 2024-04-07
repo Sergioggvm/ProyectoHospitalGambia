@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,23 +10,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.echo.holographlibrary.LineGraph
-            android:id="@+id/line_graph1"
-            android:layout_width="411dp"
-            android:layout_height="336dp"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/graficoLineas_ActividadFisica"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="16dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="50dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tv_pasos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_actividadFisica" />
 
-        <com.echo.holographlibrary.LineGraph
-            android:id="@+id/line_graph2"
-            android:layout_width="409dp"
-            android:layout_height="345dp"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/graficoLineas_Pasos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="16dp"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="386dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pasos" />
+
+        <TextView
+            android:id="@+id/tv_actividadFisica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_ActividadFisica"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/graficoLineas_ActividadFisica"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_pasos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_Pasos"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/graficoLineas_Pasos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/graficoLineas_ActividadFisica" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
