@@ -125,6 +125,7 @@
     <string name="txt_MeSiento">Me siento…</string>
     <string name="txt_Animo">Estado de ánimo</string>
     <string name="txt_Energia">Energía</string>
+    <string name="txt_AnimoYEnergia">Estado de Ánimo y Energía</string>
 
     <string name="txt_ValorEnergetico">Valor energético (kcal)</string>
     <string name="txt_Manana">Mañana</string>

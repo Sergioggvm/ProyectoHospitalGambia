@@ -28,8 +28,8 @@
             android:id="@+id/action_menuOpcionesMedicasView_to_menu_deporte_suenno"
             app:destination="@id/menu_deporte_suenio" />
         <action
-            android:id="@+id/action_menuOpcionesMedicasView_to_introducirMoodAndEnergy"
-            app:destination="@id/introducirMoodAndEnergy" />
+            android:id="@+id/action_menuOpcionesMedicasView_to_menuMoodAndEnergyView"
+            app:destination="@id/menuMoodAndEnergyView" />
     </fragment>
     <fragment
         android:id="@+id/federacionServidoresView"
@@ -92,7 +92,7 @@
         tools:layout="@layout/fragment_introducir_weight" />
     <fragment
         android:id="@+id/menu_Introducir_Manual"
-        android:name="com.example.proyectohospitalgambia.feature.vistaDatosMedicosManual.MenuIntroducirManualView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual.MenuIntroducirManualView"
         android:label="fragment_menu__introducir__manual"
         tools:layout="@layout/fragment_menu_introducir_manual" >
         <action
@@ -195,4 +195,16 @@
         android:name="com.example.proyectohospitalgambia.feature.vistaGraficoWeight.GraficoWeightView"
         android:label="fragment_grafico_weight_view"
         tools:layout="@layout/fragment_grafico_weight_view" />
+    <fragment
+        android:id="@+id/menuMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.menuMoodAndEnergyView"
+        android:label="fragment_menu_mood_and_energy"
+        tools:layout="@layout/fragment_menu_mood_and_energy" >
+        <action
+            android:id="@+id/action_menuMoodAndEnergyView_to_graficoMoodAndEnergyView"
+            app:destination="@id/graficoMoodAndEnergyView" />
+        <action
+            android:id="@+id/action_menuMoodAndEnergyView_to_introducirMoodAndEnergy"
+            app:destination="@id/introducirMoodAndEnergy" />
+    </fragment>
 </navigation>

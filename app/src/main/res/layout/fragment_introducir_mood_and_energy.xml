@@ -30,10 +30,10 @@
             android:layout_width="229dp"
             android:layout_height="48dp"
             android:layout_marginTop="100dp"
-            android:ems="10"
             android:background="@drawable/edittext_fondo"
+            android:ems="10"
             android:hint="@string/txt_Notas"
-            android:inputType="number"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_Energy" />

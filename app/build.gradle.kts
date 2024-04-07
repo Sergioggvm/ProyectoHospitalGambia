@@ -28,7 +28,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding
+        viewBinding = true
     }
 
     compileOptions {
@@ -38,9 +38,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
 }
 
+
 dependencies {
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -53,8 +57,6 @@ dependencies {
     val nav_version = "2.7.0"
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
-
-    implementation("org.quanqi:android-holo-graph:0.1.0")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
@@ -77,6 +79,7 @@ dependencies {
     // SharedPreferences
     implementation("androidx.preference:preference-ktx:1.2.1")
 
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
