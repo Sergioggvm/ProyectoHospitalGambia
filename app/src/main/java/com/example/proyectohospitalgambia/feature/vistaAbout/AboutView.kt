@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
@@ -27,6 +28,23 @@ class AboutView : AppCompatActivity() {
 
         // Configurar la barra de herramientas como la barra de soporte de la actividad
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+    }
+
+    private fun mostrarDialogoSalir() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
+        builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+            // Si el usuario elige no salir, simplemente cerramos el diálogo
+            dialog.dismiss()
+        }
+        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+            // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
+            finishAffinity()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     //Menú de opciones
@@ -103,7 +121,10 @@ class AboutView : AppCompatActivity() {
             }
 
             R.id.mn_salir -> {
+
+                mostrarDialogoSalir()
                 true
+
             }
 
             else -> super.onOptionsItemSelected(item)

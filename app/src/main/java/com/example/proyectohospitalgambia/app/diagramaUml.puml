@@ -1,0 +1,298 @@
+@startuml
+
+package com.example.proyectohospitalgambia.app {
+    class MainActivity {
+        - databaseHelper: DatabaseHelper?
+        - idUsuario: String?
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateOptionsMenu(menu: Menu): Boolean
+        + onOptionsItemSelected(item: MenuItem): Boolean
+    }
+}
+
+
+package com.example.proyectohospitalgambia.feature.vistaAbout {
+    class AboutView {
+        - onCreate(savedInstanceState: Bundle): Unit
+        - onCreateOptionsMenu(menu: Menu): Boolean
+        - onOptionsItemSelected(item: MenuItem): Boolean
+    }
+}
+
+
+package com.example.proyectohospitalgambia.core.data.persistencia {
+    class DatabaseHelper {
+        // Atributos y métodos de DatabaseHelper
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaAjustesConexion {
+    class AjustesConexionView {
+        - onCreate(savedInstanceState: Bundle): Unit
+        - onCreateOptionsMenu(menu: Menu): Boolean
+        - onOptionsItemSelected(item: MenuItem): Boolean
+    }
+}
+
+
+package com.example.proyectohospitalgambia.feature.vistaDatosTensiometro {
+    class DatosTensiometroView {
+        - bluetoothAdapter: BluetoothAdapter
+        - bluetoothPermissionRequestCode: Int
+        - deviceName: String
+        - context: Context
+        - caracteristica: UUID
+        - servicio: UUID
+        - bluetoothLeScanner: BluetoothLeScanner
+        - listadispositivos: MutableList<BluetoothDevice>
+        - scanning: Boolean
+        - SCAN_PERIOD: Long
+        - textViewTensionAlta: TextView
+        - textViewTensionBaja: TextView
+        - textViewPulso: TextView
+        - progressBar: ProgressBar
+        - datosTensiometroList: MutableList<DatosTensiometro>
+        - BLELifecycleState: Enum
+        + onCreate(savedInstanceState: Bundle): Unit
+        + cargarRegistros(): Unit
+        + mostrarDialogoDatosEncontrados(): Unit
+        + mostrarDialogoDatosNoEncontrados(): Unit
+        + onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray): Unit
+        - scanLeDevice(): List<BluetoothDevice>
+        + startDeviceSearch(context: Context, deviceName: String): Unit
+        + connectToDevice(device: BluetoothDevice): Unit
+        + subscribeToIndications(characteristic: BluetoothGattCharacteristic, gatt: BluetoothGatt): Unit
+        + onCreateOptionsMenu(menu: Menu): Boolean
+        + onOptionsItemSelected(item: MenuItem): Boolean
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaDatosTermometro {
+    class DatosTermometroView {
+        - bluetoothAdapter: BluetoothAdapter
+        - bluetoothPermissionRequestCode: Int
+        - deviceName: String
+        - context: Context
+        - caracteristica: UUID
+        - servicio: UUID
+        - bluetoothLeScanner: BluetoothLeScanner
+        - listadispositivos: MutableList<BluetoothDevice>
+        - scanning: Boolean
+        - SCAN_PERIOD: Long
+        - textViewTemperatura: TextView
+        - datosTermometroList: MutableList<DatosTermometro>
+        + onCreate(savedInstanceState: Bundle): Unit
+        + cargarRegistros(): Unit
+        + mostrarDialogoDatosEncontrados(): Unit
+        + mostrarDialogoDatosNoEncontrados(): Unit
+        + onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray): Unit
+        - scanLeDevice(): List<BluetoothDevice>
+        + startDeviceSearch(context: Context, deviceName: String): Unit
+        + connectToDevice(device: BluetoothDevice): Unit
+        + subscribeToIndications(characteristic: BluetoothGattCharacteristic, gatt: BluetoothGatt): Unit
+        + convertToTemperature(data: ByteArray): Double
+        + onCreateOptionsMenu(menu: Menu): Boolean
+        + onOptionsItemSelected(item: MenuItem): Boolean
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaDatosTermometro {
+    class DatosTermometroView {
+        // Atributos y métodos de DatosTermometroView
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaProfile {
+    class ProfileView {
+        // Atributos y métodos de ProfileView
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaFederacionServidor {
+    class FederacionServidoresView {
+        - btnNuevoRegistro: ImageButton
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure {
+    class GraficaBloodPressureView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia {
+    class GraficaGlycemiaView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy {
+    class GraficaMoodAndEnergyView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaNutrition {
+    class GraficaNutritionView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaOsat {
+    class GraficaOsatView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaPhysicalActivity {
+    class GraficaPhysicalActivityView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaSleep {
+    class GraficaSleepView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaSocialActivities {
+    class GraficaSocialActivitiesView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaGraficaWeight {
+    class GraficaWeightView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaInicio {
+    class InicioView {
+        - btnIniciarSesion: Button
+        - btnRegistrar: Button
+        - edt_nombreUsuarioRegistrar: EditText
+        - edt_contraseniaUsuarioRegistrar: EditText
+        + onCreate(savedInstanceState: Bundle): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure {
+    class IntroducirBloodPressureView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+}
+
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia {
+    class IntroducirGlycemiaView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy {
+    class IntroducirMoodAndEnergyView {
+        - viewModel: IntroducirMoodAndEnergyViewModel
+        - imgMood: ImageView
+        - imgEnergy: ImageView
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+        + onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean): Unit
+        + onStartTrackingTouch(seekBar: SeekBar?): Unit
+        + onStopTrackingTouch(seekBar: SeekBar?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition {
+    class IntroducirNutritionView {
+        - IntroducirNutritionView: Fragment
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+        + onViewCreated(view: View, savedInstanceState: Bundle?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirOsat {
+    class IntroducirOsatView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivity {
+    class IntroducirPhysicalView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirSleep {
+    class IntroducirSleepView {
+        - spinnerSleepQuality: Spinner
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+        + onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long): Unit
+        + onNothingSelected(parent: AdapterView<*>?): Unit
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities {
+    class IntroducirSocialActivitiesView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+}
+
+MainActivity --> AboutView: Crea
+AboutView --> MainActivity: Retorna a MainActivity
+MainActivity --> AjustesConexionView: Crea
+AjustesConexionView --> MainActivity: Retorna a MainActivity
+DatosTensiometroView --> AboutView: Opción Acerca De
+DatosTensiometroView --> AjustesConexionView: Opción Conexión
+DatosTensiometroView --> DatosTermometroView: Opción Datos Termómetro
+DatosTensiometroView --> ProfileView: Opción Perfil
+FederacionServidoresView --> MainActivity: Retorna a MainActivity
+GraficaBloodPressureView --> MainActivity: Retorna a MainActivity
+GraficaGlycemiaView --> MainActivity: Retorna a MainActivity
+GraficaMoodAndEnergyView --> MainActivity: Retorna a MainActivity
+GraficaNutritionView --> MainActivity: Retorna a MainActivity
+GraficaOsatView --> MainActivity: Retorna a MainActivity
+GraficaPhysicalActivityView --> MainActivity: Retorna a MainActivity
+GraficaSleepView --> MainActivity: Retorna a MainActivity
+GraficaSocialActivitiesView --> MainActivity: Retorna a MainActivity
+GraficaWeightView --> MainActivity: Retorna a MainActivity
+InicioView --> MainActivity: Retorna a MainActivity
+IntroducirBloodPressureView --> MainActivity: Retorna a MainActivity
+IntroducirGlycemiaView --> MainActivity: Retorna a MainActivity
+IntroducirMoodAndEnergyView --> MainActivity: Retorna a MainActivity
+IntroducirNutritionView --> MainActivity: Retorna a MainActivity
+IntroducirOsatView --> MainActivity: Retorna a MainActivity
+IntroducirPhysicalView --> MainActivity: Retorna a MainActivity
+IntroducirSleepView --> MainActivity: Retorna a MainActivity
+IntroducirSocialActivitiesView --> MainActivity: Retorna a MainActivity
+
+@enduml

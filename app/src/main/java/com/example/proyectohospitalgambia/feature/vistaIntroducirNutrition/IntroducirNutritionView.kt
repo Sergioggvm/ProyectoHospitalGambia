@@ -13,12 +13,6 @@ import com.example.proyectohospitalgambia.feature.vistaGraficaNutrition.GraficaN
 
 class IntroducirNutritionView : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroducirNutritionView()
-    }
-
-    private val viewModel: IntroducirNutritionViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

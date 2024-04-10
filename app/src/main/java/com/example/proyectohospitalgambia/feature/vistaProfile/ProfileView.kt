@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
@@ -32,9 +33,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         // Configurar la barra de herramientas como la barra de soporte de la actividad
         setSupportActionBar(toolbar)
-
-        // Configurar la barra de herramientas como la barra de soporte de la actividad
-        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Obtener referencias a la SeekBar y TextView
         val seekBar: SeekBar = findViewById(R.id.sk_altura)
@@ -46,6 +45,22 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         // Configurar el listener de la SeekBar
         seekBar.setOnSeekBarChangeListener(this)
+    }
+
+    private fun mostrarDialogoSalir() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
+        builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+            // Si el usuario elige no salir, simplemente cerramos el diálogo
+            dialog.dismiss()
+        }
+        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+            // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
+            finishAffinity()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     //Menú de opciones
@@ -122,6 +137,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             }
 
             R.id.mn_salir -> {
+                mostrarDialogoSalir()
                 true
             }
 

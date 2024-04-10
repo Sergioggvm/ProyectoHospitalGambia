@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Mygnuhealth Hospital</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -201,5 +201,10 @@
 
     <string name="txt_DatosNoEncontrados">Los datos no han sido encontrados.\n
         Prueba a realizar la medición nuevamente y sigue las instrucciones.</string>
+
+    <string name="txt_MensajeTituloSalirAplicacion">Abandonar aplicación</string>
+    <string name="txt_MensajeSalirAplicacion">¿Seguro que quieres abandonar de la aplicacion?</string>
+    <string name="txt_Si">Si</string>
+    <string name="txt_No">No</string>
 
 </resources>

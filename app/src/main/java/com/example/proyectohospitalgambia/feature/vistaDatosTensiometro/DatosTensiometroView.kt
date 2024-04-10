@@ -92,6 +92,7 @@ class DatosTensiometroView : AppCompatActivity() {
 
         // Configurar la barra de herramientas como la barra de soporte de la actividad
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val btMedicion = findViewById<Button>(R.id.btn_donePulsioximetro)
 
@@ -192,6 +193,21 @@ class DatosTensiometroView : AppCompatActivity() {
 
     }
 
+    private fun mostrarDialogoSalir() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
+        builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+            // Si el usuario elige no salir, simplemente cerramos el diálogo
+            dialog.dismiss()
+        }
+        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+            // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
+            finishAffinity()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
 
     fun cargarRegistros() {
 
@@ -733,6 +749,7 @@ class DatosTensiometroView : AppCompatActivity() {
             }
 
             R.id.mn_salir -> {
+                mostrarDialogoSalir()
                 true
             }
 

@@ -35,6 +35,7 @@ import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.termometro.DatosTermometro
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
+import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -93,6 +94,7 @@ class DatosTermometroView : AppCompatActivity() {
 
         // Configurar la barra de herramientas como la barra de soporte de la actividad
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Obtener referencias del layout
         val btnMedicionTemperatura = findViewById<Button>(R.id.btn_doneTemperatura)
@@ -188,6 +190,22 @@ class DatosTermometroView : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun mostrarDialogoSalir() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
+        builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+            // Si el usuario elige no salir, simplemente cerramos el diálogo
+            dialog.dismiss()
+        }
+        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+            // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
+            finishAffinity()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     fun cargarRegistros() {
@@ -633,23 +651,24 @@ class DatosTermometroView : AppCompatActivity() {
             }
 
             R.id.mn_datosTermometro -> {
+
+
+                true
+            }
+
+            R.id.mn_datosTensiometro -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
-                val intent = Intent(this, DatosTermometroView::class.java)
+                val intent = Intent(this, DatosTensiometroView::class.java)
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
-
-                true
-            }
-
-            R.id.mn_datosTermometro -> {
-
                 true
             }
 
             R.id.mn_salir -> {
+                mostrarDialogoSalir()
                 true
             }
 

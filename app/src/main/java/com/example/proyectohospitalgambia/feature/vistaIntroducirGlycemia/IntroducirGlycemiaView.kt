@@ -10,12 +10,6 @@ import com.example.proyectohospitalgambia.R
 
 class IntroducirGlycemiaView : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroducirGlycemiaView()
-    }
-
-    private val viewModel: IntroducirGlycemiaViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

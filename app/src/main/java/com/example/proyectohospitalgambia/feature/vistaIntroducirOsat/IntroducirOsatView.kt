@@ -10,12 +10,6 @@ import com.example.proyectohospitalgambia.R
 
 class IntroducirOsatView : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroducirOsatView()
-    }
-
-    private val viewModel: IntroducirOsatViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

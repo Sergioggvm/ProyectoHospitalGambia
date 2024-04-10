@@ -10,12 +10,6 @@ import com.example.proyectohospitalgambia.R
 
 class IntroducirPhysicalView : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroducirPhysicalView()
-    }
-
-    private val viewModel: IntroducirPhysicalViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

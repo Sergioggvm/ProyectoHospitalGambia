@@ -10,12 +10,6 @@ import com.example.proyectohospitalgambia.R
 
 class IntroducirWeightView : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroducirWeightView()
-    }
-
-    private val viewModel: IntroducirWeightViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

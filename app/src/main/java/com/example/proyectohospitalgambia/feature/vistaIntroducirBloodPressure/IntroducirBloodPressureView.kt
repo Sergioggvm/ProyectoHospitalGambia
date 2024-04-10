@@ -10,12 +10,6 @@ import com.example.proyectohospitalgambia.R
 
 class IntroducirBloodPressureView : Fragment() {
 
-    companion object {
-        fun newInstance() = IntroducirBloodPressureView()
-    }
-
-    private val viewModel: IntroducirBloodPressureViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
