@@ -22,7 +22,35 @@ package com.example.proyectohospitalgambia.feature.vistaAbout {
 
 package com.example.proyectohospitalgambia.core.data.persistencia {
     class DatabaseHelper {
-        // Atributos y métodos de DatabaseHelper
+        -DATABASE_NAME: String
+        -DATABASE_VERSION: Int
+        -TABLE_DUS: String
+        -TABLE_INSTITUTIONS: String
+        -TABLE_PEOPLE: String
+        -TABLE_PERSONAL_DOCS: String
+        -TABLE_POLS: String
+        -KEY_DUS_ID: String
+        -KEY_DUS_DATA: String
+        -KEY_INSTITUTIONS_ID: String
+        -KEY_INSTITUTIONS_DATA: String
+        -KEY_PEOPLE_ID: String
+        -KEY_PEOPLE_DATA: String
+        -KEY_PERSONAL_DOCS_ID: String
+        -KEY_PERSONAL_DOCS_FEDACCT: String
+        -KEY_PERSONAL_DOCS_POL: String
+        -KEY_PERSONAL_DOCS_DOCUMENT: String
+        -KEY_PERSONAL_DOCS_DATA: String
+        -KEY_POLS_ID: String
+        -KEY_POLS_BOOK: String
+        -KEY_POLS_DATA: String
+        +DatabaseHelper(Context)
+        +onCreate(SQLiteDatabase): void
+        +onUpgrade(SQLiteDatabase, int, int): void
+        +insertarPersona(String, String): boolean
+        +listarUsuarios(): void
+        +verificarCredenciales(String, String): String?
+        +insertFormData(String, String, String): boolean
+        +listarPols(): void
     }
 }
 
@@ -104,7 +132,14 @@ package com.example.proyectohospitalgambia.feature.vistaDatosTermometro {
 
 package com.example.proyectohospitalgambia.feature.vistaProfile {
     class ProfileView {
-        // Atributos y métodos de ProfileView
+        - txtAltura: TextView
+        + onCreate(savedInstanceState: Bundle?): void
+        + mostrarDialogoSalir(): void
+        + onCreateOptionsMenu(menu: Menu): Boolean
+        + onOptionsItemSelected(item: MenuItem): Boolean
+        + onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean): Unit
+        + onStartTrackingTouch(seekBar: SeekBar?): Unit
+        + onStopTrackingTouch(seekBar: SeekBar?): Unit
     }
 }
 
@@ -267,32 +302,176 @@ package com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActiviti
     }
 }
 
-MainActivity --> AboutView: Crea
-AboutView --> MainActivity: Retorna a MainActivity
-MainActivity --> AjustesConexionView: Crea
-AjustesConexionView --> MainActivity: Retorna a MainActivity
-DatosTensiometroView --> AboutView: Opción Acerca De
-DatosTensiometroView --> AjustesConexionView: Opción Conexión
-DatosTensiometroView --> DatosTermometroView: Opción Datos Termómetro
-DatosTensiometroView --> ProfileView: Opción Perfil
-FederacionServidoresView --> MainActivity: Retorna a MainActivity
-GraficaBloodPressureView --> MainActivity: Retorna a MainActivity
-GraficaGlycemiaView --> MainActivity: Retorna a MainActivity
-GraficaMoodAndEnergyView --> MainActivity: Retorna a MainActivity
-GraficaNutritionView --> MainActivity: Retorna a MainActivity
-GraficaOsatView --> MainActivity: Retorna a MainActivity
-GraficaPhysicalActivityView --> MainActivity: Retorna a MainActivity
-GraficaSleepView --> MainActivity: Retorna a MainActivity
-GraficaSocialActivitiesView --> MainActivity: Retorna a MainActivity
-GraficaWeightView --> MainActivity: Retorna a MainActivity
-InicioView --> MainActivity: Retorna a MainActivity
-IntroducirBloodPressureView --> MainActivity: Retorna a MainActivity
-IntroducirGlycemiaView --> MainActivity: Retorna a MainActivity
-IntroducirMoodAndEnergyView --> MainActivity: Retorna a MainActivity
-IntroducirNutritionView --> MainActivity: Retorna a MainActivity
-IntroducirOsatView --> MainActivity: Retorna a MainActivity
-IntroducirPhysicalView --> MainActivity: Retorna a MainActivity
-IntroducirSleepView --> MainActivity: Retorna a MainActivity
-IntroducirSocialActivitiesView --> MainActivity: Retorna a MainActivity
+package com.example.proyectohospitalgambia.feature.vistaIntroducirWeight {
+    class IntroducirWeightView {
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+}
 
+package com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio {
+    class MenuDeporteSuenioView {
+        - btnDatosAerobic: ImageButton
+        - btnDatosNutricion: ImageButton
+        - btnDatosSuenio: ImageButton
+        - btnDatosSocialActivo: ImageButton
+        + onCreate(savedInstanceState: Bundle): Unit
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual {
+    class MenuIntroducirManualView {
+        - btnDatosSangre: ImageButton
+        - btnDatosPeso: ImageButton
+        - btnDatosGlicemia: ImageButton
+        - btnDatosAgua: ImageButton
+        - btnGraficaSangre: ImageButton
+        - btnGraficaPeso: ImageButton
+        - btnGraficaGlicemia: ImageButton
+        - btnGraficaAgua: ImageButton
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy {
+    class menuMoodAndEnergyView {
+        - btnDatosMoodAndEnergy: ImageButton
+        - btnGraficaMoodAndEnergy: ImageButton
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas {
+    class MenuOpcionesMedicasView {
+        - btnOpcionResultados: ImageButton
+        - btnOpcionAlimentacion: ImageButton
+        - btnOpcionEnergia: ImageButton
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaMenuPrincipal {
+    class MenuPrincipalView {
+        - btnOpcionMedica: ImageButton
+        - btnOpcionServidor: ImageButton
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor {
+    class NuevoRegistroServidorView {
+        - btnGuardar: Button
+        - btnListar: Button
+        - edtTextoDia: EditText
+        - edtTextoMes: EditText
+        - edtTextoAnio: EditText
+        - edtTextoHora: EditText
+        - edtTextoMinutos: EditText
+        - edtTextoResumen: EditText
+        - spinner1: Spinner
+        - spinner2: Spinner
+        - edtTextoDetalles: EditText
+        - spinner3: Spinner
+        - cbPaginaPrivada: CheckBox
+        - viewModel: NuevoRegistroServidorViewModel
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?)
+        + onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)
+        + onNothingSelected(parent: AdapterView<*>?)
+        - generarIdAleatorio(): String
+        - obtenerDatosFormulario(): JSONObject
+    }
+}
+
+package com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor {
+    class NuevoRegistroServidorViewModel {
+        - databaseHelper: DatabaseHelper
+        + insertarDatosEnBaseDeDatos(id: String, book: String, data: String): Boolean
+        + listarDatos()
+    }
+}
+
+
+package com.example.proyectohospitalgambia.feature.vistaRegistro {
+    class RegistroView {
+        - btnRegistrarUsuario: Button
+        - spinner: Spinner
+        - txtAltura: TextView
+        - edtNombreUsuario: EditText
+        - edtContraseniaUsuario: EditText
+        - edtContraseniaRepetirUsuario: EditText
+        - spinnerSexo: Spinner
+        - seekBar: SeekBar
+        + onCreate(savedInstanceState: Bundle?): void
+        + registrarUsuario(): Boolean
+        + onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long): Unit
+        + onNothingSelected(parent: AdapterView<*>?): Unit
+        + onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean): Unit
+        + onStartTrackingTouch(seekBar: SeekBar?): Unit
+        + onStopTrackingTouch(seekBar: SeekBar?): Unit
+    }
+}
+
+
+
+package com.example.proyectohospitalgambia.core.domain.model.tensiometro {
+    class DatosTensiometro {
+        - fechaHora: Date
+        - tensionAlta: Int
+        - tensionBaja: Byte
+        - pulso: Byte
+        + fechaHoraFormatted: String
+    }
+}
+
+package com.example.proyectohospitalgambia.core.domain.model.termometro {
+    class DatosTermometro {
+        - fechaHora: Date
+        - temperatura: Double
+        + fechaHoraFormatted: String
+    }
+}
+
+MainActivity <--> AboutView: Crea
+MainActivity <--> AjustesConexionView: Crea
+MainActivity <--> DatosTensiometroView: Opción Acerca De
+MainActivity <--> DatosTensiometroView: Opción Conexión
+MainActivity <--> DatosTermometroView: Opción Datos Termómetro
+MainActivity <--> ProfileView: Opción Perfil
+MainActivity <--> FederacionServidoresView: Retorna a MainActivity
+MainActivity <--> GraficaBloodPressureView: Retorna a MainActivity
+MainActivity <--> GraficaGlycemiaView: Retorna a MainActivity
+MainActivity <--> GraficaMoodAndEnergyView: Retorna a MainActivity
+MainActivity <--> GraficaNutritionView: Retorna a MainActivity
+MainActivity <--> GraficaOsatView: Retorna a MainActivity
+MainActivity <--> GraficaPhysicalActivityView: Retorna a MainActivity
+MainActivity <--> GraficaSleepView: Retorna a MainActivity
+MainActivity <--> GraficaSocialActivitiesView: Retorna a MainActivity
+MainActivity <--> GraficaWeightView: Retorna a MainActivity
+MainActivity <--> InicioView: Retorna a MainActivity
+MainActivity <--> IntroducirBloodPressureView: Retorna a MainActivity
+MainActivity <--> IntroducirGlycemiaView: Retorna a MainActivity
+MainActivity <--> IntroducirMoodAndEnergyView: Retorna a MainActivity
+MainActivity <--> IntroducirNutritionView: Retorna a MainActivity
+MainActivity <--> IntroducirOsatView: Retorna a MainActivity
+MainActivity <--> IntroducirPhysicalView: Retorna a MainActivity
+MainActivity <--> IntroducirSleepView: Retorna a MainActivity
+MainActivity <--> IntroducirSocialActivitiesView: Retorna a MainActivity
+MainActivity <--> IntroducirWeightView: Retorna a MainActivity
+MainActivity <--> MenuDeporteSuenioView: Retorna a MainActivity
+MainActivity <--> MenuIntroducirManualView: Retorna a MainActivity
+MainActivity <--> menuMoodAndEnergyView: Retorna a MainActivity
+MainActivity <--> MenuOpcionesMedicasView: Retorna a MainActivity
+MainActivity <--> MenuPrincipalView: Retorna a MainActivity
+MainActivity <--> NuevoRegistroServidorView: Retorna a MainActivity
+MainActivity <--> RegistroView: Retorna a MainActivity
+
+DatabaseHelper --> NuevoRegistroServidorViewModel: Acceso
+NuevoRegistroServidorViewModel --> NuevoRegistroServidorView: Gestiona
+NuevoRegistroServidorView --> NuevoRegistroServidorViewModel: Visualiza
+
+NuevoRegistroServidorView --> NuevoRegistroServidorView: Selección
+NuevoRegistroServidorView --> NuevoRegistroServidorViewModel: Recupera datos
+NuevoRegistroServidorViewModel --> NuevoRegistroServidorView: Devuelve datos
 @enduml

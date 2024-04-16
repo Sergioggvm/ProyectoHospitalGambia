@@ -44,7 +44,7 @@ class InicioView : AppCompatActivity() {
 
             if (usuarioEncontrado != null) {
                 Log.d("Inicio de Sesión", "Usuario encontrado. ID: $usuarioEncontrado")
-                MainActivity.idUsuario = usuarioEncontrado
+                MainActivity.usuario = usuarioEncontrado
                 Toast.makeText(this, "Usuario correcto", Toast.LENGTH_SHORT).show()
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, MainActivity::class.java)

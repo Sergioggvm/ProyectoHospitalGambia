@@ -17,10 +17,10 @@
             android:src="@drawable/imagen_nuevo_registro_servidor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.114" />
+            app:layout_constraintVertical_bias="0.056" />
 
         <TextView
             android:id="@+id/txt_fecha"
@@ -145,8 +145,8 @@
 
         <TextView
             android:id="@+id/txt_dominioYContexto"
-            android:layout_width="125dp"
-            android:layout_height="31dp"
+            android:layout_width="107dp"
+            android:layout_height="55dp"
             android:layout_marginTop="260dp"
             android:layout_marginBottom="43dp"
             android:gravity="center"
@@ -179,9 +179,9 @@
             app:layout_constraintBottom_toTopOf="@+id/edt_textoDetalles"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_dominioYContexto"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.166" />
 
         <EditText
             android:id="@+id/edt_textoDetalles"
@@ -196,65 +196,65 @@
             android:inputType="text"
             app:layout_constraintBottom_toTopOf="@+id/spinner3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.432"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.322" />
+            app:layout_constraintVertical_bias="0.333" />
 
         <TextView
             android:id="@+id/txt_relevancia"
             android:layout_width="125dp"
             android:layout_height="31dp"
-            android:layout_marginTop="433dp"
-            android:layout_marginBottom="38dp"
+            android:layout_marginTop="398dp"
+            android:layout_marginBottom="24dp"
             android:gravity="center"
             android:text="@string/txt_Relevancia"
             app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
-            app:layout_constraintEnd_toEndOf="@+id/cb_paginaPrivada"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/spinner3"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.384" />
 
         <Spinner
             android:id="@+id/spinner3"
             android:layout_width="137dp"
             android:layout_height="58dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="398dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/gris_oscuro_texto"
             app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <CheckBox
             android:id="@+id/cb_paginaPrivada"
             android:layout_width="144dp"
             android:layout_height="54dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="398dp"
             android:layout_marginBottom="4dp"
             android:text="@string/txt_PaginaPrivada"
             app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.94"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_textoDetalles"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toEndOf="@+id/spinner3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btn_guardar"
             android:layout_width="217dp"
             android:layout_height="60dp"
-            android:layout_marginTop="264dp"
+            android:layout_marginTop="464dp"
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/txt_Guardar"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.837" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <Button
             android:id="@+id/button2"
@@ -266,7 +266,7 @@
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.44" />
+            app:layout_constraintVertical_bias="0.383" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

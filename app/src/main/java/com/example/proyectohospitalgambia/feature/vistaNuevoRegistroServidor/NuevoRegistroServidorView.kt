@@ -18,8 +18,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaInicio.InicioView
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import java.util.UUID
 
 /**
@@ -124,23 +129,43 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
 
         btnGuardar.setOnClickListener {
+
+            val usuarioActivo = MainActivity.usuario
+
             // Obtener los datos del formulario
             val datosFormulario = obtenerDatosFormulario()
+            // Verificar si se obtuvieron los datos del formulario correctamente
+            if (datosFormulario != null) {
 
-            // Generar IDs aleatorios como strings
-            val idPols = generarIdAleatorio()
-            val idBook = MainActivity.idUsuario.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                // Mostrar un mensaje de éxito
+                Toast.makeText(context, "Datos insertados correctamente", Toast.LENGTH_SHORT).show()
 
-            // Llamar al método del ViewModel para insertar datos
-            var resultado = viewModel.insertarDatosEnBaseDeDatos(idPols, idBook, datosFormulario.toString())
+                // Generar IDs aleatorios como strings
+                val idPols = generarIdAleatorio()
+                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
-            if (resultado){
+                val pol = Pol(idPols, idBook, datosFormulario.toString())
 
-                Toast.makeText(requireContext(), "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
+                if (usuarioActivo != null) {
+                    usuarioActivo.pols.add(pol)
+                }
 
+                // Llamar al método del ViewModel para insertar datos
+                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+
+                if (resultado){
+
+                    Toast.makeText(requireContext(), "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
+
+                } else {
+                    Toast.makeText(requireContext(), "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                }
             } else {
-                Toast.makeText(requireContext(), "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                // Mostrar un mensaje de error
+                Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
+
+
         }
 
         btnListar.setOnClickListener {
@@ -155,7 +180,8 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
     }
 
     // Método para obtener los datos del formulario y crear el JSON
-    private fun obtenerDatosFormulario(): JSONObject {
+    private fun obtenerDatosFormulario(): JSONObject? {
+        // Obtener los valores de los EditText y Spinner
         val dia = edtTextoDia.text.toString()
         val mes = edtTextoMes.text.toString()
         val anio = edtTextoAnio.text.toString()
@@ -168,7 +194,23 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
         val relevanciaDetalles = spinner3.selectedItem.toString()
         val paginaPrivada = cbPaginaPrivada.isChecked
 
+        // Verificar si algún campo está vacío
+        if (dia.isEmpty() || mes.isEmpty() || anio.isEmpty() || hora.isEmpty() || minutos.isEmpty() ||
+            resumen.isEmpty() || dominioYContexto.isEmpty() || relevancia.isEmpty() || detalles.isEmpty() ||
+            relevanciaDetalles.isEmpty()
+        ) {
+            // Mostrar un Toast indicando que algún campo está vacío
+            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            return null // Devolver null para indicar que no se han completado todos los campos
+        }
+
+        // Obtener la fecha y hora actual
+        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+
+        // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
+        jsonObject.put("Tipo pol", "LibroVida")
+        jsonObject.put("FechaInsercion", currentDateAndTime)
         jsonObject.put("dia", dia)
         jsonObject.put("mes", mes)
         jsonObject.put("anio", anio)
@@ -181,8 +223,20 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
         jsonObject.put("relevanciaDetalles", relevanciaDetalles)
         jsonObject.put("paginaPrivada", paginaPrivada)
 
+        // Limpiar los elementos del formulario después de obtener los datos si son correctos
+        edtTextoDia.text.clear()
+        edtTextoMes.text.clear()
+        edtTextoAnio.text.clear()
+        edtTextoHora.text.clear()
+        edtTextoMinutos.text.clear()
+        edtTextoResumen.text.clear()
+        spinner1.setSelection(0)
+        spinner2.setSelection(0)
+        edtTextoDetalles.text.clear()
+        spinner3.setSelection(0)
+        cbPaginaPrivada.isChecked = false
+
         return jsonObject
     }
-
 
 }

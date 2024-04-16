@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 
 class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -12,7 +14,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     // Son como los valores estáticos en Java
     companion object {
         private const val DATABASE_NAME = "federation"
-        private const val DATABASE_VERSION = 4
+        private const val DATABASE_VERSION = 8
 
         // Nombres de las tablas
         const val TABLE_DUS = "dus"
@@ -85,23 +87,19 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_DUS")
-        onCreate(db)
         db.execSQL("DROP TABLE IF EXISTS $TABLE_INSTITUTIONS")
-        onCreate(db)
         db.execSQL("DROP TABLE IF EXISTS $TABLE_PEOPLE")
-        onCreate(db)
         db.execSQL("DROP TABLE IF EXISTS $TABLE_PERSONAL_DOCS")
-        onCreate(db)
         db.execSQL("DROP TABLE IF EXISTS $TABLE_POLS")
         onCreate(db)
 
     }
 
-    fun insertarPersona(id: String, data: String): Boolean {
+    fun insertarPersona(peopleUser: PeopleUser): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(KEY_PEOPLE_ID, id)
-            put(KEY_PEOPLE_DATA, data)
+            put(KEY_PEOPLE_ID, peopleUser.id)
+            put(KEY_PEOPLE_DATA, peopleUser.data)
         }
         val newRowId = db.insert(TABLE_PEOPLE, null, values)
         return newRowId != -1L
@@ -125,14 +123,13 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         }
     }
 
-    // En la clase DatabaseHelper
-    fun verificarCredenciales(nombreUsuario: String, contraseniaUsuario: String): String? {
+    fun verificarCredenciales(nombreUsuario: String, contraseniaUsuario: String): PeopleUser? {
         val db = readableDatabase
         val selection = "${DatabaseHelper.KEY_PEOPLE_DATA} LIKE ? AND ${DatabaseHelper.KEY_PEOPLE_DATA} LIKE ?"
         val selectionArgs = arrayOf("%\"name\":\"$nombreUsuario\"%", "%\"password\":\"$contraseniaUsuario\"%")
         val cursor = db.query(
             DatabaseHelper.TABLE_PEOPLE,
-            arrayOf(DatabaseHelper.KEY_PEOPLE_ID),
+            arrayOf(DatabaseHelper.KEY_PEOPLE_ID, DatabaseHelper.KEY_PEOPLE_DATA),
             selection,
             selectionArgs,
             null,
@@ -140,32 +137,35 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
             null
         )
 
-        var usuarioId: String? = null
+        var usuario: PeopleUser? = null
         cursor.use { // Utilizamos use para asegurar que el cursor se cierre correctamente al finalizar
             if (cursor.moveToFirst()) {
-                val columnIndex = cursor.getColumnIndex(DatabaseHelper.KEY_PEOPLE_ID)
-                if (columnIndex != -1) { // Verificamos que el índice de la columna sea válido
-                    usuarioId = cursor.getString(columnIndex)
+                val idIndex = cursor.getColumnIndex(DatabaseHelper.KEY_PEOPLE_ID)
+                val dataIndex = cursor.getColumnIndex(DatabaseHelper.KEY_PEOPLE_DATA)
+                if (idIndex != -1 && dataIndex != -1) { // Verificamos que los índices de las columnas sean válidos
+                    val id = cursor.getString(idIndex)
+                    val data = cursor.getString(dataIndex)
+                    usuario = PeopleUser(id, data)
                 } else {
-                    // La columna KEY_PEOPLE_ID no fue encontrada en el cursor
-                    // Puede ser un error en el nombre de la columna
-                    // o la columna no está presente en la tabla
-                    Log.e("VerificarCredenciales", "La columna KEY_PEOPLE_ID no fue encontrada en el cursor.")
+                    // Las columnas no fueron encontradas en el cursor
+                    // Puede ser un error en los nombres de las columnas
+                    // o las columnas no están presentes en la tabla
+                    Log.e("VerificarCredenciales", "Las columnas no fueron encontradas en el cursor.")
                 }
             }
         }
 
         db.close()
 
-        return usuarioId
+        return usuario
     }
 
-    fun insertFormData(id: String, book: String, data: String): Boolean {
+    fun insertFormData(pol: Pol): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(KEY_POLS_ID, id)
-            put(KEY_POLS_BOOK, book)
-            put(KEY_POLS_DATA, data)
+            put(KEY_POLS_ID, pol.id)
+            put(KEY_POLS_BOOK, pol.book)
+            put(KEY_POLS_DATA, pol.data)
         }
         val newRowId = db.insert(TABLE_POLS, null, values)
         db.close()
