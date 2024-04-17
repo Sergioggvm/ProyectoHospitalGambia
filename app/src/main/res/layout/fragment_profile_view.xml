@@ -127,6 +127,7 @@
             android:layout_height="48dp"
             android:background="@drawable/boton_negro_rectangular"
             android:text="@string/btn_Actualizar"
+            android:gravity="center"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaActual"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,6 +161,7 @@
             android:gravity="center"
             android:hint="@string/txt_ContraseniaNuevaRepetir"
             android:inputType="text"
+
             app:layout_constraintBottom_toTopOf="@+id/btn_actualizarContrasenias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.071"

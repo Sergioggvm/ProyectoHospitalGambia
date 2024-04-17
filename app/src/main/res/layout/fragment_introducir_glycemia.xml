@@ -43,6 +43,7 @@
             android:background="@drawable/edittext_fondo"
             android:hint="@string/txt_Glucosa"
             android:inputType="number"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"

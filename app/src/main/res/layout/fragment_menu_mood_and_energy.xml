@@ -14,12 +14,12 @@
             android:id="@+id/imgbtn_irADatosMoodAndEnergy"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
             android:backgroundTint="#00FFFFFF"
             android:contentDescription="@string/txt_Animo"
             android:scaleType="centerCrop"
             android:src="@drawable/icono_moodandenergy"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/viewFondoMoodAndEnergy"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,11 +27,11 @@
             android:id="@+id/viewFondoMoodAndEnergy"
             android:layout_width="280dp"
             android:layout_height="80dp"
-            android:layout_marginStart="8dp"
             android:background="@drawable/borde_redondeado"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosMoodAndEnergy"
-            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosMoodAndEnergy" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_bloodPressure"
