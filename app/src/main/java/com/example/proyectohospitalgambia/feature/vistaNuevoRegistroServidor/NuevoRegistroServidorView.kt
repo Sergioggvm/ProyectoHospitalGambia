@@ -1,6 +1,5 @@
 package com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,14 +12,12 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.LibroVida
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaInicio.InicioView
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -188,16 +185,16 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
         val hora = edtTextoHora.text.toString()
         val minutos = edtTextoMinutos.text.toString()
         val resumen = edtTextoResumen.text.toString()
-        val dominioYContexto = spinner1.selectedItem.toString()
-        val relevancia = spinner2.selectedItem.toString()
+        val dominio = spinner1.selectedItem.toString()
+        val contexto = spinner2.selectedItem.toString()
         val detalles = edtTextoDetalles.text.toString()
-        val relevanciaDetalles = spinner3.selectedItem.toString()
+        val relevancia = spinner3.selectedItem.toString()
         val paginaPrivada = cbPaginaPrivada.isChecked
 
         // Verificar si algún campo está vacío
         if (dia.isEmpty() || mes.isEmpty() || anio.isEmpty() || hora.isEmpty() || minutos.isEmpty() ||
-            resumen.isEmpty() || dominioYContexto.isEmpty() || relevancia.isEmpty() || detalles.isEmpty() ||
-            relevanciaDetalles.isEmpty()
+            resumen.isEmpty() || dominio.isEmpty() || contexto.isEmpty() || detalles.isEmpty() ||
+            relevancia.isEmpty()
         ) {
             // Mostrar un Toast indicando que algún campo está vacío
             Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
@@ -207,21 +204,35 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
         // Obtener la fecha y hora actual
         val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
+        val fecha = "$anio-$mes-$dia $hora:$minutos:00"
+        val formatoEntrada = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val fechaCompleta = formatoEntrada.parse(fecha)
+
+        val formatoSalida = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val fechaFormateada = formatoSalida.format(fechaCompleta)
+
+        val libroVida = LibroVida(
+            fechaRealizacion = currentDateAndTime,
+            fechaLibro = fechaFormateada,
+            resumen = resumen,
+            dominio = dominio,
+            contexto = contexto,
+            detalles = detalles,
+            relevancia = relevancia,
+            paginaPrivada = paginaPrivada
+        )
+
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("Tipo pol", "LibroVida")
-        jsonObject.put("FechaInsercion", currentDateAndTime)
-        jsonObject.put("dia", dia)
-        jsonObject.put("mes", mes)
-        jsonObject.put("anio", anio)
-        jsonObject.put("hora", hora)
-        jsonObject.put("minutos", minutos)
-        jsonObject.put("resumen", resumen)
-        jsonObject.put("dominioYContexto", dominioYContexto)
-        jsonObject.put("relevancia", relevancia)
-        jsonObject.put("detalles", detalles)
-        jsonObject.put("relevanciaDetalles", relevanciaDetalles)
-        jsonObject.put("paginaPrivada", paginaPrivada)
+        jsonObject.put("Tipo pol", libroVida.tipoPol)
+        jsonObject.put("FechaInsercion", libroVida.fechaRealizacion)
+        jsonObject.put("fecha", libroVida.fechaLibro)
+        jsonObject.put("resumen", libroVida.resumen)
+        jsonObject.put("dominio", libroVida.dominio)
+        jsonObject.put("relevancia", libroVida.relevancia)
+        jsonObject.put("detalles", libroVida.detalles)
+        jsonObject.put("relevancia", libroVida.relevancia)
+        jsonObject.put("paginaPrivada", libroVida.paginaPrivada)
 
         // Limpiar los elementos del formulario después de obtener los datos si son correctos
         edtTextoDia.text.clear()

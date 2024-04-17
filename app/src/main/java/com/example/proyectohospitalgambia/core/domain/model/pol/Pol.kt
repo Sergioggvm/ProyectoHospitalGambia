@@ -1,7 +1,7 @@
 package com.example.proyectohospitalgambia.core.domain.model.pol
 
 data class Pol(
-    val id: String,
+    val idPol: String,
     val book: String,
     val data: String
 )

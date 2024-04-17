@@ -14,7 +14,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     // Son como los valores estáticos en Java
     companion object {
         private const val DATABASE_NAME = "federation"
-        private const val DATABASE_VERSION = 8
+        private const val DATABASE_VERSION = 11
 
         // Nombres de las tablas
         const val TABLE_DUS = "dus"
@@ -163,7 +163,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     fun insertFormData(pol: Pol): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(KEY_POLS_ID, pol.id)
+            put(KEY_POLS_ID, pol.idPol)
             put(KEY_POLS_BOOK, pol.book)
             put(KEY_POLS_DATA, pol.data)
         }

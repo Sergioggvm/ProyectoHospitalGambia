@@ -21,6 +21,8 @@ import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.feature.vistaInicio.InicioView
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Locale
 import java.util.Random
 
 class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
@@ -132,7 +134,12 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, Se
         val mes = edtFechaMes.text.toString()
         val anio = edtFechaAnio.text.toString()
         // Formar la fecha de nacimiento en formato dd/mm/yyyy
-        val fechaNacimiento = "$dia/$mes/$anio"
+        val fechaNacimiento = "$anio-$mes-$dia"
+        val formatoEntrada = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val fechaCompleta = formatoEntrada.parse(fechaNacimiento)
+
+        val formatoSalida = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val fechaFormateada = formatoSalida.format(fechaCompleta)
 
         // Verificar si todos los campos están completos
         if (nombreUsuario.isEmpty() || contraseniaUsuario.isEmpty() || contraseniaRepetirUsuario.isEmpty() ||
@@ -154,7 +161,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, Se
         val jsonObject = JSONObject()
         val id = generarIdAleatorio()
         jsonObject.put("id", id)
-        jsonObject.put("dob", fechaNacimiento)  // Valor vacío para dob
+        jsonObject.put("dob", fechaFormateada)  // Valor vacío para dob
         jsonObject.put("name", nombreUsuario)
         val rolesArray = JSONArray()
         jsonObject.put("roles", rolesArray)
