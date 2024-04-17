@@ -18,18 +18,16 @@
             android:background="@drawable/boton_menu_opciones_medicas"
             android:contentDescription="0"
             android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_opcionServidor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.343" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_opcionServidor"
             android:layout_width="205dp"
             android:layout_height="207dp"
-            android:layout_marginTop="56dp"
             android:background="@drawable/boton_menu_opciones_servidor"
             android:contentDescription="0"
             android:text="0"

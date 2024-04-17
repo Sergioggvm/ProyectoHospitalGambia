@@ -17,31 +17,27 @@
             android:background="@color/white"
             android:contentDescription="0"
             android:src="@drawable/boton_opcion_resultados_puebas"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_opcionAlimentacion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.196" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_opcionAlimentacion"
             android:layout_width="351dp"
             android:layout_height="172dp"
-            android:layout_marginTop="19dp"
             android:background="@color/white"
             android:contentDescription="0"
             android:src="@drawable/boton_opcion_alimentacion"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_opcionEnergia"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_opcionResultados"
-            app:layout_constraintVertical_bias="0.05" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_opcionResultados" />
 
         <ImageButton
             android:id="@+id/btn_opcionEnergia"
             android:layout_width="351dp"
             android:layout_height="172dp"
-            android:layout_marginTop="28dp"
             android:background="@color/white"
             android:contentDescription="0"
             android:src="@drawable/boton_opcion_resultados_energia"

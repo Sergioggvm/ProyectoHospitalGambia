@@ -11,6 +11,19 @@
         android:layout_height="match_parent">
 
 
+        <TextView
+            android:id="@+id/txt_Instrucciones"
+            android:layout_width="318dp"
+            android:layout_height="138dp"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="@string/txt_InstruccionesConexionTensiometro"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_Sincronizar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaTermometro" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_Principal"
             android:layout_width="0dp"
@@ -41,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/txt_lecturaTermometro"
+            android:textStyle="bold"
             android:textColor="@color/azul_texto"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,28 +62,30 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_Principal" />
 
         <TextView
+            android:id="@+id/tv_Sincronizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/txt_sincronizar"
+            android:textStyle="bold"
+            android:textColor="@color/azul_texto"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
+
+        <TextView
             android:id="@+id/tv_Lectura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:text="@string/txt_Lectura"
+            android:textStyle="bold"
             android:textColor="@color/azul_texto"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaTermometro" />
-
-        <TextView
-            android:id="@+id/tv_Sincronizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/txt_sincronizar"
-            android:textColor="@color/azul_texto"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaTermometro" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
 
         <Button
             android:id="@+id/btn_SincronizarDatosTermometro"
@@ -88,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
             android:text="@string/txt_temperaturaObtenida"
+            android:textStyle="bold"
             android:textColor="@color/azul_texto"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,16 +123,14 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
 
 
-
         <TextView
             android:id="@+id/tv_TemperaturaResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="36dp"
             android:text="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.615"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_TemperaturaMedida"
             app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
 
         <Button
