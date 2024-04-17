@@ -12,6 +12,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var databaseHelper = null as DatabaseHelper?
-        var idUsuario = null as String?
+        var usuario = null as PeopleUser?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
