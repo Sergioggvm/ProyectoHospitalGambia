@@ -4,7 +4,7 @@ import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 
 data class PeopleUser (
     val id: String,
-    val data: String
+    var data: String
 ) {
     val pols: MutableList<Pol> = mutableListOf()
 }

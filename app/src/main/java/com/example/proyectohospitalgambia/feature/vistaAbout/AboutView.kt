@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
+import android.widget.SeekBar
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
@@ -14,6 +18,7 @@ import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesCo
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
+import org.json.JSONObject
 
 class AboutView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +34,7 @@ class AboutView : AppCompatActivity() {
         // Configurar la barra de herramientas como la barra de soporte de la actividad
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
     }
 
     private fun mostrarDialogoSalir() {
