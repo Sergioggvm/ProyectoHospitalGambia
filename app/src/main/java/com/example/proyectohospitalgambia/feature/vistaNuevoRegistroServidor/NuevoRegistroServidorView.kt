@@ -224,7 +224,7 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("Tipo pol", libroVida.tipoPol)
+        jsonObject.put("TipoPol", libroVida.tipoPol)
         jsonObject.put("FechaInsercion", libroVida.fechaRealizacion)
         jsonObject.put("fecha", libroVida.fechaLibro)
         jsonObject.put("resumen", libroVida.resumen)
