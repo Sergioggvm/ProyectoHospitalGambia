@@ -1,62 +1,125 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SeekBar
-import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.Estado
+import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener {
 
-
-    private val viewModel: IntroducirMoodAndEnergyViewModel by viewModels()
-
+    private lateinit var seekBarEstadoAnimo: SeekBar
+    private lateinit var seekBarEnergia: SeekBar
+    private lateinit var edtNotas: EditText
     private lateinit var imgMood: ImageView
     private lateinit var imgEnergy: ImageView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val view = inflater.inflate(R.layout.fragment_introducir_mood_and_energy, container, false)
 
-        val introducirMoodEnergy =  inflater.inflate(R.layout.fragment_introducir_mood_and_energy, container, false)
-
-        // Obtener referencias a la SeekBar y TextView
-        val seekBarMood: SeekBar = introducirMoodEnergy.findViewById(R.id.seekBar_Mood)
-        imgMood = introducirMoodEnergy.findViewById(R.id.imgv_mood)
+        seekBarEstadoAnimo = view.findViewById(R.id.seekBar_Mood)
+        seekBarEnergia = view.findViewById(R.id.seekBar_Energy)
+        imgMood = view.findViewById(R.id.imgv_mood)
         imgMood.setImageResource(R.drawable.icono_mood0)
 
+
+        edtNotas = view.findViewById(R.id.et_notesMoodAndEnergy)
+
         // Configurar el rango de la SeekBar
-        seekBarMood.min = 0
-        seekBarMood.max = 6
+        seekBarEstadoAnimo.min = 0
+        seekBarEstadoAnimo.max = 6
 
         // Configurar el listener de la SeekBar
-        seekBarMood.setOnSeekBarChangeListener(this)
+        seekBarEstadoAnimo.setOnSeekBarChangeListener(this)
 
         // Obtener referencias a la SeekBar y TextView
-        val seekBarEnergy: SeekBar = introducirMoodEnergy.findViewById(R.id.seekBar_Energy)
-        imgEnergy = introducirMoodEnergy.findViewById(R.id.imgv_Energy)
+
+        imgEnergy = view.findViewById(R.id.imgv_Energy)
         imgEnergy.setImageResource(R.drawable.icono_energy0)
 
         // Configurar el rango de la SeekBar
-        seekBarEnergy.min = 0
-        seekBarEnergy.max = 3
+        seekBarEnergia.min = 0
+        seekBarEnergia.max = 3
 
         // Configurar el listener de la SeekBar
-        seekBarEnergy.setOnSeekBarChangeListener(this)
+        seekBarEnergia.setOnSeekBarChangeListener(this)
 
-        return introducirMoodEnergy
+        return view
     }
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val btnDone: Button = view.findViewById(R.id.btn_guardarMoodAndEnergy)
+
+        btnDone.setOnClickListener {
+            val datosFormulario = obtenerDatosFormulario()
+            if (datosFormulario != null) {
+                Toast.makeText(context, "Datos guardados correctamente", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
+            }
+        }
+    }
+
+    private fun obtenerDatosFormulario(): JSONObject? {
+        // Obtener los valores de los SeekBars
+        val estadoAnimo = seekBarEstadoAnimo.progress
+        val energia = seekBarEnergia.progress
+        val notas = edtNotas.text.toString()
+
+        // Verificar si el campo de notas está vacío
+        if (notas.isEmpty()) {
+            // Mostrar un Toast indicando que el campo de notas está vacío
+            Toast.makeText(context, "Por favor, complete el campo de notas", Toast.LENGTH_SHORT).show()
+            return null // Devolver null para indicar que no se ha completado el campo de notas
+        }
+
+        // Obtener la fecha y hora actual
+        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+            Date()
+        )
+
+        val estado = Estado(
+            fechaRealizacion = currentDateAndTime,
+            estadoAnimo = estadoAnimo.toString(),
+            energia = energia.toString(),
+            notas = notas
+        )
+
+        // Crear el objeto JSON con los datos del formulario
+        val jsonObject = JSONObject()
+        jsonObject.put("Tipo", estado.tipoPol)
+        jsonObject.put("FechaRealizacion", estado.fechaRealizacion)
+        jsonObject.put("EstadoAnimo", estado.estadoAnimo)
+        jsonObject.put("Energia", estado.energia)
+        jsonObject.put("Notas", estado.notas)
+
+        // Limpiar los elementos del formulario después de obtener los datos si son correctos
+        seekBarEstadoAnimo.progress = 0
+        seekBarEnergia.progress = 0
+        edtNotas.text.clear()
+
+        return jsonObject
+    }
+
+
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         // Verificar si la SeekBar no es nula y el cambio proviene del usuario
@@ -91,5 +154,4 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
     override fun onStopTrackingTouch(seekBar: SeekBar?) {
     }
-
 }
