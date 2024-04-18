@@ -192,4 +192,23 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         }
     }
 
+    fun usuarioExiste(nombreUsuario: String): Boolean {
+        val db = readableDatabase
+        val cursor = db.query(
+            TABLE_PEOPLE,
+            arrayOf(KEY_PEOPLE_ID),
+            "$KEY_PEOPLE_DATA LIKE ?",
+            arrayOf("%\"name\":\"$nombreUsuario\"%"),
+            null,
+            null,
+            null
+        )
+
+        val existe = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+
+        return existe
+    }
+
 }

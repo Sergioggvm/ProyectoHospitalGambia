@@ -1,9 +1,7 @@
 package com.example.proyectohospitalgambia.feature.vistaRegistro
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Contacts
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -15,7 +13,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
-import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.feature.vistaInicio.InicioView
@@ -25,7 +22,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.Random
 
-class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
+class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
+    SeekBar.OnSeekBarChangeListener {
 
     private lateinit var btnRegistrarUsuario: Button
 
@@ -123,6 +121,9 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, Se
     }
 
     private fun registrarUsuario(): Boolean {
+        //Objeto DatabaseHelper para comprobar si el usuario ya existe
+        val dbHelper = DatabaseHelper(this)
+
         // Obtener los valores de los elementos de la interfaz de usuario
         val nombreUsuario = edtNombreUsuario.text.toString()
         val contraseniaUsuario = edtContraseniaUsuario.text.toString()
@@ -133,6 +134,15 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, Se
         val dia = edtFechadia.text.toString()
         val mes = edtFechaMes.text.toString()
         val anio = edtFechaAnio.text.toString()
+
+        // Verificar si los campos de la fecha están vacíos
+        if (dia.isEmpty() || mes.isEmpty() || anio.isEmpty()) {
+            // Mostrar un Toast indicando que la fecha de nacimiento debe estar completa
+            Toast.makeText(this, "Por favor complete la fecha de nacimiento", Toast.LENGTH_SHORT)
+                .show()
+            return false
+        }
+
         // Formar la fecha de nacimiento en formato dd/mm/yyyy
         val fechaNacimiento = "$anio-$mes-$dia"
         val formatoEntrada = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -143,19 +153,32 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, Se
 
         // Verificar si todos los campos están completos
         if (nombreUsuario.isEmpty() || contraseniaUsuario.isEmpty() || contraseniaRepetirUsuario.isEmpty() ||
-            altura == 0 || sexo.isEmpty() || dia.isEmpty() || mes.isEmpty() || anio.isEmpty()) {
+            altura == 0 || sexo.isEmpty()
+        ) {
             // Mostrar un Toast indicando que todos los campos deben estar completos
             Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
             return false
         } else if (!esFechaValida(dia, mes, anio)) {
             // Mostrar un Toast indicando que la fecha de nacimiento es inválida
-            Toast.makeText(this, "Por favor ingrese una fecha de nacimiento válida", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "Por favor ingrese una fecha de nacimiento válida",
+                Toast.LENGTH_SHORT
+            ).show()
             return false
         } else if (contraseniaUsuario != contraseniaRepetirUsuario) {
             // Mostrar un Toast indicando que las contraseñas no coinciden
             Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
             return false
         }
+
+        // Comprobar si el usuario ya existe en la base de datos
+        if (dbHelper.usuarioExiste(nombreUsuario)) {
+            // Mostrar un Toast indicando que el usuario ya existe y salir del metodo
+            Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
 
         // Crear un objeto JSON con la información recogida
         val jsonObject = JSONObject()
@@ -172,9 +195,6 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener, Se
 
         // Convertir el objeto JSON a una cadena
         val jsonString = jsonObject.toString()
-
-        // Insertar los datos en la base de datos SQLite
-        val dbHelper = DatabaseHelper(this)
 
         val persona = PeopleUser(id, jsonString)
 
