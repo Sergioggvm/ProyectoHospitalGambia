@@ -11,11 +11,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.ActividadFisica
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.UUID
 
 class IntroducirPhysicalView : Fragment() {
 
@@ -26,12 +29,6 @@ class IntroducirPhysicalView : Fragment() {
 
     private val viewModel: IntroducirPhysicalViewModel by viewModels()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,12 +51,49 @@ class IntroducirPhysicalView : Fragment() {
         val btnDone: Button = view.findViewById(R.id.btn_guardarPhysicalActivity)
 
         btnDone.setOnClickListener {
+
+            val usuarioActivo = MainActivity.usuario
+
+            // Obtener los datos del formulario
             val datosFormulario = obtenerDatosFormulario()
+            // Verificar si se obtuvieron los datos del formulario correctamente
             if (datosFormulario != null) {
-                Toast.makeText(context, "Datos guardados correctamente", Toast.LENGTH_SHORT).show()
-                findNavController().navigateUp()
+
+                // Mostrar un mensaje de éxito
+                Toast.makeText(context, "Datos insertados correctamente", Toast.LENGTH_SHORT).show()
+
+                // Generar IDs aleatorios como strings
+                val idPols = generarIdAleatorio()
+                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+
+                val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
+
+                if (usuarioActivo != null) {
+                    usuarioActivo.pols.add(pol)
+                }
+
+                // Llamar al método del ViewModel para insertar datos
+                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+
+                if (resultado){
+
+                    Toast.makeText(requireContext(), "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
+
+                    // Navegar hacia atrás
+                    requireActivity().supportFragmentManager.popBackStack()
+
+                } else {
+                    Toast.makeText(requireContext(), "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                // Mostrar un mensaje de error
+                Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun generarIdAleatorio(): String {
+        return UUID.randomUUID().toString()
     }
 
     private fun obtenerDatosFormulario(): JSONObject? {

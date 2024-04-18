@@ -68,7 +68,7 @@ class IntroducirOsatView : Fragment() {
                 val idPols = generarIdAleatorio()
                 val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
-                val pol = Pol(idPols, idBook, datosFormulario.toString())
+                val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
                 if (usuarioActivo != null) {
                     usuarioActivo.pols.add(pol)
