@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
@@ -24,6 +25,9 @@ import org.json.JSONObject
 class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     private lateinit var txtAltura: TextView
+
+    // Insertar los datos en la base de datos SQLite
+    private val dbHelper = DatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +59,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         val skAltura = findViewById<SeekBar>(R.id.sk_altura)
 
         val btnActualizarContrasenias = findViewById<Button>(R.id.btn_actualizarContrasenias)
+        val edtContraseniaVieja = findViewById<EditText>(R.id.edt_contraseniaActual)
         val edtContraseniaNueva = findViewById<EditText>(R.id.edt_contraseniaNueva)
         val edtContraseniaNuevaRepetir = findViewById<EditText>(R.id.edt_contraseniaNuevaRepetir)
 
@@ -66,11 +71,24 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             // Obtener la nueva altura
             val nuevaAltura = skAltura.progress
 
-            // Convertir el JSON almacenado en el campo 'data' a un objeto JSONObject
-            val jsonData = JSONObject(usuarioActivo?.data)
+            // Verificar si el usuario activo es nulo
+            val usuarioActivo = MainActivity.usuario
+            if (usuarioActivo == null) {
+                Toast.makeText(this, "Error: Usuario activo nulo", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
+            // Convertir el JSON almacenado en el campo 'data' a un objeto JSONObject
+            val jsonData = JSONObject(usuarioActivo.data)
+
+            // Actualizar la altura en el JSON
             jsonData.put("size", nuevaAltura)
 
+            // Actualizar el JSON en el objeto usuarioActivo
+            usuarioActivo.data = jsonData.toString()
+
+            // Llamar a la función para actualizar el usuario en la base de datos
+            dbHelper.actualizarDatosPersona(usuarioActivo)
 
             // Mostrar un mensaje de éxito
             Toast.makeText(this, "Altura actualizada correctamente", Toast.LENGTH_SHORT).show()
@@ -78,7 +96,8 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         // Configurar el OnClickListener para el botón de actualizar contraseñas
         btnActualizarContrasenias.setOnClickListener {
-            // Obtener la nueva contraseña
+            // Obtener las contraseñas ingresadas
+            val contraseniaVieja = edtContraseniaVieja.text.toString()
             val nuevaContrasenia = edtContraseniaNueva.text.toString()
             val nuevaContraseniaRepetir = edtContraseniaNuevaRepetir.text.toString()
 
@@ -89,17 +108,36 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 return@setOnClickListener
             }
 
-            // Convertir el JSON almacenado en el campo 'data' a un objeto JSONObject
-            val jsonData = JSONObject(usuarioActivo?.data)
-            Log.d("UserData", usuarioActivo?.data.toString())
+            // Obtener el JSON almacenado en el campo 'data' del usuario activo
+            val usuarioActivo = MainActivity.usuario
+            val jsonData = usuarioActivo?.data?.let { JSONObject(it) }
 
-            // Verificar si el campo 'password' debe ser actualizado
-            if (nuevaContrasenia.isNotEmpty()) {
-                jsonData.put("password", nuevaContrasenia)
-                Log.d("UserData", "prueba")
+            // Verificar si el JSON es nulo
+            if (jsonData == null) {
+                // Mostrar un mensaje de error si los datos del usuario son nulos
+                Toast.makeText(this, "Error: Datos del usuario nulos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
+            // Verificar si la contraseña vieja coincide
+            val passwordGuardada = jsonData.optString("password", "")
+            if (passwordGuardada != contraseniaVieja) {
+                // Mostrar un mensaje de error si la contraseña vieja no coincide
+                Toast.makeText(this, "La contraseña vieja no es correcta", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Actualizar la contraseña en el JSON
+            jsonData.put("password", nuevaContrasenia)
+
+            // Actualizar el JSON en el objeto usuarioActivo
+            usuarioActivo?.data = jsonData.toString()
+
+            // Llamar a la función para actualizar el usuario en la base de datos
+            dbHelper.actualizarDatosPersona(usuarioActivo)
+
             // Limpiar los campos de contraseña
+            edtContraseniaVieja.text.clear()
             edtContraseniaNueva.text.clear()
             edtContraseniaNuevaRepetir.text.clear()
 

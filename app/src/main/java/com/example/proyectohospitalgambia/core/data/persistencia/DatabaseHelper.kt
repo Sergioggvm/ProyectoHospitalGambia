@@ -14,7 +14,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     // Son como los valores estáticos en Java
     companion object {
         private const val DATABASE_NAME = "federation"
-        private const val DATABASE_VERSION = 13
+        private const val DATABASE_VERSION = 15
 
         // Nombres de las tablas
         const val TABLE_DUS = "dus"
@@ -46,6 +46,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         const val KEY_POLS_ID = "id"
         const val KEY_POLS_BOOK = "book"
         const val KEY_POLS_DATA = "data"
+        const val KEY_POLS_SUBIDO = "subido"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -79,6 +80,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                 + KEY_POLS_ID + " TEXT PRIMARY KEY NOT NULL,"
                 + KEY_POLS_BOOK + " TEXT,"
                 + KEY_POLS_DATA + " TEXT,"
+                + KEY_POLS_SUBIDO + " TEXT,"
                 + "FOREIGN KEY (" + KEY_POLS_BOOK + ") REFERENCES " + TABLE_PEOPLE + "(" + KEY_PEOPLE_ID + ")" + ")")
         db.execSQL(createPolsTable)
 
@@ -166,6 +168,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
             put(KEY_POLS_ID, pol.idPol)
             put(KEY_POLS_BOOK, pol.book)
             put(KEY_POLS_DATA, pol.data)
+            put(KEY_POLS_SUBIDO, pol.isSubido)
         }
         val newRowId = db.insert(TABLE_POLS, null, values)
         db.close()
@@ -181,15 +184,30 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                 val idIndex = cursor.getColumnIndex(KEY_POLS_ID)
                 val bookIndex = cursor.getColumnIndex(KEY_POLS_BOOK)
                 val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+                val subidoIndex = cursor.getColumnIndex(KEY_POLS_SUBIDO)
 
                 do {
                     val id = cursor.getString(idIndex)
                     val book = cursor.getString(bookIndex)
                     val data = cursor.getString(dataIndex)
-                    Log.d("DatabaseHelper", "ID: $id, Book: $book, Data: $data")
+                    val subido = cursor.getString(subidoIndex)
+                    Log.d("DatabaseHelper", "ID: $id, Book: $book, Data: $data, Subido: $subido")
                 } while (cursor.moveToNext())
             }
         }
+    }
+
+
+    fun actualizarDatosPersona(peopleUser: PeopleUser): Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(KEY_PEOPLE_DATA, peopleUser.data)
+        }
+        val whereClause = "$KEY_PEOPLE_ID = ?"
+        val whereArgs = arrayOf(peopleUser.id)
+        val rowsAffected = db.update(TABLE_PEOPLE, values, whereClause, whereArgs)
+        db.close()
+        return rowsAffected > 0
     }
 
     fun usuarioExiste(nombreUsuario: String): Boolean {
