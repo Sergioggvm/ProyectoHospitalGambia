@@ -35,8 +35,10 @@ class GraficaOsatView : Fragment() {
 
         val chartOsat = view.findViewById<LineChart>(R.id.graficoLineas_SaturacionOxigeno)
 
+        val idUsuarioActual = MainActivity.usuario?.id
+
         // Obtener los datos de osat de la base de datos
-        val datosOsat = MainActivity.databaseHelper?.obtenerTodosLosDatosOsat()
+        val datosOsat = MainActivity.databaseHelper?.obtenerTodosLosDatosOsat(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de osat
         val entriesOsat = datosOsat?.mapIndexed { index, osat ->

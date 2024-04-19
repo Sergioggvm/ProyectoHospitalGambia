@@ -242,10 +242,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     // --------------------- OBTENER LOS DATOS PARA LAS GRAFICAS ---------------------
 
-    fun obtenerTodosLosSuenos(): List<Sueno> {
+    fun obtenerTodosLosSuenos(idUsuario: String): List<Sueno> {
         val listaSuenos = mutableListOf<Sueno>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Sueno%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Sueno%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -268,10 +268,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaSuenos
     }
 
-    fun obtenerTodosLosDatosPresionSanguinea(): List<PresionSanguinea> {
+    fun obtenerTodosLosDatosPresionSanguinea(idUsuario: String): List<PresionSanguinea> {
         val listaPresionSanguinea = mutableListOf<PresionSanguinea>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%PresionSanguinea%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%PresionSanguinea%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -296,10 +296,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaPresionSanguinea
     }
 
-    fun obtenerTodosLosDatosPeso(): List<Peso> {
+    fun obtenerTodosLosDatosPeso(idUsuario: String): List<Peso> {
         val listaPeso = mutableListOf<Peso>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Peso%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Peso%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -322,10 +322,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaPeso
     }
 
-    fun obtenerTodosLosDatosGlucemia(): List<GlucosaSangre> {
+    fun obtenerTodosLosDatosGlucemia(idUsuario: String): List<GlucosaSangre> {
         val listaGlucemia = mutableListOf<GlucosaSangre>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%GlucosaSangre%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%GlucosaSangre%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -348,10 +348,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaGlucemia
     }
 
-    fun obtenerTodosLosDatosOsat(): List<Osat> {
+    fun obtenerTodosLosDatosOsat(idUsuario: String): List<Osat> {
         val listaOsat = mutableListOf<Osat>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Osat%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Osat%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -402,10 +402,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaActividadFisica
     }
 
-    fun obtenerTodosLosDatosActividadesSociales(): List<ActividadesSociales> {
+    fun obtenerTodosLosDatosActividadesSociales(idUsuario: String): List<ActividadesSociales> {
         val listaActividadesSociales = mutableListOf<ActividadesSociales>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ActividadSociales%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ActividadSociales%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -429,10 +429,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaActividadesSociales
     }
 
-    fun obtenerTodosLosDatosEstado(): List<Estado> {
+    fun obtenerTodosLosDatosEstado(idUsuario: String): List<Estado> {
         val listaEstado = mutableListOf<Estado>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Estado%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Estado%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {
@@ -457,10 +457,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaEstado
     }
 
-    fun obtenerTodosLosDatosValorEnergetico(): List<ValorEnergetico> {
+    fun obtenerTodosLosDatosValorEnergetico(idUsuario: String): List<ValorEnergetico> {
         val listaValorEnergetico = mutableListOf<ValorEnergetico>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ValorEnergetico%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ValorEnergetico%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {

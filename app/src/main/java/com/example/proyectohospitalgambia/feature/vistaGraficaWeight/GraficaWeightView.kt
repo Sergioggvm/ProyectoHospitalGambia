@@ -12,6 +12,10 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.github.mikephil.charting.formatter.ValueFormatter
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class GraficaWeightView : Fragment() {
@@ -29,33 +33,47 @@ class GraficaWeightView : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_weight_view, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val chartWeight = view.findViewById<LineChart>(R.id.graficoLineas_Peso)
+        val chartPeso = view.findViewById<LineChart>(R.id.graficoLineas_Peso)
 
-        // Obtener los datos de peso de la base de datos
-        val datosPeso = MainActivity.databaseHelper?.obtenerTodosLosDatosPeso()
+        val idUsuarioActual = MainActivity.usuario?.id
 
-        // Crear las entradas de la gráfica a partir de los datos de peso
-        val entriesPeso = datosPeso?.mapIndexed { index, peso ->
-            Entry(index.toFloat(), peso.kg.toFloat())
+
+        val datosPeso = MainActivity.databaseHelper?.obtenerTodosLosDatosPeso(idUsuarioActual!!)
+
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+
+        val entriesPeso = datosPeso?.map { dato ->
+            val date = format.parse(dato.fechaRealizacion)
+            val timestamp = date?.time?.toFloat() ?: 0f
+            Entry(timestamp, dato.kg.toFloat())
         }
 
-        // Crear el conjunto de datos y personalizarlo
         val dataSetPeso = LineDataSet(entriesPeso, "Peso")
         dataSetPeso.color = Color.BLUE
         dataSetPeso.valueTextColor = Color.BLACK
         dataSetPeso.valueTextSize = 16f
 
-        // Crear el gráfico de líneas y personalizarlo
-        val dataWeight = LineData(dataSetPeso)
-        chartWeight.data = dataWeight
-        chartWeight.setTouchEnabled(true)
-        chartWeight.setPinchZoom(true)
-        chartWeight.description.text = "Peso"
-        chartWeight.setNoDataText("No hay datos disponibles")
-        chartWeight.invalidate()
+        val dataPeso = LineData(dataSetPeso)
+        chartPeso.data = dataPeso
+        chartPeso.setTouchEnabled(true)
+        chartPeso.setPinchZoom(true)
+        chartPeso.description.text = "Peso"
+        chartPeso.setNoDataText("No hay datos disponibles")
+
+        // Aquí es donde configuramos el formateador personalizado
+        chartPeso.xAxis.valueFormatter = object : ValueFormatter() {
+            private val dateFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
+
+            override fun getFormattedValue(value: Float): String {
+                return dateFormat.format(Date(value.toLong()))
+            }
+        }
+
+        chartPeso.invalidate()
     }
 
 }

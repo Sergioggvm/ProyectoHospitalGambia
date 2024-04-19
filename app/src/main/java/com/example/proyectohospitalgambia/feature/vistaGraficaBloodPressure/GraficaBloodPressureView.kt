@@ -30,8 +30,10 @@ class GraficaBloodPressureView : Fragment() {
         val chartBloodPressure = view.findViewById<LineChart>(R.id.graficoLineas_PresionSanguinea)
         val chartHeartRate = view.findViewById<LineChart>(R.id.graficoLineas_RitmoCardiaco)
 
+        val idUsuarioActual = MainActivity.usuario?.id
+
         // Obtener los datos de presión sanguínea de la base de datos
-        val datosPresionSanguinea = MainActivity.databaseHelper?.obtenerTodosLosDatosPresionSanguinea()
+        val datosPresionSanguinea = MainActivity.databaseHelper?.obtenerTodosLosDatosPresionSanguinea(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de presión sanguínea
         val entriesSistolico = datosPresionSanguinea?.mapIndexed { index, presionSanguinea ->

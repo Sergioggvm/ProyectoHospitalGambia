@@ -34,8 +34,10 @@ class GraficaSocialActivitiesView : Fragment() {
 
         val chartSocialActivities = view.findViewById<LineChart>(R.id.graficoLineas_ActividadesSociales)
 
+        val idUsuarioActual = MainActivity.usuario?.id
+
         // Obtener los datos de las actividades sociales de la base de datos
-        val datosActividadesSociales = MainActivity.databaseHelper?.obtenerTodosLosDatosActividadesSociales()
+        val datosActividadesSociales = MainActivity.databaseHelper?.obtenerTodosLosDatosActividadesSociales(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de las actividades sociales
         val entriesSocialActivities = datosActividadesSociales?.mapIndexed { index, actividadesSociales ->

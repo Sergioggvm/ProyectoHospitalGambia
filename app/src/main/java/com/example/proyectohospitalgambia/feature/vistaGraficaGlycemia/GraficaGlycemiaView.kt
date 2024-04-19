@@ -34,8 +34,11 @@ class GraficaGlycemiaView : Fragment() {
 
         val chartGlucemia = view.findViewById<LineChart>(R.id.graficoLineas_Glucosa)
 
+        val idUsuarioActual = MainActivity.usuario?.id
+
+
         // Obtener los datos de glucemia de la base de datos
-        val datosGlucemia = MainActivity.databaseHelper?.obtenerTodosLosDatosGlucemia()
+        val datosGlucemia = MainActivity.databaseHelper?.obtenerTodosLosDatosGlucemia(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de glucemia
         val entriesGlucemia = datosGlucemia?.mapIndexed { index, glucemia ->

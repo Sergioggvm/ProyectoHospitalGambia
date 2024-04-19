@@ -36,8 +36,11 @@ class GraficaMoodAndEnergyView : Fragment() {
         val chartMood = view.findViewById<LineChart>(R.id.graficoLineas_EstadoAnimo)
         val chartEnergy = view.findViewById<LineChart>(R.id.graficoLineas_Energia)
 
+        val idUsuarioActual = MainActivity.usuario?.id
+
         // Obtener los datos de "Mood" y "Energy" de la base de datos
-        val datosEstado = MainActivity.databaseHelper?.obtenerTodosLosDatosEstado()
+
+        val datosEstado = MainActivity.databaseHelper?.obtenerTodosLosDatosEstado(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de "Mood"
         val entriesMood = datosEstado?.mapIndexed { index, estado ->

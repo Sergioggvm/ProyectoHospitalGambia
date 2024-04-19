@@ -34,8 +34,11 @@ class GraficaSleepView : Fragment() {
 
         val chartSleep = view.findViewById<LineChart>(R.id.graficoLineas_Suenno)
 
+        val idUsuarioActual = MainActivity.usuario?.id
+
         // Obtener los datos de sueño de la base de datos
-        val datosSueno = MainActivity.databaseHelper?.obtenerTodosLosSuenos()
+
+        val datosSueno = MainActivity.databaseHelper?.obtenerTodosLosSuenos(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de sueño
         val entriesSleep = datosSueno?.mapIndexed { index, sueno ->

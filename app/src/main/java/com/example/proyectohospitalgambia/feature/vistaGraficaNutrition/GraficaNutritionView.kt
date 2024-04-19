@@ -27,7 +27,8 @@ class GraficaNutritionView : Fragment() {
 
         val chartNutrition = view.findViewById<BarChart>(R.id.graficoBarras_Nutrition)
 
-        val datosValorEnergetico = MainActivity.databaseHelper?.obtenerTodosLosDatosValorEnergetico()
+        val idUsuarioActual = MainActivity.usuario?.id
+        val datosValorEnergetico = MainActivity.databaseHelper?.obtenerTodosLosDatosValorEnergetico(idUsuarioActual!!)
 
         val entriesManana = datosValorEnergetico?.mapIndexed { index, dato ->
             BarEntry(index.toFloat(), dato.kcalManana.toFloat())
