@@ -5,8 +5,18 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.ActividadFisica
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.ActividadesSociales
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.Estado
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.GlucosaSangre
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.Peso
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.PresionSanguinea
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.Sueno
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.ValorEnergetico
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
+import org.json.JSONObject
 
 class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -229,4 +239,251 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return existe
     }
 
+
+    // --------------------- OBTENER LOS DATOS PARA LAS GRAFICAS ---------------------
+
+    fun obtenerTodosLosSuenos(): List<Sueno> {
+        val listaSuenos = mutableListOf<Sueno>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Sueno%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    val sueno = Sueno(
+                        fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                        horasSueno = jsonObject.getInt("HorasSueno"),
+                        calidadSueno = jsonObject.getString("CalidadSueno"),
+                        notas = jsonObject.getString("Notas")
+                    )
+                    listaSuenos.add(sueno)
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaSuenos
+    }
+
+    fun obtenerTodosLosDatosPresionSanguinea(): List<PresionSanguinea> {
+        val listaPresionSanguinea = mutableListOf<PresionSanguinea>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%PresionSanguinea%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("Sistolico") && jsonObject.has("Diastolico") && jsonObject.has("FrecuenciaCardiaca")) {
+                        val presionSanguinea = PresionSanguinea(
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"), // Ignoramos la fecha TODO SI SE PILLA LA FECHA PETA LA APLICACIÓN!!!!!!!!!!!!!!!!!
+                            sistolico = jsonObject.getInt("Sistolico"),
+                            diastolico = jsonObject.getInt("Diastolico"),
+                            frecuenciaCardiaca = jsonObject.getInt("FrecuenciaCardiaca")
+                        )
+                        listaPresionSanguinea.add(presionSanguinea)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaPresionSanguinea
+    }
+
+    fun obtenerTodosLosDatosPeso(): List<Peso> {
+        val listaPeso = mutableListOf<Peso>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Peso%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("kg")) {
+                        val peso = Peso(
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"), // Ignoramos la fecha
+                            kg = jsonObject.getInt("kg")
+                        )
+                        listaPeso.add(peso)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaPeso
+    }
+
+    fun obtenerTodosLosDatosGlucemia(): List<GlucosaSangre> {
+        val listaGlucemia = mutableListOf<GlucosaSangre>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%GlucosaSangre%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("Glucosa")) {
+                        val glucemia = GlucosaSangre(
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"),
+                            glucosa = jsonObject.getInt("Glucosa")
+                        )
+                        listaGlucemia.add(glucemia)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaGlucemia
+    }
+
+    fun obtenerTodosLosDatosOsat(): List<Osat> {
+        val listaOsat = mutableListOf<Osat>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Osat%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("Osat")) {
+                        val osat = Osat(
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"),
+                            presionSanguinea = jsonObject.getInt("Osat")
+                        )
+                        listaOsat.add(osat)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaOsat
+    }
+
+    fun obtenerTodosLosDatosActividadFisica(): List<ActividadFisica> {
+        val listaActividadFisica = mutableListOf<ActividadFisica>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ActividadFisica%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("Aerobico") && jsonObject.has("Anaerobico") && jsonObject.has("Pasos")) {
+                        val actividadFisica = ActividadFisica(
+                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            aerobico = jsonObject.getInt("Aerobico"),
+                            anaerobico = jsonObject.getInt("Anaerobico"),
+                            pasos = jsonObject.getInt("Pasos")
+                        )
+                        listaActividadFisica.add(actividadFisica)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaActividadFisica
+    }
+
+    fun obtenerTodosLosDatosActividadesSociales(): List<ActividadesSociales> {
+        val listaActividadesSociales = mutableListOf<ActividadesSociales>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ActividadSociales%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("MinutosActividadesSociales")) {
+                        val actividadesSociales = ActividadesSociales(
+                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            minutosActividad = jsonObject.getInt("MinutosActividadesSociales"),
+                            notas = jsonObject.getString("Notas")
+                        )
+                        listaActividadesSociales.add(actividadesSociales)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaActividadesSociales
+    }
+
+    fun obtenerTodosLosDatosEstado(): List<Estado> {
+        val listaEstado = mutableListOf<Estado>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%Estado%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("EstadoAnimo") && jsonObject.has("Energia")) {
+                        val estado = Estado(
+                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            estadoAnimo = jsonObject.getString("EstadoAnimo"),
+                            energia = jsonObject.getString("Energia"),
+                            notas = jsonObject.getString("Notas")
+                        )
+                        listaEstado.add(estado)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaEstado
+    }
+
+    fun obtenerTodosLosDatosValorEnergetico(): List<ValorEnergetico> {
+        val listaValorEnergetico = mutableListOf<ValorEnergetico>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ValorEnergetico%'", null)
+
+        cursor.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+
+                do {
+                    val data = cursor.getString(dataIndex)
+                    val jsonObject = JSONObject(data)
+                    if(jsonObject.has("KcalManana") && jsonObject.has("KcalTarde") && jsonObject.has("KcalNoche") && jsonObject.has("KcalTotal")) {
+                        val valorEnergetico = ValorEnergetico(
+                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            kcalManana = jsonObject.getInt("KcalManana"),
+                            kcalTarde = jsonObject.getInt("KcalTarde"),
+                            kcalNoche = jsonObject.getInt("KcalNoche"),
+                            kcalTotal = jsonObject.getInt("KcalTotal"),
+                            notas = jsonObject.getString("Notas")
+                        )
+                        listaValorEnergetico.add(valorEnergetico)
+                    }
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return listaValorEnergetico
+    }
 }

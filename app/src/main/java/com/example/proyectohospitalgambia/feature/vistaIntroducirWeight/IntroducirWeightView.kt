@@ -2,6 +2,7 @@ package com.example.proyectohospitalgambia.feature.vistaIntroducirWeight
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -129,9 +130,12 @@ class IntroducirWeightView : Fragment() {
         val jsonObject = JSONObject()
         jsonObject.put("TipoPol", peso.tipoPol)
         jsonObject.put("FechaInsercion", peso.fechaRealizacion)
-        jsonObject.put("Osat", peso.kg)
+        jsonObject.put("kg", peso.kg)
 
-        // Limpiar los elementos del formulario después de obtener los datos si son correctos
+        Log.d("JSON Data", jsonObject.toString())
+
+
+                // Limpiar los elementos del formulario después de obtener los datos si son correctos
         edtPeso.text.clear()
 
         return jsonObject

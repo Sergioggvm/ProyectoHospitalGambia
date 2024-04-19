@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
 
 
 class GraficaMoodAndEnergyView : Fragment() {
@@ -35,35 +36,40 @@ class GraficaMoodAndEnergyView : Fragment() {
         val chartMood = view.findViewById<LineChart>(R.id.graficoLineas_EstadoAnimo)
         val chartEnergy = view.findViewById<LineChart>(R.id.graficoLineas_Energia)
 
-        // Agrega datos a chartMood
-        val entriesMood = ArrayList<Entry>()
-        entriesMood.add(Entry(0f, 5f)) // Día 1
-        entriesMood.add(Entry(1f, 3f)) // Día 2
-        entriesMood.add(Entry(2f, 1f)) // Día 2
-        entriesMood.add(Entry(3f, 7f)) // Día 2
-        entriesMood.add(Entry(4f, 10f)) // Día 2
-        // ... Agrega más datos según sea necesario
+        // Obtener los datos de "Mood" y "Energy" de la base de datos
+        val datosEstado = MainActivity.databaseHelper?.obtenerTodosLosDatosEstado()
 
+        // Crear las entradas de la gráfica a partir de los datos de "Mood"
+        val entriesMood = datosEstado?.mapIndexed { index, estado ->
+            Entry(index.toFloat(), estado.estadoAnimo.toFloat())
+        }
+
+        // Crear el conjunto de datos y personalizarlo
         val dataSetMood = LineDataSet(entriesMood, "Mood")
-        dataSetMood.color = Color.RED
+        dataSetMood.color = Color.BLUE
+        dataSetMood.valueTextColor = Color.BLACK
 
+        // Crear los datos de la línea
         val lineDataMood = LineData(dataSetMood)
+
+        // Aplicar los datos al gráfico y refrescarlo
         chartMood.data = lineDataMood
         chartMood.invalidate() // Refresca el gráfico
 
-        // Agrega datos a chartEnergy
-        val entriesEnergy = ArrayList<Entry>()
-        entriesEnergy.add(Entry(0f, 7f)) // Día 1
-        entriesEnergy.add(Entry(1f, 1f)) // Día 2
-        entriesEnergy.add(Entry(2f, 3f)) // Día 2
-        entriesEnergy.add(Entry(3f, 4f)) // Día 2
-        entriesEnergy.add(Entry(4f, 5f)) // Día 2
-        // ... Agrega más datos según sea necesario
+        // Crear las entradas de la gráfica a partir de los datos de "Energy"
+        val entriesEnergy = datosEstado?.mapIndexed { index, estado ->
+            Entry(index.toFloat(), estado.energia.toFloat())
+        }
 
+        // Crear el conjunto de datos y personalizarlo
         val dataSetEnergy = LineDataSet(entriesEnergy, "Energy")
-        dataSetEnergy.color = Color.BLUE
+        dataSetEnergy.color = Color.RED
+        dataSetEnergy.valueTextColor = Color.BLACK
 
+        // Crear los datos de la línea
         val lineDataEnergy = LineData(dataSetEnergy)
+
+        // Aplicar los datos al gráfico y refrescarlo
         chartEnergy.data = lineDataEnergy
         chartEnergy.invalidate() // Refresca el gráfico
     }

@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
 
 
 class GraficaGlycemiaView : Fragment() {
@@ -33,24 +34,28 @@ class GraficaGlycemiaView : Fragment() {
 
         val chartGlucemia = view.findViewById<LineChart>(R.id.graficoLineas_Glucosa)
 
-        // Datos de prueba para la glucemia
-        val entriesGlucemia = ArrayList<Entry>()
-        entriesGlucemia.add(Entry(0f, 100f)) // Día 1
-        entriesGlucemia.add(Entry(1f, 105f)) // Día 2
-        entriesGlucemia.add(Entry(2f, 95f)) // Día 3
-        entriesGlucemia.add(Entry(3f, 110f)) // Día 4
-        entriesGlucemia.add(Entry(4f, 98f)) // Día 5
+        // Obtener los datos de glucemia de la base de datos
+        val datosGlucemia = MainActivity.databaseHelper?.obtenerTodosLosDatosGlucemia()
+
+        // Crear las entradas de la gráfica a partir de los datos de glucemia
+        val entriesGlucemia = datosGlucemia?.mapIndexed { index, glucemia ->
+            Entry(index.toFloat(), glucemia.glucosa.toFloat())
+        }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetGlucemia = LineDataSet(entriesGlucemia, "mg/dl")
-        dataSetGlucemia.color = Color.RED
+        val dataSetGlucemia = LineDataSet(entriesGlucemia, "Glucemia")
+        dataSetGlucemia.color = Color.BLUE
+        dataSetGlucemia.valueTextColor = Color.BLACK
+        dataSetGlucemia.valueTextSize = 16f
 
-        // Agregar el conjunto de datos a los datos de la línea
-        val lineDataGlucemia = LineData(dataSetGlucemia)
-
-        // Aplicar los datos al gráfico y refrescarlo
-        chartGlucemia.data = lineDataGlucemia
-        chartGlucemia.invalidate() // Refresca el gráfico
+        // Crear el gráfico de líneas y personalizarlo
+        val dataGlucemia = LineData(dataSetGlucemia)
+        chartGlucemia.data = dataGlucemia
+        chartGlucemia.setTouchEnabled(true)
+        chartGlucemia.setPinchZoom(true)
+        chartGlucemia.description.text = "Glucemia"
+        chartGlucemia.setNoDataText("No hay datos disponibles")
+        chartGlucemia.invalidate()
     }
 
 }

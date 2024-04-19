@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
 
 
 class GraficaSocialActivitiesView : Fragment() {
@@ -33,27 +34,25 @@ class GraficaSocialActivitiesView : Fragment() {
 
         val chartSocialActivities = view.findViewById<LineChart>(R.id.graficoLineas_ActividadesSociales)
 
-        // Datos de prueba para las actividades sociales
-        val entriesSocialActivities = ArrayList<Entry>()
-        entriesSocialActivities.add(Entry(0f, 60f)) // Día 1
-        entriesSocialActivities.add(Entry(1f, 40f)) // Día 2
-        entriesSocialActivities.add(Entry(2f, 120f)) // Día 3
-        entriesSocialActivities.add(Entry(3f, 80f)) // Día 4
-        entriesSocialActivities.add(Entry(4f, 200f)) // Día 5
+        // Obtener los datos de las actividades sociales de la base de datos
+        val datosActividadesSociales = MainActivity.databaseHelper?.obtenerTodosLosDatosActividadesSociales()
+
+        // Crear las entradas de la gráfica a partir de los datos de las actividades sociales
+        val entriesSocialActivities = datosActividadesSociales?.mapIndexed { index, actividadesSociales ->
+            Entry(index.toFloat(), actividadesSociales.minutosActividad.toFloat())
+        }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetSocialActivities = LineDataSet(entriesSocialActivities, "minutos")
+        val dataSetSocialActivities = LineDataSet(entriesSocialActivities, "Minutos")
         dataSetSocialActivities.color = Color.BLUE
         dataSetSocialActivities.valueTextColor = Color.BLACK
 
-        // Crear el gráfico y personalizarlo
-        val data = LineData(dataSetSocialActivities)
-        chartSocialActivities.data = data
-        chartSocialActivities.setTouchEnabled(true)
-        chartSocialActivities.setPinchZoom(true)
-        chartSocialActivities.description.text = "Actividades sociales"
-        chartSocialActivities.setNoDataText("No hay datos disponibles")
-        chartSocialActivities.invalidate()
+        // Crear los datos de la línea
+        val lineDataSocialActivities = LineData(dataSetSocialActivities)
+
+        // Aplicar los datos al gráfico y refrescarlo
+        chartSocialActivities.data = lineDataSocialActivities
+        chartSocialActivities.invalidate() // Refresca el gráfico
     }
 
 }
