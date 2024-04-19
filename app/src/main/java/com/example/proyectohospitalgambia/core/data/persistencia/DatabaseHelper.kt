@@ -374,10 +374,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return listaOsat
     }
 
-    fun obtenerTodosLosDatosActividadFisica(): List<ActividadFisica> {
+    fun obtenerTodosLosDatosActividadFisica(idUsuario: String): List<ActividadFisica> {
         val listaActividadFisica = mutableListOf<ActividadFisica>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ActividadFisica%'", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS WHERE $KEY_POLS_DATA LIKE '%ActividadFisica%' AND $KEY_POLS_BOOK = ?", arrayOf(idUsuario))
 
         cursor.use { cursor ->
             if (cursor.moveToFirst()) {

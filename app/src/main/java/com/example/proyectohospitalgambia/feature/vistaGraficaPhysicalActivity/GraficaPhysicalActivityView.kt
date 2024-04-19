@@ -35,9 +35,10 @@ class GraficaPhysicalActivityView : Fragment() {
         val chartActividadFisica = view.findViewById<LineChart>(R.id.graficoLineas_ActividadFisica)
         val chartPasos = view.findViewById<LineChart>(R.id.graficoLineas_Pasos)
 
-        // Obtener los datos de actividad física de la base de datos
-        val datosActividadFisica = MainActivity.databaseHelper?.obtenerTodosLosDatosActividadFisica()
+        val idUsuarioActual = MainActivity.usuario?.id
 
+        // Obtener los datos de actividad física de la base de datos
+        val datosActividadFisica = MainActivity.databaseHelper?.obtenerTodosLosDatosActividadFisica(idUsuarioActual!!)
         // Crear las entradas de la gráfica a partir de los datos de actividad física
         val entriesAerobica = datosActividadFisica?.mapIndexed { index, actividadFisica ->
             Entry(index.toFloat(), actividadFisica.aerobico.toFloat())
