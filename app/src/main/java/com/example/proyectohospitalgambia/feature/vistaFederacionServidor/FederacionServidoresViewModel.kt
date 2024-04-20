@@ -2,6 +2,8 @@ package com.example.proyectohospitalgambia.feature.vistaFederacionServidor
 
 import androidx.lifecycle.ViewModel
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Credentials
@@ -18,6 +20,8 @@ class FederacionServidoresViewModel : ViewModel() {
 
     private val jsonMediaType = "application/json; charset=utf-8".toMediaType()
     private val client = OkHttpClient()
+
+    private var databaseHelper: DatabaseHelper = MainActivity.databaseHelper!!
 
     private fun generarIdAleatorio(): String {
         val caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -56,6 +60,10 @@ class FederacionServidoresViewModel : ViewModel() {
             // Captura la excepción y muestra un mensaje de error
             println("Error al construir la URL: ${e.message}")
             e.printStackTrace() // Imprime la traza de la excepción en Logcat
+        }
     }
+
+    fun recuperarDatos(): List<Pol> {
+        return databaseHelper.obtenerPols()
     }
 }

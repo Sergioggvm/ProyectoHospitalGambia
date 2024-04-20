@@ -241,4 +241,27 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return existe
     }
 
+    fun obtenerPols(): List<Pol> {
+        val polsList = mutableListOf<Pol>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS", null)
+
+        cursor.use { cursor ->
+            while (cursor.moveToNext()) {
+                val id = cursor.getString(cursor.getColumnIndex(KEY_POLS_ID))
+                val book = cursor.getString(cursor.getColumnIndex(KEY_POLS_BOOK))
+                val data = cursor.getString(cursor.getColumnIndex(KEY_POLS_DATA))
+                val subido = cursor.getString(cursor.getColumnIndex(KEY_POLS_SUBIDO))
+
+                // Crear un objeto Pol con los datos obtenidos de la base de datos
+                val pol = Pol(id, book, data, subido)
+                polsList.add(pol)
+            }
+        }
+
+        db.close()
+
+        return polsList
+    }
+
 }

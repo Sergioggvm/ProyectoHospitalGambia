@@ -1,6 +1,7 @@
 package com.example.proyectohospitalgambia.feature.vistaFederacionServidor
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,13 @@ import android.widget.ImageButton
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.network.federeacionServidorApi
 import org.json.JSONObject
 
 import com.example.proyectohospitalgambia.app.retrofit.RetrofitClient
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.IntroducirWeightViewModel
 import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
 import okhttp3.Credentials
@@ -34,6 +38,7 @@ class FederacionServidoresView : Fragment() {
     private lateinit var btnRecargaServidor: ImageButton
 
     private val viewModel: FederacionServidoresViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,40 +62,68 @@ class FederacionServidoresView : Fragment() {
             findNavController().navigate(R.id.action_federacionServidoresView_to_nuevoRegistroServidorView)
         }
 
+        val usuarioEncontrado = MainActivity.usuario
+
         // Crear una instancia del servicio de la API
         val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
 
         // Configurar el OnClickListener para el botón btnRecargaServidor
         btnRecargaServidor.setOnClickListener {
-            val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
-            val jsonString = """
-        
-      {"TipoPol":"Peso","FechaInsercion":"2024-04-18 19:16:30","Osat":1,
-      "creation_info": {
-        "node": "mygnuhealth",
-        "timestamp": "2024-03-26T18:13:46.604899",
-        "user": "ESPGNU777ORG"
-      },
-      "domain": "medical",
-      "fsynced": true,
-      "genetic_info": null,
-      "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
-      "measurements": [
-        {
-          "hr": 12455544
-        }
-      ]
-      
-    }
-    """.trimIndent()
+            // Recuperar las pols
+            val pols = viewModel.recuperarDatos()
 
-            viewModel.insertarDatosEnServidor(jsonString)
+            // Crear el encabezado del JSON
+            val jsonString2 = """
+                {
+                  "creation_info": {
+                    "node": "mygnuhealth",
+                    "timestamp": "2024-03-26T18:13:46.604899",
+                    "user": "ESPGNU777ORG"
+                  },
+                  "domain": "medical",
+                  "fsynced": true,
+                  "genetic_info": null,
+                  "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
+                  "measurements": [
+                    {
+                      "hr": 124444445
+                    }
+                  ]
+                }
+                """.trimIndent()
 
+            // Variable para controlar si se ha agregado al menos una pol
+            var alMenosUnaPolAgregada = false
+
+            var jsonConcatenar = ""
+
+            // Verificar cada pol
+            for (pol in pols) {
+                if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals("false", ignoreCase = true)) {
+
+                    jsonConcatenar = "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
+                        .trimIndent() // Eliminar espacios en blanco adicionales
+
+                    alMenosUnaPolAgregada = true
+                }
+            }
+
+            // Insertar datos en el servidor solo si al menos una pol cumple con los requisitos
+            if (alMenosUnaPolAgregada) {
+                val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
+
+                // Insertar datos en el servidor
+                viewModel.insertarDatosEnServidor(jsonConcatenar)
+
+                // Mostrar el JSON en el Log
+                Log.d("JSON", jsonConcatenar)
+            }
         }
 
         // Inflate the layout for this fragment
         return federacionServidoresView
     }
+
 
 
 }
