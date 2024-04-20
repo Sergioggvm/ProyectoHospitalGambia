@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
+import org.json.JSONObject
+import org.mindrot.jbcrypt.BCrypt
 
 class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -14,7 +16,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     // Son como los valores estáticos en Java
     companion object {
         private const val DATABASE_NAME = "federation"
-        private const val DATABASE_VERSION = 15
+        private const val DATABASE_VERSION = 18
 
         // Nombres de las tablas
         const val TABLE_DUS = "dus"
@@ -127,8 +129,8 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     fun verificarCredenciales(nombreUsuario: String, contraseniaUsuario: String): PeopleUser? {
         val db = readableDatabase
-        val selection = "${DatabaseHelper.KEY_PEOPLE_DATA} LIKE ? AND ${DatabaseHelper.KEY_PEOPLE_DATA} LIKE ?"
-        val selectionArgs = arrayOf("%\"name\":\"$nombreUsuario\"%", "%\"password\":\"$contraseniaUsuario\"%")
+        val selection = "${DatabaseHelper.KEY_PEOPLE_DATA} LIKE ?"
+        val selectionArgs = arrayOf("%\"name\":\"$nombreUsuario\"%")
         val cursor = db.query(
             DatabaseHelper.TABLE_PEOPLE,
             arrayOf(DatabaseHelper.KEY_PEOPLE_ID, DatabaseHelper.KEY_PEOPLE_DATA),
@@ -147,13 +149,23 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                 if (idIndex != -1 && dataIndex != -1) { // Verificamos que los índices de las columnas sean válidos
                     val id = cursor.getString(idIndex)
                     val data = cursor.getString(dataIndex)
-                    usuario = PeopleUser(id, data)
+                    val jsonObject = JSONObject(data)
+                    val contraseniaAlmacenada = jsonObject.getString("password")
+
+                    // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
+                    if (BCrypt.checkpw(contraseniaUsuario, contraseniaAlmacenada)) {
+                        usuario = PeopleUser(id, data)
+                    } else {
+                        Log.e("VerificarCredenciales", "Contraseña incorrecta para el usuario: $nombreUsuario")
+                    }
                 } else {
                     // Las columnas no fueron encontradas en el cursor
                     // Puede ser un error en los nombres de las columnas
                     // o las columnas no están presentes en la tabla
                     Log.e("VerificarCredenciales", "Las columnas no fueron encontradas en el cursor.")
                 }
+            } else {
+                Log.e("VerificarCredenciales", "No se encontró ningún usuario con el nombre: $nombreUsuario")
             }
         }
 

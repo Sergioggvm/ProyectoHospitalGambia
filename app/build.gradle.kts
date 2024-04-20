@@ -80,6 +80,9 @@ dependencies {
     // SharedPreferences
     implementation("androidx.preference:preference-ktx:1.2.1")
 
+    //ByCryp
+    implementation("org.mindrot:jbcrypt:0.4")
+
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     testImplementation("junit:junit:4.13.2")

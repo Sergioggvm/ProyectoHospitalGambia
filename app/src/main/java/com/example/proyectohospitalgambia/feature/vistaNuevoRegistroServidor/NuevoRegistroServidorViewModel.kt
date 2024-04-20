@@ -5,6 +5,7 @@ import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 
+
 class NuevoRegistroServidorViewModel : ViewModel() {
 
     private var databaseHelper: DatabaseHelper = MainActivity.databaseHelper!!
@@ -18,4 +19,5 @@ class NuevoRegistroServidorViewModel : ViewModel() {
     fun listarDatos(){
         databaseHelper.listarPols()
     }
+
 }

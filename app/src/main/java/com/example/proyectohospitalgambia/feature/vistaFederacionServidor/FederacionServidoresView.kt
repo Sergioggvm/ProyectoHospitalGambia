@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.core.network.federeacionServidorApi
 import org.json.JSONObject
 
 import com.example.proyectohospitalgambia.app.retrofit.RetrofitClient
+import com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.IntroducirWeightViewModel
+import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
 import okhttp3.Credentials
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
@@ -29,6 +32,8 @@ class FederacionServidoresView : Fragment() {
 
     private lateinit var btnNuevoRegistro: ImageButton
     private lateinit var btnRecargaServidor: ImageButton
+
+    private val viewModel: FederacionServidoresViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +60,7 @@ class FederacionServidoresView : Fragment() {
         // Crear una instancia del servicio de la API
         val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
 
-// Configurar el OnClickListener para el botón btnRecargaServidor
+        // Configurar el OnClickListener para el botón btnRecargaServidor
         btnRecargaServidor.setOnClickListener {
             val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
             val jsonString = """
@@ -72,30 +77,15 @@ class FederacionServidoresView : Fragment() {
       "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
       "measurements": [
         {
-          "hr": 812232
+          "hr": 1243
         }
       ]
       
     }
     """.trimIndent()
 
-            val client = OkHttpClient()
+            viewModel.insertarDatosEnServidor(jsonString)
 
-            val request = Request.Builder()
-                .url("http://gh1.iesjulianmarias.es:5000/pols/ESPGNU777ORG/LDBS")
-                .post(jsonString.toRequestBody(jsonMediaType))
-                .header("Authorization", Credentials.basic("ESPGNU777ORG", "gnusolidario"))
-                .build()
-
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    println("Error al enviar la solicitud: ${e.message}")
-                }
-
-                override fun onResponse(call: Call, response: Response) {
-                    println("Respuesta del servidor: ${response.body?.string()}")
-                }
-            })
         }
 
         // Inflate the layout for this fragment

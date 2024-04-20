@@ -21,6 +21,16 @@ import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.Random
+import org.mindrot.jbcrypt.BCrypt
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Credentials
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
+import java.io.IOException
 
 class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     SeekBar.OnSeekBarChangeListener {
@@ -179,6 +189,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             return false
         }
 
+        val contraseniaHash = BCrypt.hashpw(contraseniaUsuario, BCrypt.gensalt())
 
         // Crear un objeto JSON con la información recogida
         val jsonObject = JSONObject()
@@ -191,7 +202,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         jsonObject.put("active", true)
         jsonObject.put("gender", sexo)
         jsonObject.put("size", altura)
-        jsonObject.put("password", contraseniaUsuario)  // Valor vacío para password
+        jsonObject.put("password", contraseniaHash)  // Valor vacío para password
 
         // Convertir el objeto JSON a una cadena
         val jsonString = jsonObject.toString()
@@ -207,6 +218,30 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         edtFechadia.text.clear()
         edtFechaMes.text.clear()
         edtFechaAnio.text.clear()
+
+        val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
+
+
+        val client = OkHttpClient()
+
+        val url = "http://gh1.iesjulianmarias.es:5000/people/" + id
+
+        val request = Request.Builder()
+            .url(url)
+            .post(jsonString.toRequestBody(jsonMediaType))
+            .header("Authorization", Credentials.basic("ARGBUE111FAV", "freedom"))
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error al enviar la solicitud: ${e.message}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                println("Respuesta del servidor: ${response.body?.string()}")
+            }
+        })
+
 
         // Llamar al método insertarPersona con el JSON
         return dbHelper.insertarPersona(persona)

@@ -12,6 +12,8 @@ import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.feature.vistaRegistro.RegistroView
+import org.json.JSONObject
+import org.mindrot.jbcrypt.BCrypt
 
 class InicioView : AppCompatActivity() {
 
@@ -40,22 +42,37 @@ class InicioView : AppCompatActivity() {
 
             // Verificar las credenciales en la base de datos
             val dbHelper = DatabaseHelper(this)
-            val usuarioEncontrado = dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
+            val usuarioEncontrado =
+                dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
 
             if (usuarioEncontrado != null) {
-                Log.d("Inicio de Sesión", "Usuario encontrado. ID: $usuarioEncontrado")
-                MainActivity.usuario = usuarioEncontrado
-                Toast.makeText(this, "Usuario correcto", Toast.LENGTH_SHORT).show()
-                // Creamos un Intent para iniciar VistaSeleccionPartida.
-                val intent = Intent(this, MainActivity::class.java)
+                // Obtener la contraseña almacenada del usuario encontrado en el campo "password" del JSON
+                val jsonString = usuarioEncontrado.data
+                val jsonObject = JSONObject(jsonString)
+                val contraseniaAlmacenada = jsonObject.getString("password")
 
-                // Iniciamos la actividad sin esperar un resultado.
-                startActivity(intent)
+                // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
+                if (BCrypt.checkpw(contraseniaUsuario, contraseniaAlmacenada)) {
+                    Log.d("Inicio de Sesión", "Usuario autenticado. ID: ${usuarioEncontrado.id}")
+                    MainActivity.usuario = usuarioEncontrado
+                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    // Creamos un Intent para iniciar MainActivity.
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Log.d(
+                        "Inicio de Sesión",
+                        "Contraseña incorrecta para el usuario: $nombreUsuario"
+                    )
+                    Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                }
             } else {
-                Log.d("Inicio de Sesión", "No se encontró ningún usuario con las credenciales proporcionadas")
-                Toast.makeText(this, "Creendenciales incorrectas", Toast.LENGTH_SHORT).show()
+                Log.d(
+                    "Inicio de Sesión",
+                    "No se encontró ningún usuario con el nombre: $nombreUsuario"
+                )
+                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         // Agrega OnClickListener al botón btnJugarLocal
