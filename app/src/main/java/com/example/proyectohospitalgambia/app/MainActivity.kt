@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         var databaseHelper = null as DatabaseHelper?
         var usuario = null as PeopleUser?
+        var url = "http://gh1.iesjulianmarias.es:5000"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

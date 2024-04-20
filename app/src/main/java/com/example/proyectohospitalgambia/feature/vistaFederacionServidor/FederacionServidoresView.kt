@@ -77,7 +77,7 @@ class FederacionServidoresView : Fragment() {
       "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
       "measurements": [
         {
-          "hr": 1243
+          "hr": 12455544
         }
       ]
       

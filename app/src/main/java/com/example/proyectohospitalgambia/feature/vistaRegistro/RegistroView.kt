@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.feature.vistaInicio.InicioView
@@ -224,7 +225,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
         val client = OkHttpClient()
 
-        val url = "http://gh1.iesjulianmarias.es:5000/people/" + id
+        val url =  MainActivity.url + "/people/" + id
 
         val request = Request.Builder()
             .url(url)
