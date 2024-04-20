@@ -494,19 +494,53 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     // --------------------- OBTENER EL ULTIMO DATO PARA LOS TEXTOS ---------------------
 
+    // --------------------- OBTENER EL ÚLTIMO DATO PARA CADA TIPO DE INFORMACIÓN ---------------------
+
+    fun obtenerUltimoSueno(idUsuario: String): Sueno? {
+        val listaSuenos = obtenerTodosLosSuenos(idUsuario)
+        return listaSuenos.lastOrNull()
+    }
+
     fun obtenerUltimaPresionSanguinea(idUsuario: String): PresionSanguinea? {
         val listaPresiones = obtenerTodosLosDatosPresionSanguinea(idUsuario)
-        val ultimaPresion = listaPresiones.lastOrNull()
-
-        // Log de la última presión obtenida
-        if (ultimaPresion != null) {
-            Log.d("UltimaPresionSanguinea", "Sistolico: ${ultimaPresion.sistolico}, Diastolico: ${ultimaPresion.diastolico}, Frecuencia Cardiaca: ${ultimaPresion.frecuenciaCardiaca}")
-        } else {
-            Log.d("UltimaPresionSanguinea", "No se encontraron datos de presión sanguínea para el usuario $idUsuario")
-        }
-
-        return ultimaPresion
+        return listaPresiones.lastOrNull()
     }
+
+    fun obtenerUltimoPeso(idUsuario: String): Peso? {
+        val listaPesos = obtenerTodosLosDatosPeso(idUsuario)
+        return listaPesos.lastOrNull()
+    }
+
+    fun obtenerUltimaGlucemia(idUsuario: String): GlucosaSangre? {
+        val listaGlucemias = obtenerTodosLosDatosGlucemia(idUsuario)
+        return listaGlucemias.lastOrNull()
+    }
+
+    fun obtenerUltimoOsat(idUsuario: String): Osat? {
+        val listaOsats = obtenerTodosLosDatosOsat(idUsuario)
+        return listaOsats.lastOrNull()
+    }
+
+    fun obtenerUltimaActividadFisica(idUsuario: String): ActividadFisica? {
+        val listaActividadesFisicas = obtenerTodosLosDatosActividadFisica(idUsuario)
+        return listaActividadesFisicas.lastOrNull()
+    }
+
+    fun obtenerUltimasActividadesSociales(idUsuario: String): ActividadesSociales? {
+        val listaActividadesSociales = obtenerTodosLosDatosActividadesSociales(idUsuario)
+        return listaActividadesSociales.lastOrNull()
+    }
+
+    fun obtenerUltimoEstado(idUsuario: String): Estado? {
+        val listaEstados = obtenerTodosLosDatosEstado(idUsuario)
+        return listaEstados.lastOrNull()
+    }
+
+    fun obtenerUltimoValorEnergetico(idUsuario: String): ValorEnergetico? {
+        val listaValoresEnergeticos = obtenerTodosLosDatosValorEnergetico(idUsuario)
+        return listaValoresEnergeticos.lastOrNull()
+    }
+
 
 
 

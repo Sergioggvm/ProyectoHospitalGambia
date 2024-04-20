@@ -207,6 +207,8 @@
     <string name="txt_Si">Si</string>
     <string name="txt_No">No</string>
 
+    <string name="txt_fechaDeLaMedicion">Fecha de la medición</string>
+    <string name="txt_fecha_desconocida">Fecha desconocida</string>
 
 
 </resources>

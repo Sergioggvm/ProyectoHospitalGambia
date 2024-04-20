@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 
 class MenuDeporteSuenioView : Fragment() {
 
@@ -15,6 +17,11 @@ class MenuDeporteSuenioView : Fragment() {
     private lateinit var btnDatosNutricion: ImageButton
     private lateinit var btnDatosSuenio: ImageButton
     private lateinit var btnDatosSocialActivo: ImageButton
+
+    private lateinit var tvUltimoDatoAerobic: TextView
+    private lateinit var tvUltimoDatoNutrition: TextView
+    private lateinit var tvUltimoDatoSleep: TextView
+    private lateinit var tvUltimoDatoSocialActivities: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +45,11 @@ class MenuDeporteSuenioView : Fragment() {
         val btnGraficaNutricion = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaNutrition)
         val btnGraficaSuenio = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaSleep)
         val btnGraficaSocialActivo = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaSocialActivities)
+
+        tvUltimoDatoAerobic = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoAerobic)
+        tvUltimoDatoNutrition = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoNutrition)
+        tvUltimoDatoSleep = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoSleep)
+        tvUltimoDatoSocialActivities = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoSocialActivities)
 
 
         btnDatosAerobic.setOnClickListener {
@@ -75,4 +87,54 @@ class MenuDeporteSuenioView : Fragment() {
 
         return menuDeporteSuenio
     }
+
+    // onresume para actualizar los datos
+
+    override fun onResume() {
+        super.onResume()
+        // Actualizar los datos de la vista
+        actualizarUltimoDatoAerobic()
+        actualizarUltimoDatoNutrition()
+        actualizarUltimoDatoSleep()
+        actualizarUltimoDatoSocialActivities()
+    }
+
+    private fun actualizarUltimoDatoAerobic() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimoDatoAerobic = MainActivity.databaseHelper?.obtenerUltimaActividadFisica(idUsuario)
+            val fechaMedicion = ultimoDatoAerobic?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val textoDatos = "${getString(R.string.txt_Aerobico)}: ${ultimoDatoAerobic?.aerobico}"
+            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoAerobic.text = textoFinal
+        }
+    }
+
+    private fun actualizarUltimoDatoNutrition() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimoDatoNutrition = MainActivity.databaseHelper?.obtenerUltimoValorEnergetico(idUsuario)
+            val fechaMedicion = ultimoDatoNutrition?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val textoDatos = "${ultimoDatoNutrition?.kcalTotal} ${getString(R.string.kcal)}"
+            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoNutrition.text = textoFinal
+        }
+    }
+
+    private fun actualizarUltimoDatoSleep() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimoDatoSleep = MainActivity.databaseHelper?.obtenerUltimoSueno(idUsuario)
+            val fechaMedicion = ultimoDatoSleep?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val textoDatos = "${ultimoDatoSleep?.horasSueno} ${getString(R.string.txt_Horas)}"
+            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoSleep.text = textoFinal
+        }
+    }
+
+    private fun actualizarUltimoDatoSocialActivities() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimoDatoSocialActivities = MainActivity.databaseHelper?.obtenerUltimasActividadesSociales(idUsuario)
+            val fechaMedicion = ultimoDatoSocialActivities?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val textoDatos = "${ultimoDatoSocialActivities?.minutosActividad} ${getString(R.string.txt_Minutos)}"
+            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoSocialActivities.text = textoFinal
+        } }
 }

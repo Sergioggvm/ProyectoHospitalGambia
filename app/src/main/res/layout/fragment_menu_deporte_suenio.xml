@@ -208,6 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
             app:layout_constraintTop_toBottomOf="@+id/tv_aerobic" />
 
@@ -217,6 +218,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
             app:layout_constraintTop_toBottomOf="@+id/tv_Nutrition" />
 
@@ -226,6 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
             app:layout_constraintTop_toBottomOf="@+id/tv_Sleep" />
 
@@ -235,6 +238,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"
             app:layout_constraintTop_toBottomOf="@+id/tv_SocialActivities" />
 
