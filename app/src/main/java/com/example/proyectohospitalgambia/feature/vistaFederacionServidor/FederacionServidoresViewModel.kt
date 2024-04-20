@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Credentials
@@ -33,37 +36,49 @@ class FederacionServidoresViewModel : ViewModel() {
         return id.toString()
     }
 
-    fun insertarDatosEnServidor(polJsonString: String) {
+    fun insertarDatosEnServidorAsync(polJsonString: String): Boolean {
+        return runBlocking {
+            try {
+                val idPagina = generarIdAleatorio()
+                val url = MainActivity.url + "/pols/ESPGNU777ORG/" + idPagina
 
-        try{
-            val idPagina = generarIdAleatorio()
-            val url =  MainActivity.url + "/pols/ESPGNU777ORG/" + idPagina
+                val request = Request.Builder()
+                    .url(url)
+                    .post(polJsonString.toRequestBody(jsonMediaType))
+                    .header("Authorization", Credentials.basic("ESPGNU777ORG", "gnusolidario"))
+                    .build()
 
-            val request = Request.Builder()
-                .url(url)
-                .post(polJsonString.toRequestBody(jsonMediaType))
-                .header("Authorization", Credentials.basic("ESPGNU777ORG", "gnusolidario"))
-                .build()
-
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    println("Error al enviar la solicitud: ${e.message}")
-                    // Aquí puedes manejar el error de manera adecuada, por ejemplo, mediante LiveData
+                val response = withContext(Dispatchers.IO) {
+                    client.newCall(request).execute()
                 }
 
-                override fun onResponse(call: Call, response: Response) {
-                    println("Respuesta del servidor: ${response.body?.string()}")
-                    // Aquí puedes manejar la respuesta de manera adecuada, por ejemplo, mediante LiveData
+                if (!response.isSuccessful) {
+                    println("Error al enviar la solicitud: ${response.message}")
+                    return@runBlocking false
                 }
-            })
-        } catch (e: IllegalArgumentException) {
-            // Captura la excepción y muestra un mensaje de error
-            println("Error al construir la URL: ${e.message}")
-            e.printStackTrace() // Imprime la traza de la excepción en Logcat
+
+                val resultado = response.body?.string()
+                val fallo = resultado == null || resultado.equals("null", ignoreCase = true)
+                return@runBlocking !fallo
+            } catch (e: IllegalArgumentException) {
+                // Captura la excepción y muestra un mensaje de error
+                println("Error al construir la URL: ${e.message}")
+                e.printStackTrace() // Imprime la traza de la excepción en Logcat
+                return@runBlocking false
+            }
         }
     }
 
     fun recuperarDatos(): List<Pol> {
         return databaseHelper.obtenerPols()
+    }
+
+    fun actualizarEstadoSubidoEnBD(idPol: String, nuevoEstado: String): Boolean {
+        return try {
+            databaseHelper.actualizarEstadoSubido(idPol, nuevoEstado)
+        } catch (e: Exception) {
+
+            false
+        }
     }
 }

@@ -1,12 +1,15 @@
 package com.example.proyectohospitalgambia.feature.vistaFederacionServidor
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
@@ -19,6 +22,10 @@ import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.IntroducirWeightViewModel
 import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.Credentials
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
@@ -74,49 +81,55 @@ class FederacionServidoresView : Fragment() {
 
             // Crear el encabezado del JSON
             val jsonString2 = """
-                {
-                  "creation_info": {
-                    "node": "mygnuhealth",
-                    "timestamp": "2024-03-26T18:13:46.604899",
-                    "user": "ESPGNU777ORG"
-                  },
-                  "domain": "medical",
-                  "fsynced": true,
-                  "genetic_info": null,
-                  "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
-                  "measurements": [
-                    {
-                      "hr": 124444445
+    {
+      "creation_info": {
+        "node": "mygnuhealth",
+        "timestamp": "2024-03-26T18:13:46.604899",
+        "user": "ESPGNU777ORG"
+      },
+      "domain": "medical",
+      "fsynced": true,
+      "genetic_info": null,
+      "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
+      "measurements": [
+        {
+          "hr": 12444218888
+        }
+      ]
+    }
+    """.trimIndent()
+
+            // Iniciar una corrutina para manejar las solicitudes secuencialmente
+            CoroutineScope(Dispatchers.IO).launch {
+                var fallo = false
+
+                for (pol in pols) {
+                    if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals("false", ignoreCase = true)) {
+                        val jsonConcatenar = "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
+                            .trimIndent() // Eliminar espacios en blanco adicionales
+
+                        // Realizar la solicitud y esperar a que se complete antes de continuar
+                        val result = viewModel.insertarDatosEnServidorAsync(jsonConcatenar)
+
+                        // Verificar si la solicitud fue exitosa
+                        if (!result) {
+                            // Si falla alguna solicitud, actualizar la variable de fallo
+                            fallo = true
+                        } else {
+                            // Si la solicitud fue exitosa, actualizar el estado en la base de datos
+                            viewModel.actualizarEstadoSubidoEnBD(pol.idPol, "true")
+                        }
                     }
-                  ]
                 }
-                """.trimIndent()
 
-            // Variable para controlar si se ha agregado al menos una pol
-            var alMenosUnaPolAgregada = false
-
-            var jsonConcatenar = ""
-
-            // Verificar cada pol
-            for (pol in pols) {
-                if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals("false", ignoreCase = true)) {
-
-                    jsonConcatenar = "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
-                        .trimIndent() // Eliminar espacios en blanco adicionales
-
-                    alMenosUnaPolAgregada = true
+                // Mostrar el diálogo apropiado en el hilo principal después de que todas las solicitudes se hayan completado
+                withContext(Dispatchers.Main) {
+                    if (fallo) {
+                        mostrarDialogoPolsNoSubidos()
+                    } else {
+                        mostrarDialogoPolsSubidos()
+                    }
                 }
-            }
-
-            // Insertar datos en el servidor solo si al menos una pol cumple con los requisitos
-            if (alMenosUnaPolAgregada) {
-                val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
-
-                // Insertar datos en el servidor
-                viewModel.insertarDatosEnServidor(jsonConcatenar)
-
-                // Mostrar el JSON en el Log
-                Log.d("JSON", jsonConcatenar)
             }
         }
 
@@ -124,6 +137,36 @@ class FederacionServidoresView : Fragment() {
         return federacionServidoresView
     }
 
+
+    private fun mostrarDialogoPolsSubidos() {
+        val message = getString(R.string.txt_DatosSubidos)
+        val aceptar = getString(R.string.txt_Aceptar)
+        val regsitrosEncontrados = getString(R.string.txt_ResgitroDatosSubidos)
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton(aceptar) { dialog, _ ->
+                dialog.dismiss()
+            }
+        val alert = dialogBuilder.create()
+        alert.setTitle(regsitrosEncontrados)
+        alert.show()
+    }
+
+    private fun mostrarDialogoPolsNoSubidos() {
+        val message = getString(R.string.txt_DatosNoSubidos)
+        val aceptar = getString(R.string.txt_Aceptar)
+        val regsitrosEncontrados = getString(R.string.txt_ResgitroDatosNoSubidos)
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton(aceptar) { dialog, _ ->
+                dialog.dismiss()
+            }
+        val alert = dialogBuilder.create()
+        alert.setTitle(regsitrosEncontrados)
+        alert.show()
+    }
 
 
 }

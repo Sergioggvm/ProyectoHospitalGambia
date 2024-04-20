@@ -4,5 +4,5 @@ data class Pol(
     val idPol: String,
     val book: String,
     var data: String,
-    val isSubido: String
+    var isSubido: String
 )

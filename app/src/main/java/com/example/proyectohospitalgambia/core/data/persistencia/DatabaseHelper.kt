@@ -16,7 +16,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     // Son como los valores estáticos en Java
     companion object {
         private const val DATABASE_NAME = "federation"
-        private const val DATABASE_VERSION = 18
+        private const val DATABASE_VERSION = 19
 
         // Nombres de las tablas
         const val TABLE_DUS = "dus"
@@ -262,6 +262,18 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         db.close()
 
         return polsList
+    }
+
+    fun actualizarEstadoSubido(idPol: String, nuevoEstado: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(KEY_POLS_SUBIDO, nuevoEstado)
+        }
+        val whereClause = "$KEY_POLS_ID = ?"
+        val whereArgs = arrayOf(idPol)
+        val rowsAffected = db.update(TABLE_POLS, values, whereClause, whereArgs)
+        db.close()
+        return rowsAffected > 0
     }
 
 }
