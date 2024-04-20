@@ -292,6 +292,10 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                 } while (cursor.moveToNext())
             }
         }
+        // Log de todos los datos
+        listaPresionSanguinea.forEach { presion ->
+            Log.d("TodosLosDatosPresion", "Sistolico: ${presion.sistolico}, Diastolico: ${presion.diastolico}, Frecuencia Cardiaca: ${presion.frecuenciaCardiaca}")
+        }
 
         return listaPresionSanguinea
     }
@@ -486,4 +490,24 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
         return listaValorEnergetico
     }
+
+
+    // --------------------- OBTENER EL ULTIMO DATO PARA LOS TEXTOS ---------------------
+
+    fun obtenerUltimaPresionSanguinea(idUsuario: String): PresionSanguinea? {
+        val listaPresiones = obtenerTodosLosDatosPresionSanguinea(idUsuario)
+        val ultimaPresion = listaPresiones.lastOrNull()
+
+        // Log de la última presión obtenida
+        if (ultimaPresion != null) {
+            Log.d("UltimaPresionSanguinea", "Sistolico: ${ultimaPresion.sistolico}, Diastolico: ${ultimaPresion.diastolico}, Frecuencia Cardiaca: ${ultimaPresion.frecuenciaCardiaca}")
+        } else {
+            Log.d("UltimaPresionSanguinea", "No se encontraron datos de presión sanguínea para el usuario $idUsuario")
+        }
+
+        return ultimaPresion
+    }
+
+
+
 }

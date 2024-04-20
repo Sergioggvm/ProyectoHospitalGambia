@@ -12,6 +12,9 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.github.mikephil.charting.formatter.ValueFormatter
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class GraficaGlycemiaView : Fragment() {
@@ -29,13 +32,13 @@ class GraficaGlycemiaView : Fragment() {
         return inflater.inflate(R.layout.fragment_grafica_glycemia_view, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val chartGlucemia = view.findViewById<LineChart>(R.id.graficoLineas_Glucosa)
 
         val idUsuarioActual = MainActivity.usuario?.id
-
 
         // Obtener los datos de glucemia de la base de datos
         val datosGlucemia = MainActivity.databaseHelper?.obtenerTodosLosDatosGlucemia(idUsuarioActual!!)
@@ -44,6 +47,9 @@ class GraficaGlycemiaView : Fragment() {
         val entriesGlucemia = datosGlucemia?.mapIndexed { index, glucemia ->
             Entry(index.toFloat(), glucemia.glucosa.toFloat())
         }
+
+        // Crear un mapeo de índices a fechas
+        val indexToDateMap = datosGlucemia?.associate { it.glucosa.toFloat() to it.fechaRealizacion }
 
         // Crear el conjunto de datos y personalizarlo
         val dataSetGlucemia = LineDataSet(entriesGlucemia, "Glucemia")
@@ -58,6 +64,14 @@ class GraficaGlycemiaView : Fragment() {
         chartGlucemia.setPinchZoom(true)
         chartGlucemia.description.text = "Glucemia"
         chartGlucemia.setNoDataText("No hay datos disponibles")
+
+        // Configurar el formateador del eje X para mostrar las fechas
+        chartGlucemia.xAxis.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return indexToDateMap?.get(value)?.let { SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(it) } ?: value.toString()
+            }
+        }
+
         chartGlucemia.invalidate()
     }
 

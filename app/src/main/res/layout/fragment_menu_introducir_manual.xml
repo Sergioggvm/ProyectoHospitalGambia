@@ -196,6 +196,46 @@
             app:layout_constraintEnd_toEndOf="@+id/viewFondoOsat"
             app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosOsat" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_ultimoDatoBloodPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bloodPressure" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoWeight"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Weight" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoGlucosa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoGlycemia"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Glycemia" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoOsat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoOsat"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Osat" />
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

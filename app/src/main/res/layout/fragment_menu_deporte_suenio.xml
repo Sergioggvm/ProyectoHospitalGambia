@@ -202,6 +202,42 @@
             app:layout_constraintEnd_toEndOf="@+id/viewFondoSocialActivities"
             app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosSocialActivities" />
 
+        <TextView
+            android:id="@+id/tv_ultimoDatoAerobic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aerobic" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoNutrition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Nutrition" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoSleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Sleep" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoSocialActivities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"
+            app:layout_constraintTop_toBottomOf="@+id/tv_SocialActivities" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 
 class MenuIntroducirManualView : Fragment() {
 
@@ -68,6 +71,21 @@ class MenuIntroducirManualView : Fragment() {
             findNavController().navigate(R.id.action_menu_Introducir_Manual_to_graficoOsatView)
         }
 
+
+
         return menuIntroducirDatosManual
+    }
+
+    override fun onResume() {
+        super.onResume()
+        actualizarUltimaPresionSanguinea()
+    }
+
+    fun actualizarUltimaPresionSanguinea() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimaPresionSanguinea = MainActivity.databaseHelper?.obtenerUltimaPresionSanguinea(idUsuario)
+            val tv_ultimoDatoBloodPressure = view?.findViewById<TextView>(R.id.tv_ultimoDatoBloodPressure)
+            tv_ultimoDatoBloodPressure?.text = "Sistolico: ${ultimaPresionSanguinea?.sistolico} Diastolico: ${ultimaPresionSanguinea?.diastolico}\nFrecuencia Cardiaca: ${ultimaPresionSanguinea?.frecuenciaCardiaca}"
+        }
     }
 }
