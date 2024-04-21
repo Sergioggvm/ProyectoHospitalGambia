@@ -33,6 +33,10 @@ class menuMoodAndEnergyView : Fragment() {
             findNavController().navigate(R.id.action_menuMoodAndEnergyView_to_graficoMoodAndEnergyView)
         }
 
+
+
+
+
         return menuMoodAndEnergy
     }
 
