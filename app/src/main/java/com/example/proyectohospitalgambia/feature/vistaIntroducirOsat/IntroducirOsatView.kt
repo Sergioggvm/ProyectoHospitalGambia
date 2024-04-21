@@ -15,6 +15,7 @@ import com.example.proyectohospitalgambia.core.domain.model.datosPols.GlucosaSan
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia.IntroducirGlycemiaViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -23,7 +24,7 @@ import java.util.UUID
 
 class IntroducirOsatView : Fragment() {
 
-    private lateinit var btnGuardar: Button
+    private lateinit var btnGuardar: FloatingActionButton
 
     // Declaración de variables para los elementos del formulario
     private lateinit var edtOsat: EditText

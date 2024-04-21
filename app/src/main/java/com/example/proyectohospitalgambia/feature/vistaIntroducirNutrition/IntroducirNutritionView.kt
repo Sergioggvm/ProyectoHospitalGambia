@@ -16,6 +16,7 @@ import com.example.proyectohospitalgambia.core.domain.model.datosPols.ValorEnerg
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaGraficaNutrition.GraficaNutritionView
 import com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy.IntroducirMoodAndEnergyViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -52,7 +53,7 @@ class IntroducirNutritionView : Fragment() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
-            val btnDone: Button = view.findViewById(R.id.btn_guardarNutrition)
+            val btnDone: FloatingActionButton = view.findViewById(R.id.btn_guardarNutrition)
 
             btnDone.setOnClickListener {
 

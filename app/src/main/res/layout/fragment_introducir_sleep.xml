@@ -89,19 +89,31 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_guardarSocialActivities"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:background="@drawable/boton_done"
-            android:backgroundTint="@color/azul_texto"
-            android:text="@string/txt_Hecho"
-            android:textColor="@color/white"
+            android:layout_margin="16dp"
+            app:backgroundTint="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_notesSleep_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/et_notesSleep_layout"
+            app:rippleColor="@android:color/transparent"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
+            android:elevation="8dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintEnd_toEndOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintStart_toStartOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintTop_toTopOf="@+id/btn_guardarSocialActivities" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -14,6 +14,7 @@ import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.ActividadFisica
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -48,7 +49,7 @@ class IntroducirPhysicalView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnDone: Button = view.findViewById(R.id.btn_guardarPhysicalActivity)
+        val btnDone: FloatingActionButton = view.findViewById(R.id.btn_guardarPhysicalActivity)
 
         btnDone.setOnClickListener {
 

@@ -11,6 +11,9 @@
 
     <string name="txt_Contrasenia_Federacion">Contraseña Federación</string>
 
+    <string name="txt_OpcionesMedicas">Opciones Médicas</string>
+    <string name="txt_OpcionesServidor">Opciones Servidor</string>
+
     <string name="txt_Fecha">Fecha</string>
     <string name="txt_Hora">Hora</string>
     <string name="txt_Resumen">Resumen</string>
