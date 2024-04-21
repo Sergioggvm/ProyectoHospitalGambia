@@ -18,6 +18,7 @@ import com.example.proyectohospitalgambia.core.domain.model.datosPols.LibroVida
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.PresionSanguinea
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -26,7 +27,7 @@ import java.util.UUID
 
 class IntroducirBloodPressureView : Fragment() {
 
-    private lateinit var btnGuardar: Button
+    private lateinit var btnGuardar: FloatingActionButton
 
     // Declaración de variables para los elementos del formulario
     private lateinit var edtSistolico: EditText

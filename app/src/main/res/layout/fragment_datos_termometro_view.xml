@@ -37,16 +37,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="@color/white" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_leerDatosTermometro"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/icono_termometro"
+            android:src="@drawable/icono_termometro"
             android:contentDescription="@string/txt_Lectura"
+            android:background="?android:attr/selectableItemBackground"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_Lectura" />
+
 
         <TextView
             android:id="@+id/tv_lecturaTermometro"
@@ -87,16 +91,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_SincronizarDatosTermometro"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/boton_recarga"
+            android:src="@drawable/boton_recarga"
             android:contentDescription="@string/txt_sincronizar"
+            android:background="?android:attr/selectableItemBackground"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_Sincronizar" />
+
 
         <TextView
             android:id="@+id/tv_temperaturaObtenida"

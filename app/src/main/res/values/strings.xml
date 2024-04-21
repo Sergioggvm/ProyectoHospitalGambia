@@ -33,9 +33,9 @@
 
     <string name="txt_Protocolo">Protocolo</string>
     <string name="txt_Host">Thalamus Host</string>
-    <string name="txt_PuertoServidor">Thalamus Puerto\n Servidor</string>
+    <string name="txt_PuertoServidor">Thalamus Puerto Servidor</string>
     <string name="txt_FederacionId">Federacion ID</string>
-    <string name="txt_ContraseniaFederacion">Contraseña\n Federacion</string>
+    <string name="txt_ContraseniaFederacion">Contraseña Federacion</string>
     <string name="btn_PruebaConexion">Prueba Conexion</string>
     <string name="txt_SincronizacionFederacion">Sincronización con federacion</string>
 
