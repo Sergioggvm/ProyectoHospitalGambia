@@ -6,85 +6,80 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
-
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.PresionSanguinea
+import com.google.gson.Gson
 
 class GraficaBloodPressureView : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_blood_pressure_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val chart = view.findViewById<LineChart>(R.id.graficoLineas_PresionSanguinea)
+        val chartBloodPressure = view.findViewById<LineChart>(R.id.graficoLineas_PresionSanguinea)
+        val chartHeartRate = view.findViewById<LineChart>(R.id.graficoLineas_RitmoCardiaco)
 
-        // Datos de prueba para la presión sistólica
-        val entriesSistolica = ArrayList<Entry>()
-        entriesSistolica.add(Entry(0f, 120f)) // Día 1
-        entriesSistolica.add(Entry(1f, 115f)) // Día 2
-        entriesSistolica.add(Entry(2f, 110f)) // Día 3
-        entriesSistolica.add(Entry(3f, 90f)) // Día 4
-        entriesSistolica.add(Entry(4f, 105f)) // Día 5
+        val idUsuarioActual = MainActivity.usuario?.id
 
-        // Datos de prueba para la presión diastólica
-        val entriesDiastolica = ArrayList<Entry>()
-        entriesDiastolica.add(Entry(0f, 100f)) // Día 1
-        entriesDiastolica.add(Entry(1f, 60f)) // Día 2
-        entriesDiastolica.add(Entry(2f, 150f)) // Día 3
-        entriesDiastolica.add(Entry(3f, 78f)) // Día 4
-        entriesDiastolica.add(Entry(4f, 40f)) // Día 5
+        // Obtener los datos de presión sanguínea de la base de datos
+        val datosPresionSanguinea = MainActivity.databaseHelper?.obtenerTodosLosDatosPresionSanguinea(idUsuarioActual!!)
 
-        // Crear los conjuntos de datos y personalizarlos
-        val dataSetSistolica = LineDataSet(entriesSistolica, "Sistólica")
-        dataSetSistolica.color = Color.RED
+        // Crear las entradas de la gráfica a partir de los datos de presión sanguínea
+        val entriesSistolico = datosPresionSanguinea?.mapIndexed { index, presionSanguinea ->
+            Entry(index.toFloat(), presionSanguinea.sistolico.toFloat())
+        }
+        val entriesDiastolico = datosPresionSanguinea?.mapIndexed { index, presionSanguinea ->
+            Entry(index.toFloat(), presionSanguinea.diastolico.toFloat())
+        }
 
-        val dataSetDiastolica = LineDataSet(entriesDiastolica, "Diastólica")
-        dataSetDiastolica.color = Color.BLUE
-
-        // Agregar los conjuntos de datos a los datos de la línea
-        val lineData = LineData(dataSetSistolica, dataSetDiastolica)
-
-        // Aplicar los datos al gráfico y refrescarlo
-        chart.data = lineData
-        chart.invalidate() // Refresca el gráfico
-
-        // ---------------------- Gráfico de ritmo cardíaco ----------------------
-
-        val chartRitmoCardiaco = view.findViewById<LineChart>(R.id.graficoLineas_RitmoCardiaco)
-
-        // Datos de prueba para el ritmo cardíaco
-        val entriesRitmoCardiaco = ArrayList<Entry>()
-        entriesRitmoCardiaco.add(Entry(0f, 70f)) // Día 1
-        entriesRitmoCardiaco.add(Entry(1f, 75f)) // Día 2
-        entriesRitmoCardiaco.add(Entry(2f, 72f)) // Día 3
-        entriesRitmoCardiaco.add(Entry(3f, 76f)) // Día 4
-        entriesRitmoCardiaco.add(Entry(4f, 73f)) // Día 5
+        // Crear las entradas de la gráfica de ritmo cardíaco
+        val entriesHeartRate = datosPresionSanguinea?.mapIndexed { index, presionSanguinea ->
+            Entry(index.toFloat(), presionSanguinea.frecuenciaCardiaca.toFloat())
+        }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetRitmoCardiaco = LineDataSet(entriesRitmoCardiaco, "Ritmo cardíaco")
-        dataSetRitmoCardiaco.color = Color.RED
+        val dataSetSistolico = LineDataSet(entriesSistolico, "Sistolico")
+        dataSetSistolico.color = Color.BLUE
+        dataSetSistolico.valueTextColor = Color.BLACK
+        dataSetSistolico.valueTextSize = 16f
 
-        // Agregar el conjunto de datos a los datos de la línea
-        val lineDataRitmoCardiaco = LineData(dataSetRitmoCardiaco)
+        val dataSetDiastolico = LineDataSet(entriesDiastolico, "Diastolico")
+        dataSetDiastolico.color = Color.RED
+        dataSetDiastolico.valueTextColor = Color.BLACK
+        dataSetDiastolico.valueTextSize = 16f
 
-        // Aplicar los datos al gráfico y refrescarlo
-        chartRitmoCardiaco.data = lineDataRitmoCardiaco
-        chartRitmoCardiaco.invalidate() // Refresca el gráfico
+        val dataSetHeartRate = LineDataSet(entriesHeartRate, "Frecuencia Cardiaca")
+        dataSetHeartRate.color = Color.GREEN
+        dataSetHeartRate.valueTextColor = Color.BLACK
+        dataSetHeartRate.valueTextSize = 16f
+
+        // Crear el gráfico de líneas y personalizarlo
+        val dataBloodPressure = LineData(dataSetSistolico, dataSetDiastolico)
+        chartBloodPressure.data = dataBloodPressure
+        chartBloodPressure.setTouchEnabled(true)
+        chartBloodPressure.setPinchZoom(true)
+        chartBloodPressure.description.text = "Presión Sanguínea"
+        chartBloodPressure.setNoDataText("No hay datos disponibles")
+        chartBloodPressure.invalidate()
+
+        // Crear el gráfico de ritmo cardíaco y personalizarlo
+        val dataHeartRate = LineData(dataSetHeartRate)
+        chartHeartRate.data = dataHeartRate
+        chartHeartRate.setTouchEnabled(true)
+        chartHeartRate.setPinchZoom(true)
+        chartHeartRate.description.text = "Ritmo Cardiaco"
+        chartHeartRate.setNoDataText("No hay datos disponibles")
+        chartHeartRate.invalidate()
     }
-
 }

@@ -30,8 +30,7 @@
             app:layout_constraintBottom_toTopOf="@+id/txt_paginaCasa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_Principal" />
 
         <TextView
             android:id="@+id/txt_paginaCasaAbout"
@@ -111,9 +110,7 @@
             android:text="@string/txt_Thanks"
             app:layout_constraintBottom_toTopOf="@+id/txt_conclusion"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_paginaCasa"
-            app:layout_constraintVertical_bias="0.933" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/img_about"

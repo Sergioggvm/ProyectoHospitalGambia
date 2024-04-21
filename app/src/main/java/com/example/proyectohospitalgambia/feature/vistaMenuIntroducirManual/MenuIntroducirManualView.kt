@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.google.android.material.imageview.ShapeableImageView
 
 class MenuIntroducirManualView : Fragment() {
 
@@ -17,10 +21,16 @@ class MenuIntroducirManualView : Fragment() {
     private lateinit var btnDatosAgua: ImageButton
 
     // Define los botones de gráficas
-    private lateinit var btnGraficaSangre: ImageButton
-    private lateinit var btnGraficaPeso: ImageButton
-    private lateinit var btnGraficaGlicemia: ImageButton
-    private lateinit var btnGraficaAgua: ImageButton
+    private lateinit var btnGraficaSangre: ShapeableImageView
+    private lateinit var btnGraficaPeso: ShapeableImageView
+    private lateinit var btnGraficaGlicemia: ShapeableImageView
+    private lateinit var btnGraficaAgua: ShapeableImageView
+
+    // Define los TextView para los últimos datos
+    private lateinit var tvUltimoDatoBloodPressure: TextView
+    private lateinit var tvUltimoDatoPeso: TextView
+    private lateinit var tvUltimoDatoGlucosa: TextView
+    private lateinit var tvUltimoDatoOsat: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +49,12 @@ class MenuIntroducirManualView : Fragment() {
         btnGraficaPeso = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaWeight)
         btnGraficaGlicemia = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaGlycemia)
         btnGraficaAgua = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaOsat)
+
+        // Inicializa los TextView para los últimos datos
+        tvUltimoDatoBloodPressure = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoBloodPressure)
+        tvUltimoDatoPeso = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoPeso)
+        tvUltimoDatoGlucosa = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoGlucosa)
+        tvUltimoDatoOsat = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoOsat)
 
         // Define los OnClickListener para los botones de datos
         btnDatosSangre.setOnClickListener {
@@ -68,6 +84,59 @@ class MenuIntroducirManualView : Fragment() {
             findNavController().navigate(R.id.action_menu_Introducir_Manual_to_graficoOsatView)
         }
 
+
+
         return menuIntroducirDatosManual
     }
+
+    override fun onResume() {
+        super.onResume()
+        actualizarUltimaPresionSanguinea()
+        actualizarUltimoPeso()
+        actualizarUltimaGlicemia()
+        actualizarUltimoOsat()
+    }
+
+    fun actualizarUltimaPresionSanguinea() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimaPresionSanguinea = MainActivity.databaseHelper?.obtenerUltimaPresionSanguinea(idUsuario)
+            val fechaMedicion = ultimaPresionSanguinea?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val textoDatos = "${getString(R.string.txt_Sistolica)}: ${ultimaPresionSanguinea?.sistolico} ${getString(R.string.txt_Diastolica)}: ${ultimaPresionSanguinea?.diastolico}\n${getString(R.string.txt_FrecuenciaCardiaca)}: ${ultimaPresionSanguinea?.frecuenciaCardiaca}"
+            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoBloodPressure.text = textoFinal
+        }
+    }
+
+    fun actualizarUltimoPeso() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimoPeso = MainActivity.databaseHelper?.obtenerUltimoPeso(idUsuario)
+            val fechaMedicion = ultimoPeso?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val texto = "${getString(R.string.txt_Peso)}: ${ultimoPeso?.kg} ${getString(R.string.Kg)}"
+            val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoPeso.text = textoFinal
+        }
+    }
+
+    fun actualizarUltimaGlicemia() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimaGlicemia = MainActivity.databaseHelper?.obtenerUltimaGlucemia(idUsuario)
+            val fechaMedicion = ultimaGlicemia?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val texto = "${getString(R.string.txt_Glucosa)}: ${ultimaGlicemia?.glucosa} mg/dL"
+            val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoGlucosa.text = textoFinal
+        }
+    }
+
+    fun actualizarUltimoOsat() {
+        MainActivity.usuario?.id?.let { idUsuario ->
+            val ultimoOsat = MainActivity.databaseHelper?.obtenerUltimoOsat(idUsuario)
+            val fechaMedicion = ultimoOsat?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val texto = "${getString(R.string.txt_Osat)}: ${ultimoOsat?.presionSanguinea} %"
+            val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            tvUltimoDatoOsat.text = textoFinal
+        }
+    }
+
+
+
 }

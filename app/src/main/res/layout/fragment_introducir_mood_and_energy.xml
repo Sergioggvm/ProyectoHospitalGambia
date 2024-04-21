@@ -15,99 +15,124 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
             android:text="@string/txt_MeSiento"
             android:textColor="@color/azul_texto"
-            android:textSize="24sp"
+            android:textSize="34sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/et_notesMoodAndEnergy"
-            android:layout_width="229dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:hint="@string/txt_Notas"
-            android:inputType="text"
-            android:gravity="center"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_notesMoodAndEnergy_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardarMoodAndEnergy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_Energy" />
+            app:layout_constraintTop_toBottomOf="@+id/seekBar_Energy">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_notesMoodAndEnergy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="@string/txt_Notas"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_guardarMoodAndEnergy"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/boton_done"
-            android:backgroundTint="@color/azul_texto"
-            android:text="@string/txt_Hecho"
-            android:textColor="@color/white"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_margin="16dp"
+            app:backgroundTint="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_notesMoodAndEnergy" />
+            app:layout_constraintTop_toBottomOf="@+id/et_notesMoodAndEnergy_layout"
+            app:rippleColor="@android:color/transparent"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
+            android:elevation="8dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_guardarMoodAndEnergy"
+            app:layout_constraintEnd_toEndOf="@+id/btn_guardarMoodAndEnergy"
+            app:layout_constraintStart_toStartOf="@+id/btn_guardarMoodAndEnergy"
+            app:layout_constraintTop_toTopOf="@+id/btn_guardarMoodAndEnergy" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="@string/txt_Animo"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/seekBar_Mood"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageView
             android:id="@+id/imgv_mood"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_energy"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/seekBar_Mood"
-            app:layout_constraintTop_toTopOf="@+id/seekBar_Mood"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
             tools:src="@drawable/icono_mood0" />
 
         <ImageView
             android:id="@+id/imgv_Energy"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_notesMoodAndEnergy_layout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/seekBar_Energy"
-            app:layout_constraintTop_toTopOf="@+id/seekBar_Energy"
+            app:layout_constraintTop_toBottomOf="@+id/tv_energy"
             tools:src="@drawable/icono_energy0" />
 
         <TextView
             android:id="@+id/tv_energy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
             android:text="@string/txt_Energia"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/seekBar_Energy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_Mood" />
 
         <SeekBar
             android:id="@+id/seekBar_Mood"
-            android:layout_width="183dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="29dp"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="16dp"
             android:thumb="@drawable/icono_circulo_seekbar"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_energy"
+            app:layout_constraintEnd_toStartOf="@+id/imgv_mood"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <SeekBar
             android:id="@+id/seekBar_Energy"
-            android:layout_width="183dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="16dp"
             android:thumb="@drawable/icono_circulo_seekbar"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/et_notesMoodAndEnergy_layout"
+            app:layout_constraintEnd_toStartOf="@+id/imgv_Energy"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_energy" />
 

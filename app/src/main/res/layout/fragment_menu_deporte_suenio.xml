@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".feature.vistaMenuDeporteSuenio.MenuDeporteSuenioView">
@@ -32,7 +31,6 @@
             app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosAerobic"
             app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosAerobic" />
 
-
         <TextView
             android:id="@+id/tv_aerobic"
             android:layout_width="wrap_content"
@@ -45,18 +43,19 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
             app:layout_constraintTop_toTopOf="@+id/viewFondoAerobic" />
 
-
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
             android:id="@+id/imgbtn_irAGraficaAerobic"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_ActividadFisica"
-            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/viewFondoAerobic"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoAerobic"
             app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosAerobic" />
+
+        <!-- Agrega los botones de "irADatos" sin circular -->
 
         <ImageButton
             android:id="@+id/imgbtn_irADatosNutrition"
@@ -80,7 +79,6 @@
             app:layout_constraintStart_toEndOf="@+id/imgbtn_irADatosNutrition"
             app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosNutrition" />
 
-
         <TextView
             android:id="@+id/tv_Nutrition"
             android:layout_width="wrap_content"
@@ -93,7 +91,7 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
             app:layout_constraintTop_toTopOf="@+id/viewFondoNutrition" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgbtn_irAGraficaNutrition"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -101,11 +99,14 @@
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_Nutricion"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintBottom_toBottomOf="@+id/viewFondoNutrition"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoNutrition"
-            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosNutrition" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosNutrition"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular" />
 
+        <!-- Repite el mismo patrón para los botones de Sleep y Social Activities -->
+
+        <!-- Para Sleep -->
 
         <ImageButton
             android:id="@+id/imgbtn_irADatosSleep"
@@ -141,7 +142,7 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
             app:layout_constraintTop_toTopOf="@+id/viewFondoSleep" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgbtn_irAGraficaSleep"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -149,10 +150,12 @@
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_Sueno"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintBottom_toBottomOf="@+id/viewFondoSleep"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoSleep"
-            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosSleep" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosSleep"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular" />
+
+        <!-- Para Social Activities -->
 
         <ImageButton
             android:id="@+id/imgbtn_irADatosSocialActivities"
@@ -188,7 +191,7 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"
             app:layout_constraintTop_toTopOf="@+id/viewFondoSocialActivities" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgbtn_irAGraficaSocialActivities"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -197,11 +200,52 @@
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_ActividadSocial"
             android:scaleType="centerCrop"
-            android:src="@drawable/icono_accederdatos"
             app:layout_constraintBottom_toBottomOf="@+id/viewFondoSocialActivities"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoSocialActivities"
-            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosSocialActivities" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosSocialActivities"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular" />
 
+        <!-- Texto de últimos datos -->
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoAerobic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoAerobic"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aerobic" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoNutrition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoNutrition"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Nutrition" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoSleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSleep"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Sleep" />
+
+        <TextView
+            android:id="@+id/tv_ultimoDatoSocialActivities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/viewFondoSocialActivities"
+            app:layout_constraintTop_toBottomOf="@+id/tv_SocialActivities" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

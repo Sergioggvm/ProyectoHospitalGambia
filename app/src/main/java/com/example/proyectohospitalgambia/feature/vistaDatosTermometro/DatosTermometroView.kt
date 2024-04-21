@@ -26,12 +26,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.core.domain.model.termometro.DatosTermometro
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
@@ -42,10 +44,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import kotlin.math.pow
@@ -60,11 +64,12 @@ class DatosTermometroView : AppCompatActivity() {
     var context = this
     val caracteristica: UUID = UUID.fromString("00002a1c-0000-1000-8000-00805f9b34fb")
     val servicio: UUID = UUID.fromString("00001809-0000-1000-8000-00805f9b34fb")
-    private lateinit var bluetoothLeScanner : BluetoothLeScanner
+    private lateinit var bluetoothLeScanner: BluetoothLeScanner
     private val listadispositivos = mutableListOf<BluetoothDevice>()
     private var scanning = false
     private val SCAN_PERIOD: Long = 10000
 
+    private val viewModel: DatosTermometroViewModel by viewModels()
 
 
     // Declarar variables para el TextView de la temperatura
@@ -73,7 +78,9 @@ class DatosTermometroView : AppCompatActivity() {
     // Define una lista para almacenar los registros de datos
     private val datosTermometroList = mutableListOf<DatosTermometro>()
 
+    private lateinit var tv_TemperaturaResultado: TextView
     private lateinit var progressBar: ProgressBar
+
 
     enum class BLELifecycleState {
         Disconnected,
@@ -100,6 +107,7 @@ class DatosTermometroView : AppCompatActivity() {
         val btnMedicionTemperatura = findViewById<Button>(R.id.btn_doneTemperatura)
         textViewTemperatura = findViewById(R.id.tv_TemperaturaResultado)
         progressBar = findViewById(R.id.progressBarTemperaturaCargando)
+        tv_TemperaturaResultado = findViewById(R.id.tv_TemperaturaResultado)
 
         val context: Context = this
 
@@ -157,36 +165,55 @@ class DatosTermometroView : AppCompatActivity() {
             }
 
 
+            // Permisos concedidos
+            Log.d("Bluetooth2", "Permisos concedidos")
+            val bluetoothManager =
+                context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+            bluetoothAdapter = bluetoothManager.adapter
 
-        // Permisos concedidos
-        Log.d("Bluetooth2", "Permisos concedidos")
-        val bluetoothManager =
-            context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-        bluetoothAdapter = bluetoothManager.adapter
+            // Si los permisos ya están concedidos, iniciar la búsqueda de dispositivos
+            startDeviceSearch(
+                this, ""
+            )
 
-        // Si los permisos ya están concedidos, iniciar la búsqueda de dispositivos
-        startDeviceSearch(
-            this, ""
-        )
+            // Mostrar la ProgressBar y quitar el boton
+            progressBar.visibility = View.VISIBLE
+            btnMedicionTemperatura.visibility = View.INVISIBLE
 
-        // Mostrar la ProgressBar y quitar el boton
-        progressBar.visibility = View.VISIBLE
-        btnMedicionTemperatura.visibility = View.INVISIBLE
+            // Iniciar la corrutina para simular el proceso de carga
+            CoroutineScope(Dispatchers.Main).launch {
+                // Simular el progreso de carga durante 3 segundos
+                for (progress in 0..100) {
+                    progressBar.progress = progress
+                    delay(300) // Cambia este valor para ajustar la velocidad de llenado de la ProgressBar
+                }
 
-        // Iniciar la corrutina para simular el proceso de carga
-        CoroutineScope(Dispatchers.Main).launch {
-            // Simular el progreso de carga durante 3 segundos
-            for (progress in 0..100) {
-                progressBar.progress = progress
-                delay(300) // Cambia este valor para ajustar la velocidad de llenado de la ProgressBar
+                // Ocultar la ProgressBar
+                progressBar.visibility = View.INVISIBLE
+                btnMedicionTemperatura.visibility = View.VISIBLE
+
+                cargarRegistros()
+
+                // Llamar a la función obtenerDatosFormulario POLS
+                val usuarioActivo = MainActivity.usuario
+                val datosFormulario = obtenerDatosFormulario()
+
+                if (datosFormulario != null) {
+                    val idPols = generarIdAleatorio()
+                    val idBook = MainActivity.usuario?.id.toString()
+
+                    val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
+
+                    if (usuarioActivo != null) {
+                        usuarioActivo.pols.add(pol)
+                    }
+
+                    // Llamar al método del ViewModel para insertar datos
+                    var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+
+                }
+
             }
-
-            // Ocultar la ProgressBar
-            progressBar.visibility = View.INVISIBLE
-            btnMedicionTemperatura.visibility = View.VISIBLE
-
-            cargarRegistros()
-        }
 
         }
 
@@ -220,7 +247,10 @@ class DatosTermometroView : AppCompatActivity() {
 
         // Verificar si se encontró algún registro con fecha y hora
         if (ultimoDatoTermometro != null) {
-            Log.d("Bluetooth2", "Registro con la última fecha y hora: ${ultimoDatoTermometro!!.fechaHoraFormatted}")
+            Log.d(
+                "Bluetooth2",
+                "Registro con la última fecha y hora: ${ultimoDatoTermometro!!.fechaHoraFormatted}"
+            )
             Log.d("Bluetooth2", "Datos - Temperatura: ${ultimoDatoTermometro!!.temperatura}")
 
             textViewTemperatura.text = ultimoDatoTermometro!!.temperatura.toString()
@@ -308,7 +338,7 @@ class DatosTermometroView : AppCompatActivity() {
                 )
             }
             Log.d("Bluetooth2", "Device found: ${result.device.name}")
-            if(result.device.name != null && result.device.name.equals(deviceName)) {
+            if (result.device.name != null && result.device.name.equals(deviceName)) {
                 listadispositivos.add(result.device)
             }
 
@@ -350,7 +380,8 @@ class DatosTermometroView : AppCompatActivity() {
 
     // Llamar a scanLeDevice dentro de un bloque coroutine
     private fun startDeviceSearch(context: Context, deviceName: String) {
-        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        val bluetoothManager =
+            context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
         bluetoothAdapter = bluetoothManager.adapter
         bluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
 
@@ -387,7 +418,6 @@ class DatosTermometroView : AppCompatActivity() {
             }
         }
     }
-
 
 
     private var lifecycleState = DatosTermometroView.BLELifecycleState.Disconnected
@@ -543,7 +573,7 @@ class DatosTermometroView : AppCompatActivity() {
             }
         }
 
-            // Check the permissions again before connecting the device
+        // Check the permissions again before connecting the device
         if (checkSelfPermission(Manifest.permission.BLUETOOTH) == PackageManager.PERMISSION_GRANTED &&
             checkSelfPermission(Manifest.permission.BLUETOOTH_ADMIN) == PackageManager.PERMISSION_GRANTED
         ) {
@@ -594,7 +624,6 @@ class DatosTermometroView : AppCompatActivity() {
     }
 
 
-
     //Menú de opciones
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -616,6 +645,7 @@ class DatosTermometroView : AppCompatActivity() {
 
                 true
             }
+
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)
@@ -675,5 +705,49 @@ class DatosTermometroView : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    private fun generarIdAleatorio(): String {
+        return UUID.randomUUID().toString()
+    }
+
+    // Método para obtener los datos del formulario y crear el JSON
+    private fun obtenerDatosFormulario(): JSONObject? {
+        // Obtener el valor del TextView
+        val temperaturaText = tv_TemperaturaResultado.text.toString()
+
+        // Verificar si el campo está vacío
+        if (temperaturaText.isEmpty()) {
+            return null // Devolver null si el campo está vacío
+        }
+
+        try {
+            // Convertir el valor a tipo numérico
+            val temperatura = temperaturaText.toDouble()
+
+            // Obtener la fecha y hora actual
+            val currentDateAndTime =
+                SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                    Date()
+                )
+
+            // Crear el objeto JSON con los datos del formulario
+            val jsonObject = JSONObject()
+            jsonObject.put("TipoPol", "temperatura")
+            jsonObject.put("FechaInsercion", currentDateAndTime)
+            jsonObject.put("temperatura", temperatura)
+
+            // Mostrar el JSON en el Log
+            Log.d("JSON Data", jsonObject.toString())
+
+            // Limpiar el elemento del formulario después de obtener los datos
+            tv_TemperaturaResultado.text = ""
+
+            return jsonObject
+        } catch (e: NumberFormatException) {
+            // Manejar la excepción si la conversión a Double falla
+            return null
+        }
+    }
+
 
 }

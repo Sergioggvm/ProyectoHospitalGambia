@@ -12,11 +12,11 @@
 
         <ImageView
             android:id="@+id/imgv_nutrition"
-            android:layout_width="181dp"
-            android:layout_height="158dp"
-            android:layout_marginTop="64dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:contentDescription="@string/txt_nutricion"
             android:src="@drawable/icono_nutrition"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,106 +25,155 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:gravity="center"
             android:text="@string/txt_ValorEnergetico"
             android:textColor="@color/azul_texto"
-            android:textSize="24sp"
+            android:textSize="34sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_morningNutrition_layout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgv_nutrition" />
 
-        <EditText
-            android:id="@+id/et_morningNutrition"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="52dp"
-            android:ems="10"
-            android:background="@drawable/edittext_fondo"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_morningNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
             android:hint="@string/txt_Manana"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/et_afternoonNutrition_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <EditText
-            android:id="@+id/et_afternoonNutrition"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:background="@drawable/edittext_fondo"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_morningNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_afternoonNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
             android:hint="@string/txt_Tarde"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/et_eveningNutrition_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_morningNutrition" />
+            app:layout_constraintTop_toBottomOf="@+id/et_morningNutrition_layout">
 
-        <EditText
-            android:id="@+id/et_eveningNutrition"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:background="@drawable/edittext_fondo"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_afternoonNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_eveningNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
             android:hint="@string/txt_Noche"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/et_totalNutrition_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_afternoonNutrition" />
+            app:layout_constraintTop_toBottomOf="@+id/et_afternoonNutrition_layout">
 
-        <EditText
-            android:id="@+id/et_totalNutrition"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="224dp"
-            android:ems="10"
-            android:background="@drawable/edittext_fondo"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_eveningNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_totalNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
             android:hint="@string/txt_Total"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/et_notesNutrition_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/et_eveningNutrition_layout">
 
-        <EditText
-            android:id="@+id/et_notesNutrition"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="272dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_totalNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_notesNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
             android:hint="@string/txt_Notas"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardarNutrition"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/et_totalNutrition_layout">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_notesNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_guardarNutrition"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/boton_done"
-            android:backgroundTint="@color/azul_texto"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_margin="16dp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_notesNutrition_layout"
+            app:rippleColor="@android:color/transparent"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="@string/txt_Hecho"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_notesNutrition" />
+            android:elevation="8dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_guardarNutrition"
+            app:layout_constraintEnd_toEndOf="@+id/btn_guardarNutrition"
+            app:layout_constraintStart_toStartOf="@+id/btn_guardarNutrition"
+            app:layout_constraintTop_toTopOf="@+id/btn_guardarNutrition" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
