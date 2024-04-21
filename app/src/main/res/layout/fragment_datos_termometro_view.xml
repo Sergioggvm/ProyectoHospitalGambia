@@ -110,21 +110,22 @@
             android:id="@+id/tv_temperaturaObtenida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="8dp"
             android:text="@string/txt_temperaturaObtenida"
-            android:textStyle="bold"
             android:textColor="@color/azul_texto"
             android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_TemperaturaMedida"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_SincronizarDatosTermometro" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBarTemperaturaCargando" />
 
         <TextView
             android:id="@+id/tv_TemperaturaMedida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
             android:text="@string/txt_Temperatura"
+            app:layout_constraintBottom_toTopOf="@+id/btn_doneTemperatura"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.433"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,15 +137,15 @@
             android:layout_width="41dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="36dp"
             android:text="0"
+            app:layout_constraintBottom_toTopOf="@+id/btn_doneTemperatura"
             app:layout_constraintStart_toEndOf="@+id/tv_TemperaturaMedida"
             app:layout_constraintTop_toBottomOf="@+id/tv_temperaturaObtenida" />
 
         <Button
             android:id="@+id/btn_doneTemperatura"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"

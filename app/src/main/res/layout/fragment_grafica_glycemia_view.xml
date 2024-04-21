@@ -11,12 +11,10 @@
         android:layout_height="match_parent">
 
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.example.proyectohospitalgambia.feature.CustomLineChart
             android:id="@+id/graficoLineas_Glucosa"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="64dp"
-            android:layout_weight="1"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,11 +25,9 @@
             android:id="@+id/tv_Glucosa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:layout_marginBottom="64dp"
             android:text="@string/txt_NivelGlucosaEnSangre"
             android:textColor="@color/azul_texto"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/graficoLineas_Glucosa"
             app:layout_constraintEnd_toEndOf="parent"

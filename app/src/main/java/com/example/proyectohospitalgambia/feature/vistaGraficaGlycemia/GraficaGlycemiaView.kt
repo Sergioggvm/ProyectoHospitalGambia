@@ -41,7 +41,8 @@ class GraficaGlycemiaView : Fragment() {
         val idUsuarioActual = MainActivity.usuario?.id
 
         // Obtener los datos de glucemia de la base de datos
-        val datosGlucemia = MainActivity.databaseHelper?.obtenerTodosLosDatosGlucemia(idUsuarioActual!!)
+        val datosGlucemia =
+            MainActivity.databaseHelper?.obtenerTodosLosDatosGlucemia(idUsuarioActual!!)
 
         // Crear las entradas de la gráfica a partir de los datos de glucemia
         val entriesGlucemia = datosGlucemia?.mapIndexed { index, glucemia ->
@@ -49,7 +50,8 @@ class GraficaGlycemiaView : Fragment() {
         }
 
         // Crear un mapeo de índices a fechas
-        val indexToDateMap = datosGlucemia?.associate { it.glucosa.toFloat() to it.fechaRealizacion }
+        val indexToDateMap =
+            datosGlucemia?.associate { it.glucosa.toFloat() to it.fechaRealizacion }
 
         // Crear el conjunto de datos y personalizarlo
         val dataSetGlucemia = LineDataSet(entriesGlucemia, "Glucemia")
@@ -68,7 +70,9 @@ class GraficaGlycemiaView : Fragment() {
         // Configurar el formateador del eje X para mostrar las fechas
         chartGlucemia.xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                return indexToDateMap?.get(value)?.let { SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(it) } ?: value.toString()
+                return indexToDateMap?.get(value)
+                    ?.let { SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(it) }
+                    ?: value.toString()
             }
         }
 

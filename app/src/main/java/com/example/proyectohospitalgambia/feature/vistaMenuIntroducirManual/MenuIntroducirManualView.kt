@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.google.android.material.imageview.ShapeableImageView
 
 class MenuIntroducirManualView : Fragment() {
 
@@ -20,10 +21,10 @@ class MenuIntroducirManualView : Fragment() {
     private lateinit var btnDatosAgua: ImageButton
 
     // Define los botones de gráficas
-    private lateinit var btnGraficaSangre: ImageButton
-    private lateinit var btnGraficaPeso: ImageButton
-    private lateinit var btnGraficaGlicemia: ImageButton
-    private lateinit var btnGraficaAgua: ImageButton
+    private lateinit var btnGraficaSangre: ShapeableImageView
+    private lateinit var btnGraficaPeso: ShapeableImageView
+    private lateinit var btnGraficaGlicemia: ShapeableImageView
+    private lateinit var btnGraficaAgua: ShapeableImageView
 
     // Define los TextView para los últimos datos
     private lateinit var tvUltimoDatoBloodPressure: TextView

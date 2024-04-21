@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.example.proyectohospitalgambia.feature.CustomLineChart
             android:id="@+id/graficoLineas_PresionSanguinea"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -18,11 +18,10 @@
             android:padding="16dp"
             app:layout_constraintBottom_toTopOf="@+id/tv_presionSanguinea"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_BloodPressure" />
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.example.proyectohospitalgambia.feature.CustomLineChart
             android:id="@+id/graficoLineas_RitmoCardiaco"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -39,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_ritmoCardiaco"
             android:textColor="@color/azul_texto"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/graficoLineas_RitmoCardiaco"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_PresionSanguinea"
             android:textColor="@color/azul_texto"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/graficoLineas_PresionSanguinea"
             app:layout_constraintEnd_toEndOf="parent"

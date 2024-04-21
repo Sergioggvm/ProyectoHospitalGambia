@@ -172,10 +172,8 @@
 
         <Button
             android:id="@+id/btn_donePulsioximetro"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
@@ -183,8 +181,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro"
-            app:layout_constraintVertical_bias="0.652" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_PulsoResultado" />
 
         <ProgressBar
             android:id="@+id/progressBarCargaDatos"

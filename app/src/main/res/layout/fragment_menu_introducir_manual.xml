@@ -44,7 +44,8 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoBloodPressure"
             app:layout_constraintTop_toTopOf="@+id/viewFondoBloodPressure" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
             android:id="@+id/imgbtn_irAGraficaBloodPressure"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -91,7 +92,8 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoWeight"
             app:layout_constraintTop_toTopOf="@+id/viewFondoWeight" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
             android:id="@+id/imgbtn_irAGraficaWeight"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -138,7 +140,8 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoGlycemia"
             app:layout_constraintTop_toTopOf="@+id/viewFondoGlycemia" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
             android:id="@+id/imgbtn_irAGraficaGlycemia"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -184,7 +187,8 @@
             app:layout_constraintStart_toStartOf="@+id/viewFondoOsat"
             app:layout_constraintTop_toTopOf="@+id/viewFondoOsat" />
 
-        <ImageButton
+        <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
             android:id="@+id/imgbtn_irAGraficaOsat"
             android:layout_width="48dp"
             android:layout_height="48dp"

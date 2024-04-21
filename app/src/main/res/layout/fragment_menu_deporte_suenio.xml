@@ -44,17 +44,16 @@
             app:layout_constraintTop_toTopOf="@+id/viewFondoAerobic" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
             android:id="@+id/imgbtn_irAGraficaAerobic"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/icono_accederdatos"
             android:contentDescription="@string/txtbtn_ActividadFisica"
-            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/viewFondoAerobic"
             app:layout_constraintEnd_toEndOf="@+id/viewFondoAerobic"
-            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosAerobic"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular" />
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_irADatosAerobic" />
 
         <!-- Agrega los botones de "irADatos" sin circular -->
 
