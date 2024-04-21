@@ -28,70 +28,87 @@
             android:textColor="@color/azul_texto"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/et_systolic"
+            app:layout_constraintBottom_toTopOf="@+id/et_systolic_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgv_bloodPressure" />
 
-        <EditText
-            android:id="@+id/et_systolic"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_systolic_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="275dp"
             android:layout_height="75dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
             android:hint="@string/txt_Sistolica"
-            android:inputType="number"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/et_diastolic"
+            app:layout_constraintBottom_toTopOf="@+id/et_diastolic_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <EditText
-            android:id="@+id/et_diastolic"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_systolic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_diastolic_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="275dp"
             android:layout_height="75dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
             android:hint="@string/txt_Diastolica"
-            android:inputType="number"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/et_heart_rate"
+            app:layout_constraintBottom_toTopOf="@+id/filledTextField"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_systolic" />
+            app:layout_constraintTop_toBottomOf="@+id/et_systolic_layout">
 
-        <EditText
-            android:id="@+id/et_heart_rate"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_diastolic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="275dp"
             android:layout_height="75dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
             android:hint="@string/txt_FrecuenciaCardiaca"
-            android:inputType="number"
-            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_guardarBloodPressure"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_diastolic" />
+            app:layout_constraintTop_toBottomOf="@+id/et_diastolic_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_heart_rate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_guardarBloodPressure"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_heart_rate" />
+            app:layout_constraintTop_toBottomOf="@+id/filledTextField" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

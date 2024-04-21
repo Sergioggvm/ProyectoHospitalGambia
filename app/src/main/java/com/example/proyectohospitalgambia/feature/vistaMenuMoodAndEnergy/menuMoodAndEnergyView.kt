@@ -1,3 +1,6 @@
+package com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy
+
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +11,12 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.google.android.material.imageview.ShapeableImageView
 
 class menuMoodAndEnergyView : Fragment() {
 
     private lateinit var btnDatosMoodAndEnergy: ImageButton
-    private lateinit var btnGraficaMoodAndEnergy: ImageButton
+    private lateinit var btnGraficaMoodAndEnergy: ShapeableImageView
     private lateinit var tvUltimoDatoMoodAndEnergy: TextView
 
     override fun onCreateView(
@@ -53,8 +57,8 @@ class menuMoodAndEnergyView : Fragment() {
             val estadoAnimo = ultimoDatoMoodAndEnergy?.estadoAnimo?.toIntOrNull() ?: 0
             val energia = ultimoDatoMoodAndEnergy?.energia?.toIntOrNull() ?: 0
 
-            val textoEstadoAnimo = "$estadoAnimo/6"
-            val textoEnergia = "$energia/3"
+            val textoEstadoAnimo = "$estadoAnimo/6 ${getString(R.string.txt_Animo)}"
+            val textoEnergia = "$energia/3 ${getString(R.string.txt_Energia)}"
 
             val textoFinal = "$textoEstadoAnimo\n$textoEnergia\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoMoodAndEnergy.text = textoFinal

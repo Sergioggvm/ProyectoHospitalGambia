@@ -12,10 +12,10 @@
 
         <ImageView
             android:id="@+id/imgv_physicalActivity"
-            android:layout_width="181dp"
-            android:layout_height="158dp"
-            android:layout_marginTop="64dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/icono_aerobic"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,71 +24,91 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:gravity="center"
             android:text="@string/txt_ActividadFisica"
             android:textColor="@color/azul_texto"
-            android:textSize="24sp"
+            android:textSize="34sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_aerobic_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgv_physicalActivity" />
 
-        <EditText
-            android:id="@+id/et_aerobic"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/txt_Aerobico"
-            android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/et_anaerobic"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_aerobic_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_anaerobic_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:hint="@string/txt_Aerobico">
 
-        <EditText
-            android:id="@+id/et_anaerobic"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/txt_Anaerobico"
-            android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/et_steps"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_aerobic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_anaerobic_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_steps_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_aerobic" />
+            app:layout_constraintTop_toBottomOf="@+id/et_aerobic_layout"
+            android:hint="@string/txt_Anaerobico">
 
-        <EditText
-            android:id="@+id/et_steps"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/txt_Pasos"
-            android:inputType="number"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_anaerobic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_steps_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_guardarPhysicalActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_anaerobic" />
+            app:layout_constraintTop_toBottomOf="@+id/et_anaerobic_layout"
+            android:hint="@string/txt_Pasos">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_steps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_guardarPhysicalActivity"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_steps" />
+            app:layout_constraintTop_toBottomOf="@+id/et_steps_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

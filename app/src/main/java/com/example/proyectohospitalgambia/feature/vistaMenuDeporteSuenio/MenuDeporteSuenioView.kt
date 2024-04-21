@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.google.android.material.imageview.ShapeableImageView
 
 class MenuDeporteSuenioView : Fragment() {
 
@@ -41,10 +42,10 @@ class MenuDeporteSuenioView : Fragment() {
         btnDatosSuenio = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosSleep)
         btnDatosSocialActivo = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosSocialActivities)
 
-        val btnGraficaAerobic = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaAerobic)
-        val btnGraficaNutricion = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaNutrition)
-        val btnGraficaSuenio = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaSleep)
-        val btnGraficaSocialActivo = menuDeporteSuenio.findViewById<ImageButton>(R.id.imgbtn_irAGraficaSocialActivities)
+        val btnGraficaAerobic = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaAerobic)
+        val btnGraficaNutricion = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaNutrition)
+        val btnGraficaSuenio = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaSleep)
+        val btnGraficaSocialActivo = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaSocialActivities)
 
         tvUltimoDatoAerobic = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoAerobic)
         tvUltimoDatoNutrition = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoNutrition)
