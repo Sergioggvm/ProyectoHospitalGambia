@@ -15,6 +15,7 @@
             android:id="@+id/img_servidorFederacion"
             android:layout_width="275dp"
             android:layout_height="75dp"
+            android:layout_margin="10dp"
             android:src="@drawable/imagen_federacion_servidores"
             app:layout_constraintBottom_toTopOf="@+id/btn_recargaServidor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +26,7 @@
             android:id="@+id/btn_nuevoRegistro"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="10dp"
             android:background="@drawable/boton_nuevo_resgistro"
             android:contentDescription="0"
             android:scaleType="fitXY"
@@ -37,6 +39,7 @@
             android:id="@+id/btn_recargaServidor"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="10dp"
             android:background="@drawable/boton_recarga"
             android:contentDescription="0"
             android:scaleType="fitXY"
@@ -71,11 +74,13 @@
         <ListView
             android:id="@+id/lst_consexionesServidor"
             android:layout_width="0dp"
-            android:layout_height="343dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/edittext_fondo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_contraseñaServidor_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
