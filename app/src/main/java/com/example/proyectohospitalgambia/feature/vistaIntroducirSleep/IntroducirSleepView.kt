@@ -141,8 +141,8 @@ class IntroducirSleepView : Fragment(), AdapterView.OnItemSelectedListener {
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("Tipo",  sueno.tipoPol)
-        jsonObject.put("FechaRealizacion", sueno.fechaRealizacion)
+        jsonObject.put("TipoPol",  sueno.tipoPol)
+        jsonObject.put("FechaInsercion", sueno.fechaRealizacion)
         jsonObject.put("HorasSueno", sueno.horasSueno)
         jsonObject.put("CalidadSueno", sueno.calidadSueno)
         jsonObject.put("Notas", sueno.notas)

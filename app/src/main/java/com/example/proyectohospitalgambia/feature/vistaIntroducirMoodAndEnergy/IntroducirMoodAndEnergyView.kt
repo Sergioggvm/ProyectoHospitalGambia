@@ -148,8 +148,8 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("Tipo", estado.tipoPol)
-        jsonObject.put("FechaRealizacion", estado.fechaRealizacion)
+        jsonObject.put("TipoPol", estado.tipoPol)
+        jsonObject.put("FechaInsercion", estado.fechaRealizacion)
         jsonObject.put("EstadoAnimo", estado.estadoAnimo)
         jsonObject.put("Energia", estado.energia)
         jsonObject.put("Notas", estado.notas)

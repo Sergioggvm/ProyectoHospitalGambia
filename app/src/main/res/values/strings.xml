@@ -208,11 +208,11 @@
     <string name="txt_No">No</string>
 
     <string name="txt_DatosSubidos">Los datos han sido subidos con exito.</string>
-    <string name="txt_ResgitroDatosSubidos">Los datos se han subdio con exito.</string>
+    <string name="txt_ResgitroDatosSubidos">Los datos se han subidos con exito.</string>
 
     <string name="txt_DatosNoSubidos">Alguno de los datos no han sido subidos con exito.\n
     Puede que la pol este mal formada, que el servidor tenga un problema o que la url este mal formada\n
     por favor revise estos puntos.</string>
-    <string name="txt_ResgitroDatosNoSubidos">Los datos no se han subdio con exito.</string>
+    <string name="txt_ResgitroDatosNoSubidos">Los datos no se han subidos con exito.</string>
 
 </resources>

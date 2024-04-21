@@ -9,9 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.network.federeacionServidorApi
@@ -20,6 +23,7 @@ import org.json.JSONObject
 import com.example.proyectohospitalgambia.app.retrofit.RetrofitClient
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
+import com.example.proyectohospitalgambia.core.domain.model.pol.PolAdapter
 import com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.IntroducirWeightViewModel
 import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -36,13 +40,15 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 import okhttp3.*
 import okhttp3.Callback
-
+import java.net.ProtocolException
 
 
 class FederacionServidoresView : Fragment() {
 
     private lateinit var btnNuevoRegistro: ImageButton
     private lateinit var btnRecargaServidor: ImageButton
+
+    private lateinit var listView: ListView
 
     private val viewModel: FederacionServidoresViewModel by viewModels()
 
@@ -57,81 +63,107 @@ class FederacionServidoresView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
-        val federacionServidoresView = inflater.inflate(R.layout.fragment_federacion_servidores_view, container, false)
+            // Inflate the layout for this fragment
+            val federacionServidoresView =
+                inflater.inflate(R.layout.fragment_federacion_servidores_view, container, false)
 
-        btnNuevoRegistro = federacionServidoresView.findViewById(R.id.btn_nuevoRegistro)
-        btnRecargaServidor = federacionServidoresView.findViewById(R.id.btn_recargaServidor)
+            btnNuevoRegistro = federacionServidoresView.findViewById(R.id.btn_nuevoRegistro)
+            btnRecargaServidor = federacionServidoresView.findViewById(R.id.btn_recargaServidor)
 
-        // Agrega OnClickListener al botón btnJugarLocal
-        btnNuevoRegistro.setOnClickListener {
-            // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
-            findNavController().navigate(R.id.action_federacionServidoresView_to_nuevoRegistroServidorView)
-        }
+            // Agrega OnClickListener al botón btnJugarLocal
+            btnNuevoRegistro.setOnClickListener {
+                // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
+                findNavController().navigate(R.id.action_federacionServidoresView_to_nuevoRegistroServidorView)
+            }
 
-        val usuarioEncontrado = MainActivity.usuario
+            val usuarioEncontrado = MainActivity.usuario
 
-        // Crear una instancia del servicio de la API
-        val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
+            // Crear una instancia del servicio de la API
+            val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
 
-        // Configurar el OnClickListener para el botón btnRecargaServidor
-        btnRecargaServidor.setOnClickListener {
-            // Recuperar las pols
-            val pols = viewModel.recuperarDatos()
+            // Configurar el OnClickListener para el botón btnRecargaServidor
+            btnRecargaServidor.setOnClickListener {
+                try {
 
-            // Crear el encabezado del JSON
-            val jsonString2 = """
-    {
-      "creation_info": {
-        "node": "mygnuhealth",
-        "timestamp": "2024-03-26T18:13:46.604899",
-        "user": "ESPGNU777ORG"
-      },
-      "domain": "medical",
-      "fsynced": true,
-      "genetic_info": null,
-      "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
-      "measurements": [
-        {
-          "hr": 12444218888
-        }
-      ]
-    }
-    """.trimIndent()
 
-            // Iniciar una corrutina para manejar las solicitudes secuencialmente
-            CoroutineScope(Dispatchers.IO).launch {
-                var fallo = false
+                // Recuperar las pols
+                val pols = viewModel.recuperarDatos()
 
-                for (pol in pols) {
-                    if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals("false", ignoreCase = true)) {
-                        val jsonConcatenar = "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
-                            .trimIndent() // Eliminar espacios en blanco adicionales
+                // Crear el encabezado del JSON
+                val jsonString2 = """
+                    {
+                      "creation_info": {
+                        "node": "mygnuhealth",
+                        "timestamp": "2024-03-26T18:13:46.604899",
+                        "user": "ESPGNU777ORG"
+                      },
+                      "domain": "medical",
+                      "fsynced": true,
+                      "genetic_info": null,
+                      "id": "2bb7e529-c583-4d6e-ad24-e858196f98af",
+                      "measurements": [
+                        {
+                          "hr": 12444218888
+                        }
+                      ]
+                    }
+                    """.trimIndent()
 
-                        // Realizar la solicitud y esperar a que se complete antes de continuar
-                        val result = viewModel.insertarDatosEnServidorAsync(jsonConcatenar)
+                // Iniciar una corrutina para manejar las solicitudes secuencialmente
+                CoroutineScope(Dispatchers.IO).launch {
+                    var fallo = false
 
-                        // Verificar si la solicitud fue exitosa
-                        if (!result) {
-                            // Si falla alguna solicitud, actualizar la variable de fallo
-                            fallo = true
+                    for (pol in pols) {
+                        if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals(
+                                "false",
+                                ignoreCase = true
+                            )
+                        ) {
+                            val jsonConcatenar =
+                                "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
+                                    .trimIndent() // Eliminar espacios en blanco adicionales
+
+                            // Realizar la solicitud y esperar a que se complete antes de continuar
+                            val result = viewModel.insertarDatosEnServidorAsync(jsonConcatenar)
+
+                            // Verificar si la solicitud fue exitosa
+                            if (!result) {
+                                // Si falla alguna solicitud, actualizar la variable de fallo
+                                fallo = true
+                            } else {
+                                // Si la solicitud fue exitosa, actualizar el estado en la base de datos
+                                viewModel.actualizarEstadoSubidoEnBD(pol.idPol, "true")
+                            }
+                        }
+                    }
+
+                    // Mostrar el diálogo apropiado en el hilo principal después de que todas las solicitudes se hayan completado
+                    withContext(Dispatchers.Main) {
+                        if (fallo) {
+                            mostrarDialogoPolsNoSubidos()
                         } else {
-                            // Si la solicitud fue exitosa, actualizar el estado en la base de datos
-                            viewModel.actualizarEstadoSubidoEnBD(pol.idPol, "true")
+                            mostrarDialogoPolsSubidos()
                         }
                     }
                 }
-
-                // Mostrar el diálogo apropiado en el hilo principal después de que todas las solicitudes se hayan completado
-                withContext(Dispatchers.Main) {
-                    if (fallo) {
-                        mostrarDialogoPolsNoSubidos()
-                    } else {
-                        mostrarDialogoPolsSubidos()
-                    }
-                }
-            }
+       }catch (e: ProtocolException) {
+                    mostrarDialogoPolsNoSubidos()
+            e.printStackTrace() // Opcional: registrar el error
+        } catch (e: IOException) {
+                    mostrarDialogoPolsNoSubidos()
+            e.printStackTrace() // Opcional: registrar el error
         }
+
+
+                val listView = federacionServidoresView.findViewById<ListView>(R.id.lst_consexionesServidor)
+                val polList = viewModel.recuperarDatos().filter { pol ->
+                    usuarioEncontrado != null && usuarioEncontrado.id == pol.book
+                }
+                val adapter = PolAdapter(polList, requireContext())
+                listView.adapter = adapter
+
+            }
+
 
         // Inflate the layout for this fragment
         return federacionServidoresView
