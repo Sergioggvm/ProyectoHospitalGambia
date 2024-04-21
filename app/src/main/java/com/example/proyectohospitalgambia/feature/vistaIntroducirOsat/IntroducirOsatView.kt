@@ -6,15 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.domain.model.datosPols.GlucosaSangre
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia.IntroducirGlycemiaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -71,12 +68,10 @@ class IntroducirOsatView : Fragment() {
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
                 if (resultado){
 
@@ -122,16 +117,16 @@ class IntroducirOsatView : Fragment() {
         )
 
 
-        val Osat = Osat(
+        val osat1 = Osat(
             fechaRealizacion = currentDateAndTime,
             presionSanguinea = osat
         )
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("TipoPol", Osat.tipoPol)
-        jsonObject.put("FechaInsercion", Osat.fechaRealizacion)
-        jsonObject.put("Osat", Osat.presionSanguinea)
+        jsonObject.put("TipoPol", osat1.tipoPol)
+        jsonObject.put("FechaInsercion", osat1.fechaRealizacion)
+        jsonObject.put("Osat", osat1.presionSanguinea)
 
         // Limpiar los elementos del formulario después de obtener los datos si son correctos
         edtOsat.text.clear()

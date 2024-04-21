@@ -1,21 +1,18 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirWeight
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Peso
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaIntroducirOsat.IntroducirOsatViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -71,12 +68,10 @@ class IntroducirWeightView : Fragment() {
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
                 if (resultado){
 
