@@ -10,4 +10,5 @@
     <color name="mi_color_accent">#086BC1</color>
     <color name="colorSpinnerBackground">#E0E0E0</color>
     <color name="colorSpinnerBorder">#BDBDBD</color>
+    <color name="red">#9E0B0B</color>
 </resources>

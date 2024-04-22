@@ -72,8 +72,6 @@ class DatosTermometroView : AppCompatActivity() {
     private val viewModel: DatosTermometroViewModel by viewModels()
 
 
-    // Declarar variables para el TextView de la temperatura
-    private lateinit var textViewTemperatura: TextView
 
     // Define una lista para almacenar los registros de datos
     private val datosTermometroList = mutableListOf<DatosTermometro>()
@@ -105,7 +103,6 @@ class DatosTermometroView : AppCompatActivity() {
 
         // Obtener referencias del layout
         val btnMedicionTemperatura = findViewById<Button>(R.id.btn_doneTemperatura)
-        textViewTemperatura = findViewById(R.id.tv_TemperaturaResultado)
         progressBar = findViewById(R.id.progressBarTemperaturaCargando)
         tv_TemperaturaResultado = findViewById(R.id.tv_TemperaturaResultado)
 
@@ -185,7 +182,7 @@ class DatosTermometroView : AppCompatActivity() {
                 // Simular el progreso de carga durante 3 segundos
                 for (progress in 0..100) {
                     progressBar.progress = progress
-                    delay(300) // Cambia este valor para ajustar la velocidad de llenado de la ProgressBar
+                    delay(150) // Cambia este valor para ajustar la velocidad de llenado de la ProgressBar
                 }
 
                 // Ocultar la ProgressBar
@@ -253,8 +250,11 @@ class DatosTermometroView : AppCompatActivity() {
             )
             Log.d("Bluetooth2", "Datos - Temperatura: ${ultimoDatoTermometro!!.temperatura}")
 
-            textViewTemperatura.text = ultimoDatoTermometro!!.temperatura.toString()
-
+            // Se ejecuta en el hilo principal porque si njo
+            runOnUiThread {
+                tv_TemperaturaResultado.text = "${ultimoDatoTermometro!!.temperatura} °C"
+                Log.d("TEMPERATURANUMERO", ultimoDatoTermometro!!.temperatura.toString())
+            }
             mostrarDialogoDatosEncontrados()
 
             // Eliminar todos los elementos de la lista
@@ -265,7 +265,7 @@ class DatosTermometroView : AppCompatActivity() {
             Log.d("Bluetooth2", "No se encontraron registros.")
 
             mostrarDialogoDatosNoEncontrados()
-            textViewTemperatura.text = "0"
+            tv_TemperaturaResultado.text = "0"
 
         }
     }
@@ -738,9 +738,6 @@ class DatosTermometroView : AppCompatActivity() {
 
             // Mostrar el JSON en el Log
             Log.d("JSON Data", jsonObject.toString())
-
-            // Limpiar el elemento del formulario después de obtener los datos
-            tv_TemperaturaResultado.text = ""
 
             return jsonObject
         } catch (e: NumberFormatException) {

@@ -17,7 +17,7 @@
             android:layout_height="52dp"
             android:background="@drawable/spinner_background"
             android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toTopOf="@+id/sk_altura"
+            app:layout_constraintBottom_toTopOf="@+id/txt_tamanioRegistro"
             app:layout_constraintEnd_toStartOf="@+id/edt_textoDia_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_sexo" />
@@ -72,7 +72,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_registrarUsuario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edt_contraseniaUsuarioRegistrar_layout"
-            app:layout_constraintTop_toBottomOf="@+id/txt_tamanioNumeroRegistro"
+            app:layout_constraintTop_toBottomOf="@+id/sk_altura"
             android:hint="@string/txt_ContraseniaRepetir">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -100,6 +100,7 @@
             android:id="@+id/img_LogoRegistrar"
             android:layout_width="0dp"
             android:layout_height="207dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/imagen_registro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.466"
@@ -110,6 +111,7 @@
             android:id="@+id/img_logoFraseRegistrar"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/logo_nombre_completo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -169,8 +171,7 @@
             app:layout_constraintEnd_toStartOf="@+id/txt_fecha"
             app:layout_constraintHorizontal_bias="0.35"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuarioRegistrar_layout"
-            app:layout_constraintVertical_bias="0.51" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_nombreUsuarioRegistrar_layout" />
 
         <TextView
             android:id="@+id/txt_fecha"
@@ -178,7 +179,7 @@
             android:layout_height="31dp"
             android:gravity="center"
             android:text="@string/txt_FechaNacimiento"
-            app:layout_constraintBottom_toTopOf="@+id/edt_textoDia_layout"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerSexo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.779"
             app:layout_constraintStart_toStartOf="parent"
@@ -189,11 +190,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="65dp"
             android:layout_height="54dp"
+            android:hint="dd"
             app:layout_constraintBottom_toTopOf="@+id/txt_tamanioRegistro"
             app:layout_constraintEnd_toStartOf="@+id/edt_textoMes_layout"
             app:layout_constraintStart_toEndOf="@+id/spinnerSexo"
-            app:layout_constraintTop_toBottomOf="@+id/txt_fecha"
-            android:hint="dd">
+            app:layout_constraintTop_toBottomOf="@+id/txt_fecha">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_textoDia"

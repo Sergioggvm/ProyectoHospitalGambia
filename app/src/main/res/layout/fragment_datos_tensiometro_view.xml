@@ -23,188 +23,140 @@
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="@color/white" />
 
-        <ImageButton
-            android:id="@+id/btn_leerDatosPulsioximetro"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="36dp"
-            android:src="@drawable/icono_termometro"
-            android:contentDescription="@string/txt_Lectura"
-            android:background="?android:attr/selectableItemBackground"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Lectura" />
-
         <TextView
             android:id="@+id/tv_lecturaPulsioximetro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="@string/txt_lecturaTensiometro"
-            android:textStyle="bold"
             android:textColor="@color/azul_texto"
             android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txt_Instrucciones"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_Principal" />
-
-        <TextView
-            android:id="@+id/tv_Lectura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="204dp"
-            android:text="@string/txt_Lectura"
-            android:textColor="@color/azul_texto"
-
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
-
-        <TextView
-            android:id="@+id/tv_Sincronizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="204dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/txt_sincronizar"
-            android:textColor="@color/azul_texto"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
-
-        <ImageButton
-            android:id="@+id/btn_SincronizarDatosPulsioximetro"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="28dp"
-            android:src="@drawable/boton_recarga"
-            android:contentDescription="@string/txt_sincronizar"
-            android:background="?android:attr/selectableItemBackground"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Sincronizar" />
 
 
         <TextView
             android:id="@+id/tv_DatosObtenidosPulsioximetro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:text="@string/txt_datosObtenidos"
             android:textColor="@color/azul_texto"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/progressBarCargaDatos"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_SincronizarDatosPulsioximetro" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
 
         <TextView
             android:id="@+id/tv_ResultadoPulsioximetro"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="@string/txt_TensionAlta"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.425"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_tensionBaja"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tensionAltaResultado"
+            app:layout_constraintStart_toEndOf="@+id/btn_donePulsioximetro"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarCargaDatos" />
 
         <TextView
             android:id="@+id/tv_tensionAltaResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
-            android:layout_marginTop="8dp"
             android:text="0"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_tensionBajaResultado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
-
-        <TextView
-            android:id="@+id/tv_tensionBaja"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/txt_TensionBaja"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro" />
-
-        <TextView
-            android:id="@+id/tv_pulso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/txt_Pulso"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tensionBaja" />
+            app:layout_constraintStart_toEndOf="@+id/tv_ResultadoPulsioximetro"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarCargaDatos" />
 
         <TextView
             android:id="@+id/tv_tensionBajaResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
-            android:layout_marginTop="8dp"
             android:text="0"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_PulsoResultado"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_tensionBaja"
             app:layout_constraintTop_toBottomOf="@+id/tv_tensionAltaResultado" />
+
+        <TextView
+            android:id="@+id/tv_pulso"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_Pulso"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_PulsoResultado"
+            app:layout_constraintStart_toEndOf="@+id/btn_donePulsioximetro"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tensionBaja" />
 
         <TextView
             android:id="@+id/tv_PulsoResultado"
             android:layout_width="41dp"
             android:layout_height="20dp"
-            android:layout_marginTop="8dp"
             android:text="0"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_pulso"
             app:layout_constraintTop_toBottomOf="@+id/tv_tensionBajaResultado" />
+
+        <TextView
+            android:id="@+id/tv_tensionBaja"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_TensionBaja"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_pulso"
+            app:layout_constraintEnd_toStartOf="@+id/tv_tensionBajaResultado"
+            app:layout_constraintStart_toEndOf="@+id/btn_donePulsioximetro"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro" />
 
         <Button
             android:id="@+id/btn_donePulsioximetro"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:background="@drawable/boton_done"
-            android:backgroundTint="@color/azul_texto"
-            android:text="@string/txt_Hecho"
+            android:text="@string/txt_Lectura"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_ResultadoPulsioximetro"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_PulsoResultado" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
 
         <ProgressBar
             android:id="@+id/progressBarCargaDatos"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="162dp"
-            android:layout_height="33dp"
+            style="?android:attr/progressBarStyleLarge"
+            android:indeterminate="false"
+            android:indeterminateDrawable="@drawable/circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/tv_DatosObtenidosPulsioximetro"
+            app:layout_constraintBottom_toTopOf="@+id/tv_ResultadoPulsioximetro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro"
-            app:layout_constraintVertical_bias="0.41" />
+            app:layout_constraintStart_toEndOf="@+id/btn_donePulsioximetro"
+            app:layout_constraintTop_toBottomOf="@+id/tv_DatosObtenidosPulsioximetro" />
 
         <TextView
             android:id="@+id/txt_Instrucciones"
-            android:layout_width="318dp"
+            android:layout_width="0dp"
             android:layout_height="138dp"
+            android:layout_marginHorizontal="50dp"
             android:gravity="center"
+            android:justificationMode="inter_word"
             android:text="@string/txt_InstruccionesConexionTensiometro"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_DatosObtenidosPulsioximetro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
 
