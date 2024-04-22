@@ -26,12 +26,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
+import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.core.domain.model.tensiometro.DatosTensiometro
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
@@ -42,6 +46,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.text.SimpleDateFormat
@@ -72,6 +77,8 @@ class DatosTensiometroView : AppCompatActivity() {
 
     // Define una lista para almacenar los registros de datos
     private val datosTensiometroList = mutableListOf<DatosTensiometro>()
+
+    private var databaseHelper = DatabaseHelper(this)
 
     enum class BLELifecycleState {
         Disconnected,
@@ -211,6 +218,8 @@ class DatosTensiometroView : AppCompatActivity() {
 
     fun cargarRegistros() {
 
+        val usuarioActivo = MainActivity.usuario
+
         // Bucle forEach para recorrer todos los registros y encontrar el más reciente
         var ultimoDatoTensiometro: DatosTensiometro? = null
         datosTensiometroList.forEach { record ->
@@ -230,6 +239,41 @@ class DatosTensiometroView : AppCompatActivity() {
 
             mostrarDialogoDatosEncontrados()
 
+            val datosTensiometro = DatosTensiometro(
+                fechaHora = ultimoDatoTensiometro!!.fechaHora,
+                tensionAlta = ultimoDatoTensiometro!!.tensionAlta,
+                tensionBaja = ultimoDatoTensiometro!!.tensionBaja,
+                pulso = ultimoDatoTensiometro!!.pulso
+            )
+
+            // Crear el objeto JSON con los datos del formulario
+            val jsonObject = JSONObject()
+            jsonObject.put("TipoPol", datosTensiometro.tipoPol)
+            jsonObject.put("FechaInsercion", datosTensiometro.fechaHora)
+            jsonObject.put("TensionAlta", datosTensiometro.tensionAlta)
+            jsonObject.put("TensionBaja", datosTensiometro.tensionBaja)
+            jsonObject.put("Pulso", datosTensiometro.pulso)
+
+            val idPols = generarIdAleatorio()
+            val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+
+            val pol = Pol(idPols, idBook, jsonObject.toString(), "false")
+
+            if (usuarioActivo != null) {
+                usuarioActivo.pols.add(pol)
+            }
+
+            // Llamar al método del ViewModel para insertar datos
+            var resultado = databaseHelper.insertFormData(pol)
+
+            if (resultado){
+
+                Toast.makeText(this, "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
+
+            } else {
+                Toast.makeText(this, "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+            }
+
             // Eliminar todos los elementos de la lista
             datosTensiometroList.clear()
 
@@ -244,6 +288,10 @@ class DatosTensiometroView : AppCompatActivity() {
 
 
         }
+    }
+
+    private fun generarIdAleatorio(): String {
+        return UUID.randomUUID().toString()
     }
 
     // Función para mostrar un diálogo cuando se encuentran registros
@@ -526,7 +574,14 @@ class DatosTensiometroView : AppCompatActivity() {
                         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
                         val fechaFormateada = sdf.format(fechaHora)
                         // Crear un objeto DataRecord con los datos recibidos
-                        val dataRecord = DatosTensiometro(fechaHora, tensionAlta, tensionBaja, pulse)
+                        //val dataRecord = DatosTensiometro(fechaHora, tensionAlta, tensionBaja, pulse)
+
+                        val dataRecord = DatosTensiometro(
+                            fechaHora = fechaHora,
+                            tensionAlta = tensionAlta,
+                            tensionBaja = tensionBaja,
+                            pulso = pulse
+                        )
 
                         // Si no existe, agregar un nuevo registro a la lista
                         datosTensiometroList.add(dataRecord)
@@ -603,7 +658,14 @@ class DatosTensiometroView : AppCompatActivity() {
                     val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
                     val fechaFormateada = sdf.format(fechaHora)
                     // Crear un objeto DataRecord con los datos recibidos
-                    val dataRecord = DatosTensiometro(fechaHora, tensionAlta, tensionBaja, pulse)
+                    //val dataRecord = DatosTensiometro(fechaHora, tensionAlta, tensionBaja, pulse)
+
+                    val dataRecord = DatosTensiometro(
+                        fechaHora = fechaHora,
+                        tensionAlta = tensionAlta,
+                        tensionBaja = tensionBaja,
+                        pulso = pulse
+                    )
 
                     // Si no existe, agregar un nuevo registro a la lista
                     datosTensiometroList.add(dataRecord)

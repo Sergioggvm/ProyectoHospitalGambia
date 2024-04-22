@@ -124,8 +124,8 @@ class IntroducirPhysicalView : Fragment() {
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("Tipo", actividadFisica.tipoPol)
-        jsonObject.put("FechaRealizacion", actividadFisica.fechaRealizacion)
+        jsonObject.put("TipoPol", actividadFisica.tipoPol)
+        jsonObject.put("FechaInsercion", actividadFisica.fechaRealizacion)
         jsonObject.put("Aerobico", actividadFisica.aerobico)
         jsonObject.put("Anaerobico", actividadFisica.anaerobico)
         jsonObject.put("Pasos", actividadFisica.pasos)

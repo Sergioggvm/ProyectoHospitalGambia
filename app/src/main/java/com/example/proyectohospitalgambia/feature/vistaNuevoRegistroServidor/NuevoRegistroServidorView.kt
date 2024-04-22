@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.LibroVida
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
@@ -249,5 +250,6 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
         return jsonObject
     }
+
 
 }

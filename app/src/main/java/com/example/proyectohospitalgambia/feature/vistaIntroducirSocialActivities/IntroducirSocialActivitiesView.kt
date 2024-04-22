@@ -117,8 +117,8 @@ class IntroducirSocialActivitiesView : Fragment() {
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("Tipo", actividadesSociales.tipoPol)
-        jsonObject.put("FechaRealizacion", actividadesSociales.fechaRealizacion)
+        jsonObject.put("TipoPol", actividadesSociales.tipoPol)
+        jsonObject.put("FechaInsercion", actividadesSociales.fechaRealizacion)
         jsonObject.put("MinutosActividadesSociales", actividadesSociales.minutosActividad)
         jsonObject.put("Notas", actividadesSociales.notas)
 

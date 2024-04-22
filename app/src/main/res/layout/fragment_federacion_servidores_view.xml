@@ -20,11 +20,16 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_recargaServidor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.451" />
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_nuevoRegistro"
             android:layout_width="100dp"
+            android:layout_height="99dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="116dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@drawable/boton_nuevo_resgistro"
@@ -32,12 +37,21 @@
             android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/edt_contraseñaServidor_layout"
             app:layout_constraintEnd_toStartOf="@+id/btn_recargaServidor"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
 
         <ImageButton
             android:id="@+id/btn_recargaServidor"
             android:layout_width="100dp"
+            android:layout_height="99dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="116dp"
+            android:background="@drawable/boton_recarga"
+            android:contentDescription="0"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/lst_consexionesServidor"
             android:layout_height="100dp"
             android:layout_margin="10dp"
             android:background="@drawable/boton_recarga"
@@ -47,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_nuevoRegistro"
             app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.875" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_contraseñaServidor_layout"
@@ -73,6 +87,14 @@
 
         <ListView
             android:id="@+id/lst_consexionesServidor"
+            android:layout_width="396dp"
+            android:layout_height="342dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edittext_fondo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="parent" />
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="50dp"
@@ -81,6 +103,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_contraseñaServidor_layout" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_subirDatos"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/btn_recargaServidor"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toEndOf="@+id/btn_nuevoRegistro"
+            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

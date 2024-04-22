@@ -21,6 +21,7 @@ import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesCo
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import org.json.JSONObject
+import org.mindrot.jbcrypt.BCrypt
 
 class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
@@ -121,14 +122,17 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
             // Verificar si la contraseña vieja coincide
             val passwordGuardada = jsonData.optString("password", "")
-            if (passwordGuardada != contraseniaVieja) {
+            if (!BCrypt.checkpw(contraseniaVieja, passwordGuardada)) {
                 // Mostrar un mensaje de error si la contraseña vieja no coincide
                 Toast.makeText(this, "La contraseña vieja no es correcta", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
+            // Encriptar la nueva contraseña
+            val contraseniaEncriptada = BCrypt.hashpw(nuevaContrasenia, BCrypt.gensalt())
+
             // Actualizar la contraseña en el JSON
-            jsonData.put("password", nuevaContrasenia)
+            jsonData.put("password", contraseniaEncriptada)
 
             // Actualizar el JSON en el objeto usuarioActivo
             usuarioActivo?.data = jsonData.toString()

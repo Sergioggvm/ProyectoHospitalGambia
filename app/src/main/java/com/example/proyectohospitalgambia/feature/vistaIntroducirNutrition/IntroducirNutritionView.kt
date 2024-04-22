@@ -132,8 +132,8 @@ class IntroducirNutritionView : Fragment() {
 
             // Crear el objeto JSON con los datos del formulario
             val jsonObject = JSONObject()
-            jsonObject.put("Tipo", valorEnergetico.tipoPol)
-            jsonObject.put("FechaRealizacion", valorEnergetico.fechaRealizacion)
+            jsonObject.put("TipoPol", valorEnergetico.tipoPol)
+            jsonObject.put("FechaInsercion", valorEnergetico.fechaRealizacion)
             jsonObject.put("KcalManana", valorEnergetico.kcalManana)
             jsonObject.put("KcalTarde", valorEnergetico.kcalTarde)
             jsonObject.put("KcalNoche", valorEnergetico.kcalNoche)
