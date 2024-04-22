@@ -65,6 +65,11 @@ class FederacionServidoresViewModel : ViewModel() {
                 println("Error al construir la URL: ${e.message}")
                 e.printStackTrace() // Imprime la traza de la excepción en Logcat
                 return@runBlocking false
+            }  catch (e: Exception) {
+                // Captura la excepción y muestra un mensaje de error
+                println("Error al construir la URL: ${e.message}")
+                e.printStackTrace() // Imprime la traza de la excepción en Logcat
+                return@runBlocking false
             }
         }
     }
@@ -81,4 +86,5 @@ class FederacionServidoresViewModel : ViewModel() {
             false
         }
     }
+
 }
