@@ -1,5 +1,6 @@
 package com.example.proyectohospitalgambia.feature.vistaInicio
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +24,9 @@ class InicioView : AppCompatActivity() {
     private lateinit var edt_nombreUsuarioRegistrar: EditText
     private lateinit var edt_contraseniaUsuarioRegistrar: EditText
 
+    // Nombre de las SharedPreferences
+    private val PREFS_NAME = "MisPreferencias"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_inicio_view)
@@ -33,7 +37,15 @@ class InicioView : AppCompatActivity() {
         edt_nombreUsuarioRegistrar = findViewById(R.id.edt_nombreUsuarioRegistrar)
         edt_contraseniaUsuarioRegistrar = findViewById(R.id.edt_contraseniaUsuarioRegistrar)
 
-        // Agrega OnClickListener al botón btnJugarLocal
+        // Recuperar el nombre de usuario de SharedPreferences
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val nombreUsuarioGuardado = sharedPreferences.getString("nombre_usuario", "")
+
+        // Establecer el nombre de usuario guardado en el EditText
+        edt_nombreUsuarioRegistrar.setText(nombreUsuarioGuardado)
+
+
+        // Agrega OnClickListener al botón btnIniciarSesion
         btnIniciarSesion.setOnClickListener {
 
             // Obtener los valores de los EditText
@@ -42,8 +54,7 @@ class InicioView : AppCompatActivity() {
 
             // Verificar las credenciales en la base de datos
             val dbHelper = DatabaseHelper(this)
-            val usuarioEncontrado =
-                dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
+            val usuarioEncontrado = dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
 
             if (usuarioEncontrado != null) {
                 // Obtener la contraseña almacenada del usuario encontrado en el campo "password" del JSON
@@ -56,21 +67,22 @@ class InicioView : AppCompatActivity() {
                     Log.d("Inicio de Sesión", "Usuario autenticado. ID: ${usuarioEncontrado.id}")
                     MainActivity.usuario = usuarioEncontrado
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+
+                    // Guardar el nombre de usuario en SharedPreferences
+                    val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("nombre_usuario", nombreUsuario)
+                    editor.apply()
+
                     // Creamos un Intent para iniciar MainActivity.
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Log.d(
-                        "Inicio de Sesión",
-                        "Contraseña incorrecta para el usuario: $nombreUsuario"
-                    )
+                    Log.d("Inicio de Sesión", "Contraseña incorrecta para el usuario: $nombreUsuario")
                     Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Log.d(
-                    "Inicio de Sesión",
-                    "No se encontró ningún usuario con el nombre: $nombreUsuario"
-                )
+                Log.d("Inicio de Sesión", "No se encontró ningún usuario con el nombre: $nombreUsuario")
                 Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
             }
         }

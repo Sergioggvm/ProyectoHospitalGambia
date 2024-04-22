@@ -97,10 +97,17 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         // Configurar el OnClickListener para el botón de actualizar contraseñas
         btnActualizarContrasenias.setOnClickListener {
+
             // Obtener las contraseñas ingresadas
             val contraseniaVieja = edtContraseniaVieja.text.toString()
             val nuevaContrasenia = edtContraseniaNueva.text.toString()
             val nuevaContraseniaRepetir = edtContraseniaNuevaRepetir.text.toString()
+
+            if (nuevaContrasenia.isEmpty() || nuevaContraseniaRepetir.isEmpty()) {
+                // Mostrar un mensaje de error si las contraseñas no coinciden
+                Toast.makeText(this, "Las contraseñas estan vacias", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             // Verificar si las contraseñas coinciden
             if (nuevaContrasenia != nuevaContraseniaRepetir) {
@@ -127,6 +134,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 Toast.makeText(this, "La contraseña vieja no es correcta", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
 
             // Encriptar la nueva contraseña
             val contraseniaEncriptada = BCrypt.hashpw(nuevaContrasenia, BCrypt.gensalt())

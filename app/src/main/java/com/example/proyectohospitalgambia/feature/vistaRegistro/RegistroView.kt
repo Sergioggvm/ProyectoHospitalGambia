@@ -1,6 +1,9 @@
 package com.example.proyectohospitalgambia.feature.vistaRegistro
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -97,6 +100,12 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
         // Agrega OnClickListener al botón btnJugarLocal
         btnRegistrarUsuario.setOnClickListener {
+
+            if (!isNetworkAvailable(this)) {
+                // Mostrar un mensaje de que no hay conexión a Internet
+                Toast.makeText(this, "No hay conexión a Internet", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             val registroExitoso = registrarUsuario()
             if (registroExitoso) {
@@ -282,6 +291,14 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         return anio % 4 == 0 && (anio % 100 != 0 || anio % 400 == 0)
     }
 
+    // Función para verificar la conectividad a Internet
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork
+        val capabilities = connectivityManager.getNetworkCapabilities(network)
+        return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
+    }
+
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
     }
 
@@ -300,6 +317,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     override fun onStopTrackingTouch(seekBar: SeekBar?) {
         // No se requiere implementación
     }
+
 }
 
 

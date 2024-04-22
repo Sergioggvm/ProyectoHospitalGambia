@@ -27,6 +27,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -40,6 +41,7 @@ import com.example.proyectohospitalgambia.core.domain.model.tensiometro.DatosTen
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
+import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroViewModel
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -78,7 +80,7 @@ class DatosTensiometroView : AppCompatActivity() {
     // Define una lista para almacenar los registros de datos
     private val datosTensiometroList = mutableListOf<DatosTensiometro>()
 
-    private var databaseHelper = DatabaseHelper(this)
+    private val viewModel: DatosTensiometroViewModel by viewModels()
 
     enum class BLELifecycleState {
         Disconnected,
@@ -264,7 +266,7 @@ class DatosTensiometroView : AppCompatActivity() {
             }
 
             // Llamar al método del ViewModel para insertar datos
-            var resultado = databaseHelper.insertFormData(pol)
+            var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
             if (resultado){
 
