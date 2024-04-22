@@ -29,77 +29,91 @@
             android:textColor="@color/azul_texto"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/et_horasSleep"
+            app:layout_constraintBottom_toTopOf="@+id/et_horasSleep_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgv_sleep" />
 
-        <EditText
-            android:id="@+id/et_horasSleep"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/txt_Horas"
-            android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/tv_qualitySleep"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_horasSleep_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_sleepQuality"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:hint="@string/txt_Horas">
 
-        <EditText
-            android:id="@+id/et_notesSleep"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_fondo"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/txt_Notas"
-            android:inputType="text"
-            app:layout_constraintBottom_toTopOf="@+id/btn_guardarSocialActivities"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_sleepQuality" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_horasSleep"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btn_guardarSocialActivities"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/boton_done"
-            android:backgroundTint="@color/azul_texto"
-            android:text="@string/txt_Hecho"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_notesSleep" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
             android:id="@+id/spinner_sleepQuality"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:background="@color/gris_oscuro_texto"
+            android:background="@drawable/spinner_background"
             android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toTopOf="@+id/et_notesSleep"
+            app:layout_constraintBottom_toTopOf="@+id/et_notesSleep_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_qualitySleep" />
+            app:layout_constraintTop_toBottomOf="@+id/et_horasSleep_layout"
+            app:layout_constraintWidth="275dp"
+            style="@style/SpinnerTheme" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_notesSleep_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_sleepQuality"
+            android:hint="@string/txt_Notas">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_notesSleep"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_guardarSocialActivities"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_margin="16dp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_notesSleep_layout"
+            app:rippleColor="@android:color/transparent"
+            android:contentDescription="TODO" />
 
         <TextView
-            android:id="@+id/tv_qualitySleep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txt_Calidad"
-            android:textStyle="bold"
-            android:textColor="@color/azul_texto"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/spinner_sleepQuality"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_horasSleep" />
+            android:layout_margin="16dp"
+            android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
+            android:elevation="8dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintEnd_toEndOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintStart_toStartOf="@+id/btn_guardarSocialActivities"
+            app:layout_constraintTop_toTopOf="@+id/btn_guardarSocialActivities" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

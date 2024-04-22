@@ -15,6 +15,7 @@ import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.ActividadesSociales
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaIntroducirSleep.IntroducirSleepViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -43,7 +44,7 @@ class IntroducirSocialActivitiesView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnDone: Button = view.findViewById(R.id.btn_guardarSocialActivities)
+        val btnDone: FloatingActionButton = view.findViewById(R.id.btn_guardarSocialActivities)
 
         btnDone.setOnClickListener {
 

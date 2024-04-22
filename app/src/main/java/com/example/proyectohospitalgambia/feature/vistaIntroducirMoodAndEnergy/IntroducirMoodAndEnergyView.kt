@@ -17,6 +17,7 @@ import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Estado
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia.IntroducirGlycemiaViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -74,7 +75,7 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnDone: Button = view.findViewById(R.id.btn_guardarMoodAndEnergy)
+        val btnDone: FloatingActionButton = view.findViewById(R.id.btn_guardarMoodAndEnergy)
 
         btnDone.setOnClickListener {
             val usuarioActivo = MainActivity.usuario

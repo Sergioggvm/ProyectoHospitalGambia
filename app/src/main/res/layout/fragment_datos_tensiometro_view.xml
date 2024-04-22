@@ -23,14 +23,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="@color/white" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_leerDatosPulsioximetro"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/icono_termometro"
+            android:src="@drawable/icono_termometro"
             android:contentDescription="@string/txt_Lectura"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_Lectura" />
 
@@ -74,16 +76,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_lecturaPulsioximetro" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_SincronizarDatosPulsioximetro"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="28dp"
-            android:background="@drawable/boton_recarga"
+            android:src="@drawable/boton_recarga"
             android:contentDescription="@string/txt_sincronizar"
+            android:background="?android:attr/selectableItemBackground"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_Sincronizar" />
+
 
         <TextView
             android:id="@+id/tv_DatosObtenidosPulsioximetro"
@@ -166,10 +172,8 @@
 
         <Button
             android:id="@+id/btn_donePulsioximetro"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:background="@drawable/boton_done"
             android:backgroundTint="@color/azul_texto"
             android:text="@string/txt_Hecho"
@@ -177,8 +181,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ResultadoPulsioximetro"
-            app:layout_constraintVertical_bias="0.652" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_PulsoResultado" />
 
         <ProgressBar
             android:id="@+id/progressBarCargaDatos"

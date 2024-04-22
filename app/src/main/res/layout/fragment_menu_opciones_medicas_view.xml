@@ -12,8 +12,8 @@
 
         <ImageButton
             android:id="@+id/btn_opcionResultados"
-            android:layout_width="351dp"
-            android:layout_height="172dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:contentDescription="0"
             android:src="@drawable/boton_opcion_resultados_puebas"
@@ -24,8 +24,8 @@
 
         <ImageButton
             android:id="@+id/btn_opcionAlimentacion"
-            android:layout_width="351dp"
-            android:layout_height="172dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:contentDescription="0"
             android:src="@drawable/boton_opcion_alimentacion"
@@ -36,8 +36,8 @@
 
         <ImageButton
             android:id="@+id/btn_opcionEnergia"
-            android:layout_width="351dp"
-            android:layout_height="172dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:contentDescription="0"
             android:src="@drawable/boton_opcion_resultados_energia"

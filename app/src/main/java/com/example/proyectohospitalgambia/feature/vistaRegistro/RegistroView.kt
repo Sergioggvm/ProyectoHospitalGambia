@@ -113,11 +113,14 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
         }
 
+        /* LO DE MOSTRAR USUARIOS
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
             val dbHelper = DatabaseHelper(this)
             dbHelper.listarUsuarios()
         }
+        */
+
 
     }
 

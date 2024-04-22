@@ -11,6 +11,11 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
+import com.github.mikephil.charting.formatter.ValueFormatter
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class GraficaWeightView : Fragment() {
@@ -28,29 +33,37 @@ class GraficaWeightView : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_weight_view, container, false)
     }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val chartPeso = view.findViewById<LineChart>(R.id.graficoLineas_Peso)
+        val chartWeight = view.findViewById<LineChart>(R.id.graficoLineas_Peso)
 
-        // Datos de prueba para el peso
-        val entriesPeso = ArrayList<Entry>()
-        entriesPeso.add(Entry(0f, 70f)) // Día 1
-        entriesPeso.add(Entry(1f, 72f)) // Día 2
-        entriesPeso.add(Entry(2f, 69f)) // Día 3
-        entriesPeso.add(Entry(3f, 71f)) // Día 4
-        entriesPeso.add(Entry(4f, 70f)) // Día 5
+        val idUsuarioActual = MainActivity.usuario?.id
+
+
+        val datosPeso = MainActivity.databaseHelper?.obtenerTodosLosDatosPeso(idUsuarioActual!!)
+
+        // Crear las entradas de la gráfica a partir de los datos de peso
+        val entriesPeso = datosPeso?.mapIndexed { index, peso ->
+            Entry(index.toFloat(), peso.kg.toFloat())
+        }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetPeso = LineDataSet(entriesPeso, "kg")
-        dataSetPeso.color = Color.RED
+        val dataSetPeso = LineDataSet(entriesPeso, "Peso")
+        dataSetPeso.color = Color.BLUE
+        dataSetPeso.valueTextColor = Color.BLACK
+        dataSetPeso.valueTextSize = 16f
 
-        // Agregar el conjunto de datos a los datos de la línea
-        val lineDataPeso = LineData(dataSetPeso)
-
-        // Aplicar los datos al gráfico y refrescarlo
-        chartPeso.data = lineDataPeso
-        chartPeso.invalidate() // Refresca el gráfico
+        // Crear el gráfico de líneas y personalizarlo
+        val dataWeight = LineData(dataSetPeso)
+        chartWeight.data = dataWeight
+        chartWeight.setTouchEnabled(true)
+        chartWeight.setPinchZoom(true)
+        chartWeight.description.text = "Peso"
+        chartWeight.setNoDataText("No hay datos disponibles")
+        chartWeight.invalidate()
     }
 
 }

@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
 
 
 class GraficaSleepView : Fragment() {
@@ -33,13 +34,16 @@ class GraficaSleepView : Fragment() {
 
         val chartSleep = view.findViewById<LineChart>(R.id.graficoLineas_Suenno)
 
-        // Datos de prueba para el sueño
-        val entriesSleep = ArrayList<Entry>()
-        entriesSleep.add(Entry(0f, 8f)) // Día 1
-        entriesSleep.add(Entry(1f, 7f)) // Día 2
-        entriesSleep.add(Entry(2f, 9f)) // Día 3
-        entriesSleep.add(Entry(3f, 8f)) // Día 4
-        entriesSleep.add(Entry(4f, 7f)) // Día 5
+        val idUsuarioActual = MainActivity.usuario?.id
+
+        // Obtener los datos de sueño de la base de datos
+
+        val datosSueno = MainActivity.databaseHelper?.obtenerTodosLosSuenos(idUsuarioActual!!)
+
+        // Crear las entradas de la gráfica a partir de los datos de sueño
+        val entriesSleep = datosSueno?.mapIndexed { index, sueno ->
+            Entry(index.toFloat(), sueno.horasSueno.toFloat())
+        }
 
         // Crear el conjunto de datos y personalizarlo
         val dataSetSleep = LineDataSet(entriesSleep, "hrs")

@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
 
 
 class GraficaPhysicalActivityView : Fragment() {
@@ -32,22 +33,19 @@ class GraficaPhysicalActivityView : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val chartActividadFisica = view.findViewById<LineChart>(R.id.graficoLineas_ActividadFisica)
+        val chartPasos = view.findViewById<LineChart>(R.id.graficoLineas_Pasos)
 
-        // Datos de prueba para la actividad aeróbica
-        val entriesAerobica = ArrayList<Entry>()
-        entriesAerobica.add(Entry(0f, 30f)) // Día 1
-        entriesAerobica.add(Entry(1f, 45f)) // Día 2
-        entriesAerobica.add(Entry(2f, 35f)) // Día 3
-        entriesAerobica.add(Entry(3f, 50f)) // Día 4
-        entriesAerobica.add(Entry(4f, 40f)) // Día 5
+        val idUsuarioActual = MainActivity.usuario?.id
 
-        // Datos de prueba para la actividad anaeróbica
-        val entriesAnaerobica = ArrayList<Entry>()
-        entriesAnaerobica.add(Entry(0f, 20f)) // Día 1
-        entriesAnaerobica.add(Entry(1f, 25f)) // Día 2
-        entriesAnaerobica.add(Entry(2f, 15f)) // Día 3
-        entriesAnaerobica.add(Entry(3f, 30f)) // Día 4
-        entriesAnaerobica.add(Entry(4f, 20f)) // Día 5
+        // Obtener los datos de actividad física de la base de datos
+        val datosActividadFisica = MainActivity.databaseHelper?.obtenerTodosLosDatosActividadFisica(idUsuarioActual!!)
+        // Crear las entradas de la gráfica a partir de los datos de actividad física
+        val entriesAerobica = datosActividadFisica?.mapIndexed { index, actividadFisica ->
+            Entry(index.toFloat(), actividadFisica.aerobico.toFloat())
+        }
+        val entriesAnaerobica = datosActividadFisica?.mapIndexed { index, actividadFisica ->
+            Entry(index.toFloat(), actividadFisica.anaerobico.toFloat())
+        }
 
         // Crear los conjuntos de datos y personalizarlos
         val dataSetAerobica = LineDataSet(entriesAerobica, "Aeróbico")
@@ -63,26 +61,19 @@ class GraficaPhysicalActivityView : Fragment() {
         chartActividadFisica.data = lineDataActividadFisica
         chartActividadFisica.invalidate() // Refresca el gráfico
 
-        // ---------------------- Gráfico de pasos ----------------------
+        // Crear las entradas de la gráfica de pasos a partir de los datos de actividad física
+        val entriesPasos = datosActividadFisica?.mapIndexed { index, actividadFisica ->
+            Entry(index.toFloat(), actividadFisica.pasos.toFloat())
+        }
 
-        val chartPasos = view.findViewById<LineChart>(R.id.graficoLineas_Pasos)
-
-        // Datos de prueba para los pasos
-        val entriesPasos = ArrayList<Entry>()
-        entriesPasos.add(Entry(0f, 5000f)) // Día 1
-        entriesPasos.add(Entry(1f, 7000f)) // Día 2
-        entriesPasos.add(Entry(2f, 6000f)) // Día 3
-        entriesPasos.add(Entry(3f, 8000f)) // Día 4
-        entriesPasos.add(Entry(4f, 6500f)) // Día 5
-
-        // Crear el conjunto de datos y personalizarlo
+        // Crear el conjunto de datos de pasos y personalizarlo
         val dataSetPasos = LineDataSet(entriesPasos, "Pasos")
-        dataSetPasos.color = Color.RED
+        dataSetPasos.color = Color.GREEN
 
-        // Agregar el conjunto de datos a los datos de la línea
+        // Crear los datos de la línea de pasos
         val lineDataPasos = LineData(dataSetPasos)
 
-        // Aplicar los datos al gráfico y refrescarlo
+        // Aplicar los datos al gráfico de pasos y refrescarlo
         chartPasos.data = lineDataPasos
         chartPasos.invalidate() // Refresca el gráfico
     }

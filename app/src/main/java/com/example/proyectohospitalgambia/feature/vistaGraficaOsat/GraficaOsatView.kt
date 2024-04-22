@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
+import com.example.proyectohospitalgambia.app.MainActivity
 
 
 class GraficaOsatView : Fragment() {
@@ -34,24 +35,30 @@ class GraficaOsatView : Fragment() {
 
         val chartOsat = view.findViewById<LineChart>(R.id.graficoLineas_SaturacionOxigeno)
 
-        // Datos de prueba para la saturación de oxígeno
-        val entriesOsat = ArrayList<Entry>()
-        entriesOsat.add(Entry(0f, 98f)) // Día 1
-        entriesOsat.add(Entry(1f, 97f)) // Día 2
-        entriesOsat.add(Entry(2f, 99f)) // Día 3
-        entriesOsat.add(Entry(3f, 98f)) // Día 4
-        entriesOsat.add(Entry(4f, 97f)) // Día 5
+        val idUsuarioActual = MainActivity.usuario?.id
+
+        // Obtener los datos de osat de la base de datos
+        val datosOsat = MainActivity.databaseHelper?.obtenerTodosLosDatosOsat(idUsuarioActual!!)
+
+        // Crear las entradas de la gráfica a partir de los datos de osat
+        val entriesOsat = datosOsat?.mapIndexed { index, osat ->
+            Entry(index.toFloat(), osat.presionSanguinea.toFloat())
+        }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetOsat = LineDataSet(entriesOsat, "pct")
-        dataSetOsat.color = Color.RED
+        val dataSetOsat = LineDataSet(entriesOsat, "Osat")
+        dataSetOsat.color = Color.BLUE
+        dataSetOsat.valueTextColor = Color.BLACK
+        dataSetOsat.valueTextSize = 16f
 
-        // Agregar el conjunto de datos a los datos de la línea
-        val lineDataOsat = LineData(dataSetOsat)
-
-        // Aplicar los datos al gráfico y refrescarlo
-        chartOsat.data = lineDataOsat
-        chartOsat.invalidate() // Refresca el gráfico
+        // Crear el gráfico de líneas y personalizarlo
+        val dataOsat = LineData(dataSetOsat)
+        chartOsat.data = dataOsat
+        chartOsat.setTouchEnabled(true)
+        chartOsat.setPinchZoom(true)
+        chartOsat.description.text = "Osat"
+        chartOsat.setNoDataText("No hay datos disponibles")
+        chartOsat.invalidate()
     }
 
 }

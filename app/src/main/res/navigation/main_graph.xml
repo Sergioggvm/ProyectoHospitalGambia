@@ -207,4 +207,9 @@
             android:id="@+id/action_menuMoodAndEnergyView_to_introducirMoodAndEnergy"
             app:destination="@id/introducirMoodAndEnergy" />
     </fragment>
+    <fragment
+        android:id="@+id/menuMoodAndEnergyView2"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.menuMoodAndEnergyView"
+        android:label="fragment_menu_mood_and_energy"
+        tools:layout="@layout/fragment_menu_mood_and_energy" />
 </navigation>
