@@ -304,7 +304,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                     val data = cursor.getString(dataIndex)
                     val jsonObject = JSONObject(data)
                     val sueno = Sueno(
-                        fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                        fechaRealizacion = jsonObject.getString("FechaInsercion"),
                         horasSueno = jsonObject.getInt("HorasSueno"),
                         calidadSueno = jsonObject.getString("CalidadSueno"),
                         notas = jsonObject.getString("Notas")
@@ -441,7 +441,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                     val jsonObject = JSONObject(data)
                     if(jsonObject.has("Aerobico") && jsonObject.has("Anaerobico") && jsonObject.has("Pasos")) {
                         val actividadFisica = ActividadFisica(
-                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"),
                             aerobico = jsonObject.getInt("Aerobico"),
                             anaerobico = jsonObject.getInt("Anaerobico"),
                             pasos = jsonObject.getInt("Pasos")
@@ -469,7 +469,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                     val jsonObject = JSONObject(data)
                     if(jsonObject.has("MinutosActividadesSociales")) {
                         val actividadesSociales = ActividadesSociales(
-                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"),
                             minutosActividad = jsonObject.getInt("MinutosActividadesSociales"),
                             notas = jsonObject.getString("Notas")
                         )
@@ -496,7 +496,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                     val jsonObject = JSONObject(data)
                     if(jsonObject.has("EstadoAnimo") && jsonObject.has("Energia")) {
                         val estado = Estado(
-                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"),
                             estadoAnimo = jsonObject.getString("EstadoAnimo"),
                             energia = jsonObject.getString("Energia"),
                             notas = jsonObject.getString("Notas")
@@ -524,7 +524,7 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
                     val jsonObject = JSONObject(data)
                     if(jsonObject.has("KcalManana") && jsonObject.has("KcalTarde") && jsonObject.has("KcalNoche") && jsonObject.has("KcalTotal")) {
                         val valorEnergetico = ValorEnergetico(
-                            fechaRealizacion = jsonObject.getString("FechaRealizacion"),
+                            fechaRealizacion = jsonObject.getString("FechaInsercion"),
                             kcalManana = jsonObject.getInt("KcalManana"),
                             kcalTarde = jsonObject.getInt("KcalTarde"),
                             kcalNoche = jsonObject.getInt("KcalNoche"),

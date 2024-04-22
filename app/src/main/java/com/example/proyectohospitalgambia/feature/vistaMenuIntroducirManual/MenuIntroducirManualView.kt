@@ -101,7 +101,12 @@ class MenuIntroducirManualView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimaPresionSanguinea = MainActivity.databaseHelper?.obtenerUltimaPresionSanguinea(idUsuario)
             val fechaMedicion = ultimaPresionSanguinea?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val textoDatos = "${getString(R.string.txt_Sistolica)}: ${ultimaPresionSanguinea?.sistolico} ${getString(R.string.txt_Diastolica)}: ${ultimaPresionSanguinea?.diastolico}\n${getString(R.string.txt_FrecuenciaCardiaca)}: ${ultimaPresionSanguinea?.frecuenciaCardiaca}"
+
+            val sistolica = ultimaPresionSanguinea?.sistolico ?: ""
+            val diastolica = ultimaPresionSanguinea?.diastolico ?: ""
+            val frecuenciaCardiaca = ultimaPresionSanguinea?.frecuenciaCardiaca ?: ""
+
+            val textoDatos = "${getString(R.string.txt_Sistolica)}: $sistolica ${getString(R.string.txt_Diastolica)}: $diastolica\n${getString(R.string.txt_FrecuenciaCardiaca)}: $frecuenciaCardiaca"
             val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoBloodPressure.text = textoFinal
         }
@@ -111,7 +116,10 @@ class MenuIntroducirManualView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoPeso = MainActivity.databaseHelper?.obtenerUltimoPeso(idUsuario)
             val fechaMedicion = ultimoPeso?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val texto = "${getString(R.string.txt_Peso)}: ${ultimoPeso?.kg} ${getString(R.string.Kg)}"
+
+            val kg = ultimoPeso?.kg ?: ""
+
+            val texto = "${getString(R.string.txt_Peso)}: $kg ${getString(R.string.Kg)}"
             val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoPeso.text = textoFinal
         }
@@ -121,7 +129,10 @@ class MenuIntroducirManualView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimaGlicemia = MainActivity.databaseHelper?.obtenerUltimaGlucemia(idUsuario)
             val fechaMedicion = ultimaGlicemia?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val texto = "${getString(R.string.txt_Glucosa)}: ${ultimaGlicemia?.glucosa} mg/dL"
+
+            val glucosa = ultimaGlicemia?.glucosa ?: ""
+
+            val texto = "${getString(R.string.txt_Glucosa)}: $glucosa mg/dL"
             val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoGlucosa.text = textoFinal
         }
@@ -131,7 +142,10 @@ class MenuIntroducirManualView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoOsat = MainActivity.databaseHelper?.obtenerUltimoOsat(idUsuario)
             val fechaMedicion = ultimoOsat?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val texto = "${getString(R.string.txt_Osat)}: ${ultimoOsat?.presionSanguinea} %"
+
+            val osat = ultimoOsat?.presionSanguinea ?: ""
+
+            val texto = "${getString(R.string.txt_Osat)}: $osat %"
             val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoOsat.text = textoFinal
         }

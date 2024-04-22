@@ -104,7 +104,9 @@ class MenuDeporteSuenioView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoDatoAerobic = MainActivity.databaseHelper?.obtenerUltimaActividadFisica(idUsuario)
             val fechaMedicion = ultimoDatoAerobic?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val textoDatos = "${getString(R.string.txt_Aerobico)}: ${ultimoDatoAerobic?.aerobico}"
+            val aerobico = ultimoDatoAerobic?.aerobico ?: ""
+
+            val textoDatos = "${getString(R.string.txt_Aerobico)}: $aerobico"
             val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoAerobic.text = textoFinal
         }
@@ -114,7 +116,9 @@ class MenuDeporteSuenioView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoDatoNutrition = MainActivity.databaseHelper?.obtenerUltimoValorEnergetico(idUsuario)
             val fechaMedicion = ultimoDatoNutrition?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val textoDatos = "${ultimoDatoNutrition?.kcalTotal} ${getString(R.string.kcal)}"
+            val kcalTotal = ultimoDatoNutrition?.kcalTotal ?: ""
+
+            val textoDatos = "$kcalTotal ${getString(R.string.kcal)}"
             val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoNutrition.text = textoFinal
         }
@@ -124,7 +128,9 @@ class MenuDeporteSuenioView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoDatoSleep = MainActivity.databaseHelper?.obtenerUltimoSueno(idUsuario)
             val fechaMedicion = ultimoDatoSleep?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val textoDatos = "${ultimoDatoSleep?.horasSueno} ${getString(R.string.txt_Horas)}"
+            val horasSueno = ultimoDatoSleep?.horasSueno ?: ""
+
+            val textoDatos = "$horasSueno ${getString(R.string.txt_Horas)}"
             val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoSleep.text = textoFinal
         }
@@ -134,8 +140,11 @@ class MenuDeporteSuenioView : Fragment() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoDatoSocialActivities = MainActivity.databaseHelper?.obtenerUltimasActividadesSociales(idUsuario)
             val fechaMedicion = ultimoDatoSocialActivities?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
-            val textoDatos = "${ultimoDatoSocialActivities?.minutosActividad} ${getString(R.string.txt_Minutos)}"
+            val minutosActividad = ultimoDatoSocialActivities?.minutosActividad ?: ""
+
+            val textoDatos = "$minutosActividad ${getString(R.string.txt_Minutos)}"
             val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoSocialActivities.text = textoFinal
-        } }
+        }
+    }
 }
