@@ -224,4 +224,8 @@
     <string name="txt_fecha_desconocida">Fecha desconocida</string>
 
 
+    <string name="toast_datos_guardados">Datos guardados con exito</string>
+    <string name="toast_complete_campos">Por favor complete todos los campos</string>
+    <string name="toast_datos_no_guardados">Ha ocurrido un error, datos no guardados</string>
+
 </resources>

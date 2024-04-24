@@ -86,7 +86,7 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
             if (datosFormulario != null) {
 
                 // Mostrar un mensaje de éxito
-                Toast.makeText(context, "Datos insertados correctamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_datos_guardados, Toast.LENGTH_SHORT).show()
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
@@ -102,18 +102,15 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
                 var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
                 if (resultado){
-
-                    Toast.makeText(requireContext(), "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
-
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
                 }
             } else {
                 // Mostrar un mensaje de error
-                Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -130,8 +127,6 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
         // Verificar si el campo de notas está vacío
         if (notas.isEmpty()) {
-            // Mostrar un Toast indicando que el campo de notas está vacío
-            Toast.makeText(context, "Por favor, complete el campo de notas", Toast.LENGTH_SHORT).show()
             return null // Devolver null para indicar que no se ha completado el campo de notas
         }
 
