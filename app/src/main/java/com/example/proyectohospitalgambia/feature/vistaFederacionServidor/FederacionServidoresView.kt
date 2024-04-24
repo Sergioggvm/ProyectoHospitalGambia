@@ -33,6 +33,7 @@ import com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.Introduc
 import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.Credentials
@@ -56,6 +57,8 @@ class FederacionServidoresView : Fragment() {
 
     private lateinit var listView: ListView
 
+    private var viewModelJob: Job? = null
+
     private val viewModel: FederacionServidoresViewModel by viewModels()
 
 
@@ -69,44 +72,44 @@ class FederacionServidoresView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-            // Inflate the layout for this fragment
-            val federacionServidoresView =
-                inflater.inflate(R.layout.fragment_federacion_servidores_view, container, false)
+        // Inflate the layout for this fragment
+        val federacionServidoresView =
+            inflater.inflate(R.layout.fragment_federacion_servidores_view, container, false)
 
-            btnNuevoRegistro = federacionServidoresView.findViewById(R.id.btn_nuevoRegistro)
-            btnRecargaServidor = federacionServidoresView.findViewById(R.id.btn_recargaServidor)
-            progresBarSubirDatos = federacionServidoresView.findViewById(R.id.progressBar_subirDatos)
+        btnNuevoRegistro = federacionServidoresView.findViewById(R.id.btn_nuevoRegistro)
+        btnRecargaServidor = federacionServidoresView.findViewById(R.id.btn_recargaServidor)
+        progresBarSubirDatos = federacionServidoresView.findViewById(R.id.progressBar_subirDatos)
 
-            // Agrega OnClickListener al botón btnJugarLocal
-            btnNuevoRegistro.setOnClickListener {
-                // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
-                findNavController().navigate(R.id.action_federacionServidoresView_to_nuevoRegistroServidorView)
+        // Agrega OnClickListener al botón btnJugarLocal
+        btnNuevoRegistro.setOnClickListener {
+            // Navega al fragmento de VistaTableroView cuando se hace clic en el botón
+            findNavController().navigate(R.id.action_federacionServidoresView_to_nuevoRegistroServidorView)
+        }
+
+        val usuarioEncontrado = MainActivity.usuario
+
+        // Crear una instancia del servicio de la API
+        val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
+
+        // Configurar el OnClickListener para el botón btnRecargaServidor
+        btnRecargaServidor.setOnClickListener {
+
+            if (!isNetworkAvailable(requireContext())) {
+                // Mostrar un mensaje de que no hay conexión a Internet
+                Toast.makeText(requireContext(), "No hay conexión a Internet", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            val usuarioEncontrado = MainActivity.usuario
+            // Hacer visible el ProgressBar
+            progresBarSubirDatos.visibility = View.VISIBLE
 
-            // Crear una instancia del servicio de la API
-            val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
+            try {
 
-            // Configurar el OnClickListener para el botón btnRecargaServidor
-            btnRecargaServidor.setOnClickListener {
+                // Recuperar las pols
+                val pols = viewModel.recuperarDatos()
 
-                if (!isNetworkAvailable(requireContext())) {
-                    // Mostrar un mensaje de que no hay conexión a Internet
-                    Toast.makeText(requireContext(), "No hay conexión a Internet", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-
-                // Hacer visible el ProgressBar
-                progresBarSubirDatos.visibility = View.VISIBLE
-
-                try {
-
-                    // Recuperar las pols
-                    val pols = viewModel.recuperarDatos()
-
-                    // Crear el encabezado del JSON
-                    val jsonString2 = """
+                // Crear el encabezado del JSON
+                val jsonString2 = """
                         {
                           "creation_info": {
                             "node": "mygnuhealth",
@@ -125,66 +128,66 @@ class FederacionServidoresView : Fragment() {
                         }
                         """.trimIndent()
 
-                    // Iniciar una corrutina para manejar las solicitudes secuencialmente
-                    CoroutineScope(Dispatchers.IO).launch {
-                        var fallo = false
+                // Iniciar una corrutina para manejar las solicitudes secuencialmente
+                viewModelJob = CoroutineScope(Dispatchers.IO).launch {
+                    var fallo = false
 
-                        for (pol in pols) {
-                            if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals(
-                                    "false",
-                                    ignoreCase = true
-                                )
-                            ) {
-                                val jsonConcatenar =
-                                    "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
-                                        .trimIndent() // Eliminar espacios en blanco adicionales
+                    for (pol in pols) {
+                        if (usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido.equals(
+                                "false",
+                                ignoreCase = true
+                            )
+                        ) {
+                            val jsonConcatenar =
+                                "${pol.data.trimEnd('}')},${jsonString2.trimStart('{')}"
+                                    .trimIndent() // Eliminar espacios en blanco adicionales
 
-                                // Realizar la solicitud y esperar a que se complete antes de continuar
-                                val result = viewModel.insertarDatosEnServidorAsync(jsonConcatenar)
+                            // Realizar la solicitud y esperar a que se complete antes de continuar
+                            val result = viewModel.insertarDatosEnServidorAsync(jsonConcatenar)
 
-                                // Verificar si la solicitud fue exitosa
-                                if (!result) {
-                                    // Si falla alguna solicitud, actualizar la variable de fallo
-                                    fallo = true
-                                } else {
-                                    // Si la solicitud fue exitosa, actualizar el estado en la base de datos
-                                    viewModel.actualizarEstadoSubidoEnBD(pol.idPol, "true")
-                                }
-                            }
-                        }
-
-                        // Mostrar el diálogo apropiado en el hilo principal después de que todas las solicitudes se hayan completado
-                        withContext(Dispatchers.Main) {
-
-                            // Hacer visible el ProgressBar
-                            progresBarSubirDatos.visibility = View.INVISIBLE
-
-                            if (fallo) {
-                                mostrarDialogoPolsNoSubidos()
+                            // Verificar si la solicitud fue exitosa
+                            if (!result) {
+                                // Si falla alguna solicitud, actualizar la variable de fallo
+                                fallo = true
                             } else {
-                                mostrarDialogoPolsSubidos()
+                                // Si la solicitud fue exitosa, actualizar el estado en la base de datos
+                                viewModel.actualizarEstadoSubidoEnBD(pol.idPol, "true")
                             }
-
-                            val listView = federacionServidoresView.findViewById<ListView>(R.id.lst_consexionesServidor)
-                            val polList = viewModel.recuperarDatos().filter { pol ->
-                                usuarioEncontrado != null && usuarioEncontrado.id == pol.book&& pol.isSubido == "true"
-                            }
-                            val adapter = PolAdapter(polList, requireContext())
-                            listView.adapter = adapter
-
                         }
                     }
-               }catch (e: ProtocolException) {
-                    mostrarDialogoPolsNoSubidos()
-                    e.printStackTrace() // Opcional: registrar el error
-               } catch (e: IOException) {
-                    mostrarDialogoPolsNoSubidos()
-                    e.printStackTrace() // Opcional: registrar el error
-               } catch (e: Exception) {
-                    mostrarDialogoPolsNoSubidos()
-                    e.printStackTrace() // Opcional: registrar el error
-               }
+
+                    // Mostrar el diálogo apropiado en el hilo principal después de que todas las solicitudes se hayan completado
+                    withContext(Dispatchers.Main) {
+
+                        // Hacer visible el ProgressBar
+                        progresBarSubirDatos.visibility = View.INVISIBLE
+
+                        if (fallo) {
+                            mostrarDialogoPolsNoSubidos()
+                        } else {
+                            mostrarDialogoPolsSubidos()
+                        }
+
+                        val listView = federacionServidoresView.findViewById<ListView>(R.id.lst_consexionesServidor)
+                        val polList = viewModel.recuperarDatos().filter { pol ->
+                            usuarioEncontrado != null && usuarioEncontrado.id == pol.book&& pol.isSubido == "true"
+                        }
+                        val adapter = PolAdapter(polList, requireContext())
+                        listView.adapter = adapter
+
+                    }
+                }
+            }catch (e: ProtocolException) {
+                mostrarDialogoPolsNoSubidos()
+                e.printStackTrace()
+            } catch (e: IOException) {
+                mostrarDialogoPolsNoSubidos()
+                e.printStackTrace()
+            } catch (e: Exception) {
+                mostrarDialogoPolsNoSubidos()
+                e.printStackTrace()
             }
+        }
 
 
         // Inflate the layout for this fragment
@@ -223,11 +226,22 @@ class FederacionServidoresView : Fragment() {
     }
 
     // Función para verificar la conectividad a Internet
-    fun isNetworkAvailable(context: Context): Boolean {
+    private fun isNetworkAvailable(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork
         val capabilities = connectivityManager.getNetworkCapabilities(network)
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModelJob?.cancel() // Cancela la corrutina cuando se destruye la vista
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModelJob?.cancel() // Cancela la corrutina cuando el fragmento entra en pausa
     }
 
 }

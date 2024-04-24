@@ -45,6 +45,7 @@ import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTerm
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -79,6 +80,8 @@ class DatosTensiometroView : AppCompatActivity() {
 
     // Define una lista para almacenar los registros de datos
     private val datosTensiometroList = mutableListOf<DatosTensiometro>()
+
+    private var viewModelJob: Job? = null
 
     private val viewModel: DatosTensiometroViewModel by viewModels()
 
@@ -183,7 +186,7 @@ class DatosTensiometroView : AppCompatActivity() {
             btMedicion.visibility = View.INVISIBLE
 
             // Iniciar la corrutina para simular el proceso de carga
-            CoroutineScope(Dispatchers.Main).launch {
+            viewModelJob = CoroutineScope(Dispatchers.Main).launch {
                 // Simular el progreso de carga durante 3 segundos
                 for (progress in 0..100) {
                     progressBar.progress = progress
@@ -554,7 +557,6 @@ class DatosTensiometroView : AppCompatActivity() {
                                 (acc shl 8) + byte
                             }
 
-
                         val bytesYear =
                             data.sliceArray(7 until 14) // Obtener los 7 bytes para la fecha y hora
 
@@ -746,6 +748,7 @@ class DatosTensiometroView : AppCompatActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
@@ -819,5 +822,17 @@ class DatosTensiometroView : AppCompatActivity() {
 
             else -> super.onOptionsItemSelected(item)
         }
+
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModelJob?.cancel() // Cancela la corrutina cuando se destruye la actividad
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+    }
+
 }

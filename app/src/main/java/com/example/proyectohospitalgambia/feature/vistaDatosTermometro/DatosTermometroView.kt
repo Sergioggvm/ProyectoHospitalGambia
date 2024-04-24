@@ -41,6 +41,7 @@ import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTen
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -68,6 +69,8 @@ class DatosTermometroView : AppCompatActivity() {
     private val listadispositivos = mutableListOf<BluetoothDevice>()
     private var scanning = false
     private val SCAN_PERIOD: Long = 10000
+
+    private var viewModelJob: Job? = null
 
     private val viewModel: DatosTermometroViewModel by viewModels()
 
@@ -181,7 +184,7 @@ class DatosTermometroView : AppCompatActivity() {
             btnMedicionTemperatura.visibility = View.INVISIBLE
 
             // Iniciar la corrutina para simular el proceso de carga
-            CoroutineScope(Dispatchers.Main).launch {
+            viewModelJob = CoroutineScope(Dispatchers.Main).launch {
                 // Simular el progreso de carga durante 3 segundos
                 for (progress in 0..100) {
                     progressBar.progress = progress
@@ -747,6 +750,16 @@ class DatosTermometroView : AppCompatActivity() {
             // Manejar la excepción si la conversión a Double falla
             return null
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModelJob?.cancel() // Cancela la corrutina cuando se destruye la actividad
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
     }
 
 
