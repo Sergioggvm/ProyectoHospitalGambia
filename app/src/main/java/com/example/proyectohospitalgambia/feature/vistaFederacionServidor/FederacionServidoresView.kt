@@ -244,5 +244,10 @@ class FederacionServidoresView : Fragment() {
         viewModelJob?.cancel() // Cancela la corrutina cuando el fragmento entra en pausa
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+    }
+
 }
 

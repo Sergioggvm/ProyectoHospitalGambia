@@ -762,5 +762,10 @@ class DatosTermometroView : AppCompatActivity() {
         viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+    }
+
 
 }
