@@ -13,7 +13,9 @@ data class DatosTensiometro (
 ) {
     val fechaHoraFormatted: String
         get() {
-            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
             return sdf.format(fechaHora)
         }
 }
