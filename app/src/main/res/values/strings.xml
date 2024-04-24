@@ -25,6 +25,9 @@
 
     <string name="txt_Altura">Altura:</string>
     <string name="btn_Actualizar">Actualizar</string>
+    <string name="txt_ActualizarContrasenia">Actualizar Contraseña</string>
+    <string name="txt_ActualizarAltura">Actualizar Altura</string>
+    <string name="txt_ActualizarFederacion">Actualizar Federacion</string>
     <string name="txt_CuentaFederacion">Cuenta Federacion</string>
     <string name="txt_CuentaFederacionId">Cuenta Federacion ID</string>
     <string name="txt_ContraseniaActual">Contraseña Personal Actual</string>
