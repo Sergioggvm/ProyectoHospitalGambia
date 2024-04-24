@@ -662,10 +662,6 @@ class DatosTensiometroView : AppCompatActivity() {
 
                     val fechaHora = calendar.time
 
-                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-                        Date()
-                    )
-                    val fechaFormateada = sdf.format(fechaHora)
                     // Crear un objeto DataRecord con los datos recibidos
                     //val dataRecord = DatosTensiometro(fechaHora, tensionAlta, tensionBaja, pulse)
 
@@ -682,7 +678,7 @@ class DatosTensiometroView : AppCompatActivity() {
 
                     Log.d(
                         "Bluetooth2",
-                        " Tension Alta: $tensionAlta Tension Baja: $tensionBaja, Pulso: $pulse, Datos Hora: $fechaFormateada"
+                        " Tension Alta: $tensionAlta Tension Baja: $tensionBaja, Pulso: $pulse, Datos Hora: $fechaHora"
                     )
 
                 } else {
