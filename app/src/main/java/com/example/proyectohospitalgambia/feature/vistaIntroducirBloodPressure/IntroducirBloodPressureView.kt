@@ -1,23 +1,17 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.domain.model.datosPols.LibroVida
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.PresionSanguinea
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -67,11 +61,12 @@ class IntroducirBloodPressureView : Fragment() {
             if (datosFormulario != null) {
 
                 // Mostrar un mensaje de éxito
-                Toast.makeText(context, "Datos insertados correctamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_datos_guardados, Toast.LENGTH_SHORT).show()
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
@@ -82,19 +77,20 @@ class IntroducirBloodPressureView : Fragment() {
                 // Llamar al método del ViewModel para insertar datos
                 var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
-
-                    Toast.makeText(requireContext(), "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
-
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
-
                 } else {
-                    Toast.makeText(requireContext(), "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.toast_datos_no_guardados,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
-                Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }
@@ -114,8 +110,6 @@ class IntroducirBloodPressureView : Fragment() {
 
         // Verificar si algún campo está vacío
         if (sistolicoText.isEmpty() || diastolicoText.isEmpty() || frecuenciaCardiacaText.isEmpty()) {
-            // Mostrar un Toast indicando que algún campo está vacío
-            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             return null // Devolver null para indicar que no se han completado todos los campos
         }
 
@@ -125,9 +119,10 @@ class IntroducirBloodPressureView : Fragment() {
         val frecuenciaCardiaca = frecuenciaCardiacaText.toInt()
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
 
         val presionSanguinea = PresionSanguinea(

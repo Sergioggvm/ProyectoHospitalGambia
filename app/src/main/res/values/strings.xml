@@ -25,6 +25,9 @@
 
     <string name="txt_Altura">Altura:</string>
     <string name="btn_Actualizar">Actualizar</string>
+    <string name="txt_ActualizarContrasenia">Actualizar Contraseña</string>
+    <string name="txt_ActualizarAltura">Actualizar Altura</string>
+    <string name="txt_ActualizarFederacion">Actualizar Federacion</string>
     <string name="txt_CuentaFederacion">Cuenta Federacion</string>
     <string name="txt_CuentaFederacionId">Cuenta Federacion ID</string>
     <string name="txt_ContraseniaActual">Contraseña Personal Actual</string>
@@ -193,8 +196,8 @@
     <string name="txt_RegsitrosNoEncontrados">No se encontraron registros</string>
 
     <string name="txt_InstruccionesConexionTensiometro">Instrucciones\
-    Para poder transferir los datos, primero debes habilitar el Bluetooth y la ubicación.\n
-    Luego, deberás aceptar los permisos que se solicitarán.\n
+    Para poder transferir los datos, primero debes habilitar el Bluetooth y la ubicación.
+    Luego, deberás aceptar los permisos que se solicitarán.
     Por último, enciende el dispositivo médico, realiza la medición y activa el Bluetooth pulsando el botón del medio.</string>
 
     <string name="txt_DatosEncontrados">Se han encontrado datos, pero podrían no coincidir.\n
@@ -220,5 +223,9 @@
     <string name="txt_fechaDeLaMedicion">Ultima medición:</string>
     <string name="txt_fecha_desconocida">Fecha desconocida</string>
 
+
+    <string name="toast_datos_guardados">Datos guardados con exito</string>
+    <string name="toast_complete_campos">Por favor complete todos los campos</string>
+    <string name="toast_datos_no_guardados">Ha ocurrido un error, datos no guardados</string>
 
 </resources>

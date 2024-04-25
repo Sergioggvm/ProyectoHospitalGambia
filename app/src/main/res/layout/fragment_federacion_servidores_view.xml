@@ -14,8 +14,8 @@
             android:id="@+id/img_servidorFederacion"
             android:layout_width="275dp"
             android:layout_height="75dp"
-            android:layout_marginTop="48dp"
             android:src="@drawable/imagen_federacion_servidores"
+            app:layout_constraintBottom_toTopOf="@+id/btn_recargaServidor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,29 +24,28 @@
             android:id="@+id/btn_nuevoRegistro"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="125dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/boton_nuevo_resgistro"
             android:contentDescription="Nuevo Registro"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/lst_consexionesServidor"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseñaServidor_layout"
+            app:layout_constraintEnd_toStartOf="@+id/progressBar_subirDatos"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
 
         <ImageButton
             android:id="@+id/btn_recargaServidor"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="125dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/boton_recarga"
             android:contentDescription="Recargar Servidor"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/lst_consexionesServidor"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseñaServidor_layout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/progressBar_subirDatos"
             app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -54,13 +53,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="275dp"
             android:layout_height="75dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginBottom="14dp"
             android:hint="@string/txt_Contrasenia_Federacion"
             app:layout_constraintBottom_toTopOf="@+id/lst_consexionesServidor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion">
+            app:layout_constraintTop_toBottomOf="@+id/progressBar_subirDatos">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_contraseñaServidor"
@@ -74,21 +71,27 @@
 
         <ListView
             android:id="@+id/lst_consexionesServidor"
-            android:layout_width="367dp"
-            android:layout_height="355dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/edittext_fondo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edittext_custom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_contraseñaServidor_layout" />
 
         <ProgressBar
             android:id="@+id/progressBar_subirDatos"
-            style="?android:attr/progressBarStyle"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="57dp"
+            android:layout_marginTop="50dp"
+            android:indeterminate="false"
+            android:indeterminateDrawable="@drawable/circle"
             android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseñaServidor_layout"
             app:layout_constraintEnd_toStartOf="@+id/btn_recargaServidor"
             app:layout_constraintStart_toEndOf="@+id/btn_nuevoRegistro"
             app:layout_constraintTop_toBottomOf="@+id/img_servidorFederacion" />
