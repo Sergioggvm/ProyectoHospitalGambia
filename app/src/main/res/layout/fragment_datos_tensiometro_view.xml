@@ -149,11 +149,12 @@
         <TextView
             android:id="@+id/txt_Instrucciones"
             android:layout_width="0dp"
-            android:layout_height="138dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:gravity="center"
             android:justificationMode="inter_word"
             android:text="@string/txt_InstruccionesConexionTensiometro"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_DatosObtenidosPulsioximetro"
             app:layout_constraintEnd_toEndOf="parent"
