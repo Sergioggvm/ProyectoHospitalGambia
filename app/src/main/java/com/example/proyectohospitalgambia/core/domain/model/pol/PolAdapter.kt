@@ -30,13 +30,13 @@ class PolAdapter(private val pol: List<Pol>, private val context: Context) : Bas
 
         val currentPartida = pol[position]
 
-// Obtener la cadena JSON
+        // Obtener la cadena JSON
         val jsonString = currentPartida.data
 
-// Encontrar la posición de "FechaInsercion"
+        // Encontrar la posición de "FechaInsercion"
         val indexFechaInsercion = jsonString.indexOf("\"FechaInsercion\"")
 
-// Obtener la subcadena a partir de la posición de "FechaInsercion" hasta el siguiente ","
+        // Obtener la subcadena a partir de la posición de "FechaInsercion" hasta el siguiente ","
         val fechaInsercion = if (indexFechaInsercion != -1) {
             val startIndex = jsonString.indexOf(':', indexFechaInsercion) + 2 // Sumar 3 para omitir ": " y comillas al principio
             val endIndex = jsonString.indexOf(',', startIndex)
@@ -45,10 +45,10 @@ class PolAdapter(private val pol: List<Pol>, private val context: Context) : Bas
             "Fecha de inserción no disponible"
         }
 
-// Encontrar la posición de "TipoPol"
+        // Encontrar la posición de "TipoPol"
         val indexTipoPol = jsonString.indexOf("\"TipoPol\"")
 
-// Obtener la subcadena a partir de la posición de "TipoPol" hasta el siguiente ","
+        // Obtener la subcadena a partir de la posición de "TipoPol" hasta el siguiente ","
         val tipoPol = if (indexTipoPol != -1) {
             val startIndex = jsonString.indexOf(':', indexTipoPol) + 2 // Sumar 3 para omitir ": " y comillas al principio
             val endIndex = jsonString.indexOf(',', startIndex)
@@ -57,18 +57,18 @@ class PolAdapter(private val pol: List<Pol>, private val context: Context) : Bas
             "Tipo de pol no disponible"
         }
 
-// Eliminar el campo "TipoPol" y su valor
-        val jsonStringSinTipoPol = jsonString.replace("\"TipoPol\":\"[^\"]*".toRegex(), "")
+        // Eliminar el campo "TipoPol" y su valor
+        val jsonStringSinTipoPol = jsonString.replace("\"TipoPol\":\"[^\"]*\"[,]?".toRegex(), "")
 
-// Eliminar el campo "FechaInsercion" y su valor
-        val jsonStringSinFechaInsercion = jsonStringSinTipoPol.replace("\"FechaInsercion\":\"[^\"]*".toRegex(), "")
+        // Eliminar el campo "FechaInsercion" y su valor
+        val jsonStringSinFechaInsercion = jsonStringSinTipoPol.replace("\"FechaInsercion\":\"[^\"]*\"[,]?".toRegex(), "")
 
-// Eliminar las llaves "{" y "}" del resultado
+        // Eliminar las llaves "{" y "}" del resultado
         val otrosDatos = jsonStringSinFechaInsercion.removePrefix("{").removeSuffix("}")
 
         holder.txtFechaPol.text = fechaInsercion.replace("\"", "")
         holder.txtTipoPol.text = tipoPol.replace("\"", "")
-        holder.txtDatosPol.text = otrosDatos.replace("\"", "").replace(",", "")
+        holder.txtDatosPol.text = otrosDatos.replace("\"","").replace(",","\n")
 
         return view!!
     }
