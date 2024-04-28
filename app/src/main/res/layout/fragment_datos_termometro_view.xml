@@ -12,14 +12,15 @@
 
 
         <TextView
-            android:id="@+id/txt_Instrucciones"
+            android:id="@+id/txt_Instrucciones1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:gravity="center"
             android:justificationMode="inter_word"
-            android:text="@string/txt_InstruccionesConexionTensiometro"
-            android:textSize="16sp"
+            android:text="@string/txt_Instrucciones"
+            android:textColor="@color/azul_texto"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_temperaturaObtenida"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +49,7 @@
             android:textColor="@color/azul_texto"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/txt_Instrucciones"
+            app:layout_constraintBottom_toTopOf="@+id/txt_Instrucciones1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_Principal" />
@@ -64,7 +65,7 @@
             app:layout_constraintBottom_toTopOf="@+id/progressBarTemperaturaCargando"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_doneTemperatura"
-            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones1" />
 
 
         <TextView
@@ -89,18 +90,19 @@
             app:layout_constraintStart_toEndOf="@+id/tv_TemperaturaMedida"
             app:layout_constraintTop_toBottomOf="@+id/progressBarTemperaturaCargando" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_doneTemperatura"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:background="@drawable/boton_done"
-            android:backgroundTint="@color/azul_texto"
-            android:text="@string/txt_Lectura"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icono_termometro_bluetooth_blanco"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_temperaturaObtenida"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones1" />
 
         <ProgressBar
             android:id="@+id/progressBarTemperaturaCargando"
@@ -125,6 +127,77 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icono_mygnuhealth" />
+
+        <TextView
+            android:id="@+id/txt_instrucciones2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginEnd="50dp"
+            android:justificationMode="inter_word"
+            android:text="@string/txt_Instrucciones_1"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toTopOf="@+id/txt_instrucciones3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones1" />
+
+        <TextView
+            android:id="@+id/txt_instrucciones3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:justificationMode="inter_word"
+            android:text="@string/txt_Instrucciones_2"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toTopOf="@+id/txt_Instrucciones4"
+            app:layout_constraintStart_toStartOf="@+id/txt_instrucciones2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_instrucciones2" />
+
+        <TextView
+            android:id="@+id/txt_Instrucciones4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:justificationMode="inter_word"
+            android:text="@string/txt_Instrucciones_3"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toTopOf="@+id/txt_Instrucciones5"
+            app:layout_constraintStart_toStartOf="@+id/txt_instrucciones2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_instrucciones3" />
+
+        <TextView
+            android:id="@+id/txt_Instrucciones5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginEnd="50dp"
+            android:justificationMode="inter_word"
+            android:text="@string/txt_Instrucciones_4"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toTopOf="@+id/tv_temperaturaObtenida"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txt_instrucciones2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_Instrucciones4" />
+
+        <ImageView
+            android:id="@+id/imgView_bluetooth"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_instrucciones2"
+            app:layout_constraintStart_toEndOf="@+id/txt_instrucciones2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_instrucciones2"
+            tools:srcCompat="@drawable/icono_bluetooth" />
+
+        <ImageView
+            android:id="@+id/imgView_Ubicacion"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_instrucciones3"
+            app:layout_constraintStart_toEndOf="@+id/txt_instrucciones3"
+            app:layout_constraintTop_toBottomOf="@+id/txt_instrucciones3"
+            tools:srcCompat="@drawable/icono_ubicacion" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

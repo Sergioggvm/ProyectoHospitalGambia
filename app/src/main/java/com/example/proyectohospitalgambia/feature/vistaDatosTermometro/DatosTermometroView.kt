@@ -24,6 +24,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -105,7 +106,7 @@ class DatosTermometroView : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Obtener referencias del layout
-        val btnMedicionTemperatura = findViewById<Button>(R.id.btn_doneTemperatura)
+        val btnMedicionTemperatura = findViewById<ImageButton>(R.id.btn_doneTemperatura)
         progressBar = findViewById(R.id.progressBarTemperaturaCargando)
         tv_TemperaturaResultado = findViewById(R.id.tv_TemperaturaResultado)
 

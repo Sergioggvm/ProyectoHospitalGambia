@@ -223,6 +223,13 @@
     <string name="txt_fechaDeLaMedicion">Ultima medición:</string>
     <string name="txt_fecha_desconocida">Fecha desconocida</string>
 
+    <string name="txt_Instrucciones">Instrucciones</string>
+    <string name="txt_Instrucciones_1">1. Asegúrate de tener activado el Bluetooth</string>
+    <string name="txt_Instrucciones_2">2. Asegúrate de tener activada la ubicación</string>
+    <string name="txt_Instrucciones_3">3. Asegúrate de tener activados los permisos</string>
+    <string name="txt_Instrucciones_4">4. Enciende el dispositivo médico, realiza la medición y pulsa el botón inferior para recibir los datos</string>
+
+
 
     <string name="toast_datos_guardados">Datos guardados con exito</string>
     <string name="toast_complete_campos">Por favor complete todos los campos</string>

@@ -24,6 +24,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -107,7 +108,7 @@ class DatosTensiometroView : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val btMedicion = findViewById<Button>(R.id.btn_donePulsioximetro)
+        val btMedicion = findViewById<ImageView>(R.id.btn_donePulsioximetro)
 
         // Obtener referencias a los TextViews
         textViewTensionAlta = findViewById(R.id.tv_tensionAltaResultado)
