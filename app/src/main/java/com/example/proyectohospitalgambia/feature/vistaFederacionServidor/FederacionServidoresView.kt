@@ -236,17 +236,17 @@ class FederacionServidoresView : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModelJob?.cancel() // Cancela la corrutina cuando se destruye la vista
+        viewModelJob?.cancel()
     }
 
     override fun onPause() {
         super.onPause()
-        viewModelJob?.cancel() // Cancela la corrutina cuando el fragmento entra en pausa
+        viewModelJob?.cancel()
     }
 
     override fun onResume() {
         super.onResume()
-        viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+        viewModelJob?.cancel()
     }
 
 }
