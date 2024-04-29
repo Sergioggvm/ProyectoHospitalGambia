@@ -258,15 +258,26 @@ class DatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         val cursor = db.rawQuery("SELECT * FROM $TABLE_POLS", null)
 
         cursor.use { cursor ->
-            while (cursor.moveToNext()) {
-                val id = cursor.getString(cursor.getColumnIndex(KEY_POLS_ID))
-                val book = cursor.getString(cursor.getColumnIndex(KEY_POLS_BOOK))
-                val data = cursor.getString(cursor.getColumnIndex(KEY_POLS_DATA))
-                val subido = cursor.getString(cursor.getColumnIndex(KEY_POLS_SUBIDO))
+            // Verificar si el cursor tiene columnas
+            if (cursor.columnCount > 0) {
+                // Obtener los índices de las columnas
+                val idIndex = cursor.getColumnIndex(KEY_POLS_ID)
+                val bookIndex = cursor.getColumnIndex(KEY_POLS_BOOK)
+                val dataIndex = cursor.getColumnIndex(KEY_POLS_DATA)
+                val subidoIndex = cursor.getColumnIndex(KEY_POLS_SUBIDO)
 
-                // Crear un objeto Pol con los datos obtenidos de la base de datos
-                val pol = Pol(id, book, data, subido)
-                polsList.add(pol)
+                // Iterar sobre el cursor
+                while (cursor.moveToNext()) {
+                    // Obtener los valores de cada columna por su índice
+                    val id = cursor.getString(idIndex)
+                    val book = cursor.getString(bookIndex)
+                    val data = cursor.getString(dataIndex)
+                    val subido = cursor.getString(subidoIndex)
+
+                    // Crear un objeto Pol con los datos obtenidos de la base de datos
+                    val pol = Pol(id, book, data, subido)
+                    polsList.add(pol)
+                }
             }
         }
 
