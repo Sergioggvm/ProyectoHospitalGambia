@@ -256,7 +256,7 @@ class DatosTermometroView : AppCompatActivity() {
 
             // Se ejecuta en el hilo principal porque si njo
             runOnUiThread {
-                tv_TemperaturaResultado.text = "${ultimoDatoTermometro!!.temperatura} °C"
+                tv_TemperaturaResultado.text = ultimoDatoTermometro!!.temperatura.toString()
                 Log.d("TEMPERATURANUMERO", ultimoDatoTermometro!!.temperatura.toString())
             }
             mostrarDialogoDatosEncontrados()
@@ -717,38 +717,48 @@ class DatosTermometroView : AppCompatActivity() {
     // Método para obtener los datos del formulario y crear el JSON
     private fun obtenerDatosFormulario(): JSONObject? {
         // Obtener el valor del TextView
+        Log.d("obtenerDatosFormulario111111", "Método llamado")
         val temperaturaText = tv_TemperaturaResultado.text.toString()
 
         // Verificar si el campo está vacío
         if (temperaturaText.isEmpty()) {
+            Log.d("ObtenerDatosFormulario111111", "Temperatura vacía")
             return null // Devolver null si el campo está vacío
         }
 
         try {
             // Convertir el valor a tipo numérico
+            Log.d("TemperaturaTexto111111", temperaturaText)
             val temperatura = temperaturaText.toDouble()
+            val temperaturaConUnidad = String.format("%.1f", temperatura) + " °C"
+            tv_TemperaturaResultado.text = temperaturaConUnidad
+
+            Log.d("Temperatura111111", String.format("%.1f", temperatura)) // Aquí se modifica para imprimir solo un decimal
 
             // Obtener la fecha y hora actual
-            val currentDateAndTime =
-                SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-                    Date()
-                )
+            val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
-            // Crear el objeto JSON con los datos del formulario
-            val jsonObject = JSONObject()
-            jsonObject.put("TipoPol", "temperatura")
-            jsonObject.put("FechaInsercion", currentDateAndTime)
-            jsonObject.put("temperatura", temperatura)
 
-            // Mostrar el JSON en el Log
-            Log.d("JSON Data", jsonObject.toString())
+            if (temperatura != 0.0){
+                // Crear el objeto JSON con los datos del formulario
+                val jsonObject = JSONObject()
+                jsonObject.put("TipoPol", "temperatura")
+                jsonObject.put("FechaInsercion", currentDateAndTime)
+                jsonObject.put("temperatura", temperatura)
 
-            return jsonObject
+                // Mostrar el JSON en el Log
+                Log.d("JSON Data11111", jsonObject.toString())
+
+                return jsonObject
+            }
+
+            return null
         } catch (e: NumberFormatException) {
-            // Manejar la excepción si la conversión a Double falla
+            Log.e("Convertir a Double", "Error: ${e.message}")
             return null
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
