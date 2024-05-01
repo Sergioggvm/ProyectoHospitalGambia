@@ -237,16 +237,19 @@ class FederacionServidoresView : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         viewModelJob?.cancel()
+        progresBarSubirDatos.visibility = View.INVISIBLE
     }
 
     override fun onPause() {
         super.onPause()
         viewModelJob?.cancel()
+        progresBarSubirDatos.visibility = View.INVISIBLE
     }
 
     override fun onResume() {
         super.onResume()
         viewModelJob?.cancel()
+        progresBarSubirDatos.visibility = View.INVISIBLE
     }
 
 }

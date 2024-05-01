@@ -82,6 +82,7 @@ class DatosTermometroView : AppCompatActivity() {
 
     private lateinit var tv_TemperaturaResultado: TextView
     private lateinit var progressBar: ProgressBar
+    private lateinit var btnMedicionTemperatura: ImageButton
 
 
     enum class BLELifecycleState {
@@ -106,7 +107,7 @@ class DatosTermometroView : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Obtener referencias del layout
-        val btnMedicionTemperatura = findViewById<ImageButton>(R.id.btn_doneTemperatura)
+        btnMedicionTemperatura = findViewById(R.id.btn_doneTemperatura)
         progressBar = findViewById(R.id.progressBarTemperaturaCargando)
         tv_TemperaturaResultado = findViewById(R.id.tv_TemperaturaResultado)
 
@@ -763,16 +764,22 @@ class DatosTermometroView : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         viewModelJob?.cancel() // Cancela la corrutina cuando se destruye la actividad
+        progressBar.visibility = View.INVISIBLE
+        btnMedicionTemperatura.visibility = View.VISIBLE
     }
 
     override fun onPause() {
         super.onPause()
         viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+        progressBar.visibility = View.INVISIBLE
+        btnMedicionTemperatura.visibility = View.VISIBLE
     }
 
     override fun onResume() {
         super.onResume()
         viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+        progressBar.visibility = View.INVISIBLE
+        btnMedicionTemperatura.visibility = View.VISIBLE
     }
 
 

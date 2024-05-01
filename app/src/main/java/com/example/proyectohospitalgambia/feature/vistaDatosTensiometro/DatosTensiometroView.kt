@@ -80,6 +80,8 @@ class DatosTensiometroView : AppCompatActivity() {
 
     private lateinit var progressBar: ProgressBar
 
+    private lateinit var btMedicion: ImageView
+
     // Define una lista para almacenar los registros de datos
     private val datosTensiometroList = mutableListOf<DatosTensiometro>()
 
@@ -108,7 +110,7 @@ class DatosTensiometroView : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val btMedicion = findViewById<ImageView>(R.id.btn_donePulsioximetro)
+        btMedicion = findViewById(R.id.btn_donePulsioximetro)
 
         // Obtener referencias a los TextViews
         textViewTensionAlta = findViewById(R.id.tv_tensionAltaResultado)
@@ -830,16 +832,22 @@ class DatosTensiometroView : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         viewModelJob?.cancel() // Cancela la corrutina cuando se destruye la actividad
+        progressBar.visibility = View.INVISIBLE
+        btMedicion.visibility = View.VISIBLE
     }
 
     override fun onPause() {
         super.onPause()
         viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+        progressBar.visibility = View.INVISIBLE
+        btMedicion.visibility = View.VISIBLE
     }
 
     override fun onResume() {
         super.onResume()
         viewModelJob?.cancel() // Cancela la corrutina cuando la actividad entra en pausa
+        progressBar.visibility = View.INVISIBLE
+        btMedicion.visibility = View.VISIBLE
     }
 
 }
