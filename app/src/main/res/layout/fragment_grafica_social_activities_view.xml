@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
 
-        <com.example.proyectohospitalgambia.feature.CustomLineChart
+        <com.example.proyectohospitalgambia.app.utils.CustomLineChart
             android:id="@+id/graficoLineas_ActividadesSociales"
             android:layout_width="0dp"
             android:layout_height="0dp"

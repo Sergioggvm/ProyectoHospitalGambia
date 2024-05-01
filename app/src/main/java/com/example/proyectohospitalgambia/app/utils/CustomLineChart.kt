@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature
+package com.example.proyectohospitalgambia.app.utils
 
 import android.content.Context
 import android.graphics.Canvas
