@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         databaseHelper = DatabaseHelper(this)
     }
 
-    private fun mostrarDialogoSalir() {
+    fun mostrarDialogoSalir() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
         builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
