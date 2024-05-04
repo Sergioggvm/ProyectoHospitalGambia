@@ -1,32 +1,25 @@
 package com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import android.graphics.Color
-import com.example.proyectohospitalgambia.app.MainActivity
 import com.github.mikephil.charting.formatter.ValueFormatter
 import java.text.SimpleDateFormat
-import java.util.*
-
+import java.util.Locale
 
 class GraficaGlycemiaView : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_glycemia_view, container, false)
@@ -54,7 +47,7 @@ class GraficaGlycemiaView : Fragment() {
             datosGlucemia?.associate { it.glucosa.toFloat() to it.fechaRealizacion }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetGlucemia = LineDataSet(entriesGlucemia, "Glucemia")
+        val dataSetGlucemia = LineDataSet(entriesGlucemia, getString(R.string.glucemia))
         dataSetGlucemia.color = Color.BLUE
         dataSetGlucemia.valueTextColor = Color.BLACK
         dataSetGlucemia.valueTextSize = 16f
@@ -64,8 +57,8 @@ class GraficaGlycemiaView : Fragment() {
         chartGlucemia.data = dataGlucemia
         chartGlucemia.setTouchEnabled(true)
         chartGlucemia.setPinchZoom(true)
-        chartGlucemia.description.text = "Glucemia"
-        chartGlucemia.setNoDataText("No hay datos disponibles")
+        chartGlucemia.description.text = getString(R.string.glucemia)
+        chartGlucemia.setNoDataText(getString(R.string.no_hay_datos_disponibles))
 
         // Configurar el formateador del eje X para mostrar las fechas
         chartGlucemia.xAxis.valueFormatter = object : ValueFormatter() {

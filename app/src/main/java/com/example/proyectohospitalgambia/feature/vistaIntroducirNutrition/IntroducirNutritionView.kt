@@ -1,21 +1,17 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.ValorEnergetico
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaGraficaNutrition.GraficaNutritionView
-import com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy.IntroducirMoodAndEnergyViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -36,8 +32,7 @@ class IntroducirNutritionView : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_introducir_nutrition, container, false)
 
@@ -49,99 +44,102 @@ class IntroducirNutritionView : Fragment() {
 
         return view
     }
-        // ...
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
 
-            val btnDone: FloatingActionButton = view.findViewById(R.id.btn_guardarNutrition)
+    // ...
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            btnDone.setOnClickListener {
+        val btnDone: FloatingActionButton = view.findViewById(R.id.btn_guardarNutrition)
 
-                val usuarioActivo = MainActivity.usuario
+        btnDone.setOnClickListener {
 
-                // Obtener los datos del formulario
-                val datosFormulario = obtenerDatosFormulario()
-                // Verificar si se obtuvieron los datos del formulario correctamente
-                if (datosFormulario != null) {
+            val usuarioActivo = MainActivity.usuario
 
-                    // Mostrar un mensaje de éxito
-                    Toast.makeText(context, R.string.toast_datos_guardados, Toast.LENGTH_SHORT).show()
+            // Obtener los datos del formulario
+            val datosFormulario = obtenerDatosFormulario()
+            // Verificar si se obtuvieron los datos del formulario correctamente
+            if (datosFormulario != null) {
 
-                    // Generar IDs aleatorios como strings
-                    val idPols = generarIdAleatorio()
-                    val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                // Mostrar un mensaje de éxito
+                Toast.makeText(context, R.string.toast_datos_guardados, Toast.LENGTH_SHORT).show()
 
-                    val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
+                // Generar IDs aleatorios como strings
+                val idPols = generarIdAleatorio()
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
-                    if (usuarioActivo != null) {
-                        usuarioActivo.pols.add(pol)
-                    }
+                val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                    // Llamar al método del ViewModel para insertar datos
-                    var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                usuarioActivo?.pols?.add(pol)
 
-                    if (resultado){
-                        // Navegar hacia atrás
-                        requireActivity().supportFragmentManager.popBackStack()
+                // Llamar al método del ViewModel para insertar datos
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                    } else {
-                        Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
-                    }
+                if (resultado) {
+                    // Navegar hacia atrás
+                    requireActivity().supportFragmentManager.popBackStack()
+
                 } else {
-                    // Mostrar un mensaje de error
-                    Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
+            } else {
+                // Mostrar un mensaje de error
+                Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
     private fun generarIdAleatorio(): String {
         return UUID.randomUUID().toString()
     }
 
-        private fun obtenerDatosFormulario(): JSONObject? {
-            // Obtener los valores de los EditText
-            val kcalManana = edtKcalManana.text.toString().toIntOrNull()
-            val kcalTarde = edtKcalTarde.text.toString().toIntOrNull()
-            val kcalNoche = edtKcalNoche.text.toString().toIntOrNull()
-            val kcalTotal = edtKcalTotal.text.toString().toIntOrNull()
-            val notas = edtNotas.text.toString()
+    private fun obtenerDatosFormulario(): JSONObject? {
+        // Obtener los valores de los EditText
+        val kcalManana = edtKcalManana.text.toString().toIntOrNull()
+        val kcalTarde = edtKcalTarde.text.toString().toIntOrNull()
+        val kcalNoche = edtKcalNoche.text.toString().toIntOrNull()
+        val kcalTotal = edtKcalTotal.text.toString().toIntOrNull()
+        val notas = edtNotas.text.toString()
 
-            // Verificar si algún campo está vacío
-            if (kcalManana == null || kcalTarde == null || kcalNoche == null || kcalTotal == null || notas.isEmpty()) {
-                return null // Devolver null para indicar que no se han completado todos los campos
-            }
+        // Verificar si algún campo está vacío
+        if (kcalManana == null || kcalTarde == null || kcalNoche == null || kcalTotal == null || notas.isEmpty()) {
+            return null // Devolver null para indicar que no se han completado todos los campos
+        }
 
-            // Obtener la fecha y hora actual
-            val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+        // Obtener la fecha y hora actual
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
                 Date()
             )
 
-            val valorEnergetico = ValorEnergetico(
-                fechaRealizacion = currentDateAndTime,
-                kcalManana = kcalManana,
-                kcalTarde = kcalTarde,
-                kcalNoche = kcalNoche,
-                kcalTotal = kcalTotal,
-                notas = notas
-            )
+        val valorEnergetico = ValorEnergetico(
+            fechaRealizacion = currentDateAndTime,
+            kcalManana = kcalManana,
+            kcalTarde = kcalTarde,
+            kcalNoche = kcalNoche,
+            kcalTotal = kcalTotal,
+            notas = notas
+        )
 
-            // Crear el objeto JSON con los datos del formulario
-            val jsonObject = JSONObject()
-            jsonObject.put("TipoPol", valorEnergetico.tipoPol)
-            jsonObject.put("FechaInsercion", valorEnergetico.fechaRealizacion)
-            jsonObject.put("KcalManana", valorEnergetico.kcalManana)
-            jsonObject.put("KcalTarde", valorEnergetico.kcalTarde)
-            jsonObject.put("KcalNoche", valorEnergetico.kcalNoche)
-            jsonObject.put("KcalTotal", valorEnergetico.kcalTotal)
-            jsonObject.put("Notas", valorEnergetico.notas)
+        // Crear el objeto JSON con los datos del formulario
+        val jsonObject = JSONObject()
+        jsonObject.put("TipoPol", valorEnergetico.tipoPol)
+        jsonObject.put("FechaInsercion", valorEnergetico.fechaRealizacion)
+        jsonObject.put("KcalManana", valorEnergetico.kcalManana)
+        jsonObject.put("KcalTarde", valorEnergetico.kcalTarde)
+        jsonObject.put("KcalNoche", valorEnergetico.kcalNoche)
+        jsonObject.put("KcalTotal", valorEnergetico.kcalTotal)
+        jsonObject.put("Notas", valorEnergetico.notas)
 
-            // Limpiar los elementos del formulario después de obtener los datos si son correctos
-            edtKcalManana.text.clear()
-            edtKcalTarde.text.clear()
-            edtKcalNoche.text.clear()
-            edtKcalTotal.text.clear()
-            edtNotas.text.clear()
+        // Limpiar los elementos del formulario después de obtener los datos si son correctos
+        edtKcalManana.text.clear()
+        edtKcalTarde.text.clear()
+        edtKcalNoche.text.clear()
+        edtKcalTotal.text.clear()
+        edtNotas.text.clear()
 
-            return jsonObject
-        }
+        return jsonObject
     }
+}

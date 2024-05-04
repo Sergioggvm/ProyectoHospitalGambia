@@ -30,8 +30,7 @@ class IntroducirWeightView : Fragment() {
     private val viewModel: IntroducirWeightViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         val view = inflater.inflate(R.layout.fragment_introducir_weight, container, false)
@@ -44,7 +43,6 @@ class IntroducirWeightView : Fragment() {
         return view
 
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,7 +62,8 @@ class IntroducirWeightView : Fragment() {
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
@@ -73,12 +72,14 @@ class IntroducirWeightView : Fragment() {
                 // Llamar al método del ViewModel para insertar datos
                 val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -101,7 +102,7 @@ class IntroducirWeightView : Fragment() {
         // Verificar si algún campo está vacío
         if (pesoText.isEmpty()) {
             // Mostrar un Toast indicando que algún campo está vacío
-            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT).show()
             return null // Devolver null para indicar que no se han completado todos los campos
         }
 
@@ -109,14 +110,14 @@ class IntroducirWeightView : Fragment() {
         val pesoKg = pesoText.toInt()
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
 
         val peso = Peso(
-            fechaRealizacion = currentDateAndTime,
-            kg = pesoKg
+            fechaRealizacion = currentDateAndTime, kg = pesoKg
         )
 
         // Crear el objeto JSON con los datos del formulario
@@ -128,7 +129,7 @@ class IntroducirWeightView : Fragment() {
         Log.d("JSON Data", jsonObject.toString())
 
 
-                // Limpiar los elementos del formulario después de obtener los datos si son correctos
+        // Limpiar los elementos del formulario después de obtener los datos si son correctos
         edtPeso.text.clear()
 
         return jsonObject

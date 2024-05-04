@@ -1,13 +1,13 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirOsat
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
@@ -28,10 +28,8 @@ class IntroducirOsatView : Fragment() {
 
     private val viewModel: IntroducirOsatViewModel by viewModels()
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         val view = inflater.inflate(R.layout.fragment_introducir_osat, container, false)
@@ -44,7 +42,6 @@ class IntroducirOsatView : Fragment() {
         return view
 
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,7 +61,8 @@ class IntroducirOsatView : Fragment() {
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
@@ -73,12 +71,14 @@ class IntroducirOsatView : Fragment() {
                 // Llamar al método del ViewModel para insertar datos
                 val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -107,14 +107,14 @@ class IntroducirOsatView : Fragment() {
         val osat = osatText.toInt()
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
 
         val osat1 = Osat(
-            fechaRealizacion = currentDateAndTime,
-            presionSanguinea = osat
+            fechaRealizacion = currentDateAndTime, presionSanguinea = osat
         )
 
         // Crear el objeto JSON con los datos del formulario

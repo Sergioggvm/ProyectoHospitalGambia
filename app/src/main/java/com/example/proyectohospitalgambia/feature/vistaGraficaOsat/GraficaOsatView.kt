@@ -1,30 +1,21 @@
 package com.example.proyectohospitalgambia.feature.vistaGraficaOsat
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import android.graphics.Color
-import com.example.proyectohospitalgambia.app.MainActivity
-
 
 class GraficaOsatView : Fragment() {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_osat_view, container, false)
@@ -46,7 +37,7 @@ class GraficaOsatView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetOsat = LineDataSet(entriesOsat, "Osat")
+        val dataSetOsat = LineDataSet(entriesOsat, getString(R.string.osat))
         dataSetOsat.color = Color.BLUE
         dataSetOsat.valueTextColor = Color.BLACK
         dataSetOsat.valueTextSize = 16f
@@ -56,8 +47,8 @@ class GraficaOsatView : Fragment() {
         chartOsat.data = dataOsat
         chartOsat.setTouchEnabled(true)
         chartOsat.setPinchZoom(true)
-        chartOsat.description.text = "Osat"
-        chartOsat.setNoDataText("No hay datos disponibles")
+        chartOsat.description.text = getString(R.string.osat)
+        chartOsat.setNoDataText(getString(R.string.no_hay_datos_disponibles))
         chartOsat.invalidate()
     }
 

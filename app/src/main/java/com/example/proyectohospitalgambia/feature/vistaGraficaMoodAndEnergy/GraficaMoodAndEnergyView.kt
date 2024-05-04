@@ -1,21 +1,19 @@
 package com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import android.graphics.Color
-import com.example.proyectohospitalgambia.app.MainActivity
-
 
 class GraficaMoodAndEnergyView : Fragment() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +21,7 @@ class GraficaMoodAndEnergyView : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_grafica_mood_and_energy_view, container, false)
@@ -48,7 +45,7 @@ class GraficaMoodAndEnergyView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetMood = LineDataSet(entriesMood, "Mood")
+        val dataSetMood = LineDataSet(entriesMood, getString(R.string.mood))
         dataSetMood.color = Color.BLUE
         dataSetMood.valueTextColor = Color.BLACK
 
@@ -65,7 +62,7 @@ class GraficaMoodAndEnergyView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetEnergy = LineDataSet(entriesEnergy, "Energy")
+        val dataSetEnergy = LineDataSet(entriesEnergy, getString(R.string.energy))
         dataSetEnergy.color = Color.RED
         dataSetEnergy.valueTextColor = Color.BLACK
 
@@ -76,6 +73,5 @@ class GraficaMoodAndEnergyView : Fragment() {
         chartEnergy.data = lineDataEnergy
         chartEnergy.invalidate() // Refresca el gráfico
     }
-
 
 }

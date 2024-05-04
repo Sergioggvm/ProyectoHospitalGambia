@@ -1,20 +1,17 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities
 
-import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.ActividadesSociales
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaIntroducirSleep.IntroducirSleepViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -30,10 +27,10 @@ class IntroducirSocialActivitiesView : Fragment() {
     private val viewModel: IntroducirSocialActivitiesViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_introducir_social_activities, container, false)
+        val view =
+            inflater.inflate(R.layout.fragment_introducir_social_activities, container, false)
 
         edtMinutosActividadesSociales = view.findViewById(R.id.et_minutesSocialActivities)
         edtNotasActividadesSociales = view.findViewById(R.id.et_notesSocialActivities)
@@ -60,23 +57,24 @@ class IntroducirSocialActivitiesView : Fragment() {
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -100,9 +98,10 @@ class IntroducirSocialActivitiesView : Fragment() {
         }
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
         val actividadesSociales = ActividadesSociales(
             fechaRealizacion = currentDateAndTime,

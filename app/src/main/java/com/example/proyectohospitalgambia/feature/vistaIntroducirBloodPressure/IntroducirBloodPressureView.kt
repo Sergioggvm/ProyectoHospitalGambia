@@ -32,8 +32,7 @@ class IntroducirBloodPressureView : Fragment() {
     private val viewModel: IntroducirBloodPressureViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_introducir_blood_pressure, container, false)
 
@@ -70,27 +69,22 @@ class IntroducirBloodPressureView : Fragment() {
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
                 if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
                 } else {
                     Toast.makeText(
-                        requireContext(),
-                        R.string.toast_datos_no_guardados,
-                        Toast.LENGTH_SHORT
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
                     ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
-                Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(context, R.string.toast_complete_campos, Toast.LENGTH_SHORT).show()
             }
 
         }

@@ -12,20 +12,9 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.github.mikephil.charting.formatter.ValueFormatter
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 
 class GraficaWeightView : Fragment() {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +40,7 @@ class GraficaWeightView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetPeso = LineDataSet(entriesPeso, "Peso")
+        val dataSetPeso = LineDataSet(entriesPeso, getString(R.string.peso))
         dataSetPeso.color = Color.BLUE
         dataSetPeso.valueTextColor = Color.BLACK
         dataSetPeso.valueTextSize = 16f
@@ -61,8 +50,8 @@ class GraficaWeightView : Fragment() {
         chartWeight.data = dataWeight
         chartWeight.setTouchEnabled(true)
         chartWeight.setPinchZoom(true)
-        chartWeight.description.text = "Peso"
-        chartWeight.setNoDataText("No hay datos disponibles")
+        chartWeight.description.text = getString(R.string.peso)
+        chartWeight.setNoDataText(getString(R.string.no_hay_datos_disponibles))
         chartWeight.invalidate()
     }
 

@@ -1,28 +1,26 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Estado
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia.IntroducirGlycemiaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.UUID
+
 
 class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener {
 
@@ -35,8 +33,7 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     private val viewModel: IntroducirMoodAndEnergyViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_introducir_mood_and_energy, container, false)
 
@@ -71,7 +68,6 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -90,23 +86,24 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -131,9 +128,10 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
         }
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
         val estado = Estado(
             fechaRealizacion = currentDateAndTime,
@@ -159,7 +157,6 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     }
 
 
-
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         // Verificar si la SeekBar no es nula y el cambio proviene del usuario
         if (seekBar != null && fromUser) {
@@ -176,6 +173,7 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
                         6 -> imgMood.setImageResource(R.drawable.icono_mood6)
                     }
                 }
+
                 R.id.seekBar_Energy -> {
                     when (progress) {
                         0 -> imgEnergy.setImageResource(R.drawable.icono_energy0)

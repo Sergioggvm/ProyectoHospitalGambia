@@ -1,12 +1,11 @@
 package com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 
@@ -18,18 +17,13 @@ class MenuOpcionesMedicasView : Fragment() {
     private lateinit var btnOpcionEnergia: ImageButton
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         // Inflate the layout for this fragment
-        val menuOpcionesMedicas = inflater.inflate(R.layout.fragment_menu_opciones_medicas_view, container, false)
+        val menuOpcionesMedicas =
+            inflater.inflate(R.layout.fragment_menu_opciones_medicas_view, container, false)
 
         btnOpcionResultados = menuOpcionesMedicas.findViewById(R.id.btn_opcionResultados)
         btnOpcionAlimentacion = menuOpcionesMedicas.findViewById(R.id.btn_opcionAlimentacion)

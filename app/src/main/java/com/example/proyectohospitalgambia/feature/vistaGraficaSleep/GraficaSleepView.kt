@@ -13,14 +13,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.example.proyectohospitalgambia.app.MainActivity
 
-
 class GraficaSleepView : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +39,7 @@ class GraficaSleepView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetSleep = LineDataSet(entriesSleep, "hrs")
+        val dataSetSleep = LineDataSet(entriesSleep, getString(R.string.hrs))
         dataSetSleep.color = Color.BLUE
         dataSetSleep.valueTextColor = Color.BLACK
         dataSetSleep.valueTextSize = 16f
@@ -56,8 +49,8 @@ class GraficaSleepView : Fragment() {
         chartSleep.data = dataSleep
         chartSleep.setTouchEnabled(true)
         chartSleep.setPinchZoom(true)
-        chartSleep.description.text = "Horas de sueño"
-        chartSleep.setNoDataText("No hay datos disponibles")
+        chartSleep.description.text = getString(R.string.horas_de_sueno)
+        chartSleep.setNoDataText(getString(R.string.no_hay_datos_disponibles))
         chartSleep.invalidate()
     }
 
