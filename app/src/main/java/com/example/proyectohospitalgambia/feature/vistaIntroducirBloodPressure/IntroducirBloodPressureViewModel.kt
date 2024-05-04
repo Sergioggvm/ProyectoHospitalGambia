@@ -11,6 +11,7 @@ import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
  */
 class IntroducirBloodPressureViewModel : ViewModel() {
 
+    // Instancia de la clase DatabaseHelper.
     private var databaseHelper: DatabaseHelper = MainActivity.databaseHelper!!
 
     /**
