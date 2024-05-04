@@ -1,12 +1,12 @@
 package com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
@@ -30,27 +30,32 @@ class MenuDeporteSuenioView : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         // Inflate the layout for this fragment
-        val menuDeporteSuenio = inflater.inflate(R.layout.fragment_menu_deporte_suenio, container, false)
+        val menuDeporteSuenio =
+            inflater.inflate(R.layout.fragment_menu_deporte_suenio, container, false)
 
         btnDatosAerobic = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosAerobic)
         btnDatosNutricion = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosNutrition)
         btnDatosSuenio = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosSleep)
         btnDatosSocialActivo = menuDeporteSuenio.findViewById(R.id.imgbtn_irADatosSocialActivities)
 
-        val btnGraficaAerobic = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaAerobic)
-        val btnGraficaNutricion = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaNutrition)
-        val btnGraficaSuenio = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaSleep)
-        val btnGraficaSocialActivo = menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaSocialActivities)
+        val btnGraficaAerobic =
+            menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaAerobic)
+        val btnGraficaNutricion =
+            menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaNutrition)
+        val btnGraficaSuenio =
+            menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaSleep)
+        val btnGraficaSocialActivo =
+            menuDeporteSuenio.findViewById<ShapeableImageView>(R.id.imgbtn_irAGraficaSocialActivities)
 
         tvUltimoDatoAerobic = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoAerobic)
         tvUltimoDatoNutrition = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoNutrition)
         tvUltimoDatoSleep = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoSleep)
-        tvUltimoDatoSocialActivities = menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoSocialActivities)
+        tvUltimoDatoSocialActivities =
+            menuDeporteSuenio.findViewById(R.id.tv_ultimoDatoSocialActivities)
 
 
         btnDatosAerobic.setOnClickListener {
@@ -102,24 +107,30 @@ class MenuDeporteSuenioView : Fragment() {
 
     private fun actualizarUltimoDatoAerobic() {
         MainActivity.usuario?.id?.let { idUsuario ->
-            val ultimoDatoAerobic = MainActivity.databaseHelper?.obtenerUltimaActividadFisica(idUsuario)
-            val fechaMedicion = ultimoDatoAerobic?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val ultimoDatoAerobic =
+                MainActivity.databaseHelper?.obtenerUltimaActividadFisica(idUsuario)
+            val fechaMedicion =
+                ultimoDatoAerobic?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
             val aerobico = ultimoDatoAerobic?.aerobico ?: ""
 
             val textoDatos = "${getString(R.string.txt_Aerobico)}: $aerobico"
-            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoFinal =
+                "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoAerobic.text = textoFinal
         }
     }
 
     private fun actualizarUltimoDatoNutrition() {
         MainActivity.usuario?.id?.let { idUsuario ->
-            val ultimoDatoNutrition = MainActivity.databaseHelper?.obtenerUltimoValorEnergetico(idUsuario)
-            val fechaMedicion = ultimoDatoNutrition?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val ultimoDatoNutrition =
+                MainActivity.databaseHelper?.obtenerUltimoValorEnergetico(idUsuario)
+            val fechaMedicion =
+                ultimoDatoNutrition?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
             val kcalTotal = ultimoDatoNutrition?.kcalTotal ?: ""
 
             val textoDatos = "$kcalTotal ${getString(R.string.kcal)}"
-            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoFinal =
+                "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoNutrition.text = textoFinal
         }
     }
@@ -127,23 +138,28 @@ class MenuDeporteSuenioView : Fragment() {
     private fun actualizarUltimoDatoSleep() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoDatoSleep = MainActivity.databaseHelper?.obtenerUltimoSueno(idUsuario)
-            val fechaMedicion = ultimoDatoSleep?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val fechaMedicion =
+                ultimoDatoSleep?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
             val horasSueno = ultimoDatoSleep?.horasSueno ?: ""
 
             val textoDatos = "$horasSueno ${getString(R.string.txt_Horas)}"
-            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoFinal =
+                "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoSleep.text = textoFinal
         }
     }
 
     private fun actualizarUltimoDatoSocialActivities() {
         MainActivity.usuario?.id?.let { idUsuario ->
-            val ultimoDatoSocialActivities = MainActivity.databaseHelper?.obtenerUltimasActividadesSociales(idUsuario)
-            val fechaMedicion = ultimoDatoSocialActivities?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val ultimoDatoSocialActivities =
+                MainActivity.databaseHelper?.obtenerUltimasActividadesSociales(idUsuario)
+            val fechaMedicion = ultimoDatoSocialActivities?.fechaRealizacion
+                ?: getString(R.string.txt_fecha_desconocida)
             val minutosActividad = ultimoDatoSocialActivities?.minutosActividad ?: ""
 
             val textoDatos = "$minutosActividad ${getString(R.string.txt_Minutos)}"
-            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoFinal =
+                "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoSocialActivities.text = textoFinal
         }
     }

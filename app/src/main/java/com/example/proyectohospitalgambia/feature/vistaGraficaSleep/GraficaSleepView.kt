@@ -13,14 +13,19 @@ import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.example.proyectohospitalgambia.app.MainActivity
 
-
+/**
+ * Fragment que muestra la gráfica de sueño.
+ */
 class GraficaSleepView : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +34,12 @@ class GraficaSleepView : Fragment() {
         return inflater.inflate(R.layout.fragment_grafica_sleep_view, container, false)
     }
 
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,7 +57,7 @@ class GraficaSleepView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetSleep = LineDataSet(entriesSleep, "hrs")
+        val dataSetSleep = LineDataSet(entriesSleep, getString(R.string.hrs))
         dataSetSleep.color = Color.BLUE
         dataSetSleep.valueTextColor = Color.BLACK
         dataSetSleep.valueTextSize = 16f
@@ -56,8 +67,8 @@ class GraficaSleepView : Fragment() {
         chartSleep.data = dataSleep
         chartSleep.setTouchEnabled(true)
         chartSleep.setPinchZoom(true)
-        chartSleep.description.text = "Horas de sueño"
-        chartSleep.setNoDataText("No hay datos disponibles")
+        chartSleep.description.text = getString(R.string.horas_de_sueno)
+        chartSleep.setNoDataText(getString(R.string.no_hay_datos_disponibles))
         chartSleep.invalidate()
     }
 

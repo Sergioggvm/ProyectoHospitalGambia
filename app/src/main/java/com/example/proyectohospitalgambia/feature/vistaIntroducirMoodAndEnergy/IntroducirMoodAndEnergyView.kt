@@ -1,22 +1,19 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Estado
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia.IntroducirGlycemiaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -24,6 +21,9 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+/**
+ * Fragment que permite al usuario introducir datos de estado de ánimo y energía.
+ */
 class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener {
 
     private lateinit var seekBarEstadoAnimo: SeekBar
@@ -34,9 +34,16 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
     private val viewModel: IntroducirMoodAndEnergyViewModel by viewModels()
 
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_introducir_mood_and_energy, container, false)
 
@@ -71,7 +78,12 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     }
 
 
-
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -90,23 +102,24 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -115,10 +128,20 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
         }
     }
 
+    /**
+     * Método para generar un ID aleatorio.
+     *
+     * @return Retorna un string que representa un UUID.
+     */
     private fun generarIdAleatorio(): String {
         return UUID.randomUUID().toString()
     }
 
+    /**
+     * Método para obtener los datos del formulario y crear el JSON.
+     *
+     * @return Retorna un JSONObject que contiene los datos del formulario, o null si algún campo está vacío.
+     */
     private fun obtenerDatosFormulario(): JSONObject? {
         // Obtener los valores de los SeekBars
         val estadoAnimo = seekBarEstadoAnimo.progress
@@ -131,9 +154,10 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
         }
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
         val estado = Estado(
             fechaRealizacion = currentDateAndTime,
@@ -159,7 +183,13 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     }
 
 
-
+    /**
+     * Método que se llama cuando el progreso de la SeekBar cambia.
+     *
+     * @param seekBar La SeekBar cuyo progreso ha cambiado.
+     * @param progress El nuevo progreso de la SeekBar.
+     * @param fromUser True si el cambio de progreso fue iniciado por el usuario.
+     */
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         // Verificar si la SeekBar no es nula y el cambio proviene del usuario
         if (seekBar != null && fromUser) {
@@ -176,6 +206,7 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
                         6 -> imgMood.setImageResource(R.drawable.icono_mood6)
                     }
                 }
+
                 R.id.seekBar_Energy -> {
                     when (progress) {
                         0 -> imgEnergy.setImageResource(R.drawable.icono_energy0)
@@ -188,9 +219,19 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
         }
     }
 
+    /**
+     * Método que se llama cuando el usuario comienza a mover la SeekBar.
+     *
+     * @param seekBar La SeekBar que el usuario ha comenzado a mover.
+     */
     override fun onStartTrackingTouch(seekBar: SeekBar?) {
     }
 
+    /**
+     * Método que se llama cuando el usuario termina de mover la SeekBar.
+     *
+     * @param seekBar La SeekBar que el usuario ha terminado de mover.
+     */
     override fun onStopTrackingTouch(seekBar: SeekBar?) {
     }
 }

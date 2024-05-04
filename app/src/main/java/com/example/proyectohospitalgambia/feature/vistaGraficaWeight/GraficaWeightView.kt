@@ -12,20 +12,20 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import android.graphics.Color
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.github.mikephil.charting.formatter.ValueFormatter
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
-
+/**
+ * Fragment que muestra la gráfica de peso.
+ */
 class GraficaWeightView : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +34,12 @@ class GraficaWeightView : Fragment() {
         return inflater.inflate(R.layout.fragment_grafica_weight_view, container, false)
     }
 
-
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -51,7 +56,7 @@ class GraficaWeightView : Fragment() {
         }
 
         // Crear el conjunto de datos y personalizarlo
-        val dataSetPeso = LineDataSet(entriesPeso, "Peso")
+        val dataSetPeso = LineDataSet(entriesPeso, getString(R.string.peso))
         dataSetPeso.color = Color.BLUE
         dataSetPeso.valueTextColor = Color.BLACK
         dataSetPeso.valueTextSize = 16f
@@ -61,8 +66,8 @@ class GraficaWeightView : Fragment() {
         chartWeight.data = dataWeight
         chartWeight.setTouchEnabled(true)
         chartWeight.setPinchZoom(true)
-        chartWeight.description.text = "Peso"
-        chartWeight.setNoDataText("No hay datos disponibles")
+        chartWeight.description.text = getString(R.string.peso)
+        chartWeight.setNoDataText(getString(R.string.no_hay_datos_disponibles))
         chartWeight.invalidate()
     }
 

@@ -1,16 +1,15 @@
 package com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.google.android.material.imageview.ShapeableImageView
 
 class MenuIntroducirManualView : Fragment() {
@@ -33,10 +32,10 @@ class MenuIntroducirManualView : Fragment() {
     private lateinit var tvUltimoDatoOsat: TextView
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val menuIntroducirDatosManual = inflater.inflate(R.layout.fragment_menu_introducir_manual, container, false)
+        val menuIntroducirDatosManual =
+            inflater.inflate(R.layout.fragment_menu_introducir_manual, container, false)
 
         // Inicializa los botones de datos
         btnDatosSangre = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irADatosBloodPressure)
@@ -45,13 +44,15 @@ class MenuIntroducirManualView : Fragment() {
         btnDatosAgua = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irADatosOsat)
 
         // Inicializa los botones de gráficas
-        btnGraficaSangre = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaBloodPressure)
+        btnGraficaSangre =
+            menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaBloodPressure)
         btnGraficaPeso = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaWeight)
         btnGraficaGlicemia = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaGlycemia)
         btnGraficaAgua = menuIntroducirDatosManual.findViewById(R.id.imgbtn_irAGraficaOsat)
 
         // Inicializa los TextView para los últimos datos
-        tvUltimoDatoBloodPressure = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoBloodPressure)
+        tvUltimoDatoBloodPressure =
+            menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoBloodPressure)
         tvUltimoDatoPeso = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoPeso)
         tvUltimoDatoGlucosa = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoGlucosa)
         tvUltimoDatoOsat = menuIntroducirDatosManual.findViewById(R.id.tv_ultimoDatoOsat)
@@ -97,60 +98,71 @@ class MenuIntroducirManualView : Fragment() {
         actualizarUltimoOsat()
     }
 
-    fun actualizarUltimaPresionSanguinea() {
+    private fun actualizarUltimaPresionSanguinea() {
         MainActivity.usuario?.id?.let { idUsuario ->
-            val ultimaPresionSanguinea = MainActivity.databaseHelper?.obtenerUltimaPresionSanguinea(idUsuario)
-            val fechaMedicion = ultimaPresionSanguinea?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val ultimaPresionSanguinea =
+                MainActivity.databaseHelper?.obtenerUltimaPresionSanguinea(idUsuario)
+            val fechaMedicion = ultimaPresionSanguinea?.fechaRealizacion
+                ?: getString(R.string.txt_fecha_desconocida)
 
             val sistolica = ultimaPresionSanguinea?.sistolico ?: ""
             val diastolica = ultimaPresionSanguinea?.diastolico ?: ""
             val frecuenciaCardiaca = ultimaPresionSanguinea?.frecuenciaCardiaca ?: ""
 
-            val textoDatos = "${getString(R.string.txt_Sistolica)}: $sistolica ${getString(R.string.txt_Diastolica)}: $diastolica\n${getString(R.string.txt_FrecuenciaCardiaca)}: $frecuenciaCardiaca"
-            val textoFinal = "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoDatos =
+                "${getString(R.string.txt_Sistolica)}: $sistolica ${getString(R.string.txt_Diastolica)}: $diastolica\n${
+                    getString(R.string.txt_FrecuenciaCardiaca)
+                }: $frecuenciaCardiaca"
+            val textoFinal =
+                "$textoDatos\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoBloodPressure.text = textoFinal
         }
     }
 
-    fun actualizarUltimoPeso() {
+    private fun actualizarUltimoPeso() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoPeso = MainActivity.databaseHelper?.obtenerUltimoPeso(idUsuario)
-            val fechaMedicion = ultimoPeso?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val fechaMedicion =
+                ultimoPeso?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
 
             val kg = ultimoPeso?.kg ?: ""
 
             val texto = "${getString(R.string.txt_Peso)}: $kg ${getString(R.string.Kg)}"
-            val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoFinal =
+                "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoPeso.text = textoFinal
         }
     }
 
-    fun actualizarUltimaGlicemia() {
+    private fun actualizarUltimaGlicemia() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimaGlicemia = MainActivity.databaseHelper?.obtenerUltimaGlucemia(idUsuario)
-            val fechaMedicion = ultimaGlicemia?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val fechaMedicion =
+                ultimaGlicemia?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
 
             val glucosa = ultimaGlicemia?.glucosa ?: ""
 
-            val texto = "${getString(R.string.txt_Glucosa)}: $glucosa mg/dL"
-            val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val texto = getString(R.string.mg_dl, getString(R.string.txt_Glucosa), glucosa)
+            val textoFinal =
+                "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoGlucosa.text = textoFinal
         }
     }
 
-    fun actualizarUltimoOsat() {
+    private fun actualizarUltimoOsat() {
         MainActivity.usuario?.id?.let { idUsuario ->
             val ultimoOsat = MainActivity.databaseHelper?.obtenerUltimoOsat(idUsuario)
-            val fechaMedicion = ultimoOsat?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
+            val fechaMedicion =
+                ultimoOsat?.fechaRealizacion ?: getString(R.string.txt_fecha_desconocida)
 
             val osat = ultimoOsat?.presionSanguinea ?: ""
 
             val texto = "${getString(R.string.txt_Osat)}: $osat %"
-            val textoFinal = "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
+            val textoFinal =
+                "$texto\n${getString(R.string.txt_fechaDeLaMedicion)}: $fechaMedicion\n"
             tvUltimoDatoOsat.text = textoFinal
         }
     }
-
 
 
 }

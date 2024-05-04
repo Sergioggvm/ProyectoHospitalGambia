@@ -23,7 +23,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -62,7 +61,6 @@ class DatosTermometroView : AppCompatActivity() {
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private val bluetoothPermissionRequestCode = 123
     private val deviceName = "FT95"
-    private val mac = "FF:00:00:00:07:F5"
     var context = this
     val caracteristica: UUID = UUID.fromString("00002a1c-0000-1000-8000-00805f9b34fb")
     val servicio: UUID = UUID.fromString("00001809-0000-1000-8000-00805f9b34fb")
@@ -175,7 +173,7 @@ class DatosTermometroView : AppCompatActivity() {
 
             // Si los permisos ya están concedidos, iniciar la búsqueda de dispositivos
             startDeviceSearch(
-                this, ""
+                this
             )
 
             // Mostrar la ProgressBar y quitar el boton
@@ -206,12 +204,10 @@ class DatosTermometroView : AppCompatActivity() {
 
                     val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                    if (usuarioActivo != null) {
-                        usuarioActivo.pols.add(pol)
-                    }
+                    usuarioActivo?.pols?.add(pol)
 
                     // Llamar al método del ViewModel para insertar datos
-                    var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                    viewModel.insertarDatosEnBaseDeDatos(pol)
 
                 }
 
@@ -225,11 +221,11 @@ class DatosTermometroView : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
         builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
-        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, _ ->
             // Si el usuario elige no salir, simplemente cerramos el diálogo
             dialog.dismiss()
         }
-        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+        builder.setPositiveButton(getString(R.string.txt_Si)) { _, _ ->
             // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
             finishAffinity()
         }
@@ -237,7 +233,7 @@ class DatosTermometroView : AppCompatActivity() {
         dialog.show()
     }
 
-    fun cargarRegistros() {
+    private fun cargarRegistros() {
 
         // Bucle forEach para recorrer todos los registros y encontrar el más reciente
         var ultimoDatoTermometro: DatosTermometro? = null
@@ -316,9 +312,8 @@ class DatosTermometroView : AppCompatActivity() {
         // Verificar si la solicitud de permisos es para BLUETOOTH
         if (requestCode == 1 && grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
             // Si los permisos fueron concedidos, iniciar la búsqueda de dispositivos
-            val deviceName = "BC54"
             val context: Context = this
-            startDeviceSearch(context, deviceName)
+            startDeviceSearch(context)
         }
     }
 
@@ -384,13 +379,13 @@ class DatosTermometroView : AppCompatActivity() {
     }
 
     // Llamar a scanLeDevice dentro de un bloque coroutine
-    private fun startDeviceSearch(context: Context, deviceName: String) {
+    private fun startDeviceSearch(context: Context) {
         val bluetoothManager =
             context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
         bluetoothAdapter = bluetoothManager.adapter
         bluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
 
-        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled) {
+        if (!bluetoothAdapter.isEnabled) {
             Log.d("Bluetooth2", "Bluetooth is not enabled")
             return
         }
@@ -425,7 +420,7 @@ class DatosTermometroView : AppCompatActivity() {
     }
 
 
-    private var lifecycleState = DatosTermometroView.BLELifecycleState.Disconnected
+    private var lifecycleState = BLELifecycleState.Disconnected
         set(value) {
             field = value
             Log.d("Bluetooth2", "Lifecycle state: $value")
@@ -502,10 +497,10 @@ class DatosTermometroView : AppCompatActivity() {
                 gatt?.setCharacteristicNotification(characteristic, true)
                 gatt?.readCharacteristic(characteristic)
                 characteristic?.let {
-                    lifecycleState = DatosTermometroView.BLELifecycleState.ConnectedSubscribing
+                    lifecycleState = BLELifecycleState.ConnectedSubscribing
                     subscribeToIndications(it, gatt)
                 } ?: run {
-                    lifecycleState = DatosTermometroView.BLELifecycleState.Connected
+                    lifecycleState = BLELifecycleState.Connected
                 }
 
             }
@@ -522,7 +517,7 @@ class DatosTermometroView : AppCompatActivity() {
                     val data = characteristic.value
                     if (data != null && data.size >= 13) {
                         // Interpretar los datos recibidos
-                        val flags = data[0]
+                        //val flags = data[0]
                         val temperatureBytes = data.copyOfRange(1, 5)
                         val timestampBytes = data.copyOfRange(5, 12)
                         val temperature = convertToTemperature(temperatureBytes)
@@ -573,8 +568,7 @@ class DatosTermometroView : AppCompatActivity() {
                             (acc shl 8) + byte
                         }
                 // Calcular la temperatura
-                val temperature = mantissa * 10.0.pow(exponent.toDouble())
-                return temperature
+                return mantissa * 10.0.pow(exponent.toDouble())
             }
         }
 

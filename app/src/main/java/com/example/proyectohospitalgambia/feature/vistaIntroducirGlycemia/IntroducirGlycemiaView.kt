@@ -1,20 +1,17 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.GlucosaSangre
-import com.example.proyectohospitalgambia.core.domain.model.datosPols.PresionSanguinea
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
-import com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure.IntroducirBloodPressureViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -22,6 +19,9 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+/**
+ * Fragment que permite al usuario introducir datos de glucemia.
+ */
 class IntroducirGlycemiaView : Fragment() {
 
     private lateinit var btnGuardar: FloatingActionButton
@@ -30,9 +30,16 @@ class IntroducirGlycemiaView : Fragment() {
     private lateinit var edtGlucosa: EditText
 
     private val viewModel: IntroducirGlycemiaViewModel by viewModels()
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         val view = inflater.inflate(R.layout.fragment_introducir_glycemia, container, false)
@@ -46,7 +53,12 @@ class IntroducirGlycemiaView : Fragment() {
 
     }
 
-
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -65,24 +77,25 @@ class IntroducirGlycemiaView : Fragment() {
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
 
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -93,11 +106,20 @@ class IntroducirGlycemiaView : Fragment() {
 
     }
 
+    /**
+     * Método para generar un ID aleatorio.
+     *
+     * @return Retorna un string que representa un UUID.
+     */
     private fun generarIdAleatorio(): String {
         return UUID.randomUUID().toString()
     }
 
-    // Método para obtener los datos del formulario y crear el JSON
+    /**
+     * Método para obtener los datos del formulario y crear el JSON.
+     *
+     * @return Retorna un JSONObject que contiene los datos del formulario, o null si algún campo está vacío.
+     */
     private fun obtenerDatosFormulario(): JSONObject? {
         // Obtener los valores de los EditText
         val glucosaText = edtGlucosa.text.toString()
@@ -111,14 +133,14 @@ class IntroducirGlycemiaView : Fragment() {
         val glucosa = glucosaText.toInt()
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
 
         val glucosaSangre = GlucosaSangre(
-            fechaRealizacion = currentDateAndTime,
-            glucosa = glucosa
+            fechaRealizacion = currentDateAndTime, glucosa = glucosa
         )
 
         // Crear el objeto JSON con los datos del formulario
