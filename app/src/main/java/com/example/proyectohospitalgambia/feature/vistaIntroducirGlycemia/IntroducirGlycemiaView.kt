@@ -19,6 +19,9 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+/**
+ * Fragment que permite al usuario introducir datos de glucemia.
+ */
 class IntroducirGlycemiaView : Fragment() {
 
     private lateinit var btnGuardar: FloatingActionButton
@@ -27,6 +30,14 @@ class IntroducirGlycemiaView : Fragment() {
     private lateinit var edtGlucosa: EditText
 
     private val viewModel: IntroducirGlycemiaViewModel by viewModels()
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -42,7 +53,12 @@ class IntroducirGlycemiaView : Fragment() {
 
     }
 
-
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -90,11 +106,20 @@ class IntroducirGlycemiaView : Fragment() {
 
     }
 
+    /**
+     * Método para generar un ID aleatorio.
+     *
+     * @return Retorna un string que representa un UUID.
+     */
     private fun generarIdAleatorio(): String {
         return UUID.randomUUID().toString()
     }
 
-    // Método para obtener los datos del formulario y crear el JSON
+    /**
+     * Método para obtener los datos del formulario y crear el JSON.
+     *
+     * @return Retorna un JSONObject que contiene los datos del formulario, o null si algún campo está vacío.
+     */
     private fun obtenerDatosFormulario(): JSONObject? {
         // Obtener los valores de los EditText
         val glucosaText = edtGlucosa.text.toString()

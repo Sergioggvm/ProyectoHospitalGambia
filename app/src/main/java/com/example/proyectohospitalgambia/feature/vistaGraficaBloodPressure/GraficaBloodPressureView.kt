@@ -13,14 +13,31 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 
+/**
+ * Fragment que muestra las gráficas de presión sanguínea y ritmo cardíaco.
+ */
 class GraficaBloodPressureView : Fragment() {
 
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_grafica_blood_pressure_view, container, false)
     }
 
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

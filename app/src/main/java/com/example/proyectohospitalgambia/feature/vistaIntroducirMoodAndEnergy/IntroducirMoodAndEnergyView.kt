@@ -21,7 +21,9 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
-
+/**
+ * Fragment que permite al usuario introducir datos de estado de ánimo y energía.
+ */
 class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener {
 
     private lateinit var seekBarEstadoAnimo: SeekBar
@@ -32,6 +34,14 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
 
     private val viewModel: IntroducirMoodAndEnergyViewModel by viewModels()
 
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -68,6 +78,12 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     }
 
 
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -112,10 +128,20 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
         }
     }
 
+    /**
+     * Método para generar un ID aleatorio.
+     *
+     * @return Retorna un string que representa un UUID.
+     */
     private fun generarIdAleatorio(): String {
         return UUID.randomUUID().toString()
     }
 
+    /**
+     * Método para obtener los datos del formulario y crear el JSON.
+     *
+     * @return Retorna un JSONObject que contiene los datos del formulario, o null si algún campo está vacío.
+     */
     private fun obtenerDatosFormulario(): JSONObject? {
         // Obtener los valores de los SeekBars
         val estadoAnimo = seekBarEstadoAnimo.progress
@@ -157,6 +183,13 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
     }
 
 
+    /**
+     * Método que se llama cuando el progreso de la SeekBar cambia.
+     *
+     * @param seekBar La SeekBar cuyo progreso ha cambiado.
+     * @param progress El nuevo progreso de la SeekBar.
+     * @param fromUser True si el cambio de progreso fue iniciado por el usuario.
+     */
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         // Verificar si la SeekBar no es nula y el cambio proviene del usuario
         if (seekBar != null && fromUser) {
@@ -186,9 +219,19 @@ class IntroducirMoodAndEnergyView : Fragment(), SeekBar.OnSeekBarChangeListener 
         }
     }
 
+    /**
+     * Método que se llama cuando el usuario comienza a mover la SeekBar.
+     *
+     * @param seekBar La SeekBar que el usuario ha comenzado a mover.
+     */
     override fun onStartTrackingTouch(seekBar: SeekBar?) {
     }
 
+    /**
+     * Método que se llama cuando el usuario termina de mover la SeekBar.
+     *
+     * @param seekBar La SeekBar que el usuario ha terminado de mover.
+     */
     override fun onStopTrackingTouch(seekBar: SeekBar?) {
     }
 }

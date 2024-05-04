@@ -8,14 +8,31 @@ import android.util.AttributeSet
 import com.example.proyectohospitalgambia.R
 import com.github.mikephil.charting.charts.LineChart
 
+/**
+ * Clase CustomLineChart que extiende de LineChart para personalizar el gráfico de líneas.
+ *
+ * @property textPaint Objeto Paint para dibujar el texto en el gráfico.
+ * @constructor Crea una instancia de CustomLineChart.
+ *
+ * @param context Contexto en el que se utiliza la vista.
+ * @param attrs Conjunto de atributos de estilo.
+ */
 class CustomLineChart(context: Context, attrs: AttributeSet) : LineChart(context, attrs) {
 
+    /**
+     * Objeto Paint para dibujar el texto en el gráfico.
+     */
     private val textPaint = Paint().apply {
         color = Color.BLACK
         textSize = 40f
         textAlign = Paint.Align.LEFT
     }
 
+    /**
+     * Método onDraw que se llama cuando el sistema necesita dibujar el gráfico.
+     *
+     * @param canvas Lienzo en el que se dibuja el gráfico.
+     */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 

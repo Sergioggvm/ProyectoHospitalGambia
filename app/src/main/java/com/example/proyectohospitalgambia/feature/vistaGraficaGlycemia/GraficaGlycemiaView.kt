@@ -16,8 +16,19 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * Fragment que muestra las gráficas de glucemia.
+ */
 class GraficaGlycemiaView : Fragment() {
 
+    /**
+     * Método que se llama para tener la vista del fragment inflada y lista.
+     *
+     * @param inflater El objeto LayoutInflater que se puede usar para inflar cualquier vista en el fragment.
+     * @param container Si no es nulo, esta es la vista principal a la que se debe adjuntar la UI del fragment.
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     * @return Retorna la vista del fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -25,7 +36,12 @@ class GraficaGlycemiaView : Fragment() {
         return inflater.inflate(R.layout.fragment_grafica_glycemia_view, container, false)
     }
 
-
+    /**
+     * Método que se llama inmediatamente después de que onCreateView(LayoutInflater, ViewGroup, Bundle) ha retornado, pero antes de que se haya restaurado cualquier estado guardado en las vistas.
+     *
+     * @param view La vista devuelta por onCreateView(LayoutInflater, ViewGroup, Bundle).
+     * @param savedInstanceState Si no es nulo, este fragment se está reconstruyendo a partir de un estado guardado anteriormente.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
