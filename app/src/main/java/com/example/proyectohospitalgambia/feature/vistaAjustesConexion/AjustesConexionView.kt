@@ -66,11 +66,11 @@ class AjustesConexionView : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
         builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
-        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, _ ->
             // Si el usuario elige no salir, simplemente cerramos el diálogo
             dialog.dismiss()
         }
-        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+        builder.setPositiveButton(getString(R.string.txt_Si)) { _, _ ->
             // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
             finishAffinity()
         }

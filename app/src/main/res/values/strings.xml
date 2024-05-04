@@ -229,10 +229,39 @@
     <string name="txt_Instrucciones_3">3. Asegúrate de tener activados los permisos</string>
     <string name="txt_Instrucciones_4">4. Enciende el dispositivo médico, realiza la medición y pulsa el botón inferior para recibir los datos</string>
 
-
-
     <string name="toast_datos_guardados">Datos guardados con exito</string>
     <string name="toast_complete_campos">Por favor complete todos los campos</string>
     <string name="toast_datos_no_guardados">Ha ocurrido un error, datos no guardados</string>
+
+    <string name="toast_registro_correcto">Nuevo registro correcto</string>
+    <string name="toast_registro_incorrecto">Error al completar el nuevo registro</string>
+
+    <string name="toast_no_internet">No hay conexión a Internet</string>
+
+    <string name="toast_registro_usuario_correcto">Usuario registrado correctamente</string>
+    <string name="toast_registro_usuario_incorrecto">Error al registrar usuario</string>
+
+    <string name="toast_complete_fecha">Por favor complete la fecha de nacimiento</string>
+    <string name="toast_complete_datos">Por favor complete todos los campos</string>
+    <string name="toast_fecha_incorrecta">Por favor ingrese una fecha de nacimiento válida</string>
+    <string name="toast_contrasenas_distintas">Las contraseñas no coinciden</string>
+
+    <string name="toast_usuario_existe">El usuario ya existe</string>
+
+    <string name="toast_usuario_nulo">Usuario activo nulo</string>
+
+    <string name="toast_altura_actualizada">Altura actualizada correctamente</string>
+
+    <string name="toast_contrasenas_vacias">Las contraseñas estan vacias</string>
+
+    <string name="toast_datos_usuario_nulo">Datos del usuario nulos</string>
+
+    <string name="toast_contrasena_vieja_incorrecta">La contraseña vieja no es correcta</string>
+
+    <string name="toast_contrasena_actualizada">Contraseña actualizada correctamente</string>
+
+    <string name="toast_inicio_sesion_correcta">Inicio de sesión exitoso</string>
+
+    <string name="toast_credenciales_incorrectas">"Credenciales incorrectas"</string>
 
 </resources>

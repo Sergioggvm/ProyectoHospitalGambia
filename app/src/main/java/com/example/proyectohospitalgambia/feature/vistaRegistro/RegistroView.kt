@@ -103,21 +103,21 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
             if (!isNetworkAvailable(this)) {
                 // Mostrar un mensaje de que no hay conexión a Internet
-                Toast.makeText(this, "No hay conexión a Internet", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_no_internet, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val registroExitoso = registrarUsuario()
             if (registroExitoso) {
 
-                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_registro_usuario_correcto, Toast.LENGTH_SHORT).show()
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, InicioView::class.java)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_registro_usuario_incorrecto, Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -161,7 +161,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         // Verificar si los campos de la fecha están vacíos
         if (dia.isEmpty() || mes.isEmpty() || anio.isEmpty()) {
             // Mostrar un Toast indicando que la fecha de nacimiento debe estar completa
-            Toast.makeText(this, "Por favor complete la fecha de nacimiento", Toast.LENGTH_SHORT)
+            Toast.makeText(this, R.string.toast_complete_fecha, Toast.LENGTH_SHORT)
                 .show()
             return false
         }
@@ -179,26 +179,26 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             altura == 0 || sexo.isEmpty()
         ) {
             // Mostrar un Toast indicando que todos los campos deben estar completos
-            Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_complete_datos, Toast.LENGTH_SHORT).show()
             return false
         } else if (!esFechaValida(dia, mes, anio)) {
             // Mostrar un Toast indicando que la fecha de nacimiento es inválida
             Toast.makeText(
                 this,
-                "Por favor ingrese una fecha de nacimiento válida",
+                R.string.toast_fecha_incorrecta,
                 Toast.LENGTH_SHORT
             ).show()
             return false
         } else if (contraseniaUsuario != contraseniaRepetirUsuario) {
             // Mostrar un Toast indicando que las contraseñas no coinciden
-            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_contrasenas_distintas, Toast.LENGTH_SHORT).show()
             return false
         }
 
         // Comprobar si el usuario ya existe en la base de datos
         if (dbHelper.usuarioExiste(nombreUsuario)) {
             // Mostrar un Toast indicando que el usuario ya existe y salir del metodo
-            Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_usuario_existe, Toast.LENGTH_SHORT).show()
             return false
         }
 
@@ -292,7 +292,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     }
 
     // Función para verificar la conectividad a Internet
-    fun isNetworkAvailable(context: Context): Boolean {
+    private fun isNetworkAvailable(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork
         val capabilities = connectivityManager.getNetworkCapabilities(network)

@@ -96,7 +96,7 @@ class FederacionServidoresView : Fragment() {
 
             if (!isNetworkAvailable(requireContext())) {
                 // Mostrar un mensaje de que no hay conexión a Internet
-                Toast.makeText(requireContext(), "No hay conexión a Internet", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.toast_no_internet, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

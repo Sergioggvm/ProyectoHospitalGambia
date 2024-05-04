@@ -64,8 +64,6 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         val edtContraseniaNueva = findViewById<EditText>(R.id.edt_contraseniaNueva)
         val edtContraseniaNuevaRepetir = findViewById<EditText>(R.id.edt_contraseniaNuevaRepetir)
 
-        // Obtener el usuario activo
-        val usuarioActivo = MainActivity.usuario
 
         // Configurar el OnClickListener para el botón de actualizar altura
         btnActualizarAltura.setOnClickListener {
@@ -75,7 +73,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             // Verificar si el usuario activo es nulo
             val usuarioActivo = MainActivity.usuario
             if (usuarioActivo == null) {
-                Toast.makeText(this, "Error: Usuario activo nulo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_usuario_nulo, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -92,7 +90,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             dbHelper.actualizarDatosPersona(usuarioActivo)
 
             // Mostrar un mensaje de éxito
-            Toast.makeText(this, "Altura actualizada correctamente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_altura_actualizada, Toast.LENGTH_SHORT).show()
         }
 
         // Configurar el OnClickListener para el botón de actualizar contraseñas
@@ -105,14 +103,14 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
             if (nuevaContrasenia.isEmpty() || nuevaContraseniaRepetir.isEmpty()) {
                 // Mostrar un mensaje de error si las contraseñas no coinciden
-                Toast.makeText(this, "Las contraseñas estan vacias", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_contrasenas_vacias, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // Verificar si las contraseñas coinciden
             if (nuevaContrasenia != nuevaContraseniaRepetir) {
                 // Mostrar un mensaje de error si las contraseñas no coinciden
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_contrasenas_distintas, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -123,7 +121,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             // Verificar si el JSON es nulo
             if (jsonData == null) {
                 // Mostrar un mensaje de error si los datos del usuario son nulos
-                Toast.makeText(this, "Error: Datos del usuario nulos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_datos_usuario_nulo, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -131,7 +129,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             val passwordGuardada = jsonData.optString("password", "")
             if (!BCrypt.checkpw(contraseniaVieja, passwordGuardada)) {
                 // Mostrar un mensaje de error si la contraseña vieja no coincide
-                Toast.makeText(this, "La contraseña vieja no es correcta", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_contrasena_vieja_incorrecta, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -154,7 +152,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             edtContraseniaNuevaRepetir.text.clear()
 
             // Mostrar un mensaje de éxito
-            Toast.makeText(this, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_contrasena_actualizada, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -162,11 +160,11 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
         builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
-        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, _ ->
             // Si el usuario elige no salir, simplemente cerramos el diálogo
             dialog.dismiss()
         }
-        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+        builder.setPositiveButton(getString(R.string.txt_Si)) { _, _ ->
             // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
             finishAffinity()
         }

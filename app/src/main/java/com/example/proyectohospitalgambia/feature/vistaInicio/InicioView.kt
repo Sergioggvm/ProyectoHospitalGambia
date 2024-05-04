@@ -66,11 +66,11 @@ class InicioView : AppCompatActivity() {
                 if (BCrypt.checkpw(contraseniaUsuario, contraseniaAlmacenada)) {
                     Log.d("Inicio de Sesión", "Usuario autenticado. ID: ${usuarioEncontrado.id}")
                     MainActivity.usuario = usuarioEncontrado
-                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.toast_inicio_sesion_correcta, Toast.LENGTH_SHORT).show()
 
                     // Guardar el nombre de usuario en SharedPreferences
-                    val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                    val editor = sharedPreferences.edit()
+                    val preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val editor = preferences.edit()
                     editor.putString("nombre_usuario", nombreUsuario)
                     editor.apply()
 
@@ -79,11 +79,11 @@ class InicioView : AppCompatActivity() {
                     startActivity(intent)
                 } else {
                     Log.d("Inicio de Sesión", "Contraseña incorrecta para el usuario: $nombreUsuario")
-                    Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.toast_credenciales_incorrectas, Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Log.d("Inicio de Sesión", "No se encontró ningún usuario con el nombre: $nombreUsuario")
-                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_credenciales_incorrectas, Toast.LENGTH_SHORT).show()
             }
         }
 
