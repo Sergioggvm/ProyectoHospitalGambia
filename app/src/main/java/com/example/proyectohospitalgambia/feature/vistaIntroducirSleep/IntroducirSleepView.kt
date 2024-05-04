@@ -1,8 +1,6 @@
 package com.example.proyectohospitalgambia.feature.vistaIntroducirSleep
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.Sueno
@@ -47,11 +47,11 @@ class IntroducirSleepView : Fragment(), AdapterView.OnItemSelectedListener {
         savedInstanceState: Bundle?
     ): View {
 
-            val view = inflater.inflate(R.layout.fragment_introducir_sleep, container, false)
+        val view = inflater.inflate(R.layout.fragment_introducir_sleep, container, false)
 
-            edtHorasSueno = view.findViewById(R.id.et_horasSleep)
-            edtNotas = view.findViewById(R.id.et_notesSleep)
-            spinnerCalidadSueno = view.findViewById(R.id.spinner_sleepQuality)
+        edtHorasSueno = view.findViewById(R.id.et_horasSleep)
+        edtNotas = view.findViewById(R.id.et_notesSleep)
+        spinnerCalidadSueno = view.findViewById(R.id.spinner_sleepQuality)
 
 
 
@@ -97,7 +97,8 @@ class IntroducirSleepView : Fragment(), AdapterView.OnItemSelectedListener {
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
@@ -106,12 +107,16 @@ class IntroducirSleepView : Fragment(), AdapterView.OnItemSelectedListener {
                 // Llamar al método del ViewModel para insertar datos
                 val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
                     // Navegar hacia atrás
                     requireActivity().supportFragmentManager.popBackStack()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_datos_no_guardados, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.toast_datos_no_guardados,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -146,9 +151,10 @@ class IntroducirSleepView : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-            Date()
-        )
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                Date()
+            )
 
         val sueno = Sueno(
             fechaRealizacion = currentDateAndTime,
@@ -159,7 +165,7 @@ class IntroducirSleepView : Fragment(), AdapterView.OnItemSelectedListener {
 
         // Crear el objeto JSON con los datos del formulario
         val jsonObject = JSONObject()
-        jsonObject.put("TipoPol",  sueno.tipoPol)
+        jsonObject.put("TipoPol", sueno.tipoPol)
         jsonObject.put("FechaInsercion", sueno.fechaRealizacion)
         jsonObject.put("HorasSueno", sueno.horasSueno)
         jsonObject.put("CalidadSueno", sueno.calidadSueno)

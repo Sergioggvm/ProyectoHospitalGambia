@@ -12,6 +12,27 @@ import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.google.android.material.imageview.ShapeableImageView
 
+/**
+ * Clase MenuDeporteSuenioView.
+ *
+ * Esta clase representa la vista del menú de deporte y sueño en la aplicación.
+ *
+ * @property btnDatosAerobic Botón para navegar a los datos de actividad aeróbica.
+ * @property btnDatosNutricion Botón para navegar a los datos de nutrición.
+ * @property btnDatosSuenio Botón para navegar a los datos de sueño.
+ * @property btnDatosSocialActivo Botón para navegar a los datos de actividades sociales.
+ * @property tvUltimoDatoAerobic TextView para mostrar el último dato de actividad aeróbica.
+ * @property tvUltimoDatoNutrition TextView para mostrar el último dato de nutrición.
+ * @property tvUltimoDatoSleep TextView para mostrar el último dato de sueño.
+ * @property tvUltimoDatoSocialActivities TextView para mostrar el último dato de actividades sociales.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method onResume Método que se llama cuando el fragmento comienza a interactuar con el usuario.
+ * @method actualizarUltimoDatoAerobic Método para actualizar el último dato de actividad aeróbica.
+ * @method actualizarUltimoDatoNutrition Método para actualizar el último dato de nutrición.
+ * @method actualizarUltimoDatoSleep Método para actualizar el último dato de sueño.
+ * @method actualizarUltimoDatoSocialActivities Método para actualizar el último dato de actividades sociales.
+ */
 class MenuDeporteSuenioView : Fragment() {
 
     private lateinit var btnDatosAerobic: ImageButton
@@ -23,11 +44,6 @@ class MenuDeporteSuenioView : Fragment() {
     private lateinit var tvUltimoDatoNutrition: TextView
     private lateinit var tvUltimoDatoSleep: TextView
     private lateinit var tvUltimoDatoSocialActivities: TextView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

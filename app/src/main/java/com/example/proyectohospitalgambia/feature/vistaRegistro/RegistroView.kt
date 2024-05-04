@@ -20,12 +20,6 @@ import com.example.proyectohospitalgambia.app.MainActivity
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.feature.vistaInicio.InicioView
-import org.json.JSONArray
-import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.Locale
-import java.util.Random
-import org.mindrot.jbcrypt.BCrypt
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Credentials
@@ -34,8 +28,43 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONObject
+import org.mindrot.jbcrypt.BCrypt
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.Random
 
+/**
+ * Clase RegistroView.
+ *
+ * Esta clase representa la vista de registro en la aplicación.
+ *
+ * @property btnRegistrarUsuario Botón para registrar al usuario.
+ * @property spinner Spinner para seleccionar el sexo del usuario.
+ * @property txtAltura TextView para mostrar la altura del usuario.
+ * @property edtNombreUsuario EditText para introducir el nombre del usuario.
+ * @property edtContraseniaUsuario EditText para introducir la contraseña del usuario.
+ * @property edtContraseniaRepetirUsuario EditText para repetir la contraseña del usuario.
+ * @property edtFechadia EditText para introducir el día de nacimiento del usuario.
+ * @property edtFechaMes EditText para introducir el mes de nacimiento del usuario.
+ * @property edtFechaAnio EditText para introducir el año de nacimiento del usuario.
+ * @property spinnerSexo Spinner para seleccionar el sexo del usuario.
+ * @property seekBar SeekBar para seleccionar la altura del usuario.
+ *
+ * @method onCreate Método que se llama al crear la actividad.
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method registrarUsuario Método para registrar al usuario.
+ * @method esFechaValida Método para validar la fecha de nacimiento del usuario.
+ * @method esAnioBisiesto Método para verificar si un año es bisiesto.
+ * @method isNetworkAvailable Método para verificar la conectividad a Internet.
+ * @method onItemSelected Método que se llama cuando se selecciona un ítem del spinner.
+ * @method onNothingSelected Método que se llama cuando no se selecciona ningún ítem del spinner.
+ * @method onProgressChanged Método que se llama cuando cambia el progreso de la SeekBar.
+ * @method onStartTrackingTouch Método que se llama cuando se empieza a arrastrar la SeekBar.
+ * @method onStopTrackingTouch Método que se llama cuando se deja de arrastrar la SeekBar.
+ */
 class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     SeekBar.OnSeekBarChangeListener {
 
@@ -74,8 +103,6 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         btnRegistrarUsuario = findViewById(R.id.btn_registrarUsuario)
 
 
-        spinner = findViewById(R.id.spinnerSexo)
-
         // Configura el adaptador para el primer Spinner
         ArrayAdapter.createFromResource(
             this,
@@ -110,14 +137,16 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             val registroExitoso = registrarUsuario()
             if (registroExitoso) {
 
-                Toast.makeText(this, R.string.toast_registro_usuario_correcto, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_registro_usuario_correcto, Toast.LENGTH_SHORT)
+                    .show()
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, InicioView::class.java)
 
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
             } else {
-                Toast.makeText(this, R.string.toast_registro_usuario_incorrecto, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_registro_usuario_incorrecto, Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }
@@ -172,7 +201,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         val fechaCompleta = formatoEntrada.parse(fechaNacimiento)
 
         val formatoSalida = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val fechaFormateada = formatoSalida.format(fechaCompleta)
+        val fechaFormateada = formatoSalida.format(fechaCompleta!!)
 
         // Verificar si todos los campos están completos
         if (nombreUsuario.isEmpty() || contraseniaUsuario.isEmpty() || contraseniaRepetirUsuario.isEmpty() ||
@@ -232,12 +261,13 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         edtFechaMes.text.clear()
         edtFechaAnio.text.clear()
 
-        val jsonMediaType = "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
+        val jsonMediaType =
+            "application/json; charset=utf-8".toMediaType() // Corregido el tipo de media para incluir la codificación de caracteres
 
 
         val client = OkHttpClient()
 
-        val url =  MainActivity.url + "/people/" + id
+        val url = MainActivity.url + "/people/" + id
 
         val request = Request.Builder()
             .url(url)
@@ -278,12 +308,9 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             2 -> if (esAnioBisiesto(anioInt)) 29 else 28
             else -> return false
         }
-        if (diaInt < 1 || diaInt > diasPorMes) {
-            return false
-        }
+        return !(diaInt < 1 || diaInt > diasPorMes)
 
         // La fecha es válida
-        return true
     }
 
     private fun esAnioBisiesto(anio: Int): Boolean {
@@ -293,7 +320,8 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
     // Función para verificar la conectividad a Internet
     private fun isNetworkAvailable(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork
         val capabilities = connectivityManager.getNetworkCapabilities(network)
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true

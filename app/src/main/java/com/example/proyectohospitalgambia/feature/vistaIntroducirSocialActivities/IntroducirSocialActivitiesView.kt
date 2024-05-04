@@ -19,6 +19,20 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+/**
+ * Clase IntroducirSocialActivitiesView.
+ *
+ * Esta clase representa la vista para introducir las actividades sociales en la aplicación.
+ *
+ * @property edtMinutosActividadesSociales EditText para introducir los minutos de las actividades sociales.
+ * @property edtNotasActividadesSociales EditText para introducir las notas de las actividades sociales.
+ * @property viewModel ViewModel para la vista de introducir las actividades sociales.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method onViewCreated Método que se llama inmediatamente después de que la vista del fragmento se ha creado.
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method obtenerDatosFormulario Método para obtener los datos del formulario y crear el JSON.
+ */
 class IntroducirSocialActivitiesView : Fragment() {
 
     private lateinit var edtMinutosActividadesSociales: EditText

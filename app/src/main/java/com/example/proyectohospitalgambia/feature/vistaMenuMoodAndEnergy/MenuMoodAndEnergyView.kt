@@ -12,7 +12,20 @@ import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.google.android.material.imageview.ShapeableImageView
 
-class menuMoodAndEnergyView : Fragment() {
+/**
+ * Clase MenuMoodAndEnergyView.
+ *
+ * Esta clase representa la vista del menú de estado de ánimo y energía en la aplicación.
+ *
+ * @property btnDatosMoodAndEnergy Botón para navegar a los datos de estado de ánimo y energía.
+ * @property btnGraficaMoodAndEnergy Botón para navegar a la gráfica de estado de ánimo y energía.
+ * @property tvUltimoDatoMoodAndEnergy TextView para mostrar el último dato de estado de ánimo y energía.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method onResume Método que se llama cuando el fragmento comienza a interactuar con el usuario.
+ * @method actualizarUltimoDatoMoodAndEnergy Método para actualizar el último dato de estado de ánimo y energía.
+ */
+class MenuMoodAndEnergyView : Fragment() {
 
     private lateinit var btnDatosMoodAndEnergy: ImageButton
     private lateinit var btnGraficaMoodAndEnergy: ShapeableImageView

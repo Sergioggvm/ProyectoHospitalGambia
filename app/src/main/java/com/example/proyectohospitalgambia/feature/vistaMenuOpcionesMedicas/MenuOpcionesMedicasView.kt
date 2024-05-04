@@ -10,6 +10,17 @@ import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 
 
+/**
+ * Clase MenuOpcionesMedicasView.
+ *
+ * Esta clase representa la vista del menú de opciones médicas en la aplicación.
+ *
+ * @property btnOpcionResultados Botón para navegar a los resultados.
+ * @property btnOpcionAlimentacion Botón para navegar a la sección de alimentación.
+ * @property btnOpcionEnergia Botón para navegar a la sección de energía.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ */
 class MenuOpcionesMedicasView : Fragment() {
 
     private lateinit var btnOpcionResultados: ImageButton

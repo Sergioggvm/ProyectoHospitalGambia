@@ -43,7 +43,8 @@ class CustomLineChart(context: Context, attrs: AttributeSet) : LineChart(context
         canvas.drawText(context.getString(R.string.inicio_de_datos), xInicio, y, textPaint)
 
         // Dibujar "Últimos datos" a la derecha
-        val xFinal = viewPortHandler.contentRight() - textPaint.measureText(context.getString(R.string.Ultimos_datos))
+        val xFinal =
+            viewPortHandler.contentRight() - textPaint.measureText(context.getString(R.string.Ultimos_datos))
         canvas.drawText(context.getString(R.string.Ultimos_datos), xFinal, y, textPaint)
     }
 }

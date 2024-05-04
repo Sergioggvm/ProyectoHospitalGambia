@@ -1,17 +1,17 @@
 package com.example.proyectohospitalgambia.feature.vistaGraficaWeight
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import android.graphics.Color
-import com.example.proyectohospitalgambia.app.MainActivity
 
 /**
  * Fragment que muestra la gráfica de peso.

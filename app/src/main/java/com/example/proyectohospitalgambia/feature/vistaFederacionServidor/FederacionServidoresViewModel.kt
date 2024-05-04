@@ -7,17 +7,27 @@ import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import okhttp3.Call
-import okhttp3.Callback
 import okhttp3.Credentials
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.Response
-import java.io.IOException
 import java.util.Random
 
+/**
+ * Clase FederacionServidoresViewModel.
+ *
+ * Esta clase representa el ViewModel para la vista de la federación de servidores en la aplicación.
+ *
+ * @property jsonMediaType Tipo de medio para el formato JSON.
+ * @property client Cliente HTTP para realizar solicitudes a la red.
+ * @property databaseHelper Ayudante de la base de datos para realizar operaciones de base de datos.
+ *
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method insertarDatosEnServidorAsync Método para insertar datos en el servidor de forma asíncrona.
+ * @method recuperarDatos Método para recuperar datos de la base de datos.
+ * @method actualizarEstadoSubidoEnBD Método para actualizar el estado de subida de un Pol en la base de datos.
+ */
 class FederacionServidoresViewModel : ViewModel() {
 
 
@@ -26,6 +36,11 @@ class FederacionServidoresViewModel : ViewModel() {
 
     private var databaseHelper: DatabaseHelper = MainActivity.databaseHelper!!
 
+    /**
+     * Genera un ID aleatorio.
+     *
+     * @return String El ID aleatorio generado.
+     */
     private fun generarIdAleatorio(): String {
         val caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         val random = Random()
@@ -36,6 +51,12 @@ class FederacionServidoresViewModel : ViewModel() {
         return id.toString()
     }
 
+    /**
+     * Inserta los datos en el servidor de forma asíncrona.
+     *
+     * @param polJsonString La cadena JSON del Pol a insertar.
+     * @return Boolean Indica si la inserción fue exitosa o no.
+     */
     fun insertarDatosEnServidorAsync(polJsonString: String): Boolean {
         return runBlocking {
             try {
@@ -65,7 +86,7 @@ class FederacionServidoresViewModel : ViewModel() {
                 println("Error al construir la URL: ${e.message}")
                 e.printStackTrace() // Imprime la traza de la excepción en Logcat
                 return@runBlocking false
-            }  catch (e: Exception) {
+            } catch (e: Exception) {
                 // Captura la excepción y muestra un mensaje de error
                 println("Error al construir la URL: ${e.message}")
                 e.printStackTrace() // Imprime la traza de la excepción en Logcat
@@ -74,10 +95,22 @@ class FederacionServidoresViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Recupera los datos de la base de datos.
+     *
+     * @return List<Pol> La lista de Pols recuperados de la base de datos.
+     */
     fun recuperarDatos(): List<Pol> {
         return databaseHelper.obtenerPols()
     }
 
+    /**
+     * Actualiza el estado de subida de un Pol en la base de datos.
+     *
+     * @param idPol El ID del Pol a actualizar.
+     * @param nuevoEstado El nuevo estado de subida del Pol.
+     * @return Boolean Indica si la actualización fue exitosa o no.
+     */
     fun actualizarEstadoSubidoEnBD(idPol: String, nuevoEstado: String): Boolean {
         return try {
             databaseHelper.actualizarEstadoSubido(idPol, nuevoEstado)

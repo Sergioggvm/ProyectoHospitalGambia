@@ -2,7 +2,6 @@ package com.example.proyectohospitalgambia.feature.vistaProfile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -23,6 +22,22 @@ import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTerm
 import org.json.JSONObject
 import org.mindrot.jbcrypt.BCrypt
 
+/**
+ * Clase ProfileView.
+ *
+ * Esta clase representa la vista del perfil en la aplicación.
+ *
+ * @property txtAltura TextView para mostrar la altura del usuario.
+ * @property dbHelper Helper para interactuar con la base de datos.
+ *
+ * @method onCreate Método que se llama al crear la actividad.
+ * @method mostrarDialogoSalir Método para mostrar un diálogo de confirmación al salir.
+ * @method onCreateOptionsMenu Método para inflar el menú de opciones.
+ * @method onOptionsItemSelected Método para manejar la selección de ítems en el menú de opciones.
+ * @method onProgressChanged Método que se llama cuando cambia el progreso de la SeekBar.
+ * @method onStartTrackingTouch Método que se llama cuando se empieza a arrastrar la SeekBar.
+ * @method onStopTrackingTouch Método que se llama cuando se deja de arrastrar la SeekBar.
+ */
 class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     private lateinit var txtAltura: TextView
@@ -57,7 +72,6 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         // Obtener referencia a los elementos de la vista
         val btnActualizarAltura = findViewById<Button>(R.id.btn_actualizarAltura)
-        val skAltura = findViewById<SeekBar>(R.id.sk_altura)
 
         val btnActualizarContrasenias = findViewById<Button>(R.id.btn_actualizarContrasenias)
         val edtContraseniaVieja = findViewById<EditText>(R.id.edt_contraseniaActual)
@@ -68,7 +82,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         // Configurar el OnClickListener para el botón de actualizar altura
         btnActualizarAltura.setOnClickListener {
             // Obtener la nueva altura
-            val nuevaAltura = skAltura.progress
+            val nuevaAltura = seekBar.progress
 
             // Verificar si el usuario activo es nulo
             val usuarioActivo = MainActivity.usuario
@@ -110,7 +124,8 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             // Verificar si las contraseñas coinciden
             if (nuevaContrasenia != nuevaContraseniaRepetir) {
                 // Mostrar un mensaje de error si las contraseñas no coinciden
-                Toast.makeText(this, R.string.toast_contrasenas_distintas, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_contrasenas_distintas, Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -129,7 +144,8 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             val passwordGuardada = jsonData.optString("password", "")
             if (!BCrypt.checkpw(contraseniaVieja, passwordGuardada)) {
                 // Mostrar un mensaje de error si la contraseña vieja no coincide
-                Toast.makeText(this, R.string.toast_contrasena_vieja_incorrecta, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_contrasena_vieja_incorrecta, Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -141,7 +157,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             jsonData.put("password", contraseniaEncriptada)
 
             // Actualizar el JSON en el objeto usuarioActivo
-            usuarioActivo?.data = jsonData.toString()
+            usuarioActivo.data = jsonData.toString()
 
             // Llamar a la función para actualizar el usuario en la base de datos
             dbHelper.actualizarDatosPersona(usuarioActivo)
@@ -193,6 +209,7 @@ class ProfileView : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
                 true
             }
+
             R.id.mn_perfil -> {
 
 

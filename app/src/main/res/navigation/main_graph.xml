@@ -197,7 +197,7 @@
         tools:layout="@layout/fragment_grafica_weight_view" />
     <fragment
         android:id="@+id/menuMoodAndEnergyView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.menuMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.MenuMoodAndEnergyView"
         android:label="fragment_menu_mood_and_energy"
         tools:layout="@layout/fragment_menu_mood_and_energy" >
         <action
@@ -209,7 +209,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuMoodAndEnergyView2"
-        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.menuMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.MenuMoodAndEnergyView"
         android:label="fragment_menu_mood_and_energy"
         tools:layout="@layout/fragment_menu_mood_and_energy" />
 </navigation>

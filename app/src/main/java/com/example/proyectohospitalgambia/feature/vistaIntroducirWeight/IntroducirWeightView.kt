@@ -20,6 +20,20 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+/**
+ * Clase IntroducirWeightView.
+ *
+ * Esta clase representa la vista para introducir el peso en la aplicación.
+ *
+ * @property btnGuardar Botón para guardar los datos ingresados.
+ * @property edtPeso EditText para introducir el peso.
+ * @property viewModel ViewModel para la vista de introducir el peso.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method onViewCreated Método que se llama inmediatamente después de que la vista del fragmento se ha creado.
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method obtenerDatosFormulario Método para obtener los datos del formulario y crear el JSON.
+ */
 class IntroducirWeightView : Fragment() {
 
     private lateinit var btnGuardar: FloatingActionButton

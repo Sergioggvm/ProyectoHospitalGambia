@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.dokka")
 }
 
 android {
@@ -55,9 +56,9 @@ dependencies {
 
 
     // NavComponent
-    val nav_version = "2.7.0"
-    implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
+    val navVersion = "2.7.0"
+    implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
@@ -94,4 +95,10 @@ dependencies {
     testImplementation("io.mockk:mockk:1.12.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+
+    // Dokka
+    dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
+
+
 }
+

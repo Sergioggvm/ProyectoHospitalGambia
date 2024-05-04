@@ -1,7 +1,6 @@
 package com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +11,11 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.datosPols.LibroVida
-import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -25,10 +23,33 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+
 /**
- * A simple [Fragment] subclass.
- * Use the [NuevoRegistroServidorView.newInstance] factory method to
- * create an instance of this fragment.
+ * Clase NuevoRegistroServidorView.
+ *
+ * Esta clase representa la vista para el nuevo registro de servidor en la aplicación.
+ *
+ * @property btnGuardar Botón para guardar el nuevo registro.
+ * @property btnListar Botón para listar los registros.
+ * @property edtTextoDia EditText para introducir el día.
+ * @property edtTextoMes EditText para introducir el mes.
+ * @property edtTextoAnio EditText para introducir el año.
+ * @property edtTextoHora EditText para introducir la hora.
+ * @property edtTextoMinutos EditText para introducir los minutos.
+ * @property edtTextoResumen EditText para introducir el resumen.
+ * @property spinner1 Spinner para seleccionar la opción de medicina.
+ * @property spinner2 Spinner para seleccionar la condición de salud.
+ * @property edtTextoDetalles EditText para introducir los detalles.
+ * @property spinner3 Spinner para seleccionar el tipo de relevancia.
+ * @property cbPaginaPrivada CheckBox para marcar si la página es privada.
+ * @property viewModel ViewModel asociado a esta vista.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method onItemSelected Método que se llama cuando se selecciona un ítem del spinner.
+ * @method onNothingSelected Método que se llama cuando no se selecciona ningún ítem del spinner.
+ * @method onViewCreated Método que se llama después de que la vista ha sido creada.
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method obtenerDatosFormulario Método para obtener los datos del formulario y crear el JSON.
  */
 class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener {
 
@@ -56,7 +77,8 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_nuevo_registro_servidor_view, container, false)
+        val view =
+            inflater.inflate(R.layout.fragment_nuevo_registro_servidor_view, container, false)
 
         btnGuardar = view.findViewById(R.id.btn_guardar)
 
@@ -113,8 +135,7 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
     }
 
 
-
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         // Acciones cuando se selecciona un ítem del spinner
     }
 
@@ -140,23 +161,30 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
                 // Generar IDs aleatorios como strings
                 val idPols = generarIdAleatorio()
-                val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+                val idBook =
+                    MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
                 val pol = Pol(idPols, idBook, datosFormulario.toString(), "false")
 
-                if (usuarioActivo != null) {
-                    usuarioActivo.pols.add(pol)
-                }
+                usuarioActivo?.pols?.add(pol)
 
                 // Llamar al método del ViewModel para insertar datos
-                var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+                val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-                if (resultado){
+                if (resultado) {
 
-                    Toast.makeText(requireContext(), R.string.toast_registro_correcto, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.toast_registro_correcto,
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 } else {
-                    Toast.makeText(requireContext(), R.string.toast_registro_incorrecto, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.toast_registro_incorrecto,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 // Mostrar un mensaje de error
@@ -203,14 +231,15 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
         }
 
         // Obtener la fecha y hora actual
-        val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+        val currentDateAndTime =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
         val fecha = "$anio-$mes-$dia $hora:$minutos:00"
         val formatoEntrada = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val fechaCompleta = formatoEntrada.parse(fecha)
 
         val formatoSalida = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        val fechaFormateada = formatoSalida.format(fechaCompleta)
+        val fechaFormateada = formatoSalida.format(fechaCompleta!!)
 
         val libroVida = LibroVida(
             fechaRealizacion = currentDateAndTime,

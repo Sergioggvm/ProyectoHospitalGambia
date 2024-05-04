@@ -23,7 +23,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -35,14 +34,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
-import com.example.proyectohospitalgambia.core.domain.model.datosPols.Osat
 import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.core.domain.model.tensiometro.DatosTensiometro
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
-import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroViewModel
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -59,6 +55,25 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+/**
+ * Clase DatosTensiometroView.
+ *
+ * Esta clase representa la vista de datos del tensiómetro en la aplicación.
+ *
+ * @method onCreate Método que se llama cuando se crea la actividad.
+ * @method mostrarDialogoSalir Método para mostrar un diálogo de confirmación al salir.
+ * @method cargarRegistros Método para cargar los registros de datos del tensiómetro.
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method mostrarDialogoDatosEncontrados Método para mostrar un diálogo cuando se encuentran registros.
+ * @method mostrarDialogoDatosNoEncontrados Método para mostrar un diálogo cuando no se encuentran registros.
+ * @method onRequestPermissionsResult Método que se llama cuando se solicitan permisos.
+ * @method startDeviceSearch Método para iniciar la búsqueda de dispositivos.
+ * @method onCreateOptionsMenu Método para inflar el menú de opciones.
+ * @method onOptionsItemSelected Método para manejar la selección de elementos del menú.
+ * @method onDestroy Método que se llama cuando se destruye la actividad.
+ * @method onPause Método que se llama cuando la actividad entra en pausa.
+ * @method onResume Método que se llama cuando la actividad se reanuda.
+ */
 class DatosTensiometroView : AppCompatActivity() {
 
     private val CCC_DESCRIPTOR_UUID = "00002902-0000-1000-8000-00805f9b34fb"
@@ -239,8 +254,14 @@ class DatosTensiometroView : AppCompatActivity() {
 
         // Verificar si se encontró algún registro con fecha y hora
         if (ultimoDatoTensiometro != null) {
-            Log.d("Bluetooth2", "Registro con la última fecha y hora: ${ultimoDatoTensiometro!!.fechaHora}")
-            Log.d("Bluetooth2", "Datos - Tensión Alta: ${ultimoDatoTensiometro!!.tensionAlta}, Tensión Baja: ${ultimoDatoTensiometro!!.tensionBaja}, Pulso: ${ultimoDatoTensiometro!!.pulso}")
+            Log.d(
+                "Bluetooth2",
+                "Registro con la última fecha y hora: ${ultimoDatoTensiometro!!.fechaHora}"
+            )
+            Log.d(
+                "Bluetooth2",
+                "Datos - Tensión Alta: ${ultimoDatoTensiometro!!.tensionAlta}, Tensión Baja: ${ultimoDatoTensiometro!!.tensionBaja}, Pulso: ${ultimoDatoTensiometro!!.pulso}"
+            )
 
             textViewTensionAlta.text = ultimoDatoTensiometro!!.tensionAlta.toString()
             textViewTensionBaja.text = ultimoDatoTensiometro!!.tensionBaja.toString()
@@ -264,18 +285,17 @@ class DatosTensiometroView : AppCompatActivity() {
             jsonObject.put("Pulso", datosTensiometro.pulso)
 
             val idPols = generarIdAleatorio()
-            val idBook = MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
+            val idBook =
+                MainActivity.usuario?.id.toString() // Asumiendo que MainActivity.idUsuario es un Long o un Int
 
             val pol = Pol(idPols, idBook, jsonObject.toString(), "false")
 
-            if (usuarioActivo != null) {
-                usuarioActivo.pols.add(pol)
-            }
+            usuarioActivo?.pols?.add(pol)
 
             // Llamar al método del ViewModel para insertar datos
             val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
-            if (resultado){
+            if (resultado) {
 
                 Toast.makeText(this, R.string.toast_registro_correcto, Toast.LENGTH_SHORT).show()
 
@@ -290,10 +310,10 @@ class DatosTensiometroView : AppCompatActivity() {
         } else {
             Log.d("Bluetooth2", "No se encontraron registros.")
 
-                mostrarDialogoDatosNoEncontrados()
-                textViewTensionAlta.text = "0"
-                textViewTensionBaja.text = "0"
-                textViewPulso.text = "0"
+            mostrarDialogoDatosNoEncontrados()
+            textViewTensionAlta.text = "0"
+            textViewTensionBaja.text = "0"
+            textViewPulso.text = "0"
 
 
         }
@@ -372,7 +392,7 @@ class DatosTensiometroView : AppCompatActivity() {
                 )
             }
             Log.d("Bluetooth2", "Device found: ${result.device.name}")
-            if(result.device.name != null && result.device.name.equals(deviceName)) {
+            if (result.device.name != null && result.device.name.equals(deviceName)) {
                 listadispositivos.add(result.device)
             }
 
@@ -414,7 +434,8 @@ class DatosTensiometroView : AppCompatActivity() {
 
     // Llamar a scanLeDevice dentro de un bloque coroutine
     private fun startDeviceSearch(context: Context, deviceName: String) {
-        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        val bluetoothManager =
+            context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
         bluetoothAdapter = bluetoothManager.adapter
         bluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
 
@@ -451,7 +472,6 @@ class DatosTensiometroView : AppCompatActivity() {
             }
         }
     }
-
 
 
     private var lifecycleState = BLELifecycleState.Disconnected
@@ -546,7 +566,7 @@ class DatosTensiometroView : AppCompatActivity() {
             ) {
                 // Handle the characteristic change
                 Log.d("Bluetooth2", "viav")
-                if (characteristic?.uuid == UUID.fromString("00002a5e-0000-1000-8000-00805f9b34fb")) {
+                if (characteristic.uuid == UUID.fromString("00002a5e-0000-1000-8000-00805f9b34fb")) {
                     // Obtener los datos de la característica
                     val data = characteristic.value
                     if (data != null && data.size >= 4) {
@@ -579,9 +599,10 @@ class DatosTensiometroView : AppCompatActivity() {
 
                         val fechaHora = calendar.time
 
-                        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
-                        Date()
-                        )
+                        val sdf =
+                            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                                Date()
+                            )
                         val fechaFormateada = sdf.format(fechaHora)
                         // Crear un objeto DataRecord con los datos recibidos
                         //val dataRecord = DatosTensiometro(fechaHora, tensionAlta, tensionBaja, pulse)
@@ -632,23 +653,22 @@ class DatosTensiometroView : AppCompatActivity() {
                         ), 1
                     )
                 }
-                val data = value
-                Log.d("Bluetooth2", "Data received: ${data.contentToString()}")
+                Log.d("Bluetooth2", "Data received: ${value.contentToString()}")
                 if (characteristic.uuid == caracteristica) {
 
                     // Interpretar los datos recibidos
-                    val tensionBaja = data[3]
+                    val tensionBaja = value[3]
 
-                    val pulse = data[14]
+                    val pulse = value[14]
 
-                    val tensionAlta = data.sliceArray(1 until 2).map { it.toInt() and 0xFF }
+                    val tensionAlta = value.sliceArray(1 until 2).map { it.toInt() and 0xFF }
                         .fold(0) { acc, byte ->
                             (acc shl 8) + byte
                         }
 
 
                     val bytesYear =
-                        data.sliceArray(7 until 14) // Obtener los 7 bytes para la fecha y hora
+                        value.sliceArray(7 until 14) // Obtener los 7 bytes para la fecha y hora
 
                     val yearBuffer = ByteBuffer.wrap(bytesYear.copyOfRange(0, 2)).order(
                         ByteOrder.LITTLE_ENDIAN
@@ -690,7 +710,6 @@ class DatosTensiometroView : AppCompatActivity() {
 
             }
         }
-
 
 
         // Check the permissions again before connecting the device
@@ -744,7 +763,6 @@ class DatosTensiometroView : AppCompatActivity() {
     }
 
 
-
     //Menú de opciones
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -767,6 +785,7 @@ class DatosTensiometroView : AppCompatActivity() {
 
                 true
             }
+
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)
