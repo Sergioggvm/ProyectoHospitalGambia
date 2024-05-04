@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>app</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="index.html">
+                            app
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageIds="app::////PointingToDeclaration//492899073">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>app</span></span></h1>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="1067465580%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.app" id="1067465580%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.app/index.html">com.example.proyectohospitalgambia.app</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1067465580%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="301226297%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.app.retrofit" id="301226297%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.app.retrofit/index.html">com.example.proyectohospitalgambia.app.retrofit</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="301226297%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2091240303%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.app.utils" id="2091240303%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.app.utils/index.html">com.example.proyectohospitalgambia.app.utils</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2091240303%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-74889684%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.data.persistencia" id="-74889684%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.data.persistencia/index.html">com.example.proyectohospitalgambia.core.data.persistencia</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-74889684%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-379058708%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.domain.model.datosPols" id="-379058708%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.domain.model.datosPols/index.html">com.example.proyectohospitalgambia.core.domain.model.datosPols</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-379058708%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-233015000%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.domain.model.people" id="-233015000%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.domain.model.people/index.html">com.example.proyectohospitalgambia.core.domain.model.people</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-233015000%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="590409176%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.domain.model.pol" id="590409176%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.domain.model.pol/index.html">com.example.proyectohospitalgambia.core.domain.model.pol</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="590409176%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1569794440%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.domain.model.tensiometro" id="1569794440%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.domain.model.tensiometro/index.html">com.example.proyectohospitalgambia.core.domain.model.tensiometro</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1569794440%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="255962575%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.domain.model.termometro" id="255962575%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.domain.model.termometro/index.html">com.example.proyectohospitalgambia.core.domain.model.termometro</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="255962575%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="232311160%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.core.network" id="232311160%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.core.network/index.html">com.example.proyectohospitalgambia.core.network</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="232311160%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1022406417%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaAbout" id="1022406417%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaAbout/index.html">com.example.proyectohospitalgambia.feature.vistaAbout</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1022406417%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-243050670%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaAjustesConexion" id="-243050670%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaAjustesConexion/index.html">com.example.proyectohospitalgambia.feature.vistaAjustesConexion</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-243050670%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1875828866%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaDatosTensiometro" id="1875828866%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaDatosTensiometro/index.html">com.example.proyectohospitalgambia.feature.vistaDatosTensiometro</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1875828866%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-11260011%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaDatosTermometro" id="-11260011%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaDatosTermometro/index.html">com.example.proyectohospitalgambia.feature.vistaDatosTermometro</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-11260011%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1412329384%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaFederacionServidor" id="1412329384%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaFederacionServidor/index.html">com.example.proyectohospitalgambia.feature.vistaFederacionServidor</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1412329384%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1229048616%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure" id="1229048616%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1229048616%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1969196534%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia" id="-1969196534%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1969196534%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2000443793%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy" id="2000443793%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2000443793%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1631815329%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaNutrition" id="1631815329%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaNutrition/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaNutrition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1631815329%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-735310158%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaOsat" id="-735310158%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaOsat/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaOsat</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-735310158%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1831680927%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaPhysicalActivity" id="-1831680927%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaPhysicalActivity/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaPhysicalActivity</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1831680927%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1807367008%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaSleep" id="-1807367008%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaSleep/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaSleep</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1807367008%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1725351317%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaSocialActivities" id="1725351317%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaSocialActivities/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaSocialActivities</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1725351317%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1105870483%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaGraficaWeight" id="1105870483%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaGraficaWeight/index.html">com.example.proyectohospitalgambia.feature.vistaGraficaWeight</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1105870483%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="715097701%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaInicio" id="715097701%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaInicio/index.html">com.example.proyectohospitalgambia.feature.vistaInicio</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="715097701%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="794918964%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure" id="794918964%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="794918964%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1653684866%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia" id="-1653684866%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1653684866%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1566314141%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy" id="1566314141%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1566314141%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1472224851%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition" id="-1472224851%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1472224851%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="460733478%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirOsat" id="460733478%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirOsat/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirOsat</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="460733478%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1453351893%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivity" id="1453351893%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivity/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivity</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1453351893%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="910247340%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirSleep" id="910247340%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirSleep/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirSleep</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="910247340%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="715416841%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities" id="715416841%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="715416841%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-547430649%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaIntroducirWeight" id="-547430649%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaIntroducirWeight/index.html">com.example.proyectohospitalgambia.feature.vistaIntroducirWeight</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-547430649%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1747728807%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio" id="-1747728807%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio/index.html">com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1747728807%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1273989780%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual" id="1273989780%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual/index.html">com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1273989780%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1016364947%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy" id="-1016364947%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy/index.html">com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1016364947%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1938120009%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas" id="1938120009%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas/index.html">com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1938120009%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1954234515%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaMenuPrincipal" id="1954234515%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaMenuPrincipal/index.html">com.example.proyectohospitalgambia.feature.vistaMenuPrincipal</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1954234515%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-839705662%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor" id="-839705662%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor/index.html">com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-839705662%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-58082899%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaProfile" id="-58082899%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaProfile/index.html">com.example.proyectohospitalgambia.feature.vistaProfile</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-58082899%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="96494387%2FPackages%2F492899073" anchor-label="com.example.proyectohospitalgambia.feature.vistaRegistro" id="96494387%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.proyectohospitalgambia.feature.vistaRegistro/index.html">com.example.proyectohospitalgambia.feature.vistaRegistro</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="96494387%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
