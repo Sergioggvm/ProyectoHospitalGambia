@@ -1,4 +1,4 @@
-package com.example.proyectohospitalgambia.feature.menus.vistaMenuDeporteSuenno
+package com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio
 
 import androidx.lifecycle.ViewModel
 

@@ -153,14 +153,14 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
                 if (resultado){
 
-                    Toast.makeText(requireContext(), "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.toast_registro_correcto, Toast.LENGTH_SHORT).show()
 
                 } else {
-                    Toast.makeText(requireContext(), "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.toast_registro_incorrecto, Toast.LENGTH_SHORT).show()
                 }
             } else {
                 // Mostrar un mensaje de error
-                Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.toast_complete_datos, Toast.LENGTH_SHORT).show()
             }
 
 
@@ -198,7 +198,7 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
             relevancia.isEmpty()
         ) {
             // Mostrar un Toast indicando que algún campo está vacío
-            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.toast_complete_datos, Toast.LENGTH_SHORT).show()
             return null // Devolver null para indicar que no se han completado todos los campos
         }
 

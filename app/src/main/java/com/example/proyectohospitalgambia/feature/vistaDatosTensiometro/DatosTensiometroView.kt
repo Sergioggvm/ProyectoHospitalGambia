@@ -213,11 +213,11 @@ class DatosTensiometroView : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
         builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
-        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, which ->
+        builder.setNegativeButton(getString(R.string.txt_No)) { dialog, _ ->
             // Si el usuario elige no salir, simplemente cerramos el diálogo
             dialog.dismiss()
         }
-        builder.setPositiveButton(getString(R.string.txt_Si)) { dialog, which ->
+        builder.setPositiveButton(getString(R.string.txt_Si)) { _, _ ->
             // Si el usuario elige salir, cerramos la actividad y, por lo tanto, la aplicación
             finishAffinity()
         }
@@ -225,7 +225,7 @@ class DatosTensiometroView : AppCompatActivity() {
         dialog.show()
     }
 
-    fun cargarRegistros() {
+    private fun cargarRegistros() {
 
         val usuarioActivo = MainActivity.usuario
 
@@ -273,14 +273,14 @@ class DatosTensiometroView : AppCompatActivity() {
             }
 
             // Llamar al método del ViewModel para insertar datos
-            var resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
+            val resultado = viewModel.insertarDatosEnBaseDeDatos(pol)
 
             if (resultado){
 
-                Toast.makeText(this, "Nuevo registro correcto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_registro_correcto, Toast.LENGTH_SHORT).show()
 
             } else {
-                Toast.makeText(this, "Error al completar el nuevo registro", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_registro_incorrecto, Toast.LENGTH_SHORT).show()
             }
 
             // Eliminar todos los elementos de la lista
