@@ -1,5 +1,7 @@
 package com.example.proyectohospitalgambia.app.retrofit
 
+import com.example.proyectohospitalgambia.app.retrofit.RetrofitClient.BASE_URL
+import com.example.proyectohospitalgambia.app.retrofit.RetrofitClient.instance
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

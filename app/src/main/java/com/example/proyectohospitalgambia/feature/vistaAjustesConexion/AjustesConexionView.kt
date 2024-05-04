@@ -17,7 +17,25 @@ import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTen
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 
+/**
+ * Clase AjustesConexionView.
+ *
+ * Esta clase representa la vista de ajustes de conexión en la aplicación.
+ *
+ * @method onCreate Método que se llama cuando se crea la actividad.
+ * @method mostrarDialogoSalir Método para mostrar un diálogo de confirmación al salir.
+ * @method onCreateOptionsMenu Método para inflar el menú de opciones.
+ * @method onOptionsItemSelected Método para manejar la selección de elementos del menú.
+ */
 class AjustesConexionView : AppCompatActivity() {
+
+    /**
+     * Método que se llama cuando se crea la actividad.
+     *
+     * @param savedInstanceState Si la actividad se reinicia después de una pausa previa,
+     * este contiene los datos que se suministraron más recientemente en onSaveInstanceState(Bundle).
+     * De lo contrario, es null.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_ajustes_conexion_view)
@@ -62,6 +80,9 @@ class AjustesConexionView : AppCompatActivity() {
         }
     }
 
+    /**
+     * Método para mostrar un diálogo de confirmación al salir.
+     */
     private fun mostrarDialogoSalir() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
@@ -78,13 +99,25 @@ class AjustesConexionView : AppCompatActivity() {
         dialog.show()
     }
 
-    //Menú de opciones
+    /**
+     * Método para inflar el menú de opciones.
+     *
+     * @param menu El menú en el que se colocan los elementos.
+     * @return Debe devolver true para que se muestre el menú; si devuelve false, no se mostrará.
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu_principal, menu)
         return true
     }
 
+    /**
+     * Método para manejar la selección de elementos del menú.
+     *
+     * @param item El elemento de menú que se seleccionó.
+     * @return boolean Devuelve false para permitir el procesamiento normal del elemento de menú,
+     * true para consumirlo aquí.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
@@ -99,6 +132,7 @@ class AjustesConexionView : AppCompatActivity() {
 
                 true
             }
+
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)
@@ -121,7 +155,7 @@ class AjustesConexionView : AppCompatActivity() {
                 val intent = Intent(this, AboutView::class.java)
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                
+
                 // Iniciamos la actividad sin esperar un resultado.
                 startActivity(intent)
                 true

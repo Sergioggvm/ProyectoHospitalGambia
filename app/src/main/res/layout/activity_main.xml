@@ -43,6 +43,7 @@
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_mygnuhealth" />
+        app:srcCompat="@drawable/icono_mygnuhealth"
+        android:contentDescription="@string/txt_Lectura" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

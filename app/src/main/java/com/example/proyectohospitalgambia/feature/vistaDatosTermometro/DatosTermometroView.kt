@@ -38,6 +38,7 @@ import com.example.proyectohospitalgambia.core.domain.model.termometro.DatosTerm
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
 import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesConexionView
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
+import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView.BLELifecycleState
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,6 +56,48 @@ import java.util.Locale
 import java.util.UUID
 import kotlin.math.pow
 
+/**
+ * Clase DatosTermometroView.
+ *
+ * Esta clase representa la vista de datos del termómetro en la aplicación.
+ *
+ * @property CCC_DESCRIPTOR_UUID UUID para el descriptor CCC.
+ * @property bluetoothAdapter Adaptador Bluetooth para la conexión.
+ * @property bluetoothPermissionRequestCode Código de solicitud de permisos Bluetooth.
+ * @property deviceName Nombre del dispositivo Bluetooth.
+ * @property context Contexto de la aplicación.
+ * @property caracteristica UUID de la característica Bluetooth.
+ * @property servicio UUID del servicio Bluetooth.
+ * @property bluetoothLeScanner Escáner Bluetooth LE.
+ * @property listadispositivos Lista de dispositivos Bluetooth encontrados.
+ * @property scanning Indica si se está realizando un escaneo de dispositivos Bluetooth.
+ * @property SCAN_PERIOD Período de escaneo de dispositivos Bluetooth.
+ * @property viewModelJob Trabajo de la corrutina para el ViewModel.
+ * @property viewModel ViewModel para la vista de datos del termómetro.
+ * @property datosTermometroList Lista para almacenar los registros de datos del termómetro.
+ * @property tv_TemperaturaResultado TextView para mostrar el resultado de la temperatura.
+ * @property progressBar ProgressBar para mostrar el progreso de la medición.
+ * @property btnMedicionTemperatura Botón para iniciar la medición de la temperatura.
+ * @property BLELifecycleState Enumeración para los estados del ciclo de vida de la conexión Bluetooth.
+ *
+ * @method onCreate Método que se llama al crear la actividad.
+ * @method mostrarDialogoSalir Método para mostrar un diálogo de confirmación al salir.
+ * @method cargarRegistros Método para cargar los registros de datos del termómetro.
+ * @method mostrarDialogoDatosEncontrados Método para mostrar un diálogo cuando se encuentran registros.
+ * @method mostrarDialogoDatosNoEncontrados Método para mostrar un diálogo cuando no se encuentran registros.
+ * @method onRequestPermissionsResult Método que se llama cuando se otorgan o se deniegan permisos.
+ * @method scanLeDevice Método para escanear dispositivos Bluetooth LE.
+ * @method startDeviceSearch Método para iniciar la búsqueda de dispositivos Bluetooth.
+ * @method connectToDevice Método para conectar a un dispositivo Bluetooth.
+ * @method subscribeToIndications Método para suscribirse a las indicaciones de una característica Bluetooth.
+ * @method onCreateOptionsMenu Método para inflar el menú de opciones.
+ * @method onOptionsItemSelected Método para manejar la selección de elementos del menú de opciones.
+ * @method generarIdAleatorio Método para generar un ID aleatorio.
+ * @method obtenerDatosFormulario Método para obtener los datos del formulario y crear el JSON.
+ * @method onDestroy Método que se llama al destruir la actividad.
+ * @method onPause Método que se llama cuando la actividad entra en pausa.
+ * @method onResume Método que se llama cuando la actividad se reanuda.
+ */
 class DatosTermometroView : AppCompatActivity() {
 
     private val CCC_DESCRIPTOR_UUID = "00002902-0000-1000-8000-00805f9b34fb"
@@ -72,7 +115,6 @@ class DatosTermometroView : AppCompatActivity() {
     private var viewModelJob: Job? = null
 
     private val viewModel: DatosTermometroViewModel by viewModels()
-
 
 
     // Define una lista para almacenar los registros de datos
@@ -728,13 +770,17 @@ class DatosTermometroView : AppCompatActivity() {
             val temperaturaConUnidad = String.format("%.1f", temperatura) + " °C"
             tv_TemperaturaResultado.text = temperaturaConUnidad
 
-            Log.d("Temperatura111111", String.format("%.1f", temperatura)) // Aquí se modifica para imprimir solo un decimal
+            Log.d(
+                "Temperatura111111",
+                String.format("%.1f", temperatura)
+            ) // Aquí se modifica para imprimir solo un decimal
 
             // Obtener la fecha y hora actual
-            val currentDateAndTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+            val currentDateAndTime =
+                SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
 
-            if (temperatura != 0.0){
+            if (temperatura != 0.0) {
                 // Crear el objeto JSON con los datos del formulario
                 val jsonObject = JSONObject()
                 jsonObject.put("TipoPol", "temperatura")

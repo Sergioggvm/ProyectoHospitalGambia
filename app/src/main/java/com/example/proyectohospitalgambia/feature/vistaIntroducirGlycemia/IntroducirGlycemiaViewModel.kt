@@ -10,7 +10,7 @@ import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
  * Proporciona métodos para interactuar con la base de datos.
  */
 class IntroducirGlycemiaViewModel : ViewModel() {
-    
+
     private var databaseHelper: DatabaseHelper = MainActivity.databaseHelper!!
 
     /**

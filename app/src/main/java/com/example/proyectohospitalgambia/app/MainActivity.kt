@@ -1,16 +1,16 @@
 package com.example.proyectohospitalgambia.app
 
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.pm.ActivityInfo
-import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity.Companion.databaseHelper
+import com.example.proyectohospitalgambia.app.MainActivity.Companion.url
+import com.example.proyectohospitalgambia.app.MainActivity.Companion.usuario
 import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
 import com.example.proyectohospitalgambia.core.domain.model.people.PeopleUser
 import com.example.proyectohospitalgambia.feature.vistaAbout.AboutView
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Método que muestra un diálogo para confirmar si el usuario desea salir de la aplicación.
      */
-    fun mostrarDialogoSalir() {
+    private fun mostrarDialogoSalir() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
         builder.setMessage(getString(R.string.txt_MensajeSalirAplicacion))
@@ -123,6 +123,7 @@ class MainActivity : AppCompatActivity() {
 
                 true
             }
+
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)

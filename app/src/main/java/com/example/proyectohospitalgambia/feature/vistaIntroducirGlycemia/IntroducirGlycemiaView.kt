@@ -30,6 +30,7 @@ class IntroducirGlycemiaView : Fragment() {
     private lateinit var edtGlucosa: EditText
 
     private val viewModel: IntroducirGlycemiaViewModel by viewModels()
+
     /**
      * Método que se llama para tener la vista del fragment inflada y lista.
      *

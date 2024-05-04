@@ -1,15 +1,10 @@
 package com.example.proyectohospitalgambia.feature.vistaAbout
 
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
-import android.widget.SeekBar
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
@@ -18,9 +13,21 @@ import com.example.proyectohospitalgambia.feature.vistaAjustesConexion.AjustesCo
 import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTensiometroView
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
-import org.json.JSONObject
 
+/**
+ * Clase AboutView.
+ *
+ * Esta clase representa la vista "Acerca de" en la aplicación.
+ */
 class AboutView : AppCompatActivity() {
+
+    /**
+     * Método que se llama cuando se crea la actividad.
+     *
+     * @param savedInstanceState Si la actividad se reinicia después de una pausa previa,
+     * este contiene los datos que se suministraron más recientemente en onSaveInstanceState(Bundle).
+     * De lo contrario, es null.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_about_view)
@@ -37,6 +44,9 @@ class AboutView : AppCompatActivity() {
 
     }
 
+    /**
+     * Método para mostrar un diálogo de confirmación al salir.
+     */
     private fun mostrarDialogoSalir() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.txt_MensajeTituloSalirAplicacion))
@@ -53,13 +63,25 @@ class AboutView : AppCompatActivity() {
         dialog.show()
     }
 
-    //Menú de opciones
+    /**
+     * Método para inflar el menú de opciones.
+     *
+     * @param menu El menú en el que se colocan los elementos.
+     * @return Debe devolver true para que se muestre el menú; si devuelve false, no se mostrará.
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu_principal, menu)
         return true
     }
 
+    /**
+     * Método para manejar la selección de elementos del menú.
+     *
+     * @param item El elemento de menú que se seleccionó.
+     * @return boolean Devuelve false para permitir el procesamiento normal del elemento de menú,
+     * true para consumirlo aquí.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
@@ -74,6 +96,7 @@ class AboutView : AppCompatActivity() {
 
                 true
             }
+
             R.id.mn_perfil -> {
                 // Creamos un Intent para iniciar VistaSeleccionPartida.
                 val intent = Intent(this, ProfileView::class.java)
@@ -98,7 +121,7 @@ class AboutView : AppCompatActivity() {
             }
 
             R.id.mn_acercaDe -> {
-                
+
                 true
             }
 

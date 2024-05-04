@@ -4,10 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,39 +12,44 @@ import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
-import com.example.proyectohospitalgambia.core.network.federeacionServidorApi
-import org.json.JSONObject
-
 import com.example.proyectohospitalgambia.app.retrofit.RetrofitClient
-import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
-import com.example.proyectohospitalgambia.core.domain.model.pol.Pol
 import com.example.proyectohospitalgambia.core.domain.model.pol.PolAdapter
-import com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.IntroducirWeightViewModel
-import com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorViewModel
+import com.example.proyectohospitalgambia.core.network.FedereacionServidorApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Credentials
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
-import okhttp3.*
-import okhttp3.Callback
 import java.net.ProtocolException
 
 
+/**
+ * Clase FederacionServidoresView.
+ *
+ * Esta clase representa la vista de la federación de servidores en la aplicación.
+ *
+ * @property btnNuevoRegistro Botón para crear un nuevo registro.
+ * @property btnRecargaServidor Botón para recargar el servidor.
+ * @property progresBarSubirDatos ProgressBar para mostrar el progreso de la subida de datos.
+ * @property listView ListView para mostrar la lista de conexiones al servidor.
+ * @property viewModelJob Trabajo de la corrutina para el ViewModel.
+ * @property viewModel ViewModel para la vista de la federación de servidores.
+ *
+ * @method onCreate Método que se llama al crear el fragmento.
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method mostrarDialogoPolsSubidos Método para mostrar un diálogo cuando los Pols se han subido correctamente.
+ * @method mostrarDialogoPolsNoSubidos Método para mostrar un diálogo cuando los Pols no se han subido correctamente.
+ * @method isNetworkAvailable Método para verificar la conectividad a Internet.
+ * @method onDestroyView Método que se llama cuando la vista del fragmento se destruye.
+ * @method onPause Método que se llama cuando el fragmento entra en pausa.
+ * @method onResume Método que se llama cuando el fragmento se reanuda.
+ */
 class FederacionServidoresView : Fragment() {
 
     private lateinit var btnNuevoRegistro: ImageButton
@@ -61,11 +62,6 @@ class FederacionServidoresView : Fragment() {
 
     private val viewModel: FederacionServidoresViewModel by viewModels()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,14 +85,15 @@ class FederacionServidoresView : Fragment() {
         val usuarioEncontrado = MainActivity.usuario
 
         // Crear una instancia del servicio de la API
-        val apiService = RetrofitClient.instance.create(federeacionServidorApi::class.java)
+        val apiService = RetrofitClient.instance.create(FedereacionServidorApi::class.java)
 
         // Configurar el OnClickListener para el botón btnRecargaServidor
         btnRecargaServidor.setOnClickListener {
 
             if (!isNetworkAvailable(requireContext())) {
                 // Mostrar un mensaje de que no hay conexión a Internet
-                Toast.makeText(requireContext(), R.string.toast_no_internet, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.toast_no_internet, Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -168,16 +165,17 @@ class FederacionServidoresView : Fragment() {
                             mostrarDialogoPolsSubidos()
                         }
 
-                        val listView = federacionServidoresView.findViewById<ListView>(R.id.lst_consexionesServidor)
+                        val listView =
+                            federacionServidoresView.findViewById<ListView>(R.id.lst_consexionesServidor)
                         val polList = viewModel.recuperarDatos().filter { pol ->
-                            usuarioEncontrado != null && usuarioEncontrado.id == pol.book&& pol.isSubido == "true"
+                            usuarioEncontrado != null && usuarioEncontrado.id == pol.book && pol.isSubido == "true"
                         }
                         val adapter = PolAdapter(polList, requireContext())
                         listView.adapter = adapter
 
                     }
                 }
-            }catch (e: ProtocolException) {
+            } catch (e: ProtocolException) {
                 mostrarDialogoPolsNoSubidos()
                 e.printStackTrace()
             } catch (e: IOException) {
@@ -227,7 +225,8 @@ class FederacionServidoresView : Fragment() {
 
     // Función para verificar la conectividad a Internet
     private fun isNetworkAvailable(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork
         val capabilities = connectivityManager.getNetworkCapabilities(network)
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true

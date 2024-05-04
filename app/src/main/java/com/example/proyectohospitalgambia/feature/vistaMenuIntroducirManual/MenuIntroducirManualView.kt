@@ -12,6 +12,31 @@ import com.example.proyectohospitalgambia.R
 import com.example.proyectohospitalgambia.app.MainActivity
 import com.google.android.material.imageview.ShapeableImageView
 
+/**
+ * Clase MenuIntroducirManualView.
+ *
+ * Esta clase representa la vista del menú para introducir datos manualmente en la aplicación.
+ *
+ * @property btnDatosSangre Botón para navegar a los datos de presión sanguínea.
+ * @property btnDatosPeso Botón para navegar a los datos de peso.
+ * @property btnDatosGlicemia Botón para navegar a los datos de glucemia.
+ * @property btnDatosAgua Botón para navegar a los datos de saturación de oxígeno.
+ * @property btnGraficaSangre Botón para navegar a la gráfica de presión sanguínea.
+ * @property btnGraficaPeso Botón para navegar a la gráfica de peso.
+ * @property btnGraficaGlicemia Botón para navegar a la gráfica de glucemia.
+ * @property btnGraficaAgua Botón para navegar a la gráfica de saturación de oxígeno.
+ * @property tvUltimoDatoBloodPressure TextView para mostrar el último dato de presión sanguínea.
+ * @property tvUltimoDatoPeso TextView para mostrar el último dato de peso.
+ * @property tvUltimoDatoGlucosa TextView para mostrar el último dato de glucemia.
+ * @property tvUltimoDatoOsat TextView para mostrar el último dato de saturación de oxígeno.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ * @method onResume Método que se llama cuando el fragmento comienza a interactuar con el usuario.
+ * @method actualizarUltimaPresionSanguinea Método para actualizar el último dato de presión sanguínea.
+ * @method actualizarUltimoPeso Método para actualizar el último dato de peso.
+ * @method actualizarUltimaGlicemia Método para actualizar el último dato de glucemia.
+ * @method actualizarUltimoOsat Método para actualizar el último dato de saturación de oxígeno.
+ */
 class MenuIntroducirManualView : Fragment() {
 
     private lateinit var btnDatosSangre: ImageButton

@@ -13,6 +13,22 @@ import junit.framework.TestCase.assertTrue
 import org.junit.Assert
 import org.junit.Before
 
+/**
+ * Clase DatabaseHelperTest.
+ *
+ * Esta clase representa las pruebas unitarias para la clase DatabaseHelper en la aplicación.
+ *
+ * @property databaseHelper Instancia de la clase DatabaseHelper que se va a probar.
+ *
+ * @method onBefore Método que se llama antes de cada prueba para inicializar los objetos necesarios.
+ * @method testInsertarPersona Método para probar la inserción de una persona en la base de datos.
+ * @method testInsertarPersonaConDatosInvalidos Método para probar la inserción de una persona con datos inválidos en la base de datos.
+ * @method testVerificarCredenciales Método para probar la verificación de credenciales de un usuario.
+ * @method testObtenerTodosLosDatosPesoCorrecto Método para probar la obtención de todos los datos de peso de un usuario.
+ * @method testObtenerTodosLosDatosPesoIncorrecto Método para probar la obtención de todos los datos de peso de un usuario con datos incorrectos.
+ * @method testInsertFormData Método para probar la inserción de un formulario en la base de datos.
+ * @method testListarPols Método para probar la obtención de todos los Pols de la base de datos.
+ */
 class DatabaseHelperTest {
 
     @RelaxedMockK

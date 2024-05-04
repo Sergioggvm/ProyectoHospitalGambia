@@ -54,7 +54,8 @@ class InicioView : AppCompatActivity() {
 
             // Verificar las credenciales en la base de datos
             val dbHelper = DatabaseHelper(this)
-            val usuarioEncontrado = dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
+            val usuarioEncontrado =
+                dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
 
             if (usuarioEncontrado != null) {
                 // Obtener la contraseña almacenada del usuario encontrado en el campo "password" del JSON
@@ -66,7 +67,8 @@ class InicioView : AppCompatActivity() {
                 if (BCrypt.checkpw(contraseniaUsuario, contraseniaAlmacenada)) {
                     Log.d("Inicio de Sesión", "Usuario autenticado. ID: ${usuarioEncontrado.id}")
                     MainActivity.usuario = usuarioEncontrado
-                    Toast.makeText(this, R.string.toast_inicio_sesion_correcta, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.toast_inicio_sesion_correcta, Toast.LENGTH_SHORT)
+                        .show()
 
                     // Guardar el nombre de usuario en SharedPreferences
                     val preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -78,12 +80,23 @@ class InicioView : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Log.d("Inicio de Sesión", "Contraseña incorrecta para el usuario: $nombreUsuario")
-                    Toast.makeText(this, R.string.toast_credenciales_incorrectas, Toast.LENGTH_SHORT).show()
+                    Log.d(
+                        "Inicio de Sesión",
+                        "Contraseña incorrecta para el usuario: $nombreUsuario"
+                    )
+                    Toast.makeText(
+                        this,
+                        R.string.toast_credenciales_incorrectas,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
-                Log.d("Inicio de Sesión", "No se encontró ningún usuario con el nombre: $nombreUsuario")
-                Toast.makeText(this, R.string.toast_credenciales_incorrectas, Toast.LENGTH_SHORT).show()
+                Log.d(
+                    "Inicio de Sesión",
+                    "No se encontró ningún usuario con el nombre: $nombreUsuario"
+                )
+                Toast.makeText(this, R.string.toast_credenciales_incorrectas, Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 

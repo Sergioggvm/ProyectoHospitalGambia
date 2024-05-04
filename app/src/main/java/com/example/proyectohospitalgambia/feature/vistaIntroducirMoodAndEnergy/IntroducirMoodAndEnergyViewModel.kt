@@ -13,6 +13,7 @@ class IntroducirMoodAndEnergyViewModel : ViewModel() {
 
 
     private var databaseHelper: DatabaseHelper = MainActivity.databaseHelper!!
+
     /**
      * Inserta los datos del formulario en la base de datos.
      *

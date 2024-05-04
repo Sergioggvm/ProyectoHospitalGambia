@@ -10,6 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.proyectohospitalgambia.R
 
+/**
+ * Clase MenuPrincipalView.
+ *
+ * Esta clase representa la vista del menú principal en la aplicación.
+ *
+ * @property btnOpcionMedica Botón para navegar a las opciones médicas.
+ * @property btnOpcionServidor Botón para navegar a la federación de servidores.
+ *
+ * @method onCreateView Método que se llama para crear la vista del fragmento.
+ */
 class MenuPrincipalView : Fragment() {
 
     private lateinit var btnOpcionMedica: ImageButton
