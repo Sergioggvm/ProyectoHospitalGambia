@@ -288,4 +288,7 @@
 
     <string name="toast_credenciales_incorrectas">"Credenciales incorrectas"</string>
 
+    <string name="nombreMario">Mario Muñoz</string>
+    <string name="nombreSergio">Sergio García</string>
+
 </resources>

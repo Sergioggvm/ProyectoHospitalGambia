@@ -14,6 +14,9 @@ import com.example.proyectohospitalgambia.feature.vistaDatosTensiometro.DatosTen
 import com.example.proyectohospitalgambia.feature.vistaDatosTermometro.DatosTermometroView
 import com.example.proyectohospitalgambia.feature.vistaProfile.ProfileView
 
+import android.net.Uri
+import android.widget.ImageView
+
 /**
  * Clase AboutView.
  *
@@ -35,6 +38,19 @@ class AboutView : AppCompatActivity() {
         // Obtener referencia a la barra de herramientas desde el diseño
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_Principal)
 
+        // Obtener referencia a los ImageView desde el diseño
+        val imgvLinkedinMario: ImageView = findViewById(R.id.imgv_linkedinMario)
+        val imgvLinkedinSergio: ImageView = findViewById(R.id.imgv_linkedinSergio)
+
+        // Agregar OnClickListener a los ImageView
+        imgvLinkedinMario.setOnClickListener {
+            abrirLinkedin("https://www.linkedin.com/in/mario-mu%C3%B1oz-peque%C3%B1o/") // Reemplaza con la URL de LinkedIn de Mario
+        }
+
+        imgvLinkedinSergio.setOnClickListener {
+            abrirLinkedin("https://www.linkedin.com/in/sergio-garc%C3%ADa-g%C3%B3mez-9b4236246/") // Reemplaza con la URL de LinkedIn de Sergio
+        }
+
         // Inflar el menú en la barra de herramientas
         toolbar.inflateMenu(R.menu.menu_principal)
 
@@ -43,6 +59,18 @@ class AboutView : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
     }
+
+
+    /**
+     * Método para abrir el perfil de LinkedIn de un usuario.
+     *
+     * @param url La URL del perfil de LinkedIn del usuario.
+     */
+    private fun abrirLinkedin(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
 
     /**
      * Método para mostrar un diálogo de confirmación al salir.

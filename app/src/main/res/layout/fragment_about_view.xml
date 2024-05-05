@@ -148,5 +148,43 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icono_mygnuhealth" />
 
+        <ImageView
+            android:id="@+id/imgv_linkedinMario"
+            android:layout_width="42.3dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/imgv_linkedinSergio"
+            app:layout_constraintStart_toEndOf="@+id/txt_nombresGracias"
+            app:layout_constraintTop_toBottomOf="@+id/txt_gracias"
+            app:srcCompat="@drawable/icono_linkedin" />
+
+        <ImageView
+            android:id="@+id/imgv_linkedinSergio"
+            android:layout_width="42.3dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_conclusion"
+            app:layout_constraintStart_toEndOf="@+id/txt_nombresGracias"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_linkedinMario"
+            app:srcCompat="@drawable/icono_linkedin" />
+
+        <TextView
+            android:id="@+id/tv_nombreMario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombreMario"
+            app:layout_constraintStart_toEndOf="@+id/imgv_linkedinMario"
+            app:layout_constraintTop_toTopOf="@+id/imgv_linkedinMario"
+            app:layout_constraintBottom_toBottomOf="@id/imgv_linkedinMario" />
+
+        <TextView
+            android:id="@+id/tv_nombreSergio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombreSergio"
+            app:layout_constraintStart_toEndOf="@+id/imgv_linkedinSergio"
+            app:layout_constraintTop_toTopOf="@+id/imgv_linkedinSergio"
+            app:layout_constraintBottom_toBottomOf="@id/imgv_linkedinSergio"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
