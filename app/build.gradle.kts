@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -16,6 +17,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // Configuración de Dokka
+    // Configuración de Dokka
+    tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
+        moduleName.set("MyGnuHealthApp")
     }
 
     buildTypes {
@@ -39,6 +46,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
 
 
 }
