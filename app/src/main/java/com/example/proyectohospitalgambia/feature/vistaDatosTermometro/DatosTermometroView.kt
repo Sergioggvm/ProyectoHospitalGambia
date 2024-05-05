@@ -227,7 +227,7 @@ class DatosTermometroView : AppCompatActivity() {
                 // Simular el progreso de carga durante 3 segundos
                 for (progress in 0..100) {
                     progressBar.progress = progress
-                    delay(150) // Cambia este valor para ajustar la velocidad de llenado de la ProgressBar
+                    delay(250) // Cambia este valor para ajustar la velocidad de llenado de la ProgressBar
                 }
 
                 // Ocultar la ProgressBar
