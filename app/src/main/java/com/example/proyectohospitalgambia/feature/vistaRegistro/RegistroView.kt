@@ -70,8 +70,6 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
     private lateinit var btnRegistrarUsuario: Button
 
-    private lateinit var spinner: Spinner
-
     private lateinit var txtAltura: TextView
 
     // Variables globales para referencias a elementos de la interfaz de usuario
@@ -81,7 +79,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     private lateinit var edtFechadia: EditText
     private lateinit var edtFechaMes: EditText
     private lateinit var edtFechaAnio: EditText
-    private lateinit var spinnerSexo: Spinner
+    private lateinit var spinner: Spinner
     private lateinit var seekBar: SeekBar
 
 
@@ -96,7 +94,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         edtFechadia = findViewById(R.id.edt_textoDia)
         edtFechaMes = findViewById(R.id.edt_textoMes)
         edtFechaAnio = findViewById(R.id.edt_textoAnio)
-        spinnerSexo = findViewById(R.id.spinnerSexo)
+        spinner = findViewById(R.id.spinnerSexo)
 
         seekBar = findViewById(R.id.sk_altura)
 
@@ -181,7 +179,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         val contraseniaUsuario = edtContraseniaUsuario.text.toString()
         val contraseniaRepetirUsuario = edtContraseniaRepetirUsuario.text.toString()
         val altura = seekBar.progress
-        val sexo = spinnerSexo.selectedItem.toString()
+        val sexo = spinner.selectedItem.toString()
         // Obtener los valores de los EditText de la fecha de nacimiento
         val dia = edtFechadia.text.toString()
         val mes = edtFechaMes.text.toString()
@@ -256,7 +254,7 @@ class RegistroView : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         edtContraseniaUsuario.text.clear()
         edtContraseniaRepetirUsuario.text.clear()
         seekBar.progress = 0
-        spinnerSexo.setSelection(0)
+        spinner.setSelection(0)
         edtFechadia.text.clear()
         edtFechaMes.text.clear()
         edtFechaAnio.text.clear()
