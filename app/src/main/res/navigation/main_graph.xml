@@ -3,29 +3,213 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/menuOpcionesMedicasView">
-    <fragment
-        android:id="@+id/inicioView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaInicio.InicioView"
-        android:label="fragment_inicio_view"
-        tools:layout="@layout/fragment_inicio_view" >
-        <action
-            android:id="@+id/action_inicioView_to_registroView"
-            app:destination="@id/registroView" />
-    </fragment>
-    <fragment
-        android:id="@+id/registroView"
-        android:name="com.example.proyectohospitalgambia.feature.vistaRegistro.RegistroView"
-        android:label="fragment_registro_view"
-        tools:layout="@layout/fragment_registro_view" />
+    app:startDestination="@id/menuPrincipalView">
     <fragment
         android:id="@+id/menuPrincipalView"
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuPrincipal.MenuPrincipalView"
         android:label="fragment_menu_principal_view"
-        tools:layout="@layout/fragment_menu_principal_view" />
+        tools:layout="@layout/fragment_menu_principal_view" >
+        <action
+            android:id="@+id/action_menuPrincipalView_to_menuOpcionesMedicasView"
+            app:destination="@id/menuOpcionesMedicasView" />
+        <action
+            android:id="@+id/action_menuPrincipalView_to_federacionServidoresView"
+            app:destination="@id/federacionServidoresView" />
+    </fragment>
     <fragment
         android:id="@+id/menuOpcionesMedicasView"
         android:name="com.example.proyectohospitalgambia.feature.vistaMenuOpcionesMedicas.MenuOpcionesMedicasView"
         android:label="fragment_menu_opciones_medicas_view"
-        tools:layout="@layout/fragment_menu_opciones_medicas_view" />
+        tools:layout="@layout/fragment_menu_opciones_medicas_view" >
+        <action
+            android:id="@+id/action_menuOpcionesMedicasView_to_menu_Introducir_Manual"
+            app:destination="@id/menu_Introducir_Manual" />
+        <action
+            android:id="@+id/action_menuOpcionesMedicasView_to_menu_deporte_suenno"
+            app:destination="@id/menu_deporte_suenio" />
+        <action
+            android:id="@+id/action_menuOpcionesMedicasView_to_menuMoodAndEnergyView"
+            app:destination="@id/menuMoodAndEnergyView" />
+    </fragment>
+    <fragment
+        android:id="@+id/federacionServidoresView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaFederacionServidor.FederacionServidoresView"
+        android:label="fragment_federacion_servidores_view"
+        tools:layout="@layout/fragment_federacion_servidores_view" >
+        <action
+            android:id="@+id/action_federacionServidoresView_to_nuevoRegistroServidorView"
+            app:destination="@id/nuevoRegistroServidorView" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoRegistroServidorView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaNuevoRegistroServidor.NuevoRegistroServidorView"
+        android:label="fragment_nuevo_registro_servidor_view"
+        tools:layout="@layout/fragment_nuevo_registro_servidor_view" />
+    <fragment
+        android:id="@+id/introducirBloodPressure"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirBloodPressure.IntroducirBloodPressureView"
+        android:label="fragment_introducir_blood_pressure"
+        tools:layout="@layout/fragment_introducir_blood_pressure" />
+    <fragment
+        android:id="@+id/introducirGlycemia"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirGlycemia.IntroducirGlycemiaView"
+        android:label="fragment_introducir_glycemia"
+        tools:layout="@layout/fragment_introducir_glycemia" />
+    <fragment
+        android:id="@+id/introducirMoodAndEnergy"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirMoodAndEnergy.IntroducirMoodAndEnergyView"
+        android:label="fragment_introducir_mood_and_energy"
+        tools:layout="@layout/fragment_introducir_mood_and_energy" />
+    <fragment
+        android:id="@+id/introducir_nutrition"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirNutrition.IntroducirNutritionView"
+        android:label="fragment_introducir_nutrition"
+        tools:layout="@layout/fragment_introducir_nutrition" />
+    <fragment
+        android:id="@+id/introducirOsat"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirOsat.IntroducirOsatView"
+        android:label="fragment_introducir_osat"
+        tools:layout="@layout/fragment_introducir_osat" />
+    <fragment
+        android:id="@+id/introducir_physical_activity"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirPhysicalActivity.IntroducirPhysicalView"
+        android:label="fragment_introducir_physical_activity"
+        tools:layout="@layout/fragment_introducir_physical_activity" />
+    <fragment
+        android:id="@+id/introducir_sleep"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirSleep.IntroducirSleepView"
+        android:label="fragment_introducir_sleep"
+        tools:layout="@layout/fragment_introducir_sleep" />
+    <fragment
+        android:id="@+id/introducir_social_activities"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirSocialActivities.IntroducirSocialActivitiesView"
+        android:label="fragment_introducir_social_activities"
+        tools:layout="@layout/fragment_introducir_social_activities" />
+    <fragment
+        android:id="@+id/introducirWeight"
+        android:name="com.example.proyectohospitalgambia.feature.vistaIntroducirWeight.IntroducirWeightView"
+        android:label="fragment_introducir_weight"
+        tools:layout="@layout/fragment_introducir_weight" />
+    <fragment
+        android:id="@+id/menu_Introducir_Manual"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuIntroducirManual.MenuIntroducirManualView"
+        android:label="fragment_menu__introducir__manual"
+        tools:layout="@layout/fragment_menu_introducir_manual" >
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_introducirBloodPressure"
+            app:destination="@id/introducirBloodPressure" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_introducirGlycemia"
+            app:destination="@id/introducirGlycemia" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_introducirWeight"
+            app:destination="@id/introducirWeight" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_introducirOsat"
+            app:destination="@id/introducirOsat" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoGlycemiaView"
+            app:destination="@id/graficoGlycemiaView" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoBloodPressureView"
+            app:destination="@id/graficoBloodPressureView" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoOsatView"
+            app:destination="@id/graficoOsatView" />
+        <action
+            android:id="@+id/action_menu_Introducir_Manual_to_graficoWeightView"
+            app:destination="@id/graficoWeightView" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu_deporte_suenio"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuDeporteSuenio.MenuDeporteSuenioView"
+        android:label="fragment_menu_deporte_suenno"
+        tools:layout="@layout/fragment_menu_deporte_suenio" >
+        <action
+            android:id="@+id/action_menu_deporte_suenno_to_introducir_nutrition"
+            app:destination="@id/introducir_nutrition" />
+        <action
+            android:id="@+id/action_menu_deporte_suenno_to_introducir_physical_activity"
+            app:destination="@id/introducir_physical_activity" />
+        <action
+            android:id="@+id/action_menu_deporte_suenno_to_introducir_sleep"
+            app:destination="@id/introducir_sleep" />
+        <action
+            android:id="@+id/action_menu_deporte_suenno_to_introducir_social_activities"
+            app:destination="@id/introducir_social_activities" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaSocialActivitiesView"
+            app:destination="@id/graficaSocialActivitiesView" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaSleepView"
+            app:destination="@id/graficaSleepView" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaNutritionView"
+            app:destination="@id/graficaNutritionView" />
+        <action
+            android:id="@+id/action_menu_deporte_suenio_to_graficaPhysicalActivityView"
+            app:destination="@id/graficaPhysicalActivityView" />
+    </fragment>
+    <fragment
+        android:id="@+id/graficaNutritionView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaNutrition.GraficaNutritionView"
+        android:label="fragment_grafica_nutrition_view"
+        tools:layout="@layout/fragment_grafica_nutrition_view" />
+    <fragment
+        android:id="@+id/graficaPhysicalActivityView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaPhysicalActivity.GraficaPhysicalActivityView"
+        android:label="fragment_grafica_physical_activity_view"
+        tools:layout="@layout/fragment_grafica_physical_activity_view" />
+    <fragment
+        android:id="@+id/graficaSleepView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaSleep.GraficaSleepView"
+        android:label="fragment_grafica_sleep_view"
+        tools:layout="@layout/fragment_grafica_sleep_view" />
+    <fragment
+        android:id="@+id/graficaSocialActivitiesView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaSocialActivities.GraficaSocialActivitiesView"
+        android:label="fragment_grafica_social_activities_view"
+        tools:layout="@layout/fragment_grafica_social_activities_view" />
+    <fragment
+        android:id="@+id/graficoBloodPressureView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaBloodPressure.GraficaBloodPressureView"
+        android:label="fragment_grafico_blood_pressure_view"
+        tools:layout="@layout/fragment_grafica_blood_pressure_view" />
+    <fragment
+        android:id="@+id/graficoGlycemiaView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaGlycemia.GraficaGlycemiaView"
+        android:label="fragment_grafico_glycemia_view"
+        tools:layout="@layout/fragment_grafica_glycemia_view" />
+    <fragment
+        android:id="@+id/graficoMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaMoodAndEnergy.GraficaMoodAndEnergyView"
+        android:label="fragment_grafico_mood_and_energy_view"
+        tools:layout="@layout/fragment_grafica_mood_and_energy_view" />
+    <fragment
+        android:id="@+id/graficoOsatView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaOsat.GraficaOsatView"
+        android:label="fragment_grafico_osat_view"
+        tools:layout="@layout/fragment_grafica_osat_view" />
+    <fragment
+        android:id="@+id/graficoWeightView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaGraficaWeight.GraficaWeightView"
+        android:label="fragment_grafico_weight_view"
+        tools:layout="@layout/fragment_grafica_weight_view" />
+    <fragment
+        android:id="@+id/menuMoodAndEnergyView"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.MenuMoodAndEnergyView"
+        android:label="fragment_menu_mood_and_energy"
+        tools:layout="@layout/fragment_menu_mood_and_energy" >
+        <action
+            android:id="@+id/action_menuMoodAndEnergyView_to_graficoMoodAndEnergyView"
+            app:destination="@id/graficoMoodAndEnergyView" />
+        <action
+            android:id="@+id/action_menuMoodAndEnergyView_to_introducirMoodAndEnergy"
+            app:destination="@id/introducirMoodAndEnergy" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuMoodAndEnergyView2"
+        android:name="com.example.proyectohospitalgambia.feature.vistaMenuMoodAndEnergy.MenuMoodAndEnergyView"
+        android:label="fragment_menu_mood_and_energy"
+        tools:layout="@layout/fragment_menu_mood_and_energy" />
 </navigation>

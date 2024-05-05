@@ -11,34 +11,56 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_opcionesDatosMedicos"
-            android:layout_width="236dp"
-            android:layout_height="241dp"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/boton_menu_opciones_medicas"
+        <ImageButton
+            android:id="@+id/btn_opcionMedica"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/boton_menu_opciones_medicas"
+            android:contentDescription="0"
             android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.076" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <Button
-            android:id="@+id/btn_opcionesServidor"
-            android:layout_width="236dp"
-            android:layout_height="241dp"
-            android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/boton_menu_opciones_servidor"
+        <ImageButton
+            android:id="@+id/btn_opcionServidor"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/boton_menu_opciones_servidor"
+            android:contentDescription="0"
             android:text="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_opcionesDatosMedicos"
-            app:layout_constraintVertical_bias="0.534" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_OpcionesMedicas"
+            android:textColor="@color/azul_texto"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btn_opcionMedica"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_OpcionesServidor"
+            android:textColor="@color/azul_texto"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btn_opcionServidor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_opcionMedica" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

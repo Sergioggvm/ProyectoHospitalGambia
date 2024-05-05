@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaIntroducirPhysicalActivity.IntroducirPhysicalView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgv_physicalActivity"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/icono_aerobic"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_ActividadFisica"
+            android:textColor="@color/azul_texto"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_aerobic_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_physicalActivity" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_aerobic_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_anaerobic_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:hint="@string/txt_Aerobico">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_aerobic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_anaerobic_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_steps_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_aerobic_layout"
+            android:hint="@string/txt_Anaerobico">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_anaerobic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_steps_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardarPhysicalActivity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_anaerobic_layout"
+            android:hint="@string/txt_Pasos">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_steps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_guardarPhysicalActivity"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_margin="16dp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_steps_layout"
+            app:rippleColor="@android:color/transparent"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
+            android:elevation="8dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_guardarPhysicalActivity"
+            app:layout_constraintEnd_toEndOf="@+id/btn_guardarPhysicalActivity"
+            app:layout_constraintStart_toStartOf="@+id/btn_guardarPhysicalActivity"
+            app:layout_constraintTop_toTopOf="@+id/btn_guardarPhysicalActivity" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

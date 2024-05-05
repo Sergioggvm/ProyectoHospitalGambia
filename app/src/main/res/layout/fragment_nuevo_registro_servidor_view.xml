@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaNuevoRegistroServidor.NuevoRegistroServidorView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="138dp"
+            android:layout_height="127dp"
+            android:src="@drawable/imagen_nuevo_registro_servidor"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoDia_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txt_fecha"
+            android:layout_width="125dp"
+            android:layout_height="31dp"
+            android:gravity="center"
+            android:text="@string/txt_Fecha"
+            app:layout_constraintBottom_toTopOf="@+id/txt_hora"
+            app:layout_constraintEnd_toStartOf="@+id/edt_textoDia_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoDia_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoHora_layout"
+            app:layout_constraintEnd_toStartOf="@+id/edt_textoMes_layout"
+            app:layout_constraintStart_toEndOf="@+id/txt_fecha"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoDia"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="dd"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoMes_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoMinutos_layout"
+            app:layout_constraintEnd_toStartOf="@+id/edt_textoAnio_layout"
+            app:layout_constraintStart_toEndOf="@+id/edt_textoDia_layout"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoMes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="mm"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoAnio_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoMinutos_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edt_textoMes_layout"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoAnio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="yyyy"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_hora"
+            android:layout_width="125dp"
+            android:layout_height="31dp"
+            android:gravity="center"
+            android:text="@string/txt_Hora"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoResumen_layout"
+            app:layout_constraintEnd_toStartOf="@+id/edt_textoHora_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_fecha" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoHora_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoResumen_layout"
+            app:layout_constraintEnd_toStartOf="@+id/edt_textoMinutos_layout"
+            app:layout_constraintStart_toEndOf="@+id/txt_hora"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoDia_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoHora"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="hour"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_dominioYContexto"
+            android:layout_width="107dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/txt_DominioYContexto"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoDetalles_layout"
+            app:layout_constraintEnd_toStartOf="@+id/spinner1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoResumen_layout" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="137dp"
+            android:layout_height="58dp"
+            style="@style/SpinnerTheme"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoDetalles_layout"
+            app:layout_constraintEnd_toStartOf="@+id/spinner3"
+            app:layout_constraintStart_toEndOf="@+id/txt_dominioYContexto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoResumen_layout" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="137dp"
+            android:layout_height="58dp"
+            style="@style/SpinnerTheme"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
+            app:layout_constraintEnd_toStartOf="@+id/cb_paginaPrivada"
+            app:layout_constraintStart_toEndOf="@+id/txt_relevancia"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoDetalles_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoDetalles_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/spinner2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoDetalles"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/txt_Detalles"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="137dp"
+            android:layout_height="58dp"
+            style="@style/SpinnerTheme"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoDetalles_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spinner1"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoResumen_layout" />
+
+        <CheckBox
+            android:id="@+id/cb_paginaPrivada"
+            android:layout_width="144dp"
+            android:layout_height="54dp"
+            android:text="@string/txt_PaginaPrivada"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spinner2"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoDetalles_layout" />
+
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="250dp"
+            android:layout_height="75dp"
+            android:text="@string/txt_Guardar"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoMinutos_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoResumen_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_hora"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoMes_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoMinutos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="min"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_textoResumen_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/txt_dominioYContexto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoMinutos_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_textoResumen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/txt_Resumen"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_relevancia"
+            android:layout_width="125dp"
+            android:layout_height="31dp"
+            android:gravity="center"
+            android:text="@string/txt_Relevancia"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardar"
+            app:layout_constraintEnd_toStartOf="@+id/spinner2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_textoDetalles_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

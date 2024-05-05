@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaAjustesConexion.AjustesConexionView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_Principal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/azul_toolbar"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="303dp"
+            android:layout_height="107dp"
+            android:src="@drawable/imagen_ajustes_conexion"
+            app:layout_constraintBottom_toTopOf="@+id/edt_protocolo_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_Principal" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_host_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_federacionId_layout"
+            app:layout_constraintEnd_toStartOf="@+id/edt_puertoServidor_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_protocolo_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_host"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_Host"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_federacionId_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/btn_probarConexion"
+            app:layout_constraintEnd_toStartOf="@+id/edt_contraseniaFederacion_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_host_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_federacionId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_FederacionId"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_contraseniaFederacion_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/btn_probarConexion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edt_federacionId_layout"
+            app:layout_constraintTop_toBottomOf="@+id/edt_puertoServidor_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_contraseniaFederacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_ContraseniaFederacion"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_probarConexion"
+            android:layout_width="175dp"
+            android:layout_height="75dp"
+            android:text="@string/btn_PruebaConexion"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/cb_paginaPrivada"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_federacionId_layout" />
+
+        <CheckBox
+            android:id="@+id/cb_paginaPrivada"
+            android:layout_width="175dp"
+            android:layout_height="75dp"
+            android:gravity="center"
+            android:text="@string/txt_SincronizacionFederacion"
+            app:layout_constraintBottom_toTopOf="@+id/btn_actualizarAjustesConexion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_probarConexion" />
+
+        <Button
+            android:id="@+id/btn_actualizarAjustesConexion"
+            android:layout_width="175dp"
+            android:layout_height="75dp"
+            android:text="@string/btn_Actualizar"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cb_paginaPrivada" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="52dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icono_mygnuhealth" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_protocolo_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_puertoServidor_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_protocolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_Protocolo"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_puertoServidor_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/edt_contraseniaFederacion_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edt_host_layout"
+            app:layout_constraintTop_toBottomOf="@+id/edt_protocolo_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_puertoServidor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_PuertoServidor"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

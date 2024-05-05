@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mygnuhealth Hospital</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="btn_IniciarSesion">Sign In</string>
+    <string name="btn_Registar">Register</string>
+
+    <string name="txt_Usuario">Username</string>
+    <string name="txt_Contrasenia">Password</string>
+
+    <string name="txt_Contrasenia_Federacion">Federation Password</string>
+
+    <string name="txt_OpcionesMedicas">Medical Options</string>
+    <string name="txt_OpcionesServidor">Server Options</string>
+
+    <string name="txt_Fecha">Date</string>
+    <string name="txt_Hora">Time</string>
+    <string name="txt_Resumen">Summary</string>
+    <string name="txt_DominioYContexto">Domain and Context</string>
+    <string name="txt_Detalles">Details</string>
+    <string name="txt_Relevancia">Relevance</string>
+    <string name="txt_PaginaPrivada">Private Page</string>
+    <string name="txt_Guardar">Save</string>
+
+    <string name="txt_Altura">Height:</string>
+    <string name="btn_Actualizar">Update</string>
+    <string name="txt_ActualizarContrasenia">Update Password</string>
+    <string name="txt_ActualizarAltura">Update Height</string>
+    <string name="txt_ActualizarFederacion">Update Federation</string>
+    <string name="txt_CuentaFederacion">Federation Account</string>
+    <string name="txt_CuentaFederacionId">Federation Account ID</string>
+    <string name="txt_ContraseniaActual">Current Personal Password</string>
+    <string name="txt_ContraseniaNueva">New Personal \n Password</string>
+    <string name="txt_ContraseniaNuevaRepetir">Repeat New Personal \n Password</string>
+    <string name="txt_ContraseniaRepetir">Repeat Password</string>
+    <string name="txt_Sexo">Gender</string>
+    <string name="txt_FechaNacimiento">Date of Birth</string>
+
+    <string name="txt_Protocolo">Protocol</string>
+    <string name="txt_Host">Thalamus Host</string>
+    <string name="txt_PuertoServidor">Thalamus Server Port</string>
+    <string name="txt_FederacionId">Federation ID</string>
+    <string name="txt_ContraseniaFederacion">Federation Password</string>
+    <string name="btn_PruebaConexion">Connection Test</string>
+    <string name="txt_SincronizacionFederacion">Federation Synchronization</string>
+
+    <string name="txt_Descripcion">The GNU Health Personal Health Record</string>
+    <string name="txt_PaginaCasa">https://www.gnuhealth.org</string>
+    <string name="txt_Autor">Author: Luis Falcon</string>
+    <string name="txt_Gracias">Thanks to our contributors</string>
+    <string name="txt_Conclusion">The medical genetics section uses human natural variants from UniProt.</string>
+    <string name="txt_Licencia">GPL v3+</string>
+    <string name="txt_Copyright">Copyright 2008-2024 GNU Solidario</string>
+    <string name="txt_Thanks">---- Version 2.0 (Kivy) -------\n Axel Braun\n
+    Leonardo D Acchille\n
+    ---- Version 1.0 (PySide) -----\n
+    Axel Braun\n
+    Paul Brown\n
+    Yuri Chornoivan\n
+    Leonardo D Acchille\n
+    Marco Gebhardt\n
+    Riccardo Iaconelli\n
+    Mat Knoll\n
+    Cristian Maureira-Fredes\n
+    Karl Ove Hufthammer\n
+    Aleix Pol\n
+    Carl Schwan\n
+    Pino Toscano\n
+    Niccolò Venerandi
+</string>
+    <string name="txt_PieFoto">MyGNUHealth is part of the GNU Health Project</string>
+
+    <string-array name="opcion_medicina">
+        <item>Medical</item>
+        <item>Social</item>
+        <item>Biographical</item>
+        <item>Free Style</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="condiciones_salud">
+        <item>Health Condition</item>
+        <item>Encounter</item>
+        <item>Procedure</item>
+        <item>Self-monitoring</item>
+        <item>Immunization</item>
+        <item>Medical Prescription</item>
+        <item>Surgery</item>
+        <item>Hospitalization</item>
+        <item>Laboratory Test</item>
+        <item>Diagnostic Imaging</item>
+        <item>Genetic</item>
+        <item>Family</item>
+    </string-array>
+
+    <string-array name="tipo_relevancia">
+        <item>Normal</item>
+        <item>Important</item>
+        <item>Critical</item>
+    </string-array>
+
+    <string-array name="calidad_suenno">
+        <item>Good</item>
+        <item>Medium</item>
+        <item>Bad</item>
+    </string-array>
+
+    <string-array name="opcion_sexo">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="txt_Menu">Menu</string>
+    <string name="txt_Menu_perfil">Profile</string>
+    <string name="txt_Menu_Conexion">Connection</string>
+    <string name="txt_Menu_AcercaDe">About</string>
+    <string name="txt_Menu_Datos_Tensiometro">Blood Pressure Data</string>
+    <string name="txt_Menu_Datos_Termometro">Thermometer Data</string>
+    <string name="txt_Menu_salir">Exit</string>
+
+
+    <string name="txt_PresionSanguinea">Blood Pressure</string>
+    <string name="txt_Sistolica">Systolic</string>
+    <string name="txt_Diastolica">Diastolic</string>
+    <string name="txt_FrecuenciaCardiaca">Heart Rate</string>
+
+    <string name="txt_NivelGlucosa">Blood Glucose Level</string>
+
+    <string name="txt_MeSiento">I feel…</string>
+    <string name="txt_Animo">Mood</string>
+    <string name="txt_Energia">Energy</string>
+    <string name="txt_AnimoYEnergia">Mood and Energy</string>
+
+    <string name="txt_ValorEnergetico">Energy Value (kcal)</string>
+    <string name="txt_Manana">Morning</string>
+    <string name="txt_Tarde">Afternoon</string>
+    <string name="txt_Noche">Night</string>
+    <string name="txt_nutricion">Nutrition</string>
+
+    <string name="txt_Hecho">DONE</string>
+    <string name="txt_Notas">Notes</string>
+    <string name="txt_Total">Total</string>
+
+    <string name="txt_Osat">Osat</string>
+    <string name="txt_SaturacionOxigeno">Oxygen Saturation</string>
+    <string name="txt_ActividadFisica">Physical Activity</string>
+    <string name="txt_Aerobico">Aerobic</string>
+    <string name="txt_Anaerobico">Anaerobic</string>
+    <string name="txt_Pasos">Steps</string>
+
+    <string name="txt_Sueno">Sleep</string>
+    <string name="txt_Horas">Hours</string>
+    <string name="txt_Calidad">Quality</string>
+
+    <string name="txt_ActividadSocial">Significant Social Activities</string>
+    <string name="txt_Minutos">Minutes</string>
+
+    <string name="txt_Peso">Weight</string>
+    <string name="Kg">KG</string>
+    <string name="kcal">kcal</string>
+
+    <string name="txt_Glucosa">Glucose</string>
+    <string name="txt_NivelGlucosaEnSangre">Blood Glucose Level</string>
+
+    <string name="txtbtn_PresionSanguinea">Go to Blood Pressure</string>
+    <string name="txtbtn_Peso">Go to Weight</string>
+    <string name="txtbtn_Glucosa">Go to Glucose</string>
+    <string name="txtbtn_Nutricion">Go to Nutrition</string>
+    <string name="txtbtn_ActividadFisica">Go to Physical Activity</string>
+    <string name="txtbtn_Sueno">Go to Sleep</string>
+    <string name="txtbtn_ActividadSocial">Go to Social Activities</string>
+    <string name="txtbtn_Osat">Go to Osat</string>
+
+    <string name="txt_lecturaTermometro">Automatic Thermometer Reading</string>
+    <string name="txt_Lectura">Reading</string>
+    <string name="txt_Temperatura">Temperature</string>
+    <string name="txt_sincronizar">Sync</string>
+    <string name="txt_temperaturaObtenida">Obtained Temperature</string>
+
+    <string name="txt_lecturaTensiometro">Automatic Blood Pressure Monitor Reading</string>
+    <string name="txt_datosObtenidos">Obtained Data</string>
+
+    <string name="txt_TensionAlta">High Blood Pressure</string>
+    <string name="txt_TensionBaja">Low Blood Pressure</string>
+    <string name="txt_Pulso">Pulse</string>
+    <string name="txt_ritmoCardiaco">Heart Rate</string>
+
+    <string name="txt_TemperaturaTomada">Temperature</string>
+
+    <string name="txt_Aceptar">Accept</string>
+
+    <string name="txt_RegsitrosEncontrados">Records Found</string>
+
+    <string name="txt_RegsitrosNoEncontrados">No Records Found</string>
+
+    <string name="txt_InstruccionesConexionTensiometro">Instructions\
+To transfer data, first enable Bluetooth and location services.
+Then, accept the permissions that will be requested.
+Finally, turn on the medical device, take the measurement, and activate Bluetooth by pressing the middle button.</string>
+
+    <string name="txt_DatosEncontrados">Data has been found, but may not match.\n
+    In that case, select the user on the blood pressure monitor, press the middle button,\n
+    and then press M1 and M2 to delete all data.\n
+    You can also try restarting the application and the blood pressure monitor.</string>
+
+    <string name="txt_DatosNoEncontrados">Data has not been found.\n
+    Try taking the measurement again and follow the instructions.</string>
+
+    <string name="txt_MensajeTituloSalirAplicacion">Exit Application</string>
+    <string name="txt_MensajeSalirAplicacion">Are you sure you want to exit the application?</string>
+    <string name="txt_Si">Yes</string>
+    <string name="txt_No">No</string>
+
+    <string name="txt_DatosSubidos">Data uploaded successfully.</string>
+    <string name="txt_ResgitroDatosSubidos">Data has been uploaded successfully.</string>
+
+    <string name="txt_DatosNoSubidos">Some of the data could not be uploaded successfully.\n
+    It may be that the JSON is malformed, the server has a problem, or the URL is malformed.\n
+    Please check these points.</string>
+    <string name="txt_ResgitroDatosNoSubidos">Data has not been uploaded successfully.</string>
+    <string name="txt_fechaDeLaMedicion">Last measurement:</string>
+    <string name="txt_fecha_desconocida">Unknown date</string>
+
+    <string name="txt_Instrucciones">Instructions</string>
+    <string name="txt_Instrucciones_1">1. Make sure Bluetooth is enabled</string>
+    <string name="txt_Instrucciones_2">2. Make sure location is enabled</string>
+    <string name="txt_Instrucciones_3">3. Make sure permissions are enabled</string>
+    <string name="txt_Instrucciones_4">4. Turn on the medical device, take the measurement, and press the lower button to receive the data</string>
+
+    <string name="toast_datos_guardados">Data saved successfully</string>
+    <string name="toast_complete_campos">Please fill in all fields</string>
+    <string name="toast_datos_no_guardados">An error occurred, data not saved</string>
+    <string name="sistolico">Systolic</string>
+    <string name="diastolico">Diastolic</string>
+    <string name="frecuencia_cardiaca">Heart Rate</string>
+    <string name="presion_sanguinea">Blood Pressure</string>
+    <string name="no_hay_datos_disponibles">No data available</string>
+    <string name="ritmo_cardiaco">Heart Rate</string>
+    <string name="glucemia">Blood Glucose</string>
+    <string name="mood">Mood</string>
+    <string name="energy">Energy</string>
+    <string name="manana">Morning</string>
+    <string name="tarde">Afternoon</string>
+    <string name="noche">Night</string>
+    <string name="valor_energetico">Energy Value</string>
+    <string name="osat">Osat</string>
+    <string name="aerobico">Aerobic</string>
+    <string name="anaerobico">Anaerobic</string>
+    <string name="pasos">Steps</string>
+    <string name="hrs">hrs</string>
+    <string name="horas_de_sueno">Hours of Sleep</string>
+    <string name="minutos">Minutes</string>
+    <string name="peso">Weight</string>
+    <string name="mg_dl">%1$s: %2$s mg/dL</string>
+    <string name="inicio_de_datos">Start of data</string>
+    <string name="Ultimos_datos">Last data</string>
+
+    <string name="toast_registro_correcto">New record added successfully</string>
+    <string name="toast_registro_incorrecto">Error completing new record</string>
+
+    <string name="toast_no_internet">No internet connection</string>
+
+    <string name="toast_registro_usuario_correcto">User registered successfully</string>
+    <string name="toast_registro_usuario_incorrecto">Error registering user</string>
+
+    <string name="toast_complete_fecha">Please complete the date of birth</string>
+    <string name="toast_complete_datos">Please complete all fields</string>
+    <string name="toast_fecha_incorrecta">Please enter a valid date of birth</string>
+    <string name="toast_contrasenas_distintas">Passwords do not match</string>
+
+    <string name="toast_usuario_existe">User already exists</string>
+
+    <string name="toast_usuario_nulo">Null active user</string>
+
+    <string name="toast_altura_actualizada">Height updated successfully</string>
+
+    <string name="toast_contrasenas_vacias">Passwords are empty</string>
+
+    <string name="toast_datos_usuario_nulo">Null user data</string>
+
+    <string name="toast_contrasena_vieja_incorrecta">Old password is incorrect</string>
+
+    <string name="toast_contrasena_actualizada">Password updated successfully</string>
+
+    <string name="toast_inicio_sesion_correcta">Successful login</string>
+
+    <string name="toast_credenciales_incorrectas">Incorrect credentials</string>
+
+    <string name="nombreMario">Mario Muñoz</string>
+    <string name="nombreSergio">Sergio García</string>
+
+    <string name="txt_Thanks_Android">---- Version 1.0 (Android) ------- </string>
+</resources>

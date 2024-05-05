@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.vistaIntroducirNutrition.IntroducirNutritionView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgv_nutrition"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/txt_nutricion"
+            android:src="@drawable/icono_nutrition"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_ValorEnergetico"
+            android:textColor="@color/azul_texto"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_morningNutrition_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_nutrition" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_morningNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:hint="@string/txt_Manana"
+            app:layout_constraintBottom_toTopOf="@+id/et_afternoonNutrition_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_morningNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_afternoonNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:hint="@string/txt_Tarde"
+            app:layout_constraintBottom_toTopOf="@+id/et_eveningNutrition_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_morningNutrition_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_afternoonNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_eveningNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:hint="@string/txt_Noche"
+            app:layout_constraintBottom_toTopOf="@+id/et_totalNutrition_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_afternoonNutrition_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_eveningNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_totalNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:hint="@string/txt_Total"
+            app:layout_constraintBottom_toTopOf="@+id/et_notesNutrition_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_eveningNutrition_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_totalNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Otros TextInputLayouts -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_notesNutrition_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="275dp"
+            android:layout_height="75dp"
+            android:hint="@string/txt_Notas"
+            app:layout_constraintBottom_toTopOf="@+id/btn_guardarNutrition"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_totalNutrition_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_notesNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_guardarNutrition"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_margin="16dp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_notesNutrition_layout"
+            app:rippleColor="@android:color/transparent"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/txt_Hecho"
+            android:textColor="@color/white"
+            android:elevation="8dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_guardarNutrition"
+            app:layout_constraintEnd_toEndOf="@+id/btn_guardarNutrition"
+            app:layout_constraintStart_toStartOf="@+id/btn_guardarNutrition"
+            app:layout_constraintTop_toTopOf="@+id/btn_guardarNutrition" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

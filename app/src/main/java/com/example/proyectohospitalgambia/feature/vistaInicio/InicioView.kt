@@ -1,60 +1,122 @@
 package com.example.proyectohospitalgambia.feature.vistaInicio
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectohospitalgambia.R
+import com.example.proyectohospitalgambia.app.MainActivity
+import com.example.proyectohospitalgambia.core.data.persistencia.DatabaseHelper
+import com.example.proyectohospitalgambia.feature.vistaRegistro.RegistroView
+import org.json.JSONObject
+import org.mindrot.jbcrypt.BCrypt
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class InicioView : AppCompatActivity() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [InicioView.newInstance] factory method to
- * create an instance of this fragment.
- */
-class InicioView : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    // Botones en la vista
+    private lateinit var btnIniciarSesion: Button
+    private lateinit var btnRegistrar: Button
+    private lateinit var edt_nombreUsuarioRegistrar: EditText
+    private lateinit var edt_contraseniaUsuarioRegistrar: EditText
+
+    // Nombre de las SharedPreferences
+    private val PREFS_NAME = "MisPreferencias"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+        setContentView(R.layout.fragment_inicio_view)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio_view, container, false)
-    }
+        btnIniciarSesion = findViewById(R.id.btn_registrarUsuario)
+        btnRegistrar = findViewById(R.id.btn_registrar)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment inicioView.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InicioView().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        edt_nombreUsuarioRegistrar = findViewById(R.id.edt_nombreUsuarioRegistrar)
+        edt_contraseniaUsuarioRegistrar = findViewById(R.id.edt_contraseniaUsuarioRegistrar)
+
+        // Recuperar el nombre de usuario de SharedPreferences
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val nombreUsuarioGuardado = sharedPreferences.getString("nombre_usuario", "")
+
+        // Establecer el nombre de usuario guardado en el EditText
+        edt_nombreUsuarioRegistrar.setText(nombreUsuarioGuardado)
+
+
+        // Agrega OnClickListener al botón btnIniciarSesion
+        btnIniciarSesion.setOnClickListener {
+
+            // Obtener los valores de los EditText
+            val nombreUsuario = edt_nombreUsuarioRegistrar.text.toString()
+            val contraseniaUsuario = edt_contraseniaUsuarioRegistrar.text.toString()
+
+            // Verificar las credenciales en la base de datos
+            val dbHelper = DatabaseHelper(this)
+            val usuarioEncontrado =
+                dbHelper.verificarCredenciales(nombreUsuario, contraseniaUsuario)
+
+            if (usuarioEncontrado != null) {
+                // Obtener la contraseña almacenada del usuario encontrado en el campo "password" del JSON
+                val jsonString = usuarioEncontrado.data
+                val jsonObject = JSONObject(jsonString)
+                val contraseniaAlmacenada = jsonObject.getString("password")
+
+                // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
+                if (BCrypt.checkpw(contraseniaUsuario, contraseniaAlmacenada)) {
+                    Log.d("Inicio de Sesión", "Usuario autenticado. ID: ${usuarioEncontrado.id}")
+                    MainActivity.usuario = usuarioEncontrado
+                    Toast.makeText(this, R.string.toast_inicio_sesion_correcta, Toast.LENGTH_SHORT)
+                        .show()
+
+                    // Guardar el nombre de usuario en SharedPreferences
+                    val preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val editor = preferences.edit()
+                    editor.putString("nombre_usuario", nombreUsuario)
+                    editor.apply()
+
+                    // Creamos un Intent para iniciar MainActivity.
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Log.d(
+                        "Inicio de Sesión",
+                        "Contraseña incorrecta para el usuario: $nombreUsuario"
+                    )
+                    Toast.makeText(
+                        this,
+                        R.string.toast_credenciales_incorrectas,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+            } else {
+                Log.d(
+                    "Inicio de Sesión",
+                    "No se encontró ningún usuario con el nombre: $nombreUsuario"
+                )
+                Toast.makeText(this, R.string.toast_credenciales_incorrectas, Toast.LENGTH_SHORT)
+                    .show()
             }
+        }
+
+        // Agrega OnClickListener al botón btnJugarLocal
+        btnRegistrar.setOnClickListener {
+
+            // Creamos un Intent para iniciar VistaSeleccionPartida.
+            val intent = Intent(this, RegistroView::class.java)
+
+            // Iniciamos la actividad sin esperar un resultado.
+            startActivity(intent)
+
+        }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // No hagas nada en el botón de retroceso
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
+
     }
 }
