@@ -291,4 +291,6 @@
     <string name="nombreMario">Mario Muñoz</string>
     <string name="nombreSergio">Sergio García</string>
 
+    <string name="txt_Thanks_Android">---- Version 1.0 (Android) ------- </string>
+
 </resources>

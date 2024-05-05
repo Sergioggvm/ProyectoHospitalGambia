@@ -81,8 +81,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="65dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/edt_textoMinutos_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edt_textoMes_layout"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
@@ -213,23 +212,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/edt_textoResumen_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/edt_textoMinutos_layout"
-            app:layout_constraintTop_toBottomOf="@+id/edt_textoAnio_layout" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_textoMinutos_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/edt_textoResumen_layout"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txt_hora"
             app:layout_constraintTop_toBottomOf="@+id/edt_textoMes_layout">
 
