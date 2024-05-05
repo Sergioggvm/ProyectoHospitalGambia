@@ -56,8 +56,6 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
     private lateinit var btnGuardar: Button
 
-    private lateinit var btnListar: Button
-
     // Declaración de variables para los elementos del formulario
     private lateinit var edtTextoDia: EditText
     private lateinit var edtTextoMes: EditText
@@ -82,7 +80,6 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
 
         btnGuardar = view.findViewById(R.id.btn_guardar)
 
-        btnListar = view.findViewById(R.id.button2)
 
         // Inicialización de elementos del formulario
         edtTextoDia = view.findViewById(R.id.edt_textoDia)
@@ -192,11 +189,6 @@ class NuevoRegistroServidorView : Fragment(), AdapterView.OnItemSelectedListener
             }
 
 
-        }
-
-        btnListar.setOnClickListener {
-
-            viewModel.listarDatos()
         }
 
     }

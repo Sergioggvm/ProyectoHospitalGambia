@@ -20,7 +20,6 @@ android {
     }
 
     // Configuración de Dokka
-    // Configuración de Dokka
     tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
         moduleName.set("MyGnuHealthApp")
     }
@@ -104,10 +103,8 @@ dependencies {
     testImplementation("io.mockk:mockk:1.12.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
     // Dokka
     dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
-
 
 }
 
