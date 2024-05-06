@@ -471,11 +471,9 @@ class DatosTermometroView : AppCompatActivity() {
 
 
     private fun connectToDevice(device: BluetoothDevice) {
-        // Check if we have the necessary permissions
         if (checkSelfPermission(Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
             checkSelfPermission(Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED
         ) {
-            // If we don't have the permissions, request them from the user
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN),
@@ -484,7 +482,6 @@ class DatosTermometroView : AppCompatActivity() {
             return
         }
 
-        // Now that we have the permissions, proceed with the Bluetooth connection
         val gattCallback = object : BluetoothGattCallback() {
             override fun onConnectionStateChange(gatt: BluetoothGatt?, status: Int, newState: Int) {
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
