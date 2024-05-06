@@ -104,7 +104,8 @@ class DatabaseHelperTest {
 
     @Test
     fun testListarPols() {
-        val expectedPols = listOf(Pol("id1", "book1", "data1", "subido"), Pol("id2", "book2", "data2", "subido"))
+        val expectedPols = listOf(Pol("id1", "book1", "data1", "subido"),
+            Pol("id2", "book2", "data2", "subido"))
         every { databaseHelper.obtenerPols() } returns expectedPols
         val pols = databaseHelper.obtenerPols()
         Assert.assertNotNull(pols)
